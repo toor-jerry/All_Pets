@@ -1,0 +1,3 @@
+line-length:
+  warning: 400
+  error: 500
