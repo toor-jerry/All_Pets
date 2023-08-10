@@ -6,11 +6,14 @@
 //
 
 extension String {
-    static let MsgLoader: String = "Cargando.."
-    static let MsgButtonLogin: String = "Iniciar sesión"
-    static let MsgEmailLogin: String = "Correo electrónico"
-    static let MsgPasswordLogin: String = "Password"
-    static let MsgForgotPassword: String = "¿Olvidaste tu contraseña?"
-    static let MsgSignUpTitle: String = "¿No tienes una cuenta?"
-    static let MsgSignUp: String = "Registrarse"
+    static let MsgLoader = "Cargando.."
+    static let MsgButtonLogin = "Iniciar sesión"
+    static let MsgEmailLogin = "Correo electrónico"
+    static let MsgPasswordLogin = "Password"
+    static let MsgForgotPassword = "¿Olvidaste tu contraseña?"
+    static let MsgSignUpTitle = "¿No tienes una cuenta?"
+    static let MsgSignUp = "Registrarse"
+    static let MsgAcept = "Aceptar"
+    static let MsgWarning = "¡Alerta!"
+    static let MsgPasswordOrUserInvalid = "Usuario ó contraseña incorrectos."
 }

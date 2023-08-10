@@ -51,13 +51,14 @@ struct buttonPrincipal: ViewModifier {
 }
 
 struct inputStylePrincipal: ViewModifier {
+
     func body(content: Content) -> some View {
         content
             .padding(20)
             .font(.headline)
             .background(Color.white)
             .overlay(RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color.principal, lineWidth: 4))
+                .stroke(Color.principal, lineWidth: 4))
             .padding(.horizontal, 40)
     }
 }

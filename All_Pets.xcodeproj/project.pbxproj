@@ -10,6 +10,7 @@
 		D24149B02A8569E800E40EBB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AB2A8569E800E40EBB /* Login.swift */; };
 		D24149B12A8569E800E40EBB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AD2A8569E800E40EBB /* LoginViewModel.swift */; };
 		D24149B22A8569E800E40EBB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AF2A8569E800E40EBB /* LoginView.swift */; };
+		D24149B42A85A92100E40EBB /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149B32A85A92100E40EBB /* LoginFormView.swift */; };
 		D27FAA092A830F4E00E0B93A /* All_PetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27FAA082A830F4E00E0B93A /* All_PetsApp.swift */; };
 		D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27FAA0A2A830F4E00E0B93A /* ContentView.swift */; };
 		D27FAA0D2A830F5000E0B93A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27FAA0C2A830F5000E0B93A /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		D24149AB2A8569E800E40EBB /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D24149AD2A8569E800E40EBB /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D24149AF2A8569E800E40EBB /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D24149B32A85A92100E40EBB /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
 		D27FAA052A830F4E00E0B93A /* All_Pets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = All_Pets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27FAA082A830F4E00E0B93A /* All_PetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = All_PetsApp.swift; sourceTree = "<group>"; };
 		D27FAA0A2A830F4E00E0B93A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				D24149AF2A8569E800E40EBB /* LoginView.swift */,
+				D24149B32A85A92100E40EBB /* LoginFormView.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				D2AC456C2A840A23003958FC /* ObservableObject+Extension.swift in Sources */,
 				D2E6F8112A84A6730074D84E /* LocalizedKey.swift in Sources */,
 				D2E6F81B2A85655A0074D84E /* AuthPreLogin.swift in Sources */,
+				D24149B42A85A92100E40EBB /* LoginFormView.swift in Sources */,
 				D2E6F80E2A84A6290074D84E /* Loader.swift in Sources */,
 				D2AC45672A84081F003958FC /* ProviderServiceProtocols.swift in Sources */,
 			);
