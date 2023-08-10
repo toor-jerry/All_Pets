@@ -20,12 +20,6 @@ final class PreAuthLoginUseCase: PreAuthLoginProtocol {
     func preAuth(success: @escaping (Bool) -> Void,
                  error: @escaping (Error) -> Void,
                  completion: @escaping () -> Void) {
-
-        do {
-            try Auth.auth().signOut()
-        } catch {
-
-        }
         
         if let _ = Auth.auth().currentUser {
             success(true)
