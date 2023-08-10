@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct AuthLoginView: View {
+    @StateObject var viewModel = AuthLoginViewModel(useCase: AuthLoginUseCase())
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if viewModel.isLoading {
+                ProgressView("Cargando..")
+                    .scaleEffect(2)
+                    .task {
+                        viewModel.auth()
+                    }
+            } else {
+                Text("")
+            }
+        }
+        .environmentObject(viewModel)
     }
 }
 
@@ -18,4 +30,3 @@ struct AuthLoginViewPreviews: PreviewProvider {
         AuthLoginView()
     }
 }
-

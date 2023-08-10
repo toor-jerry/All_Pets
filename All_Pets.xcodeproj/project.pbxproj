@@ -19,6 +19,7 @@
 		D2AC45672A84081F003958FC /* ProviderServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC45662A84081F003958FC /* ProviderServiceProtocols.swift */; };
 		D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC45692A8409CB003958FC /* Array+Extension.swift */; };
 		D2AC456C2A840A23003958FC /* ObservableObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */; };
+		D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */; };
 		D2D8232E2A831C490060CDA7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2D8232D2A831C490060CDA7 /* GoogleService-Info.plist */; };
 		D2D823312A831FA20060CDA7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2D823302A831FA20060CDA7 /* FirebaseAnalyticsSwift */; };
 		D2D823332A831FA20060CDA7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D2D823322A831FA20060CDA7 /* FirebaseAuth */; };
@@ -43,6 +44,7 @@
 		D2AC45662A84081F003958FC /* ProviderServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderServiceProtocols.swift; sourceTree = "<group>"; };
 		D2AC45692A8409CB003958FC /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableObject+Extension.swift"; sourceTree = "<group>"; };
+		D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginUseCase.swift; sourceTree = "<group>"; };
 		D2D8232D2A831C490060CDA7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2E143E62A83F9780096457C /* AuthLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginView.swift; sourceTree = "<group>"; };
 		D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginViewModel.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		D2AC45572A84017E003958FC /* NetworkingProvider */ = {
 			isa = PBXGroup;
 			children = (
+				D2AC456D2A846699003958FC /* UseCases */,
 				D2AC455F2A8403F2003958FC /* Abstractions */,
 				D2AC45582A840184003958FC /* Errors */,
 				D2AC455D2A840288003958FC /* RequestType.swift */,
@@ -190,6 +193,14 @@
 				D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D2AC456D2A846699003958FC /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		D2F751FC2A83E3B7000AAE77 /* FunctionalUtilities */ = {
@@ -284,6 +295,7 @@
 				D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */,
 				D2AC45612A84061A003958FC /* Fetcher.swift in Sources */,
 				D2AC455C2A840241003958FC /* NetworkingServerErrors.swift in Sources */,
+				D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */,
 				D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */,
 				D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */,
 				D27FAA092A830F4E00E0B93A /* All_PetsApp.swift in Sources */,
