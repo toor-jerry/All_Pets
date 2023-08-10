@@ -7,11 +7,6 @@
 
 import FirebaseAuth
 
-struct AuthLoginInfo {
-    let password: String
-    let user: String
-}
-
 protocol AuthLogin: AnyObject {
     func login(info: AuthLoginInfo,
                success: @escaping (Bool) -> Void,

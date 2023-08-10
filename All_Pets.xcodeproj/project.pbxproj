@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D24149B02A8569E800E40EBB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AB2A8569E800E40EBB /* Login.swift */; };
+		D24149B12A8569E800E40EBB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AD2A8569E800E40EBB /* LoginViewModel.swift */; };
+		D24149B22A8569E800E40EBB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AF2A8569E800E40EBB /* LoginView.swift */; };
 		D27FAA092A830F4E00E0B93A /* All_PetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27FAA082A830F4E00E0B93A /* All_PetsApp.swift */; };
 		D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27FAA0A2A830F4E00E0B93A /* ContentView.swift */; };
 		D27FAA0D2A830F5000E0B93A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27FAA0C2A830F5000E0B93A /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D24149AB2A8569E800E40EBB /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		D24149AD2A8569E800E40EBB /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D24149AF2A8569E800E40EBB /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D27FAA052A830F4E00E0B93A /* All_Pets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = All_Pets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27FAA082A830F4E00E0B93A /* All_PetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = All_PetsApp.swift; sourceTree = "<group>"; };
 		D27FAA0A2A830F4E00E0B93A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 		D201FCAB2A83F35A002C1EBA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D24149A92A8569E800E40EBB /* Login */,
 				D2E6F80C2A84A6190074D84E /* Generics */,
 				D201FCAC2A83F363002C1EBA /* AuthLogin */,
 			);
@@ -130,6 +137,40 @@
 				D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */,
 			);
 			path = AuthLoginViewModel;
+			sourceTree = "<group>";
+		};
+		D24149A92A8569E800E40EBB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D24149AA2A8569E800E40EBB /* Models */,
+				D24149AC2A8569E800E40EBB /* LoginViewModel */,
+				D24149AE2A8569E800E40EBB /* LoginView */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D24149AA2A8569E800E40EBB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D24149AB2A8569E800E40EBB /* Login.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D24149AC2A8569E800E40EBB /* LoginViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D24149AD2A8569E800E40EBB /* LoginViewModel.swift */,
+			);
+			path = LoginViewModel;
+			sourceTree = "<group>";
+		};
+		D24149AE2A8569E800E40EBB /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				D24149AF2A8569E800E40EBB /* LoginView.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 		D27FA9FC2A830F4E00E0B93A = {
@@ -324,15 +365,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D24149B12A8569E800E40EBB /* LoginViewModel.swift in Sources */,
 				D2E143E72A83F9780096457C /* AuthLoginView.swift in Sources */,
 				D2E6F8152A8558110074D84E /* Colors.swift in Sources */,
 				D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */,
 				D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */,
 				D2AC45612A84061A003958FC /* Fetcher.swift in Sources */,
+				D24149B22A8569E800E40EBB /* LoginView.swift in Sources */,
 				D2AC455C2A840241003958FC /* NetworkingServerErrors.swift in Sources */,
 				D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */,
 				D2E6F8172A855AED0074D84E /* Modifiers.swift in Sources */,
 				D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */,
+				D24149B02A8569E800E40EBB /* Login.swift in Sources */,
 				D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */,
 				D27FAA092A830F4E00E0B93A /* All_PetsApp.swift in Sources */,
 				D2E143EB2A83FB480096457C /* AuthLoginModel.swift in Sources */,

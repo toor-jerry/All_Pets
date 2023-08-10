@@ -21,6 +21,12 @@ final class PreAuthLoginUseCase: PreAuthLoginProtocol {
                  error: @escaping (Error) -> Void,
                  completion: @escaping () -> Void) {
 
+        do {
+            try Auth.auth().signOut()
+        } catch {
+
+        }
+        
         if let _ = Auth.auth().currentUser {
             success(true)
         } else {
