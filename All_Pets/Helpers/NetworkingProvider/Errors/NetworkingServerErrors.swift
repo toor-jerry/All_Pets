@@ -5,7 +5,7 @@
 //  Copyright © 2023 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-enum GSSANetworkingServerErrors: Error {
+enum NetworkingServerErrors: Error {
     case internalServerError
     case dataNotFound
     case unknownError

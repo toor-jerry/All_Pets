@@ -6,3 +6,11 @@
 //
 
 import UIKit
+
+struct AuthLoginModel: Codable {
+    var message: String?
+
+    enum CodingKeys: String, CodingKey {
+        case message = "mensaje"
+    }
+}
