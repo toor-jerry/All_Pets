@@ -27,6 +27,8 @@
 		D2E143E72A83F9780096457C /* AuthLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143E62A83F9780096457C /* AuthLoginView.swift */; };
 		D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */; };
 		D2E143EB2A83FB480096457C /* AuthLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143EA2A83FB480096457C /* AuthLoginModel.swift */; };
+		D2E6F80E2A84A6290074D84E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F80D2A84A6290074D84E /* Loader.swift */; };
+		D2E6F8112A84A6730074D84E /* LocalizedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8102A84A6730074D84E /* LocalizedKey.swift */; };
 		D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C3B12A83E3FD0078E65B /* AppEnviroment.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		D2E143E62A83F9780096457C /* AuthLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginView.swift; sourceTree = "<group>"; };
 		D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginViewModel.swift; sourceTree = "<group>"; };
 		D2E143EA2A83FB480096457C /* AuthLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginModel.swift; sourceTree = "<group>"; };
+		D2E6F80D2A84A6290074D84E /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		D2E6F8102A84A6730074D84E /* LocalizedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedKey.swift; sourceTree = "<group>"; };
 		D2F8C3B12A83E3FD0078E65B /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +73,7 @@
 		D201FCAA2A83F34D002C1EBA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D2E6F80F2A84A65E0074D84E /* Localized */,
 				D2AC45682A8409BC003958FC /* Extensions */,
 				D2AC45572A84017E003958FC /* NetworkingProvider */,
 				D2F751FC2A83E3B7000AAE77 /* FunctionalUtilities */,
@@ -79,6 +84,7 @@
 		D201FCAB2A83F35A002C1EBA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D2E6F80C2A84A6190074D84E /* Generics */,
 				D201FCAC2A83F363002C1EBA /* AuthLogin */,
 			);
 			path = Components;
@@ -203,6 +209,22 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		D2E6F80C2A84A6190074D84E /* Generics */ = {
+			isa = PBXGroup;
+			children = (
+				D2E6F80D2A84A6290074D84E /* Loader.swift */,
+			);
+			path = Generics;
+			sourceTree = "<group>";
+		};
+		D2E6F80F2A84A65E0074D84E /* Localized */ = {
+			isa = PBXGroup;
+			children = (
+				D2E6F8102A84A6730074D84E /* LocalizedKey.swift */,
+			);
+			path = Localized;
+			sourceTree = "<group>";
+		};
 		D2F751FC2A83E3B7000AAE77 /* FunctionalUtilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +326,8 @@
 				D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */,
 				D2AC455E2A840288003958FC /* RequestType.swift in Sources */,
 				D2AC456C2A840A23003958FC /* ObservableObject+Extension.swift in Sources */,
+				D2E6F8112A84A6730074D84E /* LocalizedKey.swift in Sources */,
+				D2E6F80E2A84A6290074D84E /* Loader.swift in Sources */,
 				D2AC45672A84081F003958FC /* ProviderServiceProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

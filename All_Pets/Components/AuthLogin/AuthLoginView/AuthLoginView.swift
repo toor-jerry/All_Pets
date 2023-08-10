@@ -12,11 +12,7 @@ struct AuthLoginView: View {
     var body: some View {
         VStack {
             if viewModel.isLoading {
-                ProgressView("Cargando..")
-                    .scaleEffect(2)
-                    .task {
-                        viewModel.auth()
-                    }
+                Loader()
             } else {
                 Text("")
             }
