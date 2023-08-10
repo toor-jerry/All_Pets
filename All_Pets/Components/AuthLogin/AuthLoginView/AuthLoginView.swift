@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthLoginView: View {
     
-    @StateObject var viewModel = AuthLoginViewModel(useCase: AuthLoginUseCase())
+    @StateObject var viewModel = AuthLoginViewModel(useCase: PreAuthLoginUseCase())
     var body: some View {
         VStack {
             if viewModel.isLoading {

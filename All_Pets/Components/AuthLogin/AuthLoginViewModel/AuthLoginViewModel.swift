@@ -12,9 +12,9 @@ final class AuthLoginViewModel: ObservableObject {
     @Published var isLoading: Bool = true
     @Published var isLoggedIn: Bool = false
 
-    let useCase: AuthLoginUseCaseProtocol
+    let useCase: PreAuthLoginUseCase
     
-    init(useCase: AuthLoginUseCaseProtocol) {
+    init(useCase: PreAuthLoginUseCase) {
         self.useCase = useCase
     }
 

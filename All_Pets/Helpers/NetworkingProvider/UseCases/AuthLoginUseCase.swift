@@ -12,12 +12,6 @@ struct AuthLoginInfo {
     let user: String
 }
 
-protocol PreAuthLogin: AnyObject {
-    func preAuth(success: @escaping (Bool) -> Void,
-                 error: @escaping (Error) -> Void,
-                 completion: @escaping () -> Void)
-}
-
 protocol AuthLogin: AnyObject {
     func login(info: AuthLoginInfo,
                success: @escaping (Bool) -> Void,
@@ -25,7 +19,7 @@ protocol AuthLogin: AnyObject {
                completion: @escaping () -> Void)
 }
 
-protocol AuthLoginUseCaseProtocol: AuthLogin, PreAuthLogin { }
+protocol AuthLoginUseCaseProtocol: AuthLogin { }
 
 final class AuthLoginUseCase: AuthLoginUseCaseProtocol { }
 
@@ -49,21 +43,5 @@ extension AuthLoginUseCase: AuthLogin {
 
             completion()
         }
-    }
-}
-
-extension AuthLoginUseCase: PreAuthLogin {
-
-    func preAuth(success: @escaping (Bool) -> Void,
-                 error: @escaping (Error) -> Void,
-                 completion: @escaping () -> Void) {
-
-        if let _ = Auth.auth().currentUser {
-            success(true)
-        } else {
-            error(NetworkingServerErrors.dataNotFound)
-        }
-
-        completion()
     }
 }
