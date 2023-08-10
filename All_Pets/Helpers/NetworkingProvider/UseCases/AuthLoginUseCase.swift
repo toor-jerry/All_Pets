@@ -58,7 +58,12 @@ extension AuthLoginUseCase: PreAuthLogin {
                  error: @escaping (Error) -> Void,
                  completion: @escaping () -> Void) {
 
-        success(Auth.auth().currentUser != nil)
+        if let _ = Auth.auth().currentUser {
+            success(true)
+        } else {
+            error(NetworkingServerErrors.dataNotFound)
+        }
+
         completion()
     }
 }
