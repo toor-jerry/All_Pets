@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AuthLoginView: View {
+    
     @StateObject var viewModel = AuthLoginViewModel(useCase: AuthLoginUseCase())
     var body: some View {
         VStack {
@@ -16,7 +17,11 @@ struct AuthLoginView: View {
                     viewModel.auth()
                 }
             } else {
-                Text("")
+                if viewModel.isLoggedIn {
+                    Text("Logueado")
+                } else {
+                    Text("No logueado")
+                }
             }
         }
         .environmentObject(viewModel)

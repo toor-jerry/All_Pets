@@ -8,7 +8,10 @@
 import SwiftUI
 
 final class AuthLoginViewModel: ObservableObject {
+
     @Published var isLoading: Bool = true
+    @Published var isLoggedIn: Bool = false
+
     let useCase: AuthLoginUseCaseProtocol
     
     init(useCase: AuthLoginUseCaseProtocol) {
@@ -17,16 +20,26 @@ final class AuthLoginViewModel: ObservableObject {
 
     func auth() {
         isLoading = true
-        useCase.login(info: AuthLoginInfo(password: "12345678",
-                                          user: "gerarchicharo37@gmail.com")) { response in
-
-        } error: { responseError in
+        useCase.preAuth { isLoggedIn in
+            self.isLoggedIn = isLoggedIn
+        } error: { _ in
 
         } completion: {
             self.setTheardMain {
                 self.isLoading = false
             }
         }
+
+//        useCase.login(info: AuthLoginInfo(password: "12345678",
+//                                          user: "gerarchicharo37@gmail.com")) { response in
+//
+//        } error: { responseError in
+//
+//        } completion: {
+//            self.setTheardMain {
+//                self.isLoading = false
+//            }
+//        }
 
     }
 }

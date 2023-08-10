@@ -12,6 +12,12 @@ struct AuthLoginInfo {
     let user: String
 }
 
+protocol PreAuthLogin: AnyObject {
+    func preAuth(success: @escaping (Bool) -> Void,
+                 error: @escaping (Error) -> Void,
+                 completion: @escaping () -> Void)
+}
+
 protocol AuthLogin: AnyObject {
     func login(info: AuthLoginInfo,
                success: @escaping (Bool) -> Void,
@@ -19,34 +25,40 @@ protocol AuthLogin: AnyObject {
                completion: @escaping () -> Void)
 }
 
-protocol AuthLoginUseCaseProtocol: AuthLogin { }
+protocol AuthLoginUseCaseProtocol: AuthLogin, PreAuthLogin { }
 
-final class AuthLoginUseCase: AuthLoginUseCaseProtocol {
+final class AuthLoginUseCase: AuthLoginUseCaseProtocol { }
 
+extension AuthLoginUseCase: AuthLogin {
+    
     func login(info: AuthLoginInfo,
                success: @escaping (Bool) -> Void,
                error: @escaping (Error) -> Void,
                completion: @escaping () -> Void) {
 
-        if let _ = Auth.auth().currentUser {
-            success(true)
-            completion()
+        Auth.auth().signIn(withEmail: info.user,
+                           password: info.password) { (result, errorResponse) in
 
-        } else {
-
-            Auth.auth().signIn(withEmail: info.user,
-                               password: info.password) { (result, errorResponse) in
-
-                if let _ = errorResponse {
-                    error(NetworkingServerErrors.response)
-                } else if let _ = result {
-                    success(true)
-                } else {
-                    error(NetworkingServerErrors.dataNotFound)
-                }
-
-                completion()
+            if let _ = errorResponse {
+                error(NetworkingServerErrors.response)
+            } else if let _ = result {
+                success(true)
+            } else {
+                error(NetworkingServerErrors.dataNotFound)
             }
+
+            completion()
         }
+    }
+}
+
+extension AuthLoginUseCase: PreAuthLogin {
+
+    func preAuth(success: @escaping (Bool) -> Void,
+                 error: @escaping (Error) -> Void,
+                 completion: @escaping () -> Void) {
+
+        success(Auth.auth().currentUser != nil)
+        completion()
     }
 }
