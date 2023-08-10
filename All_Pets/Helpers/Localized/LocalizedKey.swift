@@ -7,4 +7,10 @@
 
 extension String {
     static let MsgLoader: String = "Cargando.."
+    static let MsgButtonLogin: String = "Iniciar sesión"
+    static let MsgEmailLogin: String = "Correo electrónico"
+    static let MsgPasswordLogin: String = "Password"
+    static let MsgForgotPassword: String = "¿Olvidaste tu contraseña?"
+    static let MsgSignUpTitle: String = "¿No tienes una cuenta?"
+    static let MsgSignUp: String = "Registrarse"
 }

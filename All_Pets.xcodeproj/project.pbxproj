@@ -29,6 +29,9 @@
 		D2E143EB2A83FB480096457C /* AuthLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143EA2A83FB480096457C /* AuthLoginModel.swift */; };
 		D2E6F80E2A84A6290074D84E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F80D2A84A6290074D84E /* Loader.swift */; };
 		D2E6F8112A84A6730074D84E /* LocalizedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8102A84A6730074D84E /* LocalizedKey.swift */; };
+		D2E6F8152A8558110074D84E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8142A8558110074D84E /* Colors.swift */; };
+		D2E6F8172A855AED0074D84E /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8162A855AED0074D84E /* Modifiers.swift */; };
+		D2E6F8192A855C4E0074D84E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8182A855C4E0074D84E /* Constants.swift */; };
 		D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C3B12A83E3FD0078E65B /* AppEnviroment.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +56,9 @@
 		D2E143EA2A83FB480096457C /* AuthLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginModel.swift; sourceTree = "<group>"; };
 		D2E6F80D2A84A6290074D84E /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		D2E6F8102A84A6730074D84E /* LocalizedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedKey.swift; sourceTree = "<group>"; };
+		D2E6F8142A8558110074D84E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		D2E6F8162A855AED0074D84E /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		D2E6F8182A855C4E0074D84E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D2F8C3B12A83E3FD0078E65B /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,6 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				D2E6F80D2A84A6290074D84E /* Loader.swift */,
+				D2E6F8142A8558110074D84E /* Colors.swift */,
+				D2E6F8162A855AED0074D84E /* Modifiers.swift */,
 			);
 			path = Generics;
 			sourceTree = "<group>";
@@ -221,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				D2E6F8102A84A6730074D84E /* LocalizedKey.swift */,
+				D2E6F8182A855C4E0074D84E /* Constants.swift */,
 			);
 			path = Localized;
 			sourceTree = "<group>";
@@ -313,11 +322,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2E143E72A83F9780096457C /* AuthLoginView.swift in Sources */,
+				D2E6F8152A8558110074D84E /* Colors.swift in Sources */,
 				D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */,
 				D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */,
 				D2AC45612A84061A003958FC /* Fetcher.swift in Sources */,
 				D2AC455C2A840241003958FC /* NetworkingServerErrors.swift in Sources */,
 				D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */,
+				D2E6F8172A855AED0074D84E /* Modifiers.swift in Sources */,
 				D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */,
 				D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */,
 				D27FAA092A830F4E00E0B93A /* All_PetsApp.swift in Sources */,
@@ -325,6 +336,7 @@
 				D2AC45652A8406F9003958FC /* NetworkingProviderService.swift in Sources */,
 				D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */,
 				D2AC455E2A840288003958FC /* RequestType.swift in Sources */,
+				D2E6F8192A855C4E0074D84E /* Constants.swift in Sources */,
 				D2AC456C2A840A23003958FC /* ObservableObject+Extension.swift in Sources */,
 				D2E6F8112A84A6730074D84E /* LocalizedKey.swift in Sources */,
 				D2E6F80E2A84A6290074D84E /* Loader.swift in Sources */,
