@@ -23,7 +23,7 @@ final class AuthLoginViewModel: ObservableObject {
         useCase.preAuth { isLoggedIn in
             self.isLoggedIn = isLoggedIn
         } error: { _ in
-
+            self.isLoggedIn = false
         } completion: {
             self.setTheardMain {
                 self.isLoading = false
