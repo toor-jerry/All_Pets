@@ -28,17 +28,25 @@ final class AuthLoginUseCase: AuthLoginUseCaseProtocol {
                error: @escaping (Error) -> Void,
                completion: @escaping () -> Void) {
 
-        Auth.auth().createUser(withEmail: info.user,
-                               password: info.password) { (result, errorResponse) in
-            if let _ = errorResponse {
-                error(NetworkingServerErrors.response)
-            } else if let _ = result {
-                success(true)
-            } else {
-                error(NetworkingServerErrors.dataNotFound)
-            }
-
+        if let _ = Auth.auth().currentUser {
+            success(true)
             completion()
+
+        } else {
+
+            Auth.auth().signIn(withEmail: info.user,
+                               password: info.password) { (result, errorResponse) in
+
+                if let _ = errorResponse {
+                    error(NetworkingServerErrors.response)
+                } else if let _ = result {
+                    success(true)
+                } else {
+                    error(NetworkingServerErrors.dataNotFound)
+                }
+
+                completion()
+            }
         }
     }
 }

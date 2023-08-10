@@ -12,7 +12,9 @@ struct AuthLoginView: View {
     var body: some View {
         VStack {
             if viewModel.isLoading {
-                Loader()
+                Loader().task {
+                    viewModel.auth()
+                }
             } else {
                 Text("")
             }
