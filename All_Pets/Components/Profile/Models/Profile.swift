@@ -8,6 +8,7 @@
 import Foundation
 
 struct Profile: Codable {
+    // TODO: REMOVE THIS
     var message: String?
 
     enum CodingKeys: String, CodingKey {
