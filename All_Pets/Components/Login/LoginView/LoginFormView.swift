@@ -66,7 +66,7 @@ struct LoginFormView: View {
                     dismissButton: .default(Text(String.MsgAcept))
                 )
             }
-        }.background(Color.background)
+        }
     }
 }
 
