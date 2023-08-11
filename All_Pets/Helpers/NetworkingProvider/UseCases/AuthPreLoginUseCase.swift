@@ -1,4 +1,4 @@
-//  AuthPreLogin.swift
+//  AuthPreLoginUseCase.swift
 //  All_Pets
 //
 //  Created by Gerardo Bautista Castañeda on 10/08/23.
@@ -7,15 +7,15 @@
 
 import FirebaseAuth
 
-protocol PreAuthLogin: AnyObject {
+protocol PreAuthLoginProtocol: AnyObject {
     func preAuth(success: @escaping (Bool) -> Void,
                  error: @escaping (Error) -> Void,
                  completion: @escaping () -> Void)
 }
 
-protocol PreAuthLoginProtocol: PreAuthLogin { }
+protocol PreAuthLoginUseCaseProtocol: PreAuthLoginProtocol { }
 
-final class PreAuthLoginUseCase: PreAuthLoginProtocol {
+final class PreAuthLoginUseCase: PreAuthLoginUseCaseProtocol {
 
     func preAuth(success: @escaping (Bool) -> Void,
                  error: @escaping (Error) -> Void,

@@ -1,25 +1,25 @@
-//  AuthLoginUseCase.swift
+//  SignUpUseCase.swift
 //  All_Pets
 //
-//  Created by Gerardo Bautista Castañeda on 09/08/23.
+//  Created by Gerardo Bautista Castañeda on 11/08/23.
 //  Copyright © 2023 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import FirebaseAuth
 
-protocol AuthLoginProtocol: AnyObject {
+protocol SignUpProtocol: AnyObject {
     func login(info: AuthLoginInfo,
                success: @escaping (Bool) -> Void,
                error: @escaping (Error) -> Void,
                completion: @escaping () -> Void)
 }
 
-protocol AuthLoginUseCaseProtocol: AuthLoginProtocol { }
+protocol SignUpUseCaseProtocol: SignUpProtocol { }
 
-final class AuthLoginUseCase: AuthLoginUseCaseProtocol { }
+final class SignUpUseCase: SignUpUseCaseProtocol { }
 
-extension AuthLoginUseCase: AuthLoginProtocol {
-    
+extension SignUpUseCase: SignUpProtocol {
+
     func login(info: AuthLoginInfo,
                success: @escaping (Bool) -> Void,
                error: @escaping (Error) -> Void,
