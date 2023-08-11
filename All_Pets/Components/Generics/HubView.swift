@@ -54,7 +54,7 @@ struct HubView: View {
             .tag(3)
             
             ScrollView {
-                Text("Contenido de la pestaña 3")
+                ProfileView()
             }
             .modifier(tabItemStyle())
             .tabItem {

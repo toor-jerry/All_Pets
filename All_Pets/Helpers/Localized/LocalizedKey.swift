@@ -16,4 +16,5 @@ extension String {
     static let MsgAcept = "Aceptar"
     static let MsgWarning = "¡Alerta!"
     static let MsgPasswordOrUserInvalid = "Usuario ó contraseña incorrectos."
+    static let MsgSignOut = "Cerrar sesión"
 }

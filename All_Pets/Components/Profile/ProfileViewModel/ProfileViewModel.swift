@@ -8,22 +8,26 @@
 import SwiftUI
 
 final class ProfileViewModel: ObservableObject {
+    
+    @Published var isLoading: Bool = false
+    let useCase: SignOutUseCaseProtocol
 
-    let useCase: SignUpUseCaseProtocol
-
-    init(useCase: SignUpUseCaseProtocol) {
+    init(useCase: SignOutUseCaseProtocol) {
         self.useCase = useCase
     }
 
-//    func auth() {
-//        isLoading = true
-//        useCase.preAuth { isLoggedIn in
-//            self.isLoggedIn = isLoggedIn
-//        } error: { _ in
-//            self.isLoggedIn = false
-//        } completion: {
-//            self.setTheardMain {
-//                self.isLoading = false
-//            }
-//        }
+    func signOut() {
+        isLoading = true
+        useCase.signOut { signOut in
+            // TODO:
+            //            self.isLoggedIn = isLoggedIn
+        } failure: { _ in
+            // TODO:
+            //            self.isLoggedIn = false
+        } completion: {
+            self.setTheardMain {
+                self.isLoading = false
+            }
+        }
+    }
 }

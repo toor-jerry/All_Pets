@@ -9,10 +9,29 @@ import SwiftUI
 
 struct ProfileView: View {
 
-    @StateObject var viewModel = ProfileViewModel(useCase: SignUpUseCase())
+    @StateObject var viewModel = ProfileViewModel(useCase: SignOutUseCase())
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+
+            Circle()
+                .frame(height: 200)
+                .foregroundColor(Color.principal)
+
+            Spacer()
+            
+            Button(action: {
+                viewModel.signOut()
+            }, label: {
+                Text(String.MsgSignOut)
+                Spacer()
+                Image(systemName: "rectangle.portrait.and.arrow.right")
+                    .fontWeight(.bold)
+                    .foregroundColor(.red)
+            })
+            .modifier(buttonSecundary())
+        }
+        .padding(.horizontal, 40)
     }
 }
 

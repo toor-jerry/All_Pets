@@ -17,6 +17,7 @@
 		D24149C22A86B04100E40EBB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149BF2A86B04100E40EBB /* Profile.swift */; };
 		D24149C42A86B08A00E40EBB /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149C32A86B08A00E40EBB /* SignUpUseCase.swift */; };
 		D24149C62A86E57E00E40EBB /* ShorOrHideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149C52A86E57E00E40EBB /* ShorOrHideButton.swift */; };
+		D24149C82A86E76500E40EBB /* SignOutUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149C72A86E76500E40EBB /* SignOutUseCase.swift */; };
 		D27FAA092A830F4E00E0B93A /* All_PetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27FAA082A830F4E00E0B93A /* All_PetsApp.swift */; };
 		D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27FAA0A2A830F4E00E0B93A /* ContentView.swift */; };
 		D27FAA0D2A830F5000E0B93A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27FAA0C2A830F5000E0B93A /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		D24149BF2A86B04100E40EBB /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		D24149C32A86B08A00E40EBB /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		D24149C52A86E57E00E40EBB /* ShorOrHideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShorOrHideButton.swift; sourceTree = "<group>"; };
+		D24149C72A86E76500E40EBB /* SignOutUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutUseCase.swift; sourceTree = "<group>"; };
 		D27FAA052A830F4E00E0B93A /* All_Pets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = All_Pets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27FAA082A830F4E00E0B93A /* All_PetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = All_PetsApp.swift; sourceTree = "<group>"; };
 		D27FAA0A2A830F4E00E0B93A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */,
 				D2E6F81A2A85655A0074D84E /* AuthPreLoginUseCase.swift */,
 				D24149C32A86B08A00E40EBB /* SignUpUseCase.swift */,
+				D24149C72A86E76500E40EBB /* SignOutUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D24149B12A8569E800E40EBB /* LoginViewModel.swift in Sources */,
+				D24149C82A86E76500E40EBB /* SignOutUseCase.swift in Sources */,
 				D2E143E72A83F9780096457C /* AuthLoginView.swift in Sources */,
 				D24149C22A86B04100E40EBB /* Profile.swift in Sources */,
 				D24149B62A85AC6200E40EBB /* HubView.swift in Sources */,
