@@ -54,12 +54,11 @@ struct inputStylePrincipal: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .padding(20)
+            .autocapitalization(.none)
             .font(.headline)
             .background(Color.white)
             .overlay(RoundedRectangle(cornerRadius: 15)
                 .stroke(Color.principal, lineWidth: 4))
-            .padding(.horizontal, 40)
     }
 }
 

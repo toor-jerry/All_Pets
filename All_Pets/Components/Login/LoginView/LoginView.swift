@@ -22,7 +22,7 @@ struct LoginView: View {
             } else if !viewModel.isLoggedIn {
                 LoginFormView(viewModel: viewModel)
             } else {
-                Text("Logeado")
+                HubView()
             }
         }
     }

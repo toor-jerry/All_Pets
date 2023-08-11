@@ -13,6 +13,7 @@ struct LoginFormView: View {
 
     @State private var userName: String = ""
     @State private var password: String = ""
+    @State private var showPassword = false
 
     var body: some View {
         VStack {
@@ -22,13 +23,31 @@ struct LoginFormView: View {
                 .frame(height: 300)
 
             TextField(String.MsgEmailLogin, text: $userName)
+                .padding()
                 .modifier(inputStylePrincipal())
                 .keyboardType(.emailAddress)
+                .disableAutocorrection(true)
+                .padding(.horizontal, 40)
 
-            SecureField(String.MsgPasswordLogin, text: $password)
-                .modifier(inputStylePrincipal())
-                .padding(.top, 15)
-                .keyboardType(.emailAddress)
+            HStack {
+                if showPassword {
+                    TextField(String.MsgPasswordLogin, text: $password)
+                        .padding()
+                        .modifier(inputStylePrincipal())
+                        .disableAutocorrection(true)
+                        .textContentType(.password)
+                        .keyboardType(.asciiCapable)
+                } else {
+                    SecureField(String.MsgPasswordLogin, text: $password)
+                        .padding()
+                        .modifier(inputStylePrincipal())
+                }
+
+                ShorOrHideButton(showPassword: $showPassword)
+                    .padding(5)
+            }
+            .padding(.top, 15)
+            .padding(.horizontal, 40)
 
             Button(action: {
                 viewModel.login(info: AuthLoginInfo(password: password, user: userName))

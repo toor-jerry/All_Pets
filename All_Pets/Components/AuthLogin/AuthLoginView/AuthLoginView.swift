@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AuthLoginView: View {
-    
+
     @StateObject var viewModel = AuthLoginViewModel(useCase: PreAuthLoginUseCase())
     
     var body: some View {
@@ -19,7 +19,7 @@ struct AuthLoginView: View {
                 }
             } else {
                 if viewModel.isLoggedIn {
-                    Text("Logueado")
+                    HubView()
                 } else {
                     LoginView()
                 }
