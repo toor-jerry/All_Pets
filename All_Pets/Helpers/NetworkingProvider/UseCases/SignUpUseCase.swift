@@ -8,7 +8,8 @@
 import FirebaseAuth
 
 protocol SignUpProtocol: AnyObject {
-    func signOut(success: @escaping (Bool) -> Void,
+    func signUp(data: SignUpModel,
+                success: @escaping (_ idUser: String) -> Void,
                  failure: @escaping (Error) -> Void,
                  completion: @escaping () -> Void)
 }
@@ -19,15 +20,23 @@ final class SignUpUseCase: SignUpUseCaseProtocol { }
 
 extension SignUpUseCase: SignUpProtocol {
 
-    func signOut(success: @escaping (Bool) -> Void,
+    func signUp(data: SignUpModel,
+                 success: @escaping (_ idUser: String) -> Void,
                  failure: @escaping (Error) -> Void,
                  completion: @escaping () -> Void) {
 
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            failure(NetworkingClientErrors.requestInvalid)
-        }
-        completion()
+//        Auth.auth().signIn(withEmail: info.user,
+//                           password: info.password) { (result, errorResponse) in
+//
+//            if let _ = errorResponse {
+//                error(NetworkingServerErrors.response)
+//            } else if let _ = result {
+//                success(true)
+//            } else {
+//                error(NetworkingServerErrors.dataNotFound)
+//            }
+//
+//            completion()
+//        }
     }
 }

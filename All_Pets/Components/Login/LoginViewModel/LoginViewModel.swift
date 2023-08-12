@@ -13,9 +13,9 @@ final class LoginViewModel: ObservableObject {
     @Published var isLoggedIn: Bool = false
     @Published var showAlert: Bool = false
 
-    let useCase: AuthLoginUseCase
+    let useCase: AuthLoginUseCaseProtocol
 
-    init(useCase: AuthLoginUseCase) {
+    init(useCase: AuthLoginUseCaseProtocol) {
         self.useCase = useCase
     }
 

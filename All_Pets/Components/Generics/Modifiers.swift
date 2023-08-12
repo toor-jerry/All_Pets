@@ -10,7 +10,7 @@ import SwiftUI
 // - textStylePrincipal
 
 struct textStylePrincipal_example: View {
-
+    
     var body: some View {
         VStack {
             Text("Example on text")
@@ -21,7 +21,7 @@ struct textStylePrincipal_example: View {
 }
 
 struct textStylePrincipal: ViewModifier {
-
+    
     func body(content: Content) -> some View {
         content
             .font(.title3)
@@ -36,7 +36,7 @@ struct textStylePrincipal: ViewModifier {
 // -
 
 struct textStyleSubtitle: ViewModifier {
-
+    
     func body(content: Content) -> some View {
         content
             .font(.title3)
@@ -46,7 +46,7 @@ struct textStyleSubtitle: ViewModifier {
 }
 
 struct textStyleTitle2: ViewModifier {
-
+    
     func body(content: Content) -> some View {
         content
             .font(.title2)
@@ -58,7 +58,7 @@ struct textStyleTitle2: ViewModifier {
 // - buttonPrincipal
 
 struct buttonPrincipal_example: View {
-
+    
     var body: some View {
         Button("Example buttonPrincipal", action: {})
             .modifier(buttonPrincipal())
@@ -67,10 +67,15 @@ struct buttonPrincipal_example: View {
 
 struct buttonPrincipal: ViewModifier {
 
+    private var color: Color = Color.principal
+    init(_ color: Color = Color.principal) {
+        self.color = color
+    }
+    
     func body(content: Content) -> some View {
         content
             .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
-            .background(Color.principal)
+            .background(color)
             .cornerRadius(50)
             .modifier(shadowStyle1())
     }
@@ -79,22 +84,22 @@ struct buttonPrincipal: ViewModifier {
 // - buttonSecundary
 
 struct buttonSecundary_example: View {
-
+    
     var body: some View {
-//        Button("Example buttonPrincipal", action: {})
-//            .modifier(buttonSecundary())
+        //        Button("Example buttonPrincipal", action: {})
+        //            .modifier(buttonSecundary())
         Button(action: {}, label: {
             Text("buttonSecundary")
                 .padding(.leading, 20)
             Spacer()
-                Image(systemName: "rectangle.portrait.and.arrow.right")
+            Image(systemName: "rectangle.portrait.and.arrow.right")
         })
         .modifier(buttonSecundary())
     }
 }
 
 struct buttonSecundary: ViewModifier {
-
+    
     func body(content: Content) -> some View {
         content
             .font(.title3)
@@ -110,7 +115,7 @@ struct buttonSecundary: ViewModifier {
 // - inputStylePrincipal
 
 struct inputStylePrincipal_example: View {
-
+    
     var body: some View {
         VStack {
             Text("Example on text")
@@ -121,7 +126,7 @@ struct inputStylePrincipal_example: View {
 }
 
 struct inputStylePrincipal: ViewModifier {
-
+    
     func body(content: Content) -> some View {
         content
             .autocapitalization(.none)
@@ -135,7 +140,7 @@ struct inputStylePrincipal: ViewModifier {
 // - shadowStyle1
 
 struct shadowStyle1_example: View {
-
+    
     var body: some View {
         Button("Example shadow", action: { })
             .modifier(shadowStyle1())
@@ -143,7 +148,7 @@ struct shadowStyle1_example: View {
 }
 
 struct shadowStyle1: ViewModifier {
-
+    
     func body(content: Content) -> some View {
         content
             .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
