@@ -19,8 +19,9 @@ struct SignUpView: View {
     var body: some View {
         VStack {
             Text(String.MsgSignUpTitleHeader)
-                .font(.title)
+                .font(.system(size: 40))
                 .fontWeight(.bold)
+                .padding(.bottom, 40)
 
             VStack(spacing: 20) {
                 TextField(String.MsgName, text: $data.name)
@@ -63,9 +64,9 @@ struct SignUpView: View {
                 .modifier(buttonPrincipal(formComplete ? .principal : .gray.opacity(0.5)))
             }
             .disableAutocorrection(true)
-            .multilineTextAlignment(.center)
             .padding(.horizontal, 60)
         }
+        .multilineTextAlignment(.center)
         .alert(isPresented: $viewModel.showAlert) {
             Alert(
                 title: Text(String.MsgWarning),
