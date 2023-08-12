@@ -93,6 +93,7 @@ struct LoginFormView: View {
 
 struct LoginFormViewPreviews: PreviewProvider {
     static var previews: some View {
-        LoginFormView()
+        let viewModel = AuthLoginViewModel(useCase: PreAuthLoginUseCase())
+        return LoginFormView().environmentObject(viewModel)
     }
 }
