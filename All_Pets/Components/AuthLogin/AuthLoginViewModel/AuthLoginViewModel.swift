@@ -36,6 +36,7 @@ final class AuthLoginViewModel: ObservableObject {
 
         if info.password.isEmpty || !isValidEmail(info.user) {
             showAlert = true
+            section = .login
         } else {
             fetchLogin(info)
         }
@@ -46,6 +47,7 @@ final class AuthLoginViewModel: ObservableObject {
             self.section = .hub
         } error: { errorResponse in
             self.showAlert = true
+            self.section = .login
         } completion: { }
     }
 
