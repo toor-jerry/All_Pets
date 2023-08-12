@@ -11,6 +11,7 @@ final class AuthLoginViewModel: ObservableObject {
 
     @Published var section: AuthSections = .verifySessionStarted
     @Published var showAlert: Bool = false
+    @Published var msgAler: String = ""
     
     private let useCase: PreAuthLoginUseCaseProtocol
     
@@ -36,6 +37,7 @@ final class AuthLoginViewModel: ObservableObject {
 
         if info.password.isEmpty || !isValidEmail(info.user) {
             showAlert = true
+            msgAler = String.MsgFormIncomplete
             section = .login
         } else {
             fetchLogin(info)
@@ -48,10 +50,11 @@ final class AuthLoginViewModel: ObservableObject {
         } error: { errorResponse in
             self.showAlert = true
             self.section = .login
+            self.msgAler = String.MsgPasswordOrUserInvalid
         } completion: { }
     }
 
-    private func isValidEmail(_ email: String) -> Bool {
+    func isValidEmail(_ email: String) -> Bool {
 
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)

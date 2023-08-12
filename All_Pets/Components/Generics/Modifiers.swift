@@ -126,14 +126,20 @@ struct inputStylePrincipal_example: View {
 }
 
 struct inputStylePrincipal: ViewModifier {
-    
+
+    var color: Color
+
+    init(_ color: Color = Color.principal) {
+        self.color = color
+    }
+
     func body(content: Content) -> some View {
         content
             .autocapitalization(.none)
             .font(.headline)
             .background(Color.white)
             .overlay(RoundedRectangle(cornerRadius: 15)
-                .stroke(Color.principal, lineWidth: 4))
+                .stroke(color, lineWidth: 4))
     }
 }
 

@@ -14,6 +14,8 @@ struct LoginFormView: View {
     @State private var userName: String = ""
     @State private var password: String = ""
     @State private var showPassword = false
+    @State private var userNameValidate: Bool = true
+    @State private var passwordValidate: Bool = true
 
     var body: some View {
         VStack {
@@ -24,7 +26,7 @@ struct LoginFormView: View {
 
             TextField(String.MsgEmailLogin, text: $userName)
                 .padding()
-                .modifier(inputStylePrincipal())
+                .modifier(inputStylePrincipal(userNameValidate ? Color.principal : .red))
                 .keyboardType(.emailAddress)
                 .disableAutocorrection(true)
                 .padding(.horizontal, 40)
@@ -42,7 +44,7 @@ struct LoginFormView: View {
                 }
                 .padding()
                 .padding(.trailing, 50)
-                .modifier(inputStylePrincipal())
+                .modifier(inputStylePrincipal(passwordValidate ? Color.principal : .red))
             }
             .overlay(alignment: .trailing, content: {
                 ShorOrHideButton(showPassword: $showPassword)
@@ -51,8 +53,12 @@ struct LoginFormView: View {
             .padding(.top, 15)
             .padding(.horizontal, 40)
 
+            if viewModel.showAlert || !viewModel.msgAler.isEmpty {
+                Text(viewModel.msgAler)
+            }
+
             Button(action: {
-                viewModel.login(info: AuthLoginInfo(password: password, user: userName))
+                login()
             }, label: {
                 Text(String.MsgButtonLogin)
                     .modifier(textStylePrincipal())
@@ -88,6 +94,12 @@ struct LoginFormView: View {
                 )
             }
         }
+    }
+
+    private func login() {
+        viewModel.login(info: AuthLoginInfo(password: password, user: userName))
+        userNameValidate = viewModel.isValidEmail(userName)
+        passwordValidate = !password.isEmpty
     }
 }
 
