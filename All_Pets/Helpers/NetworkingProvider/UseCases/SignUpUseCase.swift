@@ -25,18 +25,18 @@ extension SignUpUseCase: SignUpProtocol {
                  failure: @escaping (Error) -> Void,
                  completion: @escaping () -> Void) {
 
-//        Auth.auth().signIn(withEmail: info.user,
-//                           password: info.password) { (result, errorResponse) in
-//
-//            if let _ = errorResponse {
-//                error(NetworkingServerErrors.response)
-//            } else if let _ = result {
-//                success(true)
-//            } else {
-//                error(NetworkingServerErrors.dataNotFound)
-//            }
-//
-//            completion()
-//        }
+        Auth.auth().createUser(withEmail: data.email,
+                               password: data.password) { (result, errorResponse) in
+
+            if let _ = errorResponse {
+                failure(NetworkingServerErrors.response)
+            } else if let idUser = result?.user.uid {
+                success(idUser)
+            } else {
+                failure(NetworkingServerErrors.dataNotFound)
+            }
+
+            completion()
+        }
     }
 }
