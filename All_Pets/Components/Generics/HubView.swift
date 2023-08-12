@@ -14,7 +14,7 @@ struct HubView: View {
         TabView(selection: $selectedTab) {
             
             ScrollView {
-                LoginFormView(viewModel: LoginViewModel(useCase: AuthLoginUseCase()))
+                Text("Contenido de la pestaña 2")
             }
             .modifier(tabItemStyle())
             .tabItem {

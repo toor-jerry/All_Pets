@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D24149B02A8569E800E40EBB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AB2A8569E800E40EBB /* Login.swift */; };
 		D24149B12A8569E800E40EBB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AD2A8569E800E40EBB /* LoginViewModel.swift */; };
-		D24149B22A8569E800E40EBB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AF2A8569E800E40EBB /* LoginView.swift */; };
 		D24149B42A85A92100E40EBB /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149B32A85A92100E40EBB /* LoginFormView.swift */; };
 		D24149B62A85AC6200E40EBB /* HubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149B52A85AC6200E40EBB /* HubView.swift */; };
 		D24149C02A86B04100E40EBB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149BB2A86B04100E40EBB /* ProfileViewModel.swift */; };
@@ -40,7 +39,7 @@
 		D2D823352A831FA20060CDA7 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2D823342A831FA20060CDA7 /* FirebaseFirestoreSwift */; };
 		D2E143E72A83F9780096457C /* AuthLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143E62A83F9780096457C /* AuthLoginView.swift */; };
 		D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */; };
-		D2E143EB2A83FB480096457C /* AuthLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143EA2A83FB480096457C /* AuthLoginModel.swift */; };
+		D2E143EB2A83FB480096457C /* AuthSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143EA2A83FB480096457C /* AuthSections.swift */; };
 		D2E6F80E2A84A6290074D84E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F80D2A84A6290074D84E /* Loader.swift */; };
 		D2E6F8112A84A6730074D84E /* LocalizedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8102A84A6730074D84E /* LocalizedKey.swift */; };
 		D2E6F8152A8558110074D84E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8142A8558110074D84E /* Colors.swift */; };
@@ -53,7 +52,6 @@
 /* Begin PBXFileReference section */
 		D24149AB2A8569E800E40EBB /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D24149AD2A8569E800E40EBB /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		D24149AF2A8569E800E40EBB /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D24149B32A85A92100E40EBB /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
 		D24149B52A85AC6200E40EBB /* HubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubView.swift; sourceTree = "<group>"; };
 		D24149BB2A86B04100E40EBB /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -82,7 +80,7 @@
 		D2D8232D2A831C490060CDA7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2E143E62A83F9780096457C /* AuthLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginView.swift; sourceTree = "<group>"; };
 		D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginViewModel.swift; sourceTree = "<group>"; };
-		D2E143EA2A83FB480096457C /* AuthLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginModel.swift; sourceTree = "<group>"; };
+		D2E143EA2A83FB480096457C /* AuthSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSections.swift; sourceTree = "<group>"; };
 		D2E6F80D2A84A6290074D84E /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		D2E6F8102A84A6730074D84E /* LocalizedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedKey.swift; sourceTree = "<group>"; };
 		D2E6F8142A8558110074D84E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -150,7 +148,7 @@
 		D201FCAE2A83F373002C1EBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D2E143EA2A83FB480096457C /* AuthLoginModel.swift */,
+				D2E143EA2A83FB480096457C /* AuthSections.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,7 +190,6 @@
 		D24149AE2A8569E800E40EBB /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
-				D24149AF2A8569E800E40EBB /* LoginView.swift */,
 				D24149B32A85A92100E40EBB /* LoginFormView.swift */,
 			);
 			path = LoginView;
@@ -472,7 +469,6 @@
 				D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */,
 				D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */,
 				D2AC45612A84061A003958FC /* Fetcher.swift in Sources */,
-				D24149B22A8569E800E40EBB /* LoginView.swift in Sources */,
 				D2AC455C2A840241003958FC /* NetworkingServerErrors.swift in Sources */,
 				D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */,
 				D24149C62A86E57E00E40EBB /* ShorOrHideButton.swift in Sources */,
@@ -483,7 +479,7 @@
 				D24149B02A8569E800E40EBB /* Login.swift in Sources */,
 				D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */,
 				D27FAA092A830F4E00E0B93A /* All_PetsApp.swift in Sources */,
-				D2E143EB2A83FB480096457C /* AuthLoginModel.swift in Sources */,
+				D2E143EB2A83FB480096457C /* AuthSections.swift in Sources */,
 				D2AC45652A8406F9003958FC /* NetworkingProviderService.swift in Sources */,
 				D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */,
 				D2AC455E2A840288003958FC /* RequestType.swift in Sources */,

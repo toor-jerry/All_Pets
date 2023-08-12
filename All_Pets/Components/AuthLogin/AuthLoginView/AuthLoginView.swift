@@ -13,16 +13,20 @@ struct AuthLoginView: View {
     
     var body: some View {
         VStack {
-            if viewModel.isLoading {
-                Loader().task {
-                    viewModel.auth()
-                }
-            } else {
-                if viewModel.isLoggedIn {
-                    HubView()
-                } else {
-                    LoginView()
-                }
+            switch viewModel.section {
+            case .verifySessionStarted:
+                Loader()
+                    .task {
+                        viewModel.auth()
+                    }
+            case .loader:
+                Loader()
+            case .hub:
+                HubView()
+            case .login:
+                LoginFormView()
+            case .signUp:
+                SignUpView()
             }
         }
         .environmentObject(viewModel)

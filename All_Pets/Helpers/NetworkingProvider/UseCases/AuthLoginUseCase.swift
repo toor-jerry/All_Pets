@@ -7,36 +7,36 @@
 
 import FirebaseAuth
 
-protocol AuthLoginProtocol: AnyObject {
-    func login(info: AuthLoginInfo,
-               success: @escaping (Bool) -> Void,
-               error: @escaping (Error) -> Void,
-               completion: @escaping () -> Void)
-}
-
-protocol AuthLoginUseCaseProtocol: AuthLoginProtocol { }
-
-final class AuthLoginUseCase: AuthLoginUseCaseProtocol { }
-
-extension AuthLoginUseCase: AuthLoginProtocol {
-    
-    func login(info: AuthLoginInfo,
-               success: @escaping (Bool) -> Void,
-               error: @escaping (Error) -> Void,
-               completion: @escaping () -> Void) {
-
-        Auth.auth().signIn(withEmail: info.user,
-                           password: info.password) { (result, errorResponse) in
-
-            if let _ = errorResponse {
-                error(NetworkingServerErrors.response)
-            } else if let _ = result {
-                success(true)
-            } else {
-                error(NetworkingServerErrors.dataNotFound)
-            }
-
-            completion()
-        }
-    }
-}
+//protocol AuthLoginProtocol: AnyObject {
+//    func login(info: AuthLoginInfo,
+//               success: @escaping (Bool) -> Void,
+//               error: @escaping (Error) -> Void,
+//               completion: @escaping () -> Void)
+//}
+//
+//protocol AuthLoginUseCaseProtocol: AuthLoginProtocol { }
+//
+//final class AuthLoginUseCase: AuthLoginUseCaseProtocol { }
+//
+//extension AuthLoginUseCase: AuthLoginProtocol {
+//    
+//    func login(info: AuthLoginInfo,
+//               success: @escaping (Bool) -> Void,
+//               error: @escaping (Error) -> Void,
+//               completion: @escaping () -> Void) {
+//
+//        Auth.auth().signIn(withEmail: info.user,
+//                           password: info.password) { (result, errorResponse) in
+//
+//            if let _ = errorResponse {
+//                error(NetworkingServerErrors.response)
+//            } else if let _ = result {
+//                success(true)
+//            } else {
+//                error(NetworkingServerErrors.dataNotFound)
+//            }
+//
+//            completion()
+//        }
+//    }
+//}

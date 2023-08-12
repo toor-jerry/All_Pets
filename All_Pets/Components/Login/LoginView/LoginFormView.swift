@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginFormView: View {
 
-    @StateObject var viewModel: LoginViewModel
+    @EnvironmentObject var viewModel: AuthLoginViewModel
 
     @State private var userName: String = ""
     @State private var password: String = ""
@@ -70,7 +70,7 @@ struct LoginFormView: View {
             .padding(.top, 15)
 
             Button(action: {
-                
+                viewModel.section = .signUp
             }, label: {
                 Text(String.MsgSignUpTitle)
                     .modifier(textStyleSubtitle())
@@ -93,6 +93,6 @@ struct LoginFormView: View {
 
 struct LoginFormViewPreviews: PreviewProvider {
     static var previews: some View {
-        LoginFormView(viewModel: LoginViewModel(useCase: AuthLoginUseCase()))
+        LoginFormView()
     }
 }

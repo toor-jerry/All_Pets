@@ -8,26 +8,51 @@
 import SwiftUI
 
 final class AuthLoginViewModel: ObservableObject {
+
+    @Published var section: AuthSections = .verifySessionStarted
+    @Published var showAlert: Bool = false
     
-    @Published var isLoading: Bool = true
-    @Published var isLoggedIn: Bool = false
-    
-    let useCase: PreAuthLoginUseCaseProtocol
+    private let useCase: PreAuthLoginUseCaseProtocol
     
     init(useCase: PreAuthLoginUseCaseProtocol) {
         self.useCase = useCase
     }
     
     func auth() {
-        isLoading = true
+        section = .verifySessionStarted
         useCase.preAuth { isLoggedIn in
-            self.isLoggedIn = isLoggedIn
+            self.section = .hub
         } error: { _ in
-            self.isLoggedIn = false
-        } completion: {
-            self.setTheardMain {
-                self.isLoading = false
-            }
+            self.section = .login
+        } completion: { }
+    }
+
+    func login(info: AuthLoginInfo) {
+        section = .loader
+        preFetch(info: info)
+    }
+
+    private func preFetch(info: AuthLoginInfo) {
+
+        if info.password.isEmpty || !isValidEmail(info.user) {
+            showAlert = true
+        } else {
+            fetchLogin(info)
         }
+    }
+
+    private func fetchLogin(_ info: AuthLoginInfo) {
+        useCase.login(info: info) { isLoggedIn in
+            self.section = .hub
+        } error: { errorResponse in
+            self.showAlert = true
+        } completion: { }
+    }
+
+    private func isValidEmail(_ email: String) -> Bool {
+
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
     }
 }

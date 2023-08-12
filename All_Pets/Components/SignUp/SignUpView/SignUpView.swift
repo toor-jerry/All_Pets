@@ -18,7 +18,9 @@ struct SignUpView: View {
 
     var body: some View {
         VStack {
-            Text("")
+            Text(String.MsgSignUpTitleHeader)
+                .font(.title)
+                .fontWeight(.bold)
 
             VStack(spacing: 20) {
                 TextField(String.MsgName, text: $data.name)
@@ -59,19 +61,17 @@ struct SignUpView: View {
                         .modifier(textStylePrincipal())
                 })
                 .modifier(buttonPrincipal(formComplete ? .principal : .gray.opacity(0.5)))
-                .disabled(!formComplete)
             }
             .disableAutocorrection(true)
             .multilineTextAlignment(.center)
             .padding(.horizontal, 60)
-
-            .alert(isPresented: $viewModel.showAlert) {
-                Alert(
-                    title: Text(String.MsgWarning),
-                    message: Text(String.MsgPasswordOrUserInvalid),
-                    dismissButton: .default(Text(String.MsgAcept))
-                )
-            }
+        }
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(
+                title: Text(String.MsgWarning),
+                message: Text(String.MsgFormIncomplete),
+                dismissButton: .default(Text(String.MsgAcept))
+            )
         }
     }
 
@@ -85,7 +85,7 @@ struct SignUpView: View {
     }
 
     private func validateData() -> Bool {
-        let passwordEquals: Bool = data.password.elementsEqual(passwordTemp)
+        let passwordEquals: Bool = data.password.elementsEqual(passwordTemp) && !passwordTemp.isEmpty
 
         if passwordEquals {
             return true
