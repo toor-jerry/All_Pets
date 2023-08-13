@@ -18,78 +18,80 @@ struct LoginFormView: View {
     @State private var passwordValidate: Bool = true
 
     var body: some View {
-        VStack {
-            Image(Constants.logo)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 300)
+        NavigationStack {
+            VStack {
+                Image(Constants.logo)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 300)
 
-            TextField(String.MsgEmailLogin, text: $userName)
-                .padding()
-                .modifier(inputStylePrincipal(userNameValidate ? Color.principal : Color.error))
-                .keyboardType(.emailAddress)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
+                TextField(String.MsgEmailLogin, text: $userName)
+                    .padding()
+                    .modifier(inputStylePrincipal(userNameValidate ? Color.principal : Color.error))
+                    .keyboardType(.emailAddress)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .padding(.horizontal, 40)
+
+                VStack {
+                    VStack {
+                        if showPassword {
+                            TextField(String.MsgPasswordLogin, text: $password)
+                                .disableAutocorrection(true)
+                                .textContentType(.password)
+                                .keyboardType(.asciiCapable)
+                        } else {
+                            SecureField(String.MsgPasswordLogin, text: $password)
+                        }
+                    }
+                    .autocapitalization(.none)
+                    .padding()
+                    .padding(.trailing, 50)
+                    .modifier(inputStylePrincipal(passwordValidate ? Color.principal : Color.error))
+                }
+                .overlay(alignment: .trailing, content: {
+                    ShorOrHideButton(showPassword: $showPassword)
+                        .padding(.trailing, 20)
+                })
+                .padding(.top, 15)
                 .padding(.horizontal, 40)
 
-            VStack {
-                VStack {
-                    if showPassword {
-                        TextField(String.MsgPasswordLogin, text: $password)
-                            .disableAutocorrection(true)
-                            .textContentType(.password)
-                            .keyboardType(.asciiCapable)
-                    } else {
-                        SecureField(String.MsgPasswordLogin, text: $password)
-                    }
+                if viewModel.showAlert || !viewModel.msgAler.isEmpty {
+                    Text(viewModel.msgAler)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.error)
                 }
-                .autocapitalization(.none)
-                .padding()
-                .padding(.trailing, 50)
-                .modifier(inputStylePrincipal(passwordValidate ? Color.principal : Color.error))
+
+                Button(action: {
+                    login()
+                }, label: {
+                    Text(String.MsgButtonLogin)
+                        .modifier(textStylePrincipal())
+                })
+                .modifier(buttonPrincipal())
+                .padding(.top, 20)
+
+                Button(action: {
+
+                }, label: {
+                    Text(String.MsgForgotPassword)
+                        .modifier(textStyleSubtitle())
+
+                })
+                .padding(.top, 15)
+
+
+                NavigationLink(destination: SignUpView(), label: {
+                    HStack {
+                        Text(String.MsgSignUpTitle)
+                            .modifier(textStyleSubtitle())
+
+                        Text(String.MsgSignUp)
+                            .modifier(textStyleTitle2())
+                    }
+                })
+                .padding(.top, 40)
             }
-            .overlay(alignment: .trailing, content: {
-                ShorOrHideButton(showPassword: $showPassword)
-                    .padding(.trailing, 20)
-            })
-            .padding(.top, 15)
-            .padding(.horizontal, 40)
-
-            if viewModel.showAlert || !viewModel.msgAler.isEmpty {
-                Text(viewModel.msgAler)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.error)
-            }
-
-            Button(action: {
-                login()
-            }, label: {
-                Text(String.MsgButtonLogin)
-                    .modifier(textStylePrincipal())
-            })
-            .modifier(buttonPrincipal())
-            .padding(.top, 20)
-
-            Button(action: {
-
-            }, label: {
-                Text(String.MsgForgotPassword)
-                    .modifier(textStyleSubtitle())
-
-            })
-            .padding(.top, 15)
-
-            Button(action: {
-                viewModel.section = .signUp
-            }, label: {
-                Text(String.MsgSignUpTitle)
-                    .modifier(textStyleSubtitle())
-
-                Text(String.MsgSignUp)
-                    .modifier(textStyleTitle2())
-
-            })
-            .padding(.top, 60)
         }
     }
 

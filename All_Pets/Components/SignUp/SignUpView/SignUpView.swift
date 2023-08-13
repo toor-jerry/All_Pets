@@ -18,11 +18,6 @@ struct SignUpView: View {
 
     var body: some View {
         VStack {
-            Text(String.MsgSignUpTitleHeader)
-                .font(.system(size: 40))
-                .fontWeight(.bold)
-                .padding(.bottom, 40)
-
             VStack(spacing: 20) {
                 TextField(String.MsgName, text: $data.name)
                     .padding()
@@ -65,6 +60,8 @@ struct SignUpView: View {
             }
             .disableAutocorrection(true)
             .padding(.horizontal, 60)
+            .padding(.top, 20)
+            Spacer()
         }
         .multilineTextAlignment(.center)
         .alert(isPresented: $viewModel.showAlert) {
@@ -74,6 +71,8 @@ struct SignUpView: View {
                 dismissButton: .default(Text(String.MsgAcept))
             )
         }
+        .navigationTitle(String.MsgSignUpTitleHeader)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     private func validateForm() {
