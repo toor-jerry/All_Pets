@@ -26,7 +26,7 @@ struct LoginFormView: View {
 
             TextField(String.MsgEmailLogin, text: $userName)
                 .padding()
-                .modifier(inputStylePrincipal(userNameValidate ? Color.principal : .red))
+                .modifier(inputStylePrincipal(userNameValidate ? Color.principal : Color.error))
                 .keyboardType(.emailAddress)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
@@ -46,7 +46,7 @@ struct LoginFormView: View {
                 .autocapitalization(.none)
                 .padding()
                 .padding(.trailing, 50)
-                .modifier(inputStylePrincipal(passwordValidate ? Color.principal : .red))
+                .modifier(inputStylePrincipal(passwordValidate ? Color.principal : Color.error))
             }
             .overlay(alignment: .trailing, content: {
                 ShorOrHideButton(showPassword: $showPassword)
@@ -57,6 +57,8 @@ struct LoginFormView: View {
 
             if viewModel.showAlert || !viewModel.msgAler.isEmpty {
                 Text(viewModel.msgAler)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.error)
             }
 
             Button(action: {
@@ -88,13 +90,6 @@ struct LoginFormView: View {
 
             })
             .padding(.top, 60)
-            .alert(isPresented: $viewModel.showAlert) {
-                Alert(
-                    title: Text(String.MsgWarning),
-                    message: Text(String.MsgPasswordOrUserInvalid),
-                    dismissButton: .default(Text(String.MsgAcept))
-                )
-            }
         }
     }
 
