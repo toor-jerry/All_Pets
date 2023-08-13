@@ -5,9 +5,9 @@
 //  Copyright © 2023 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Foundation
+import Firebase
 
-struct SignUpModel {
+struct SignUpModel: Codable {
     var name: String
     var firstLastName: String
     var secondLastName: String
@@ -24,5 +24,13 @@ struct SignUpModel {
         self.secondLastName = secondLastName
         self.email = email
         self.password = password
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name = "Nombre"
+        case firstLastName = "Apellido_Paterno"
+        case secondLastName = "Apellido_Materno"
+        case email = "Correo"
+        case password
     }
 }

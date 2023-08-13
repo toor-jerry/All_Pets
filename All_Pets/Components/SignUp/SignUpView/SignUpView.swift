@@ -28,32 +28,32 @@ struct SignUpView: View {
                     .padding()
                     .modifier(inputStylePrincipal())
                     .keyboardType(.asciiCapable)
-                    .autocapitalization(.words)
 
                 TextField(String.MsgFirstLastName, text: $data.firstLastName)
                     .padding()
                     .modifier(inputStylePrincipal())
                     .keyboardType(.asciiCapable)
-                    .autocapitalization(.words)
 
                 TextField(String.MsgSecondLastName, text: $data.secondLastName)
                     .padding()
                     .modifier(inputStylePrincipal())
                     .keyboardType(.asciiCapable)
-                    .autocapitalization(.words)
 
                 TextField(String.MsgEmailLogin, text: $data.email)
                     .padding()
                     .modifier(inputStylePrincipal())
                     .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
 
                 SecureField(String.MsgPasswordLogin, text: $data.password)
                     .padding()
                     .modifier(inputStylePrincipal())
+                    .autocapitalization(.none)
 
                 SecureField(String.MsgRepeatLogin, text: $passwordTemp)
                     .padding()
                     .modifier(inputStylePrincipal())
+                    .autocapitalization(.none)
 
                 Button(action: {
                     validateForm()
@@ -61,7 +61,7 @@ struct SignUpView: View {
                     Text(String.MsgButtonSignUp)
                         .modifier(textStylePrincipal())
                 })
-                .modifier(buttonPrincipal(formComplete ? .principal : .gray.opacity(0.5)))
+                .modifier(buttonPrincipal())
             }
             .disableAutocorrection(true)
             .padding(.horizontal, 60)

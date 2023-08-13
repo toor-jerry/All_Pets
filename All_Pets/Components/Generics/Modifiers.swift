@@ -135,7 +135,6 @@ struct inputStylePrincipal: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .autocapitalization(.none)
             .font(.headline)
             .background(Color.white)
             .overlay(RoundedRectangle(cornerRadius: 15)

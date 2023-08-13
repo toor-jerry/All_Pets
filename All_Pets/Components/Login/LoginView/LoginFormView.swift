@@ -29,6 +29,7 @@ struct LoginFormView: View {
                 .modifier(inputStylePrincipal(userNameValidate ? Color.principal : .red))
                 .keyboardType(.emailAddress)
                 .disableAutocorrection(true)
+                .autocapitalization(.none)
                 .padding(.horizontal, 40)
 
             VStack {
@@ -42,6 +43,7 @@ struct LoginFormView: View {
                         SecureField(String.MsgPasswordLogin, text: $password)
                     }
                 }
+                .autocapitalization(.none)
                 .padding()
                 .padding(.trailing, 50)
                 .modifier(inputStylePrincipal(passwordValidate ? Color.principal : .red))

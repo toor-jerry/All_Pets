@@ -37,6 +37,7 @@
 		D2D823312A831FA20060CDA7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2D823302A831FA20060CDA7 /* FirebaseAnalyticsSwift */; };
 		D2D823332A831FA20060CDA7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D2D823322A831FA20060CDA7 /* FirebaseAuth */; };
 		D2D823352A831FA20060CDA7 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2D823342A831FA20060CDA7 /* FirebaseFirestoreSwift */; };
+		D2D928572A889FC0009C5FEE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D928562A889FC0009C5FEE /* Endpoint.swift */; };
 		D2E143E72A83F9780096457C /* AuthLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143E62A83F9780096457C /* AuthLoginView.swift */; };
 		D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */; };
 		D2E143EB2A83FB480096457C /* AuthSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143EA2A83FB480096457C /* AuthSections.swift */; };
@@ -78,6 +79,7 @@
 		D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableObject+Extension.swift"; sourceTree = "<group>"; };
 		D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginUseCase.swift; sourceTree = "<group>"; };
 		D2D8232D2A831C490060CDA7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D2D928562A889FC0009C5FEE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		D2E143E62A83F9780096457C /* AuthLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginView.swift; sourceTree = "<group>"; };
 		D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginViewModel.swift; sourceTree = "<group>"; };
 		D2E143EA2A83FB480096457C /* AuthSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSections.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				D2AC45582A840184003958FC /* Errors */,
 				D2AC455D2A840288003958FC /* RequestType.swift */,
 				D2AC45642A8406F9003958FC /* NetworkingProviderService.swift */,
+				D2D928562A889FC0009C5FEE /* Endpoint.swift */,
 			);
 			path = NetworkingProvider;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */,
 				D24149C62A86E57E00E40EBB /* ShorOrHideButton.swift in Sources */,
 				D2E6F8172A855AED0074D84E /* Modifiers.swift in Sources */,
+				D2D928572A889FC0009C5FEE /* Endpoint.swift in Sources */,
 				D24149C12A86B04100E40EBB /* ProfileView.swift in Sources */,
 				D24149D22A86F6DD00E40EBB /* SignUpView.swift in Sources */,
 				D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */,
