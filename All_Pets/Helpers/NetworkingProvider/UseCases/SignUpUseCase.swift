@@ -9,6 +9,24 @@ import Firebase
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
+struct SignUpFirestoreModel: Codable {
+    var name: String
+    var lastName: String
+    var email: String
+
+    init(_ from: SignUpModel) {
+        name = from.name
+        lastName = from.firstLastName + " " + from.secondLastName
+        email = from.email
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name = "Nombre"
+        case lastName = "Apellidos"
+        case email = "Correo"
+    }
+}
+
 protocol SignUpProtocol: AnyObject {
     func signUp(data: SignUpModel,
                 success: @escaping (_ idUser: String) -> Void,
@@ -57,7 +75,7 @@ extension SignUpUseCase: SignUpProtocol {
         let usersCollection = db.collection(Endpoint.usersCollection.urlString).document(idUser)
 
         do {
-            try usersCollection.setData(from: data)
+            try usersCollection.setData(from: SignUpFirestoreModel(data))
             success()
         } catch {
             failure(NetworkingServerErrors.internalServerError)

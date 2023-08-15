@@ -26,7 +26,7 @@ struct AuthLoginView: View {
             case .login:
                 LoginFormView()
             case .signUp:
-                SignUpView()
+                SignUpView(section: $viewModel.section)
             }
         }
         .environmentObject(viewModel)

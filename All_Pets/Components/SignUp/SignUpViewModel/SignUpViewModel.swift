@@ -18,13 +18,17 @@ final class SignUpViewModelViewModel: ObservableObject {
         self.useCase = useCase
     }
     
-    func signUp(data: SignUpModel) {
+    func signUp(data: SignUpModel,
+                completion: @escaping (_ section: AuthSections?) -> Void) {
+        
         isLoading = true
-        useCase.signUp(data: data, success: { _ in
-            
-        }, failure: { _ in
-            
-        }, completion: {
+        
+        useCase.signUp(data: data,
+                       success: { _ in
+            completion(.hub)
+        },
+                       failure: { _ in },
+                       completion: {
             self.setTheardMain {
                 self.isLoading = false
             }

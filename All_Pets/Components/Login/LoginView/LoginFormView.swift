@@ -81,7 +81,8 @@ struct LoginFormView: View {
                 .padding(.top, 15)
 
 
-                NavigationLink(destination: SignUpView(), label: {
+                NavigationLink(destination: SignUpView(section: $viewModel.section),
+                               label: {
                     HStack {
                         Text(String.MsgSignUpTitle)
                             .modifier(textStyleSubtitle())
