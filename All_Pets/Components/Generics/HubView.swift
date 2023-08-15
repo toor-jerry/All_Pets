@@ -14,10 +14,8 @@ struct HubView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            
-            ScrollView {
-                PetRegisterView()
-            }
+
+            PetRegisterView()
             .modifier(tabItemStyle())
             .tabItem {
                 Image(systemName: "house.fill")

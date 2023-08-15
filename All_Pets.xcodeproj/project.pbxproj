@@ -28,6 +28,7 @@
 		D27FAA0D2A830F5000E0B93A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27FAA0C2A830F5000E0B93A /* Assets.xcassets */; };
 		D27FAA102A830F5000E0B93A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27FAA0F2A830F5000E0B93A /* Preview Assets.xcassets */; };
 		D28A19CC2A8C01920024C517 /* PetRegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A19CB2A8C01920024C517 /* PetRegisterUseCase.swift */; };
+		D28A19CE2A8C35710024C517 /* ListSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A19CD2A8C35710024C517 /* ListSearch.swift */; };
 		D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC45592A840229003958FC /* NetworkingClientErrors.swift */; };
 		D2AC455C2A840241003958FC /* NetworkingServerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC455B2A840241003958FC /* NetworkingServerErrors.swift */; };
 		D2AC455E2A840288003958FC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC455D2A840288003958FC /* RequestType.swift */; };
@@ -77,6 +78,7 @@
 		D27FAA0C2A830F5000E0B93A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D27FAA0F2A830F5000E0B93A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D28A19CB2A8C01920024C517 /* PetRegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterUseCase.swift; sourceTree = "<group>"; };
+		D28A19CD2A8C35710024C517 /* ListSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearch.swift; sourceTree = "<group>"; };
 		D2AC45592A840229003958FC /* NetworkingClientErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClientErrors.swift; sourceTree = "<group>"; };
 		D2AC455B2A840241003958FC /* NetworkingServerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServerErrors.swift; sourceTree = "<group>"; };
 		D2AC455D2A840288003958FC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				D26B63AB2A8BCDD500A843D2 /* PetRegisterView.swift */,
+				D28A19CD2A8C35710024C517 /* ListSearch.swift */,
 			);
 			path = PetRegisterView;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				D2E143E72A83F9780096457C /* AuthLoginView.swift in Sources */,
 				D24149C22A86B04100E40EBB /* Profile.swift in Sources */,
 				D24149B62A85AC6200E40EBB /* HubView.swift in Sources */,
+				D28A19CE2A8C35710024C517 /* ListSearch.swift in Sources */,
 				D24149C02A86B04100E40EBB /* ProfileViewModel.swift in Sources */,
 				D2E6F8152A8558110074D84E /* Colors.swift in Sources */,
 				D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */,

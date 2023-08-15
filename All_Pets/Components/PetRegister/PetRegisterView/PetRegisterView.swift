@@ -23,79 +23,80 @@ struct PetRegisterView: View {
     @State private var name: String = ""
     
     var body: some View {
-        VStack(spacing: 20) {
+        
+        NavigationStack {
             if viewModel.isLoading {
                 Loader()
             } else {
-                Text(String.MsgTitlePetRegister)
-                    .font(.title2)
-                    .fontWeight(.bold)
+                VStack(spacing: 20) {
 
-                VStack {
-                    HStack {
-                        AnimalIconView(selectedAnimal: $selectedAnimal, pet: .dog)
-
-                        Spacer()
-                        AnimalIconView(selectedAnimal: $selectedAnimal, pet: .cat)
-                    }
-
-                    HStack {
-                        AnimalIconView(selectedAnimal: $selectedAnimal, pet: .bird)
-
-                        Spacer()
-                        AnimalIconView(selectedAnimal: $selectedAnimal, pet: .fish)
-                    }
-                }
-
-
-                Button(action: {
-
-                }, label: {
-                    HStack {
-                        Text(String.MsgSelectTypePet)
-                        Spacer()
-                        Image(systemName: "arrowtriangle.down.fill")
-                    }
-                })
-                .foregroundColor(.black)
-
-                Divider()
-                DatePicker(String.MsgDateBirthDay, selection: $selectedDate, displayedComponents: .date)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(.gray, lineWidth: 1)
-                    )
-
-                TextField(String.MsgName, text: $name)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(.gray, lineWidth: 1)
-                    )
-
-                Button(action: {
-
-                }, label: {
-                    Text(String.MsgUploadProfilePhoto)
+                    Text(String.MsgTitlePetRegister)
+                        .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.principal)
-                })
+
+                    VStack {
+                        HStack {
+                            AnimalIconView(selectedAnimal: $selectedAnimal, pet: .dog)
+
+                            Spacer()
+                            AnimalIconView(selectedAnimal: $selectedAnimal, pet: .cat)
+                        }
+
+                        HStack {
+                            AnimalIconView(selectedAnimal: $selectedAnimal, pet: .bird)
+
+                            Spacer()
+                            AnimalIconView(selectedAnimal: $selectedAnimal, pet: .fish)
+                        }
+                    }
 
 
-                Button(action: {
+                    NavigationLink(destination: ListSearch(), label: {
+                        HStack {
+                            Text(String.MsgSelectTypePet)
+                            Spacer()
+                            Image(systemName: "arrowtriangle.down.fill")
+                        }
+                    })
+                    .foregroundColor(.black)
 
-                }, label: {
-                    Text(String.MsgAdd)
-                        .modifier(textStylePrincipal())
-                })
-                .modifier(buttonPrincipal())
+                    Divider()
+                    DatePicker(String.MsgDateBirthDay, selection: $selectedDate, displayedComponents: .date)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(.gray, lineWidth: 1)
+                        )
+
+                    TextField(String.MsgName, text: $name)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(.gray, lineWidth: 1)
+                        )
+
+                    Button(action: {
+
+                    }, label: {
+                        Text(String.MsgUploadProfilePhoto)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.principal)
+                    })
+
+
+                    Button(action: {
+
+                    }, label: {
+                        Text(String.MsgAdd)
+                            .modifier(textStylePrincipal())
+                    })
+                    .modifier(buttonPrincipal())
+                }.padding(60)
+                    .background(Color.background)
             }
-
-        }.padding(60)
-            .onAppear {
-                viewModel.getPetsType()
-            }
+        }.onAppear {
+            viewModel.getPetsType()
+        }
     }
 }
 

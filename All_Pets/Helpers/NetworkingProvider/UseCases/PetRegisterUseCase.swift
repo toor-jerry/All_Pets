@@ -29,7 +29,7 @@ extension PetRegisterUseCase: PetTypesProtocol {
 
         typePets.getDocument { document, error in
 
-            if let error = error {
+            if let _ = error {
                 failure(NetworkingServerErrors.dataNotFound)
             } else if let document = document, document.exists {
                 if let data = document.data() as? [String: [String]] {
