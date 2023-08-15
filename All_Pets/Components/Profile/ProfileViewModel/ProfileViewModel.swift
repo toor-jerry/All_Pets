@@ -16,14 +16,12 @@ final class ProfileViewModel: ObservableObject {
         self.useCase = useCase
     }
 
-    func signOut() {
+    func signOut(completion: @escaping (_ section: AuthSections?) -> Void) {
         isLoading = true
         useCase.signOut { signOut in
-            // TODO:
-            //            self.isLoggedIn = isLoggedIn
+            completion(.login)
         } failure: { _ in
-            // TODO:
-            //            self.isLoggedIn = false
+            completion(.hub)
         } completion: {
             self.setTheardMain {
                 self.isLoading = false

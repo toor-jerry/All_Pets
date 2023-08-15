@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HubView: View {
+
+    @Binding var section: AuthSections
     @State private var selectedTab = 0
     
     var body: some View {
@@ -54,7 +56,7 @@ struct HubView: View {
             .tag(3)
             
             ScrollView {
-                ProfileView()
+                ProfileView(section: $section)
             }
             .modifier(tabItemStyle())
             .tabItem {
@@ -69,7 +71,8 @@ struct HubView: View {
 
 struct HubView_Previews: PreviewProvider {
     static var previews: some View {
-        HubView()
+        let section: AuthSections = .signUp
+        HubView(section: .constant(section))
     }
 }
 

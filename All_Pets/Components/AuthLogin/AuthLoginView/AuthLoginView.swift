@@ -22,7 +22,7 @@ struct AuthLoginView: View {
             case .loader:
                 Loader()
             case .hub:
-                HubView()
+                HubView(section: $viewModel.section)
             case .login:
                 LoginFormView()
             case .signUp:
