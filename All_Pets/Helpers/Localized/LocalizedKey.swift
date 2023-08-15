@@ -24,4 +24,8 @@ extension String {
     static let MsgFormIncomplete = "Campo obligatorio"
     static let MsgSignOut = "Cerrar sesión"
     static let MsgSignUpTitleHeader = "Crear cuenta nueva"
+    static let MsgTitlePetRegister = "Selecciona tu mascota"
+    static let MsgSelected = "Seleccionado"
+    static let MsgAdd = "Agregar"
+    static let MsgUploadProfilePhoto = "Subir foto de perfil"
 }

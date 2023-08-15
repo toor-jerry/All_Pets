@@ -16,7 +16,7 @@ struct HubView: View {
         TabView(selection: $selectedTab) {
             
             ScrollView {
-                Text("Contenido de la pestaña 2")
+                PetRegisterView()
             }
             .modifier(tabItemStyle())
             .tabItem {
