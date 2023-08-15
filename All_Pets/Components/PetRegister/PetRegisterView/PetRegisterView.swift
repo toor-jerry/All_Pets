@@ -12,93 +12,97 @@ enum PetType: String {
     case cat
     case bird
     case fish
-    case none
 }
 
 struct PetRegisterView: View {
-
-    //    @StateObject var viewModel = PetRegisterViewViewModel(useCase: PetRegisterViewUseCase())
     
-    @State private var selectedAnimal: PetType = .none
+    @StateObject var viewModel = PetRegisterViewModel(useCase: PetRegisterUseCase())
+    
+    @State private var selectedAnimal: PetType = .dog
     @State private var selectedDate = Date()
     @State private var name: String = ""
-
+    
     var body: some View {
         VStack(spacing: 20) {
+            if viewModel.isLoading {
+                Loader()
+            } else {
+                Text(String.MsgTitlePetRegister)
+                    .font(.title2)
+                    .fontWeight(.bold)
 
-            Text(String.MsgTitlePetRegister)
-                .font(.title2)
-                .fontWeight(.bold)
+                VStack {
+                    HStack {
+                        AnimalIconView(selectedAnimal: $selectedAnimal, pet: .dog)
 
-            VStack {
-                HStack {
-                    AnimalIconView(selectedAnimal: $selectedAnimal, pet: .dog)
+                        Spacer()
+                        AnimalIconView(selectedAnimal: $selectedAnimal, pet: .cat)
+                    }
 
-                    Spacer()
-                    AnimalIconView(selectedAnimal: $selectedAnimal, pet: .cat)
+                    HStack {
+                        AnimalIconView(selectedAnimal: $selectedAnimal, pet: .bird)
+
+                        Spacer()
+                        AnimalIconView(selectedAnimal: $selectedAnimal, pet: .fish)
+                    }
                 }
 
-                HStack {
-                    AnimalIconView(selectedAnimal: $selectedAnimal, pet: .bird)
 
-                    Spacer()
-                    AnimalIconView(selectedAnimal: $selectedAnimal, pet: .fish)
-                }
+                Button(action: {
+
+                }, label: {
+                    HStack {
+                        Text("Seleccione una raza")
+                        Spacer()
+                        Image(systemName: "arrowtriangle.down.fill")
+                    }
+                })
+                .foregroundColor(.black)
+
+                Divider()
+                DatePicker("Fecha de nacimiento", selection: $selectedDate, displayedComponents: .date)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.gray, lineWidth: 1)
+                    )
+
+                TextField(String.MsgName, text: $name)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.gray, lineWidth: 1)
+                    )
+
+                Button(action: {
+
+                }, label: {
+                    Text(String.MsgUploadProfilePhoto)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.principal)
+                })
+
+
+                Button(action: {
+
+                }, label: {
+                    Text(String.MsgAdd)
+                        .modifier(textStylePrincipal())
+                })
+                .modifier(buttonPrincipal())
             }
 
-
-            Button(action: {
-
-            }, label: {
-                HStack {
-                    Text("Seleccione una raza")
-                    Spacer()
-                    Image(systemName: "arrowtriangle.down.fill")
-                }
-            })
-            .foregroundColor(.black)
-
-            Divider()
-            DatePicker("Fecha de nacimiento", selection: $selectedDate, displayedComponents: .date)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.gray, lineWidth: 1)
-                )
-
-            TextField(String.MsgName, text: $name)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.gray, lineWidth: 1)
-                )
-
-            Button(action: {
-
-            }, label: {
-                Text(String.MsgUploadProfilePhoto)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.principal)
-            })
-
-
-            Button(action: {
-
-            }, label: {
-                Text(String.MsgAdd)
-                    .modifier(textStylePrincipal())
-            })
-            .modifier(buttonPrincipal())
-        }
-        .padding(60)
+        }.padding(60)
+            .onAppear {
+                viewModel.getPetsType()
+            }
     }
-
 }
 
 struct AnimalIconView: View {
     @Binding var selectedAnimal: PetType
     var pet: PetType
-
+    
     var body: some View {
         VStack {
             Image(pet.rawValue)
@@ -110,13 +114,13 @@ struct AnimalIconView: View {
                 .onTapGesture {
                     selectedAnimal = pet
                 }
-
+            
             Text(String.MsgSelected)
                 .font(.headline)
                 .foregroundColor(isSelected(for: pet) ? Color.principal : .clear)
         }
     }
-
+    
     func isSelected(for animal: PetType) -> Bool {
         return selectedAnimal == animal
     }

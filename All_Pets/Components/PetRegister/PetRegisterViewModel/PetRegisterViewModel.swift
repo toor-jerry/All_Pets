@@ -7,23 +7,25 @@
 
 import SwiftUI
 
-final class PetRegisterViewModelViewModel: ObservableObject {
+final class PetRegisterViewModel: ObservableObject {
 
-//    let useCase: PetRegisterViewModelUseCase
-//
-//    init(useCase: PetRegisterViewModelUseCase) {
-//        self.useCase = useCase
-//    }
+    @Published var isLoading: Bool = false
+    let useCase: PetRegisterUseCaseProtocol
 
-//    func auth() {
-//        isLoading = true
-//        useCase.preAuth { isLoggedIn in
-//            self.isLoggedIn = isLoggedIn
-//        } error: { _ in
-//            self.isLoggedIn = false
-//        } completion: {
-//            self.setTheardMain {
-//                self.isLoading = false
-//            }
-//        }
+    init(useCase: PetRegisterUseCaseProtocol) {
+        self.useCase = useCase
+    }
+
+    func getPetsType() {
+        isLoading = true
+        useCase.getPetTypes(success: { types in
+            
+        }, failure: { _ in
+
+        }, completion: {
+            self.setTheardMain {
+                self.isLoading = false
+            }
+        })
+    }
 }

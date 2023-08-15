@@ -27,6 +27,7 @@
 		D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27FAA0A2A830F4E00E0B93A /* ContentView.swift */; };
 		D27FAA0D2A830F5000E0B93A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27FAA0C2A830F5000E0B93A /* Assets.xcassets */; };
 		D27FAA102A830F5000E0B93A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27FAA0F2A830F5000E0B93A /* Preview Assets.xcassets */; };
+		D28A19CC2A8C01920024C517 /* PetRegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A19CB2A8C01920024C517 /* PetRegisterUseCase.swift */; };
 		D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC45592A840229003958FC /* NetworkingClientErrors.swift */; };
 		D2AC455C2A840241003958FC /* NetworkingServerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC455B2A840241003958FC /* NetworkingServerErrors.swift */; };
 		D2AC455E2A840288003958FC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC455D2A840288003958FC /* RequestType.swift */; };
@@ -75,6 +76,7 @@
 		D27FAA0A2A830F4E00E0B93A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D27FAA0C2A830F5000E0B93A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D27FAA0F2A830F5000E0B93A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D28A19CB2A8C01920024C517 /* PetRegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterUseCase.swift; sourceTree = "<group>"; };
 		D2AC45592A840229003958FC /* NetworkingClientErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClientErrors.swift; sourceTree = "<group>"; };
 		D2AC455B2A840241003958FC /* NetworkingServerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServerErrors.swift; sourceTree = "<group>"; };
 		D2AC455D2A840288003958FC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				D2E6F81A2A85655A0074D84E /* AuthPreLoginUseCase.swift */,
 				D24149C32A86B08A00E40EBB /* SignUpUseCase.swift */,
 				D24149C72A86E76500E40EBB /* SignOutUseCase.swift */,
+				D28A19CB2A8C01920024C517 /* PetRegisterUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				D26B63AE2A8BCDD500A843D2 /* PetRegisterView.swift in Sources */,
 				D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */,
 				D27FAA092A830F4E00E0B93A /* All_PetsApp.swift in Sources */,
+				D28A19CC2A8C01920024C517 /* PetRegisterUseCase.swift in Sources */,
 				D2E143EB2A83FB480096457C /* AuthSections.swift in Sources */,
 				D26B63AC2A8BCDD500A843D2 /* PetRegister.swift in Sources */,
 				D2AC45652A8406F9003958FC /* NetworkingProviderService.swift in Sources */,

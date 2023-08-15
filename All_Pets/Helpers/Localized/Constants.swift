@@ -7,5 +7,6 @@
 
 enum Constants {
     static let logo: String = "All_Pets"
+    static let documentIdPetTypes: String = "YPeGcxkpYMuVQ8xCE2kk"
 }
 

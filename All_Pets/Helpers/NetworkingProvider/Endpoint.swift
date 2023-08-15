@@ -7,13 +7,18 @@
 
 enum Endpoint {
     case usersCollection
+    case typePets
 }
 
 extension Endpoint {
+
     var urlString: String {
+
         switch self {
         case .usersCollection:
             return "Users"
+        case .typePets:
+            return "Tipo_mascotas"
         }
     }
 }
