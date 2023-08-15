@@ -28,4 +28,6 @@ extension String {
     static let MsgSelected = "Seleccionado"
     static let MsgAdd = "Agregar"
     static let MsgUploadProfilePhoto = "Subir foto de perfil"
+    static let MsgSelectTypePet = "Seleccione una raza"
+    static let MsgDateBirthDay = "Fecha de nacimiento"
 }

@@ -52,7 +52,7 @@ struct PetRegisterView: View {
 
                 }, label: {
                     HStack {
-                        Text("Seleccione una raza")
+                        Text(String.MsgSelectTypePet)
                         Spacer()
                         Image(systemName: "arrowtriangle.down.fill")
                     }
@@ -60,7 +60,7 @@ struct PetRegisterView: View {
                 .foregroundColor(.black)
 
                 Divider()
-                DatePicker("Fecha de nacimiento", selection: $selectedDate, displayedComponents: .date)
+                DatePicker(String.MsgDateBirthDay, selection: $selectedDate, displayedComponents: .date)
                     .padding()
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
