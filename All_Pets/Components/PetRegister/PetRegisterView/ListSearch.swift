@@ -31,7 +31,7 @@ struct ListSearch: View {
                             }
                     }
                 }
-                .listStyle(.plain)
+                .listRowSeparator(.hidden)
                 .searchable(text: $searchText, prompt: "")
                 .onChange(of: searchText) { newValue in
                     if newValue.isEmpty {
