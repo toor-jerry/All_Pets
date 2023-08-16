@@ -21,6 +21,7 @@ struct PetRegisterView: View {
     @State private var selectedAnimal: PetType = .dog
     @State private var selectedDate = Date()
     @State private var name: String = ""
+    @State var petTypeSelected: String = .MsgSelectTypePet
     
     var body: some View {
         
@@ -51,15 +52,15 @@ struct PetRegisterView: View {
                     }
 
 
-                    NavigationLink(destination: ListSearch(), label: {
+                    NavigationLink(destination: ListSearch(itemSelected: $petTypeSelected, list: viewModel.types[selectedAnimal.rawValue] ?? []), label: {
                         HStack {
-                            Text(String.MsgSelectTypePet)
+                            Text(petTypeSelected.isEmpty ? String.MsgSelectTypePet : petTypeSelected)
                             Spacer()
                             Image(systemName: "arrowtriangle.down.fill")
                         }
                     })
                     .foregroundColor(.black)
-
+                    
                     Divider()
                     DatePicker(String.MsgDateBirthDay, selection: $selectedDate, displayedComponents: .date)
                         .padding()
