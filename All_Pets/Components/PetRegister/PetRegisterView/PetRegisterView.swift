@@ -96,8 +96,10 @@ struct PetRegisterView: View {
                                 .modifier(textStylePrincipal())
                         })
                         .modifier(buttonPrincipal())
-                    }.padding(60)
-                        .background(Color.background)
+                    }
+                    .padding(.horizontal, 60)
+                    .padding([.top, .bottom], 20)
+                    .background(Color.background)
                 }
             }
         }
