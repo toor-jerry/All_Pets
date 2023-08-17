@@ -5,8 +5,10 @@
 //  Copyright © 2023 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
+import Foundation
+
 enum Constants {
     static let logo: String = "All_Pets"
     static let documentIdPetTypes: String = "YPeGcxkpYMuVQ8xCE2kk"
+    static let compressionQualityImageForFirebase: CGFloat = 0.5
 }
-

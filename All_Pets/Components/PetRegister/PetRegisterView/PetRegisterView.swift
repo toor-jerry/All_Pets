@@ -96,8 +96,7 @@ struct PetRegisterView: View {
                             viewModel.petRegister(PetRegister(name: name,
                                                               petType: petTypeSelected,
                                                               birthDate: selectedDate,
-                                                              pet: selectedAnimal.rawValue,
-                                                             photo: image))
+                                                              pet: selectedAnimal.rawValue), self.image)
                         }, label: {
                             Text(String.MsgAdd)
                                 .modifier(textStylePrincipal())

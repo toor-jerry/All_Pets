@@ -31,14 +31,35 @@ final class PetRegisterViewModel: ObservableObject {
         })
     }
 
-    func petRegister(_ data: PetRegister) {
+    func petRegister(_ data: PetRegister, _ image: UIImage? = nil) {
         isLoading = true
-        useCase.petRegister(data: data,
-                            success: { _ in
+        useCase.getPetIdCollection(success: { idDocument, idUser in
+            self.useCase.petRegister( idUser,
+                                      idDocument,
+                                      data,
+                                      success: { _ in
+
+            }, failure: { _ in
+
+            }, completion: {
+                self.setTheardMain {
+                    self.isLoading = false
+                }
+            })
+
+            if let image = image {
+                self.useCase.uploadImage("images/Ym9GsB7d7KcS7iKHJ6WuxYGkqDM2/pets/\(idDocument)/\(idDocument)",
+                                         image,
+                                         success: { urlPhotoString in
+
+                }, failure: { _ in
+
+                }, completion: {
+
+                })
+            }
 
         }, failure: { _ in
-
-        }, completion: {
             self.setTheardMain {
                 self.isLoading = false
             }

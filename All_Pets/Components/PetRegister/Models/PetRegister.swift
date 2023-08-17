@@ -13,7 +13,6 @@ struct PetRegister: Codable {
     var petType: String
     var birthDate: Timestamp
     var pet: String
-    var photo: UIImage?
     var photoURL: String?
 
     enum CodingKeys: String, CodingKey {
@@ -24,21 +23,19 @@ struct PetRegister: Codable {
         case pet = "Mascota"
     }
 
-    init(name: String, petType: String, birthDate: Date, pet: String, photo: UIImage? = nil, photoURL: String? = nil) {
+    init(name: String, petType: String, birthDate: Date, pet: String, photoURL: String? = nil) {
         self.name = name
         self.petType = petType
         self.birthDate = Timestamp(date: birthDate)
         self.pet = pet
-        self.photo = photo
         self.photoURL = photoURL
     }
 
-    init(name: String, petType: String, birthDate: Timestamp, pet: String, photo: UIImage? = nil, photoURL: String? = nil) {
+    init(name: String, petType: String, birthDate: Timestamp, pet: String, photoURL: String? = nil) {
         self.name = name
         self.petType = petType
         self.birthDate = birthDate
         self.pet = pet
-        self.photo = photo
         self.photoURL = photoURL
     }
 }
