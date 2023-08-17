@@ -19,6 +19,7 @@ struct PetRegisterView: View {
     @StateObject var viewModel = PetRegisterViewModel(useCase: PetRegisterUseCase())
 
     @State var petTypeSelected: String = .MsgSelectTypePet
+    @State var petChanged: Bool = false
 
     @State private var selectedAnimal: PetType = .dog
     @State private var selectedDate = Date()
@@ -41,29 +42,31 @@ struct PetRegisterView: View {
 
                         VStack {
                             HStack {
-                                AnimalIconView(selectedAnimal: $selectedAnimal, pet: .dog)
+                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .dog)
 
                                 Spacer()
-                                AnimalIconView(selectedAnimal: $selectedAnimal, pet: .cat)
+                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .cat)
                             }
 
                             HStack {
-                                AnimalIconView(selectedAnimal: $selectedAnimal, pet: .bird)
+                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .bird)
 
                                 Spacer()
-                                AnimalIconView(selectedAnimal: $selectedAnimal, pet: .fish)
+                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .fish)
                             }
                         }
 
-
                         NavigationLink(destination: ListSearch(itemSelected: $petTypeSelected, list: viewModel.types[selectedAnimal.rawValue] ?? []), label: {
                             HStack {
-                                Text(petTypeSelected.isEmpty ? String.MsgSelectTypePet : petTypeSelected)
+                                Text(petTypeSelected.isEmpty || petChanged ? String.MsgSelectTypePet : petTypeSelected)
                                 Spacer()
                                 Image(systemName: "arrowtriangle.down.fill")
                             }
                         })
                         .foregroundColor(.black)
+                        .onAppear {
+                            petChanged = false
+                        }
 
                         Divider()
                         DatePicker(String.MsgDateBirthDay, selection: $selectedDate, displayedComponents: .date)
@@ -114,6 +117,7 @@ struct PetRegisterView: View {
 
 struct AnimalIconView: View {
     @Binding var selectedAnimal: PetType
+    @Binding var petChanged: Bool
     var pet: PetType
     
     var body: some View {
@@ -125,6 +129,9 @@ struct AnimalIconView: View {
                         .stroke(Color.principal, lineWidth: isSelected(for: pet) ? 4 : .zero)
                 )
                 .onTapGesture {
+                    if pet != selectedAnimal {
+                        petChanged = true
+                    }
                     selectedAnimal = pet
                 }
             
