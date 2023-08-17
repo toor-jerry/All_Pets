@@ -15,88 +15,97 @@ enum PetType: String {
 }
 
 struct PetRegisterView: View {
-    
+
     @StateObject var viewModel = PetRegisterViewModel(useCase: PetRegisterUseCase())
-    
+
+    @State var petTypeSelected: String = .MsgSelectTypePet
+
     @State private var selectedAnimal: PetType = .dog
     @State private var selectedDate = Date()
     @State private var name: String = ""
-    @State var petTypeSelected: String = .MsgSelectTypePet
-    
+    @State private var image = UIImage()
+    @State private var showUploadPhoto = false
+
     var body: some View {
-        
+
         NavigationStack {
             if viewModel.isLoading {
                 Loader()
             } else {
-                VStack(spacing: 20) {
+                ScrollView {
+                    VStack(spacing: 20) {
 
-                    Text(String.MsgTitlePetRegister)
-                        .font(.title2)
-                        .fontWeight(.bold)
-
-                    VStack {
-                        HStack {
-                            AnimalIconView(selectedAnimal: $selectedAnimal, pet: .dog)
-
-                            Spacer()
-                            AnimalIconView(selectedAnimal: $selectedAnimal, pet: .cat)
-                        }
-
-                        HStack {
-                            AnimalIconView(selectedAnimal: $selectedAnimal, pet: .bird)
-
-                            Spacer()
-                            AnimalIconView(selectedAnimal: $selectedAnimal, pet: .fish)
-                        }
-                    }
-
-
-                    NavigationLink(destination: ListSearch(itemSelected: $petTypeSelected, list: viewModel.types[selectedAnimal.rawValue] ?? []), label: {
-                        HStack {
-                            Text(petTypeSelected.isEmpty ? String.MsgSelectTypePet : petTypeSelected)
-                            Spacer()
-                            Image(systemName: "arrowtriangle.down.fill")
-                        }
-                    })
-                    .foregroundColor(.black)
-                    
-                    Divider()
-                    DatePicker(String.MsgDateBirthDay, selection: $selectedDate, displayedComponents: .date)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.gray, lineWidth: 1)
-                        )
-
-                    TextField(String.MsgName, text: $name)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.gray, lineWidth: 1)
-                        )
-
-                    Button(action: {
-
-                    }, label: {
-                        Text(String.MsgUploadProfilePhoto)
+                        Text(String.MsgTitlePetRegister)
+                            .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundColor(Color.principal)
-                    })
+
+                        VStack {
+                            HStack {
+                                AnimalIconView(selectedAnimal: $selectedAnimal, pet: .dog)
+
+                                Spacer()
+                                AnimalIconView(selectedAnimal: $selectedAnimal, pet: .cat)
+                            }
+
+                            HStack {
+                                AnimalIconView(selectedAnimal: $selectedAnimal, pet: .bird)
+
+                                Spacer()
+                                AnimalIconView(selectedAnimal: $selectedAnimal, pet: .fish)
+                            }
+                        }
 
 
-                    Button(action: {
+                        NavigationLink(destination: ListSearch(itemSelected: $petTypeSelected, list: viewModel.types[selectedAnimal.rawValue] ?? []), label: {
+                            HStack {
+                                Text(petTypeSelected.isEmpty ? String.MsgSelectTypePet : petTypeSelected)
+                                Spacer()
+                                Image(systemName: "arrowtriangle.down.fill")
+                            }
+                        })
+                        .foregroundColor(.black)
 
-                    }, label: {
-                        Text(String.MsgAdd)
-                            .modifier(textStylePrincipal())
-                    })
-                    .modifier(buttonPrincipal())
-                }.padding(60)
-                    .background(Color.background)
+                        Divider()
+                        DatePicker(String.MsgDateBirthDay, selection: $selectedDate, displayedComponents: .date)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.gray, lineWidth: 1)
+                            )
+
+                        TextField(String.MsgName, text: $name)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.gray, lineWidth: 1)
+                            )
+
+                        Button(action: {
+                            showUploadPhoto = true
+                        }, label: {
+                            Text(String.MsgUploadProfilePhoto)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.principal)
+                        })
+
+
+                        Button(action: {
+
+                        }, label: {
+                            Text(String.MsgAdd)
+                                .modifier(textStylePrincipal())
+                        })
+                        .modifier(buttonPrincipal())
+                    }.padding(60)
+                        .background(Color.background)
+                }
             }
-        }.onAppear {
+        }
+        .onAppear {
             viewModel.getPetsType()
+        }
+        .sheet(isPresented: $showUploadPhoto) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
         }
     }
 }
@@ -133,4 +142,3 @@ struct PetRegisterViewPreviews: PreviewProvider {
         PetRegisterView()
     }
 }
-
