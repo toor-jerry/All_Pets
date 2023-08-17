@@ -8,6 +8,7 @@
 enum Endpoint {
     case usersCollection
     case typePets
+    case petsCollection
 }
 
 extension Endpoint {
@@ -19,6 +20,8 @@ extension Endpoint {
             return "Users"
         case .typePets:
             return "Tipo_mascotas"
+        case .petsCollection:
+            return "Mascotas"
         }
     }
 }

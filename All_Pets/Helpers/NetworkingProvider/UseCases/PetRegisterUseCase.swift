@@ -6,7 +6,15 @@
 //
 
 import Firebase
+import FirebaseAuth
 import FirebaseFirestoreSwift
+
+protocol PetRegisterProtocol: AnyObject {
+    func petRegister(data: PetRegister,
+                     success: @escaping (_ registed: Bool) -> Void,
+                     failure: @escaping (Error) -> Void,
+                     completion: @escaping () -> Void)
+}
 
 protocol PetTypesProtocol: AnyObject {
     func getPetTypes(success: @escaping (_ types: [String: [String]]) -> Void,
@@ -14,7 +22,7 @@ protocol PetTypesProtocol: AnyObject {
                      completion: @escaping () -> Void)
 }
 
-protocol PetRegisterUseCaseProtocol: PetTypesProtocol { }
+protocol PetRegisterUseCaseProtocol: PetTypesProtocol, PetRegisterProtocol { }
 
 final class PetRegisterUseCase: PetRegisterUseCaseProtocol { }
 
@@ -41,5 +49,27 @@ extension PetRegisterUseCase: PetTypesProtocol {
 
             completion()
         }
+    }
+}
+
+extension PetRegisterUseCase: PetRegisterProtocol {
+    func petRegister(data: PetRegister, success: @escaping (Bool) -> Void, failure: @escaping (Error) -> Void, completion: @escaping () -> Void) {
+
+        if let idUser = Auth.auth().currentUser?.uid {
+
+            let db = Firestore.firestore()
+            let pets = db.collection(Endpoint.usersCollection.urlString).document(idUser).collection(Endpoint.petsCollection.urlString)
+            do {
+                let newPet = try pets.document().setData(from: data)
+                success(true)
+            } catch {
+                failure(NetworkingServerErrors.internalServerError)
+            }
+
+        } else {
+            failure(NetworkingClientErrors.requestInvalid)
+            completion()
+        }
+
     }
 }

@@ -30,4 +30,18 @@ final class PetRegisterViewModel: ObservableObject {
             }
         })
     }
+
+    func petRegister(_ data: PetRegister) {
+        isLoading = true
+        useCase.petRegister(data: data,
+                            success: { _ in
+
+        }, failure: { _ in
+
+        }, completion: {
+            self.setTheardMain {
+                self.isLoading = false
+            }
+        })
+    }
 }

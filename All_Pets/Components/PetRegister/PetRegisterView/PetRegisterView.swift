@@ -93,7 +93,11 @@ struct PetRegisterView: View {
 
 
                         Button(action: {
-
+                            viewModel.petRegister(PetRegister(name: name,
+                                                              petType: petTypeSelected,
+                                                              birthDate: selectedDate,
+                                                              pet: selectedAnimal.rawValue,
+                                                             photo: image))
                         }, label: {
                             Text(String.MsgAdd)
                                 .modifier(textStylePrincipal())
