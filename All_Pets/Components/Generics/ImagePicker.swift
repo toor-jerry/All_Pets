@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
+
     @Environment(\.presentationMode) private var presentationMode
+    
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @Binding var selectedImage: UIImage
 
@@ -46,6 +48,5 @@ struct ImagePicker: UIViewControllerRepresentable {
 
             parent.presentationMode.wrappedValue.dismiss()
         }
-
     }
 }
