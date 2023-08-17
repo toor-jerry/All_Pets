@@ -19,6 +19,7 @@ struct ListSearch: View {
 
         VStack {
             Divider()
+                .background(Color.background)
             List {
 
                     ForEach(filteredList, id: \.self) { element in
@@ -29,9 +30,10 @@ struct ListSearch: View {
                                 itemSelected = element
                                 self.presentationMode.wrappedValue.dismiss()
                             }
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
                     }
                 }
-                .listRowSeparator(.hidden)
                 .searchable(text: $searchText, prompt: "")
                 .onChange(of: searchText) { newValue in
                     if newValue.isEmpty {
@@ -50,7 +52,6 @@ struct ListSearch: View {
                     filteredList = list
                 }
             }
-            .background(Color.background)
     }
 }
 
