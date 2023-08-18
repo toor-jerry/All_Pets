@@ -22,8 +22,9 @@
 		D24149D32A86F6DD00E40EBB /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149CF2A86F6DD00E40EBB /* SignUpModel.swift */; };
 		D24149D42A86F6DD00E40EBB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149D12A86F6DD00E40EBB /* SignUpViewModel.swift */; };
 		D24EE6042A8F2BA0008E3013 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */; };
-		D24EE6052A8F2BA0008E3013 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6012A8F2BA0008E3013 /* Home.swift */; };
+		D24EE6052A8F2BA0008E3013 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6012A8F2BA0008E3013 /* UserModel.swift */; };
 		D24EE6062A8F2BA0008E3013 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6032A8F2BA0008E3013 /* HomeView.swift */; };
+		D24EE6082A8FC370008E3013 /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6072A8FC370008E3013 /* HomeUseCase.swift */; };
 		D26B63AC2A8BCDD500A843D2 /* PetRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B63A72A8BCDD500A843D2 /* PetRegister.swift */; };
 		D26B63AD2A8BCDD500A843D2 /* PetRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B63A92A8BCDD500A843D2 /* PetRegisterViewModel.swift */; };
 		D26B63AE2A8BCDD500A843D2 /* PetRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26B63AB2A8BCDD500A843D2 /* PetRegisterView.swift */; };
@@ -75,8 +76,9 @@
 		D24149CF2A86F6DD00E40EBB /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		D24149D12A86F6DD00E40EBB /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		D24EE6012A8F2BA0008E3013 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		D24EE6012A8F2BA0008E3013 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D24EE6032A8F2BA0008E3013 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D24EE6072A8FC370008E3013 /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
 		D26B63A72A8BCDD500A843D2 /* PetRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetRegister.swift; sourceTree = "<group>"; };
 		D26B63A92A8BCDD500A843D2 /* PetRegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetRegisterViewModel.swift; sourceTree = "<group>"; };
 		D26B63AB2A8BCDD500A843D2 /* PetRegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetRegisterView.swift; sourceTree = "<group>"; };
@@ -315,7 +317,7 @@
 		D24EE6002A8F2BA0008E3013 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D24EE6012A8F2BA0008E3013 /* Home.swift */,
+				D24EE6012A8F2BA0008E3013 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -450,6 +452,7 @@
 				D24149C32A86B08A00E40EBB /* SignUpUseCase.swift */,
 				D24149C72A86E76500E40EBB /* SignOutUseCase.swift */,
 				D28A19CB2A8C01920024C517 /* PetRegisterUseCase.swift */,
+				D24EE6072A8FC370008E3013 /* HomeUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				D28A19CE2A8C35710024C517 /* ListSearch.swift in Sources */,
 				D24149C02A86B04100E40EBB /* ProfileViewModel.swift in Sources */,
 				D2E6F8152A8558110074D84E /* Colors.swift in Sources */,
+				D24EE6082A8FC370008E3013 /* HomeUseCase.swift in Sources */,
 				D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */,
 				D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */,
 				D2AC45612A84061A003958FC /* Fetcher.swift in Sources */,
@@ -604,7 +608,7 @@
 				D24149B42A85A92100E40EBB /* LoginFormView.swift in Sources */,
 				D24EE6042A8F2BA0008E3013 /* HomeViewModel.swift in Sources */,
 				D2E6F80E2A84A6290074D84E /* Loader.swift in Sources */,
-				D24EE6052A8F2BA0008E3013 /* Home.swift in Sources */,
+				D24EE6052A8F2BA0008E3013 /* UserModel.swift in Sources */,
 				D2AC45672A84081F003958FC /* ProviderServiceProtocols.swift in Sources */,
 				D26B63AD2A8BCDD500A843D2 /* PetRegisterViewModel.swift in Sources */,
 				D24149D32A86F6DD00E40EBB /* SignUpModel.swift in Sources */,

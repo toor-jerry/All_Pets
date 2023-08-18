@@ -9,11 +9,11 @@ import SwiftUI
 
 final class HomeViewModelViewModel: ObservableObject {
 
-//    let useCase: HomeViewModelUseCase
-//
-//    init(useCase: HomeViewModelUseCase) {
-//        self.useCase = useCase
-//    }
+    let useCase: HomeUseCaseProtocol
+
+    init(useCase: HomeUseCaseProtocol) {
+        self.useCase = useCase
+    }
 
 //    func auth() {
 //        isLoading = true
@@ -26,4 +26,18 @@ final class HomeViewModelViewModel: ObservableObject {
 //                self.isLoading = false
 //            }
 //        }
+//    getUserByID(userID: "user123") { result in
+//        switch result {
+//        case .success(let user):
+//            if let pets = user.pets {
+//                for pet in pets {
+//                    print("Pet Name: \(pet.name), Type: \(pet.type)")
+//                }
+//            } else {
+//                print("User has no pets.")
+//            }
+//        case .failure(let error):
+//            print("Error: \(error.localizedDescription)")
+//        }
+//    }
 }

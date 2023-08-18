@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
 
+    @StateObject var viewModel = HomeViewModelViewModel(useCase: HomeUseCase())
+
     @State private var showingCredits = false
     @State private var image = UIImage()
     @State private var showPetRegister: Bool = false
