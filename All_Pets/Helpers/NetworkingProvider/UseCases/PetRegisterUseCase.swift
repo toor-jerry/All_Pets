@@ -41,6 +41,7 @@ protocol ImageExtensionProtocol: AnyObject {
 protocol UploadImageProtocol: AnyObject {
     func uploadImage(_ basePath: String,
                      _ image: Data,
+                     _ typeImage: String,
                      success: @escaping (_ urlPhotoString: String) -> Void,
                      failure: @escaping (Error) -> Void,
                      completion: @escaping () -> Void)
@@ -130,11 +131,11 @@ extension PetRegisterUseCase: ImageExtensionProtocol {
 
         if let imageData = image.jpegData(compressionQuality: Constants.compressionQualityImageForFirebase) {
 
-            imageExtension = ".jpeg"
+            imageExtension = "jpeg"
             imageDataTemp = imageData
         } else if let imageData = image.pngData() {
             
-            imageExtension = ".png"
+            imageExtension = "png"
             imageDataTemp = imageData
         }
 
@@ -152,6 +153,7 @@ extension PetRegisterUseCase: UploadImageProtocol {
 
     func uploadImage(_ basePath: String,
                      _ image: Data,
+                     _ typeImage: String,
                      success: @escaping (_ urlPhotoString: String) -> Void,
                      failure: @escaping (Error) -> Void,
                      completion: @escaping () -> Void) {
@@ -159,8 +161,10 @@ extension PetRegisterUseCase: UploadImageProtocol {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let imageRef = storageRef.child(basePath)
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/\(typeImage)"
 
-        _ = imageRef.putData(image, metadata: nil) { metadata, error in
+        _ = imageRef.putData(image, metadata: metadata) { metadata, error in
 
             if let _ = error {
                 failure(NetworkingServerErrors.internalServerError)

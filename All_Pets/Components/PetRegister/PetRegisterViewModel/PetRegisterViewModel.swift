@@ -8,29 +8,29 @@
 import SwiftUI
 
 final class PetRegisterViewModel: ObservableObject {
-
+    
     @Published var isLoading: Bool = false
     @Published var types: [String: [String]] = [:]
-
+    
     let useCase: PetRegisterUseCaseProtocol
-
+    
     init(useCase: PetRegisterUseCaseProtocol) {
         self.useCase = useCase
     }
-
+    
     func getPetsType() {
         isLoading = true
         useCase.getPetTypes(success: { types in
             self.types = types
         }, failure: { _ in
-
+            
         }, completion: {
             self.setTheardMain {
                 self.isLoading = false
             }
         })
     }
-
+    
     func petRegister(_ data: PetRegister, _ image: UIImage? = nil) {
         isLoading = true
         useCase.getPetIdCollection(success: { idDocument, idUser in
@@ -38,27 +38,55 @@ final class PetRegisterViewModel: ObservableObject {
                                       idDocument,
                                       data,
                                       success: { _ in
-
+                
+                if let image = image {
+                    self.useCase.getImageExtension(image,
+                                                   success: { imgExtension, imageData in
+                        self.useCase.uploadImage("images/Ym9GsB7d7KcS7iKHJ6WuxYGkqDM2/pets/\(idDocument)/\(idDocument)",
+                                                 imageData,
+                                                 imgExtension,
+                                                 success: { urlPhotoString in
+                            // agregar eliminado de la imagen
+                        }, failure: { _ in
+                            // agregar eliminado de la imagen
+                        }, completion: {
+                            
+                        })
+                        
+                        var dataTmp = data
+                        dataTmp.photoURL = "images/Ym9GsB7d7KcS7iKHJ6WuxYGkqDM2/pets/\(idDocument)/\(idDocument)"
+                        self.useCase.petRegister(idUser,
+                                                 idDocument,
+                                                 dataTmp,
+                                                 success: { _ in },
+                                                 failure: { _ in},
+                                                 completion: {
+                            self.setTheardMain {
+                                self.isLoading = false
+                            }
+                        })
+                    }, failure: { _ in
+                        // agregar eliminado de la imagen
+                    })
+                } else {
+                    self.useCase.petRegister(idUser,
+                                             idDocument,
+                                             data,
+                                             success: { _ in },
+                                             failure: { _ in},
+                                             completion: {
+                        self.setTheardMain {
+                            self.isLoading = false
+                        }
+                    })
+                }
+                
             }, failure: { _ in
-
-            }, completion: {
                 self.setTheardMain {
                     self.isLoading = false
                 }
-            })
-
-            if let image = image {
-                self.useCase.uploadImage("images/Ym9GsB7d7KcS7iKHJ6WuxYGkqDM2/pets/\(idDocument)/\(idDocument)",
-                                         image,
-                                         success: { urlPhotoString in
-
-                }, failure: { _ in
-
-                }, completion: {
-
-                })
-            }
-
+            }, completion: { })
+            
         }, failure: { _ in
             self.setTheardMain {
                 self.isLoading = false
