@@ -14,14 +14,14 @@ struct HubView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-
-            PetRegisterView()
-            .modifier(tabItemStyle())
-            .tabItem {
-                Image(systemName: "house.fill")
-                Text("Inicio")
-            }
-            .tag(0)
+            
+            HomeView()
+                .modifier(tabItemStyle())
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("Inicio")
+                }
+                .tag(0)
             
             ScrollView {
                 Text("Contenido de la pestaña 2")
