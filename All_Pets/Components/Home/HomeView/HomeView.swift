@@ -20,32 +20,36 @@ struct HomeView: View {
 
             NavigationStack {
 
-                VStack {
+                if viewModel.isLoading {
+                    Loader()
+                } else {
+                    VStack {
 
-                }
-                .navigationDestination(isPresented: $showPetRegister, destination: {
-                    PetRegisterView()
-                })
-                .toolbar(content: {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: {
-                            showingCredits.toggle()
-                        }, label: {
-                            HStack {
-                                Image(uiImage: self.image)
-                                    .resizable()
-                                    .cornerRadius(50)
-                                    .padding(.all, 4)
-                                    .frame(width: 40, height: 40)
-                                    .background(Color.black.opacity(0.2))
-                                    .aspectRatio(contentMode: .fill)
-                                    .clipShape(Circle())
-                                Text("Nombre mascota")
-                                Image(systemName: "arrowtriangle.down.fill")
-                            }
-                        })
                     }
-                })
+                    .navigationDestination(isPresented: $showPetRegister, destination: {
+                        PetRegisterView()
+                    })
+                    .toolbar(content: {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button(action: {
+                                showingCredits.toggle()
+                            }, label: {
+                                HStack {
+                                    Image(uiImage: self.image)
+                                        .resizable()
+                                        .cornerRadius(50)
+                                        .padding(.all, 4)
+                                        .frame(width: 40, height: 40)
+                                        .background(Color.black.opacity(0.2))
+                                        .aspectRatio(contentMode: .fill)
+                                        .clipShape(Circle())
+                                    Text("Nombre mascota")
+                                    Image(systemName: "arrowtriangle.down.fill")
+                                }
+                            })
+                        }
+                    })
+                }
 
             }
 
@@ -62,7 +66,7 @@ struct HomeView: View {
                             .font(.title)
                         Text(String.MsgAddPet)
                             .font(.title3)
-                            Spacer()
+                        Spacer()
                     }
 
                 })
@@ -71,6 +75,9 @@ struct HomeView: View {
                 Spacer()
             }
             .presentationDetents([.medium, .large])
+        }
+        .onAppear {
+            viewModel.getUser()
         }
     }
 }
