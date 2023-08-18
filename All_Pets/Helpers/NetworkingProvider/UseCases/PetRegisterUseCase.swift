@@ -32,15 +32,21 @@ protocol PetTypesProtocol: AnyObject {
                      completion: @escaping () -> Void)
 }
 
-protocol uploadImageProtocol: AnyObject {
+protocol ImageExtensionProtocol: AnyObject {
+    func getImageExtension(_ image: UIImage,
+        success: @escaping (_ imgExtension: String, _ image: Data) -> Void,
+                            failure: @escaping (Error) -> Void)
+}
+
+protocol UploadImageProtocol: AnyObject {
     func uploadImage(_ basePath: String,
-                     _ image: UIImage,
+                     _ image: Data,
                      success: @escaping (_ urlPhotoString: String) -> Void,
                      failure: @escaping (Error) -> Void,
                      completion: @escaping () -> Void)
 }
 
-protocol PetRegisterUseCaseProtocol: PetTypesProtocol, PetRegisterProtocol, uploadImageProtocol, PetIdCollectionProtocol { }
+protocol PetRegisterUseCaseProtocol: PetTypesProtocol, PetRegisterProtocol, UploadImageProtocol, ImageExtensionProtocol, PetIdCollectionProtocol { }
 
 final class PetRegisterUseCase: PetRegisterUseCaseProtocol { }
 
@@ -113,49 +119,48 @@ extension PetRegisterUseCase: PetRegisterProtocol {
     }
 }
 
-extension PetRegisterUseCase: uploadImageProtocol {
+extension PetRegisterUseCase: ImageExtensionProtocol {
 
-    func uploadImage(_ basePath: String,
-                     _ image: UIImage,
-                     success: @escaping (_ urlPhotoString: String) -> Void,
-                     failure: @escaping (Error) -> Void,
-                     completion: @escaping () -> Void) {
+    func getImageExtension(_ image: UIImage,
+                           success: @escaping (String, Data) -> Void,
+                           failure: @escaping (Error) -> Void) {
 
         var imageExtension: String = ""
         var imageDataTemp: Data? = nil
 
         if let imageData = image.jpegData(compressionQuality: Constants.compressionQualityImageForFirebase) {
+
             imageExtension = ".jpeg"
             imageDataTemp = imageData
         } else if let imageData = image.pngData() {
+            
             imageExtension = ".png"
             imageDataTemp = imageData
         }
-        
-        if imageExtension.isEmpty {
+
+        if !imageExtension.isEmpty,
+           let imageDataTemp = imageDataTemp {
+
+            success(imageExtension, imageDataTemp)
+        } else {
             failure(NetworkingClientErrors.requestInvalid)
-            completion()
-        } else if let imageData = imageDataTemp {
-            
-            uploadImage(basePath: basePath + imageExtension,
-                        imageData: imageData,
-                        success: success,
-                        failure: failure,
-                        completion: completion)
         }
     }
+}
 
-    private func uploadImage(basePath: String,
-                             imageData: Data,
-                             success: @escaping (_ urlPhotoString: String) -> Void,
-                             failure: @escaping (Error) -> Void,
-                             completion: @escaping () -> Void) {
+extension PetRegisterUseCase: UploadImageProtocol {
+
+    func uploadImage(_ basePath: String,
+                     _ image: Data,
+                     success: @escaping (_ urlPhotoString: String) -> Void,
+                     failure: @escaping (Error) -> Void,
+                     completion: @escaping () -> Void) {
 
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let imageRef = storageRef.child(basePath)
 
-        _ = imageRef.putData(imageData, metadata: nil) { metadata, error in
+        _ = imageRef.putData(image, metadata: nil) { metadata, error in
 
             if let _ = error {
                 failure(NetworkingServerErrors.internalServerError)
