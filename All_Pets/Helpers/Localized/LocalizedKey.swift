@@ -30,4 +30,5 @@ extension String {
     static let MsgUploadProfilePhoto = "Subir foto de perfil"
     static let MsgSelectTypePet = "Seleccione una raza"
     static let MsgDateBirthDay = "Fecha de nacimiento"
+    static let MsgAddPet = "Añadir Mascota"
 }

@@ -9,44 +9,72 @@ import SwiftUI
 
 struct HomeView: View {
 
-    //    @StateObject var viewModel = HomeViewViewModel(useCase: HomeViewUseCase())
-    
-    @State private var isModalPresented = false
+    @State private var showingCredits = false
+    @State private var image = UIImage()
+    @State private var showPetRegister: Bool = false
 
-    var body: some View {
-        Button("Present Modal") {
-            isModalPresented.toggle()
-        }
-        .sheet(isPresented: $isModalPresented) {
-            ModalView()
-        }
-    }
-}
-
-struct ModalView: View {
     var body: some View {
         VStack {
-            Text("This is a modal view")
-                .font(.title)
-                .padding()
-            Button("Button 1") {
-                // Acción del botón 1
-            }
-            .padding()
-            Button("Button 2") {
-                // Acción del botón 2
-            }
-            .padding()
 
-            // Agregar un Spacer para que el contenido se expanda
-            Spacer()
+            NavigationStack {
+
+                VStack {
+
+                }
+                .navigationDestination(isPresented: $showPetRegister, destination: {
+                    PetRegisterView()
+                })
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            showingCredits.toggle()
+                        }, label: {
+                            HStack {
+                                Image(uiImage: self.image)
+                                    .resizable()
+                                    .cornerRadius(50)
+                                    .padding(.all, 4)
+                                    .frame(width: 40, height: 40)
+                                    .background(Color.black.opacity(0.2))
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(Circle())
+                                Text("Nombre mascota")
+                                Image(systemName: "arrowtriangle.down.fill")
+                            }
+                        })
+                    }
+                })
+
+            }
+
+
+        }.sheet(isPresented: $showingCredits) {
+            VStack {
+                Button(action: {
+                    showingCredits.toggle()
+                    showPetRegister.toggle()
+                }, label: {
+                    HStack {
+                        Image(systemName: "plus")
+                            .fontWeight(.bold)
+                            .font(.title)
+                        Text(String.MsgAddPet)
+                            .font(.title3)
+                            Spacer()
+                    }
+
+                })
+                .foregroundColor(.black)
+
+                Spacer()
+            }
+            .presentationDetents([.medium, .large])
         }
     }
 }
 
-struct HomeViewPreviews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
 }
-
