@@ -9,10 +9,11 @@ import SwiftUI
 import Firebase
 
 struct PetRegister: Codable {
-    var name: String
-    var petType: String
+
     var birthDate: Timestamp
     var pet: String
+    var petType: String?
+    var name: String?
     var photoURL: String?
 
     enum CodingKeys: String, CodingKey {
@@ -23,7 +24,7 @@ struct PetRegister: Codable {
         case pet = "Mascota"
     }
 
-    init(name: String, petType: String, birthDate: Date, pet: String, photoURL: String? = nil) {
+    init(birthDate: Date, pet: String, photoURL: String? = nil, name: String? = nil, petType: String? = nil) {
         self.name = name
         self.petType = petType
         self.birthDate = Timestamp(date: birthDate)
@@ -31,11 +32,20 @@ struct PetRegister: Codable {
         self.photoURL = photoURL
     }
 
-    init(name: String, petType: String, birthDate: Timestamp, pet: String, photoURL: String? = nil) {
+    init(birthDate: Timestamp, pet: String, photoURL: String? = nil, name: String? = nil, petType: String? = nil) {
         self.name = name
         self.petType = petType
         self.birthDate = birthDate
         self.pet = pet
         self.photoURL = photoURL
+    }
+
+
+    func getData(_ urlString: String? = nil) -> PetRegister {
+        return PetRegister(birthDate: self.birthDate,
+                           pet: self.pet,
+                           photoURL: urlString,
+                           name: self.name?.isEmpty ?? false ? nil : self.name,
+                           petType: self.petType?.contains(.MsgSelectTypePet) ?? false ? nil : self.petType)
     }
 }

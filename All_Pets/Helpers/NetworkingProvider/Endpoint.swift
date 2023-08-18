@@ -9,6 +9,7 @@ enum Endpoint {
     case usersCollection
     case typePets
     case petsCollection
+    case imagePets(_ idCollection: String)
 }
 
 extension Endpoint {
@@ -22,6 +23,8 @@ extension Endpoint {
             return "Tipo_mascotas"
         case .petsCollection:
             return "Mascotas"
+        case .imagePets(idCollection: let idCollection):
+            return "images/Ym9GsB7d7KcS7iKHJ6WuxYGkqDM2/pets/\(idCollection)/\(idCollection)"
         }
     }
 }

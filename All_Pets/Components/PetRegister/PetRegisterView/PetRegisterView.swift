@@ -83,6 +83,17 @@ struct PetRegisterView: View {
                                     .stroke(.gray, lineWidth: 1)
                             )
 
+                        if !image.isEqual(UIImage()) {
+                            Image(uiImage: self.image)
+                                .resizable()
+                                .cornerRadius(50)
+                                .padding(.all, 4)
+                                .frame(width: 100, height: 100)
+                                .background(Color.black.opacity(0.2))
+                                .aspectRatio(contentMode: .fill)
+                                .clipShape(Circle())
+                        }
+
                         Button(action: {
                             showUploadPhoto = true
                         }, label: {
@@ -93,10 +104,10 @@ struct PetRegisterView: View {
 
 
                         Button(action: {
-                            viewModel.petRegister(PetRegister(name: name,
-                                                              petType: petTypeSelected,
-                                                              birthDate: selectedDate,
-                                                              pet: selectedAnimal.rawValue), self.image)
+                            viewModel.petRegister(PetRegister(birthDate: selectedDate,
+                                                              pet: selectedAnimal.rawValue,
+                                                              name: name,
+                                                             petType: petTypeSelected), self.image)
                         }, label: {
                             Text(String.MsgAdd)
                                 .modifier(textStylePrincipal())

@@ -30,67 +30,61 @@ final class PetRegisterViewModel: ObservableObject {
             }
         })
     }
-    
+
     func petRegister(_ data: PetRegister, _ image: UIImage? = nil) {
+
         isLoading = true
-        useCase.getPetIdCollection(success: { idDocument, idUser in
-            self.useCase.petRegister( idUser,
-                                      idDocument,
-                                      data,
-                                      success: { _ in
-                
-                if let image = image {
-                    self.useCase.getImageExtension(image,
-                                                   success: { imgExtension, imageData in
-                        self.useCase.uploadImage("images/Ym9GsB7d7KcS7iKHJ6WuxYGkqDM2/pets/\(idDocument)/\(idDocument)",
-                                                 imageData,
-                                                 imgExtension,
-                                                 success: { urlPhotoString in
-                            // agregar eliminado de la imagen
-                        }, failure: { _ in
-                            // agregar eliminado de la imagen
-                        }, completion: {
-                            
-                        })
-                        
-                        var dataTmp = data
-                        dataTmp.photoURL = "images/Ym9GsB7d7KcS7iKHJ6WuxYGkqDM2/pets/\(idDocument)/\(idDocument)"
-                        self.useCase.petRegister(idUser,
-                                                 idDocument,
-                                                 dataTmp,
-                                                 success: { _ in },
-                                                 failure: { _ in},
-                                                 completion: {
-                            self.setTheardMain {
-                                self.isLoading = false
-                            }
-                        })
-                    }, failure: { _ in
-                        // agregar eliminado de la imagen
-                    })
-                } else {
-                    self.useCase.petRegister(idUser,
-                                             idDocument,
-                                             data,
-                                             success: { _ in },
-                                             failure: { _ in},
-                                             completion: {
-                        self.setTheardMain {
-                            self.isLoading = false
-                        }
-                    })
-                }
-                
-            }, failure: { _ in
-                self.setTheardMain {
-                    self.isLoading = false
-                }
-            }, completion: { })
-            
-        }, failure: { _ in
-            self.setTheardMain {
-                self.isLoading = false
+
+        self.useCase.petRegister(data.getData(),
+                                 success: { idCollection in
+
+            if let image = image, !image.isEqual(UIImage()) {
+                self.uploadImage(idCollection, image, data.getData())
+            } else {
+                self.stopLoading()
             }
+
+        }, failure: { _ in
+            self.stopLoading()
+        }, completion: { })
+    }
+
+    func uploadImage(_ idCollection: String, _ image: UIImage, _ data: PetRegister) {
+
+        startLoading()
+
+        self.useCase.uploadImage(idCollection,
+                                 image,
+                                 success: { urlPhoto in
+
+            self.updateDataRegiter(data.getData(urlPhoto))
+
+        }, failure: { _ in
+            self.stopLoading()
+        }, completion: { })
+    }
+
+    func updateDataRegiter(_ data: PetRegister) {
+
+        startLoading()
+
+        self.useCase.petRegister(data,
+                                 success: { _ in },
+                                 failure: { _ in },
+                                 completion: {
+            self.stopLoading()
         })
+    }
+
+    private func stopLoading() {
+        setTheardMain {
+            self.isLoading = false
+        }
+    }
+
+    private func startLoading() {
+        if !isLoading {
+            isLoading = true
+        }
     }
 }

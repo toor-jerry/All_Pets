@@ -11,19 +11,17 @@ import FirebaseStorage
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-protocol PetRegisterProtocol: AnyObject {
-    func petRegister(_ idUser: String,
-                     _ idColletion: String,
-                     _ data: PetRegister,
-                     success: @escaping (_ registered: Bool) -> Void,
-                     failure: @escaping (Error) -> Void,
-                     completion: @escaping () -> Void)
+enum ImageType: String {
+    case png
+    case jpeg
+    case none
 }
 
-protocol PetIdCollectionProtocol: AnyObject {
-    func getPetIdCollection(success: @escaping (_ idDocument: String,
-                                                _ idUser: String) -> Void,
-                            failure: @escaping (Error) -> Void)
+protocol PetRegisterProtocol: AnyObject {
+    func petRegister(_ data: PetRegister,
+                     success: @escaping (_ idColletion: String) -> Void,
+                     failure: @escaping (Error) -> Void,
+                     completion: @escaping () -> Void)
 }
 
 protocol PetTypesProtocol: AnyObject {
@@ -32,36 +30,29 @@ protocol PetTypesProtocol: AnyObject {
                      completion: @escaping () -> Void)
 }
 
-protocol ImageExtensionProtocol: AnyObject {
-    func getImageExtension(_ image: UIImage,
-        success: @escaping (_ imgExtension: String, _ image: Data) -> Void,
-                            failure: @escaping (Error) -> Void)
-}
-
 protocol UploadImageProtocol: AnyObject {
-    func uploadImage(_ basePath: String,
-                     _ image: Data,
-                     _ typeImage: String,
+    func uploadImage(_ idColletion: String,
+                     _ image: UIImage,
                      success: @escaping (_ urlPhotoString: String) -> Void,
                      failure: @escaping (Error) -> Void,
                      completion: @escaping () -> Void)
 }
 
-protocol PetRegisterUseCaseProtocol: PetTypesProtocol, PetRegisterProtocol, UploadImageProtocol, ImageExtensionProtocol, PetIdCollectionProtocol { }
+protocol PetRegisterUseCaseProtocol: PetTypesProtocol, PetRegisterProtocol, UploadImageProtocol { }
 
 final class PetRegisterUseCase: PetRegisterUseCaseProtocol { }
 
 extension PetRegisterUseCase: PetTypesProtocol {
-
+    
     func getPetTypes(success: @escaping (_ types: [String: [String]]) -> Void,
                      failure: @escaping (Error) -> Void,
                      completion: @escaping () -> Void) {
-
+        
         let db = Firestore.firestore()
         let typePets = db.collection(Endpoint.typePets.urlString).document(Constants.documentIdPetTypes)
-
+        
         typePets.getDocument { document, error in
-
+            
             if let _ = error {
                 failure(NetworkingServerErrors.dataNotFound)
             } else if let document = document, document.exists {
@@ -71,116 +62,87 @@ extension PetRegisterUseCase: PetTypesProtocol {
                     failure(NetworkingServerErrors.response)
                 }
             }
-
+            
             completion()
-        }
-    }
-}
-
-extension PetRegisterUseCase: PetIdCollectionProtocol {
-
-    func getPetIdCollection(success: @escaping (String, String) -> Void,
-                            failure: @escaping (Error) -> Void) {
-
-        if let idUser = Auth.auth().currentUser?.uid {
-
-            let db = Firestore.firestore()
-            let pets = db.collection(Endpoint.usersCollection.urlString).document(idUser).collection(Endpoint.petsCollection.urlString)
-
-            let newPetDocument = pets.document()
-            let newPetId = newPetDocument.documentID
-
-            success(newPetId, idUser)
-        } else {
-            failure(NetworkingClientErrors.requestInvalid)
         }
     }
 }
 
 extension PetRegisterUseCase: PetRegisterProtocol {
-
-    func petRegister(_ idUser: String,
-                     _ idCollection: String,
-                     _ data: PetRegister,
-                     success: @escaping (_ registered: Bool) -> Void,
+    
+    func petRegister(_ data: PetRegister,
+                     success: @escaping (_ idColletion: String) -> Void,
                      failure: @escaping (Error) -> Void,
                      completion: @escaping () -> Void) {
-
-        let db = Firestore.firestore()
-        let pets = db.collection(Endpoint.usersCollection.urlString).document(idUser).collection(Endpoint.petsCollection.urlString)
-        do {
-            let _ = try pets.document(idCollection).setData(from: data)
-
-            success(true)
-        } catch {
-            failure(NetworkingServerErrors.internalServerError)
-        }
-
-        completion()
-    }
-}
-
-extension PetRegisterUseCase: ImageExtensionProtocol {
-
-    func getImageExtension(_ image: UIImage,
-                           success: @escaping (String, Data) -> Void,
-                           failure: @escaping (Error) -> Void) {
-
-        var imageExtension: String = ""
-        var imageDataTemp: Data? = nil
-
-        if let imageData = image.jpegData(compressionQuality: Constants.compressionQualityImageForFirebase) {
-
-            imageExtension = "jpeg"
-            imageDataTemp = imageData
-        } else if let imageData = image.pngData() {
+        
+        if let idUser = Auth.auth().currentUser?.uid {
             
-            imageExtension = "png"
-            imageDataTemp = imageData
-        }
-
-        if !imageExtension.isEmpty,
-           let imageDataTemp = imageDataTemp {
-
-            success(imageExtension, imageDataTemp)
+            let db = Firestore.firestore()
+            let pets = db.collection(Endpoint.usersCollection.urlString).document(idUser).collection(Endpoint.petsCollection.urlString)
+            
+            do {
+                let newPet = try pets.addDocument(from: data)
+                
+                success(newPet.documentID)
+                
+            } catch {
+                failure(NetworkingServerErrors.internalServerError)
+            }
+            completion()
         } else {
             failure(NetworkingClientErrors.requestInvalid)
+            completion()
         }
     }
 }
 
 extension PetRegisterUseCase: UploadImageProtocol {
-
-    func uploadImage(_ basePath: String,
-                     _ image: Data,
-                     _ typeImage: String,
-                     success: @escaping (_ urlPhotoString: String) -> Void,
+    
+    func uploadImage(_ idColletion: String,
+                     _ image: UIImage,
+                     success: @escaping (String) -> Void,
                      failure: @escaping (Error) -> Void,
                      completion: @escaping () -> Void) {
-
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        let imageRef = storageRef.child(basePath)
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/\(typeImage)"
-
-        _ = imageRef.putData(image, metadata: metadata) { metadata, error in
-
-            if let _ = error {
-                failure(NetworkingServerErrors.internalServerError)
-            } else {
-
-                imageRef.downloadURL { url, error in
-
-                    if let _ = error {
-                        failure(NetworkingServerErrors.dataNotFound)
-                    } else if let url = url {
-                        success(url.absoluteString)
+        
+        var imageType: ImageType = .none
+        var imageDataTemp: Data? = nil
+        
+        if let imageData = image.jpegData(compressionQuality: Constants.compressionQualityImageForFirebase) {
+            
+            imageType = .jpeg
+            imageDataTemp = imageData
+        } else if let imageData = image.pngData() {
+            
+            imageType = .png
+            imageDataTemp = imageData
+        }
+        
+        if let imageDataTemp = imageDataTemp, imageType != .none {
+            
+            let storageRef = Storage.storage().reference()
+            let imageRef = storageRef.child(Endpoint.imagePets(idColletion).urlString)
+            
+            let metadata = StorageMetadata()
+            metadata.contentType = "\(Constants.contentTypeMediaImage)/\(imageType.rawValue)"
+            
+            _ = imageRef.putData(imageDataTemp, metadata: metadata) { metadata, error in
+                
+                if let _ = error {
+                    failure(NetworkingServerErrors.internalServerError)
+                } else {
+                    
+                    imageRef.downloadURL { url, error in
+                        
+                        if let _ = error {
+                            failure(NetworkingServerErrors.dataNotFound)
+                        } else if let url = url {
+                            success(url.absoluteString)
+                        }
                     }
                 }
+                
+                completion()
             }
-
-            completion()
         }
     }
 }
