@@ -15,6 +15,8 @@ enum PetType: String {
 }
 
 struct PetRegisterView: View {
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @StateObject var viewModel = PetRegisterViewModel(useCase: PetRegisterUseCase())
 
@@ -30,7 +32,12 @@ struct PetRegisterView: View {
     var body: some View {
 
         NavigationStack {
-            if viewModel.isLoading {
+            if viewModel.closeView {
+                Loader()
+                    .task {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+            } else if viewModel.isLoading {
                 Loader()
             } else {
                 ScrollView {

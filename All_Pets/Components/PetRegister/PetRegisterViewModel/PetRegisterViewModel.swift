@@ -10,6 +10,7 @@ import SwiftUI
 final class PetRegisterViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
+    @Published var closeView: Bool = false
     @Published var types: [String: [String]] = [:]
     
     let useCase: PetRegisterUseCaseProtocol
@@ -77,6 +78,7 @@ final class PetRegisterViewModel: ObservableObject {
     }
 
     private func stopLoading() {
+        closeView = true
         setTheardMain {
             self.isLoading = false
         }
