@@ -12,6 +12,8 @@ final class HomeViewModelViewModel: ObservableObject {
     let useCase: HomeUseCaseProtocol
 
     @Published var isLoading: Bool = false
+    @Published var user: User = User()
+    @Published var pets: [Pet] = []
 
     private var callService: Int = .zero
     
@@ -29,7 +31,7 @@ final class HomeViewModelViewModel: ObservableObject {
 
         startLoading()
         useCase.getUser(success: { user in
-
+            self.user = user
         }, failure: { _ in
 
         }, completion: {
@@ -42,7 +44,7 @@ final class HomeViewModelViewModel: ObservableObject {
         startLoading()
 
         useCase.getPets(success: { pets in
-
+            self.pets = pets
         }, failure: { _ in
 
         }, completion: {

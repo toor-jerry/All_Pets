@@ -14,6 +14,10 @@ struct User: Codable {
     enum CodingKeys: String, CodingKey {
         case name = "Nombre"
     }
+
+    init(name: String = "") {
+        self.name = name
+    }
 }
 
 struct Pet: Codable {

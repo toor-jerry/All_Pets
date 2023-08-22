@@ -24,7 +24,9 @@ struct HomeView: View {
                     Loader()
                 } else {
                     VStack {
-
+                        Text("\(String.MsgHello) \(viewModel.user.name)!")
+                            .font(.title)
+                            .fontWeight(.bold)
                     }
                     .navigationDestination(isPresented: $showPetRegister, destination: {
                         PetRegisterView()

@@ -31,4 +31,5 @@ extension String {
     static let MsgSelectTypePet = "Seleccione una raza"
     static let MsgDateBirthDay = "Fecha de nacimiento"
     static let MsgAddPet = "Añadir Mascota"
+    static let MsgHello = "Hola"
 }
