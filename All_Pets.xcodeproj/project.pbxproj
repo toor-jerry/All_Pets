@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D204B41C2A8EBA4200DBD015 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D204B41B2A8EBA4200DBD015 /* FirebaseStorage */; };
+		D22E84322A9436C200196AF6 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E84312A9436C200196AF6 /* PetModel.swift */; };
+		D22E84342A9436DE00196AF6 /* VaccinationCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E84332A9436DE00196AF6 /* VaccinationCardModel.swift */; };
 		D24149B02A8569E800E40EBB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AB2A8569E800E40EBB /* Login.swift */; };
 		D24149B12A8569E800E40EBB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AD2A8569E800E40EBB /* LoginViewModel.swift */; };
 		D24149B42A85A92100E40EBB /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149B32A85A92100E40EBB /* LoginFormView.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D22E84312A9436C200196AF6 /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
+		D22E84332A9436DE00196AF6 /* VaccinationCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationCardModel.swift; sourceTree = "<group>"; };
 		D24149AB2A8569E800E40EBB /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D24149AD2A8569E800E40EBB /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D24149B32A85A92100E40EBB /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
@@ -318,6 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				D24EE6012A8F2BA0008E3013 /* UserModel.swift */,
+				D22E84312A9436C200196AF6 /* PetModel.swift */,
+				D22E84332A9436DE00196AF6 /* VaccinationCardModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -570,6 +576,8 @@
 				D24149B12A8569E800E40EBB /* LoginViewModel.swift in Sources */,
 				D24149C82A86E76500E40EBB /* SignOutUseCase.swift in Sources */,
 				D2E143E72A83F9780096457C /* AuthLoginView.swift in Sources */,
+				D22E84342A9436DE00196AF6 /* VaccinationCardModel.swift in Sources */,
+				D22E84322A9436C200196AF6 /* PetModel.swift in Sources */,
 				D24149C22A86B04100E40EBB /* Profile.swift in Sources */,
 				D24149B62A85AC6200E40EBB /* HubView.swift in Sources */,
 				D24EE6062A8F2BA0008E3013 /* HomeView.swift in Sources */,
