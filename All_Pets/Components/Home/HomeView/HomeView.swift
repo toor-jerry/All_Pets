@@ -77,7 +77,7 @@ struct HomeView: View {
             .presentationDetents([.medium, .large])
         }
         .onAppear {
-            viewModel.getUser()
+            viewModel.getInitData()
         }
     }
 }

@@ -8,12 +8,11 @@
 import Firebase
 
 struct User: Codable {
+
     let name: String
-    var pets: [Pet]?
 
     enum CodingKeys: String, CodingKey {
         case name = "Nombre"
-        case pets = "Mascotas"
     }
 }
 
