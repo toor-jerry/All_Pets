@@ -10,6 +10,7 @@ import Firebase
 
 struct PetRegister: Codable {
 
+    var id: String?
     var birthDate: Timestamp
     var pet: String
     var petType: String?

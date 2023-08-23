@@ -82,8 +82,12 @@ extension PetRegisterUseCase: PetRegisterProtocol {
             
             do {
                 let newPet = try pets.addDocument(from: data)
+
+                let newPetID = newPet.documentID
+
+                pets.document(newPetID).setData(["id": newPetID], merge: true)
                 
-                success(newPet.documentID)
+                success(newPetID)
                 
             } catch {
                 failure(NetworkingServerErrors.internalServerError)
