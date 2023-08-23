@@ -14,6 +14,7 @@ final class HomeViewModelViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var user: User = User()
     @Published var pets: [Pet] = []
+    private var idPet: String?
 
     private var callService: Int = .zero
     
@@ -45,11 +46,48 @@ final class HomeViewModelViewModel: ObservableObject {
 
         useCase.getPets(success: { pets in
             self.pets = pets
+
+            if let idPet = pets.first?.id, !idPet.isEmpty {
+                self.preFetchVaccinationCard(idPet)
+            }
         }, failure: { _ in
 
         }, completion: {
             self.stopLoading()
         })
+    }
+
+    private func preFetchVaccinationCard(_ idPet: String) {
+
+        if let _ = pets.first(where: { $0.id == idPet && ($0.cardsVaccination == nil || $0.cardsVaccination!.isEmpty) }) {
+            self.idPet = idPet
+            getVaccinationCard(idPet)
+        }
+    }
+
+
+    private func getVaccinationCard(_ idPet: String) {
+
+        startLoading()
+
+        useCase.getVaccinationCard(idPet,
+                                   success: { vaccinationCards in
+            self.addVaccinationCards(vaccinationCards)
+        }, failure: { _ in
+
+        }, completion: {
+            self.stopLoading()
+        })
+    }
+
+    private func addVaccinationCards(_ vaccinationCards: [VaccinationCardModel]) {
+        guard let idPet = self.idPet, !idPet.isEmpty else {
+            return
+        }
+
+        if let petIndex = pets.firstIndex(where: { $0.id == idPet }) {
+            pets[petIndex].cardsVaccination = vaccinationCards
+        }
     }
 
     private func startLoading() {

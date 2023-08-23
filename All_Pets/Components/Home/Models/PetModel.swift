@@ -9,6 +9,7 @@ import Firebase
 
 struct Pet: Codable {
 
+    var id: String
     var birthDate: Timestamp
     var pet: String
     var petType: String?
@@ -17,6 +18,7 @@ struct Pet: Codable {
     var cardsVaccination: [VaccinationCardModel]?
 
     enum CodingKeys: String, CodingKey {
+        case id
         case name = "Nombre"
         case birthDate = "Fecha_Nacimiento"
         case photoURL = "ImgUrl"
