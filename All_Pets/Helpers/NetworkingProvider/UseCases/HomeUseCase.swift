@@ -21,7 +21,14 @@ protocol GetPetsProtocol: AnyObject {
                  completion: @escaping () -> Void)
 }
 
-protocol HomeUseCaseProtocol: GetUserProtocol, GetPetsProtocol { }
+protocol GetVaccinationCardProtocol: AnyObject {
+    func getVaccinationCard(_ idPet: String,
+                            success: @escaping (_ vaccinationCard: [VaccinationCardModel]) -> Void,
+                            failure: @escaping (Error) -> Void,
+                            completion: @escaping () -> Void)
+}
+
+protocol HomeUseCaseProtocol: GetUserProtocol, GetPetsProtocol, GetVaccinationCardProtocol { }
 
 final class HomeUseCase: HomeUseCaseProtocol { }
 
@@ -86,13 +93,57 @@ extension HomeUseCase: GetPetsProtocol {
                     for document in querySnapshot?.documents ?? [] {
                         do {
                             let pet = try document.data(as: Pet.self)
-                                pets.append(pet)
+                            pets.append(pet)
                         } catch {
                             print("Errors: ", NetworkingClientErrors.decodingError)
                         }
                     }
 
                     success(pets)
+                }
+
+                completion()
+            }
+        } else {
+            failure(NetworkingClientErrors.requestInvalid)
+            completion()
+        }
+    }
+}
+
+
+extension HomeUseCase: GetVaccinationCardProtocol {
+
+    func getVaccinationCard(_ idPet: String,
+                            success: @escaping ([VaccinationCardModel]) -> Void,
+                            failure: @escaping (Error) -> Void,
+                            completion: @escaping () -> Void) {
+
+        if let idUser = Auth.auth().currentUser?.uid {
+
+            let db = Firestore.firestore()
+
+            let vaccinationCardCollection = db.collection(Endpoint.usersCollection.urlString)
+                .document(idUser)
+                .collection(Endpoint.petsCollection.urlString).document(idPet).collection(Endpoint.vaccinationCard.urlString)
+
+            vaccinationCardCollection.getDocuments { querySnapshot, error in
+
+                if let error = error {
+                    failure(error)
+                } else {
+                    var cards: [VaccinationCardModel] = []
+
+                    for document in querySnapshot?.documents ?? [] {
+                        do {
+                            let card = try document.data(as: VaccinationCardModel.self)
+                            cards.append(card)
+                        } catch {
+                            print("Errors: ", NetworkingClientErrors.decodingError)
+                        }
+                    }
+
+                    success(cards)
                 }
 
                 completion()

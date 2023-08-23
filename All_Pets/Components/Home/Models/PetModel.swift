@@ -14,6 +14,7 @@ struct Pet: Codable {
     var petType: String?
     var name: String?
     var photoURL: String?
+    var cardsVaccination: [VaccinationCardModel]?
 
     enum CodingKeys: String, CodingKey {
         case name = "Nombre"
