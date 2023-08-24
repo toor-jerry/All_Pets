@@ -12,7 +12,6 @@ struct HomeView: View {
     @StateObject var viewModel = HomeViewModelViewModel(useCase: HomeUseCase())
 
     @State private var showingCredits = false
-    @State private var image = UIImage()
     @State private var showPetRegister: Bool = false
 
     var body: some View {
@@ -33,22 +32,42 @@ struct HomeView: View {
                     })
                     .toolbar(content: {
                         ToolbarItem(placement: .navigationBarLeading) {
-                            Button(action: {
-                                showingCredits.toggle()
-                            }, label: {
-                                HStack {
-                                    Image(uiImage: self.image)
-                                        .resizable()
-                                        .cornerRadius(50)
-                                        .padding(.all, 4)
-                                        .frame(width: 40, height: 40)
-                                        .background(Color.black.opacity(0.2))
-                                        .aspectRatio(contentMode: .fill)
-                                        .clipShape(Circle())
-                                    Text("Nombre mascota")
-                                    Image(systemName: "arrowtriangle.down.fill")
-                                }
-                            })
+                            if let pet = viewModel.petSelected {
+                                Button(action: {
+                                    showingCredits.toggle()
+                                }, label: {
+
+                                    HStack {
+                                        if let imageUrl = viewModel.petSelected?.photoURL {
+                                            AsyncImage(url: URL(string: imageUrl)) { image in
+                                                image
+                                                    .resizable()
+                                                    .modifier(textProfileBackground())
+                                            } placeholder: {
+                                                Image(systemName: "photo.fill")
+                                                    .resizable()
+                                                    .modifier(textProfileBackground())
+                                            }
+
+                                        } else {
+
+                                            Image(viewModel.petSelected?.pet ?? "photo.fill")
+                                                .resizable()
+                                                .modifier(textProfileBackground())
+                                        }
+                                        Text(pet.name ?? "")
+                                        Image(systemName: "arrowtriangle.down.fill")
+                                    }
+                                })
+                            } else {
+                                Button(action: {
+                                    showPetRegister.toggle()
+                                }, label: {
+                                    Text("Agregar mascota")
+                                        .modifier(textStylePrincipal())
+                                })
+                                .modifier(buttonPrincipal())
+                            }
                         }
                     })
                 }

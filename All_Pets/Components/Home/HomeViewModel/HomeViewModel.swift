@@ -14,6 +14,7 @@ final class HomeViewModelViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var user: User = User()
     @Published var pets: [Pet] = []
+    @Published var petSelected: Pet?
     private var idPet: String?
 
     private var callService: Int = .zero
@@ -45,7 +46,9 @@ final class HomeViewModelViewModel: ObservableObject {
         startLoading()
 
         useCase.getPets(success: { pets in
+
             self.pets = pets
+            self.petSelected = pets.first
 
             if let idPet = pets.first?.id, !idPet.isEmpty {
                 self.preFetchVaccinationCard(idPet)

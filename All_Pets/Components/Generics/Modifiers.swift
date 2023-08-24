@@ -7,6 +7,32 @@
 
 import SwiftUI
 
+// - textProfileBackground
+
+struct textProfileBackground_example: View {
+
+    var body: some View {
+        VStack {
+            Text("Example on text")
+                .modifier(textStylePrincipal())
+        }
+        .background(.black)
+    }
+}
+
+struct textProfileBackground: ViewModifier {
+
+    func body(content: Content) -> some View {
+        content
+            .cornerRadius(50)
+            .padding(.all, 4)
+            .frame(width: 40, height: 40)
+            .background(Color.black.opacity(0.2))
+            .aspectRatio(contentMode: .fill)
+            .clipShape(Circle())
+    }
+}
+
 // - textStylePrincipal
 
 struct textStylePrincipal_example: View {
