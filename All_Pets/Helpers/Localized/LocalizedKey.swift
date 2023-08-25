@@ -32,4 +32,5 @@ extension String {
     static let MsgDateBirthDay = "Fecha de nacimiento"
     static let MsgAddPet = "Añadir Mascota"
     static let MsgHello = "Hola"
+    static let MsgAddNewPet = "Agregar mascota"
 }

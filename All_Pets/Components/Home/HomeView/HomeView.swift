@@ -13,69 +13,77 @@ struct HomeView: View {
 
     @State private var showingCredits = false
     @State private var showPetRegister: Bool = false
+    @State var refreshView: Bool = false
 
     var body: some View {
-        VStack {
+        NavigationStack {
 
-            NavigationStack {
+            if viewModel.isLoading {
+                Loader()
+            } else {
 
-                if viewModel.isLoading {
-                    Loader()
-                } else {
-                    VStack {
-                        Text("\(String.MsgHello) \(viewModel.user.name)!")
-                            .font(.title)
-                            .fontWeight(.bold)
+                VStack {
+                    Text("\(String.MsgHello) \(viewModel.user.name)!")
+                        .font(.title)
+                        .fontWeight(.bold)
+                }
+                .onAppear {
+                    if refreshView {
+                        refreshView = false
+                        viewModel.getInitData()
                     }
-                    .navigationDestination(isPresented: $showPetRegister, destination: {
-                        PetRegisterView()
-                    })
-                    .toolbar(content: {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            if let pet = viewModel.petSelected {
-                                Button(action: {
-                                    showingCredits.toggle()
-                                }, label: {
+                }
+                .navigationDestination(isPresented: $showPetRegister, destination: {
+                    PetRegisterView(showPetRegisterView: $refreshView)
+                })
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if let pet = viewModel.petSelected {
+                            Button(action: {
+                                showingCredits.toggle()
+                            }, label: {
 
-                                    HStack {
-                                        if let imageUrl = viewModel.petSelected?.photoURL {
-                                            AsyncImage(url: URL(string: imageUrl)) { image in
-                                                image
-                                                    .resizable()
-                                                    .modifier(textProfileBackground())
-                                            } placeholder: {
-                                                Image(systemName: "photo.fill")
-                                                    .resizable()
-                                                    .modifier(textProfileBackground())
-                                            }
-
-                                        } else {
-
-                                            Image(viewModel.petSelected?.pet ?? "photo.fill")
+                                HStack {
+                                    if let imageUrl = viewModel.petSelected?.photoURL {
+                                        AsyncImage(url: URL(string: imageUrl)) { image in
+                                            image
+                                                .resizable()
+                                                .modifier(textProfileBackground())
+                                        } placeholder: {
+                                            Image(systemName: "photo.fill")
                                                 .resizable()
                                                 .modifier(textProfileBackground())
                                         }
-                                        Text(pet.name ?? "")
-                                        Image(systemName: "arrowtriangle.down.fill")
-                                    }
-                                })
-                            } else {
-                                Button(action: {
-                                    showPetRegister.toggle()
-                                }, label: {
-                                    Text("Agregar mascota")
-                                        .modifier(textStylePrincipal())
-                                })
-                                .modifier(buttonPrincipal())
-                            }
-                        }
-                    })
-                }
 
+                                    } else {
+
+                                        Image(viewModel.petSelected?.pet ?? "photo.fill")
+                                            .resizable()
+                                            .modifier(textProfileBackground())
+                                    }
+                                    Text(pet.name ?? "")
+                                    Image(systemName: "arrowtriangle.down.fill")
+                                }
+                            })
+                        } else {
+                            Button(action: {
+                                showPetRegister.toggle()
+                            }, label: {
+                                Text(String.MsgAddNewPet)
+                                    .fontWeight(.bold)
+                                    .padding(5)
+                            })
+                            .foregroundColor(.white)
+                            .background(Color.principal)
+                            .cornerRadius(50)
+                            .modifier(shadowStyle1())
+                        }
+                    }
+                }
             }
 
-
-        }.sheet(isPresented: $showingCredits) {
+        }
+        .sheet(isPresented: $showingCredits) {
             VStack {
                 Button(action: {
                     showingCredits.toggle()

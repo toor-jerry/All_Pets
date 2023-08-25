@@ -28,9 +28,9 @@ struct PetRegisterView: View {
     @State private var name: String = ""
     @State private var image = UIImage()
     @State private var showUploadPhoto = false
+    @Binding var showPetRegisterView: Bool
 
     var body: some View {
-
         NavigationStack {
             if viewModel.closeView {
                 Loader()
@@ -127,7 +127,8 @@ struct PetRegisterView: View {
                 }
             }
         }
-        .onAppear {
+        .task {
+            showPetRegisterView = true
             viewModel.getPetsType()
         }
         .sheet(isPresented: $showUploadPhoto) {
@@ -169,6 +170,6 @@ struct AnimalIconView: View {
 
 struct PetRegisterViewPreviews: PreviewProvider {
     static var previews: some View {
-        PetRegisterView()
+        PetRegisterView(showPetRegisterView: .constant(true))
     }
 }

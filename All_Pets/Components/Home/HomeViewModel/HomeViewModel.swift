@@ -24,6 +24,9 @@ final class HomeViewModelViewModel: ObservableObject {
     }
 
     func getInitData() {
+        if isLoading {
+            return
+        }
 
         getUser()
         getPets()
