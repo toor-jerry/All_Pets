@@ -51,7 +51,7 @@ struct HomeView: View {
 
                                 Spacer()
 
-                                Text(String.MsgRequestDigitalProof)
+                                Text(String.MsgVaccinationCard)
                                     .foregroundColor(.black)
                             }
                         })
