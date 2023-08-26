@@ -27,7 +27,6 @@ final class VaccinationCardViewModel: ObservableObject {
         useCase.getVaccinationCard(idPet,
                                    success: { vaccinationCards in
             self.cards =  vaccinationCards
-            self.cards.insert(contentsOf: vaccinationCards, at: 0)
         }, failure: { _ in
 
         }, completion: {
