@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D204B41C2A8EBA4200DBD015 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D204B41B2A8EBA4200DBD015 /* FirebaseStorage */; };
 		D22E84322A9436C200196AF6 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E84312A9436C200196AF6 /* PetModel.swift */; };
-		D22E84342A9436DE00196AF6 /* VaccinationCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E84332A9436DE00196AF6 /* VaccinationCardModel.swift */; };
 		D24149B02A8569E800E40EBB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AB2A8569E800E40EBB /* Login.swift */; };
 		D24149B12A8569E800E40EBB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AD2A8569E800E40EBB /* LoginViewModel.swift */; };
 		D24149B42A85A92100E40EBB /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149B32A85A92100E40EBB /* LoginFormView.swift */; };
@@ -23,6 +22,7 @@
 		D24149D22A86F6DD00E40EBB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149CD2A86F6DD00E40EBB /* SignUpView.swift */; };
 		D24149D32A86F6DD00E40EBB /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149CF2A86F6DD00E40EBB /* SignUpModel.swift */; };
 		D24149D42A86F6DD00E40EBB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149D12A86F6DD00E40EBB /* SignUpViewModel.swift */; };
+		D24883492A9AAB66006BC149 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24883482A9AAB66006BC149 /* View+Extension.swift */; };
 		D24EE6042A8F2BA0008E3013 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */; };
 		D24EE6052A8F2BA0008E3013 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6012A8F2BA0008E3013 /* UserModel.swift */; };
 		D24EE6062A8F2BA0008E3013 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6032A8F2BA0008E3013 /* HomeView.swift */; };
@@ -69,7 +69,6 @@
 
 /* Begin PBXFileReference section */
 		D22E84312A9436C200196AF6 /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
-		D22E84332A9436DE00196AF6 /* VaccinationCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationCardModel.swift; sourceTree = "<group>"; };
 		D24149AB2A8569E800E40EBB /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D24149AD2A8569E800E40EBB /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D24149B32A85A92100E40EBB /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		D24149CD2A86F6DD00E40EBB /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		D24149CF2A86F6DD00E40EBB /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		D24149D12A86F6DD00E40EBB /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		D24883482A9AAB66006BC149 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D24EE6012A8F2BA0008E3013 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D24EE6032A8F2BA0008E3013 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -332,7 +332,6 @@
 			children = (
 				D24EE6012A8F2BA0008E3013 /* UserModel.swift */,
 				D22E84312A9436C200196AF6 /* PetModel.swift */,
-				D22E84332A9436DE00196AF6 /* VaccinationCardModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -489,6 +488,7 @@
 			children = (
 				D2AC45692A8409CB003958FC /* Array+Extension.swift */,
 				D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */,
+				D24883482A9AAB66006BC149 /* View+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -620,7 +620,6 @@
 				D24149B12A8569E800E40EBB /* LoginViewModel.swift in Sources */,
 				D24149C82A86E76500E40EBB /* SignOutUseCase.swift in Sources */,
 				D2E143E72A83F9780096457C /* AuthLoginView.swift in Sources */,
-				D22E84342A9436DE00196AF6 /* VaccinationCardModel.swift in Sources */,
 				D22E84322A9436C200196AF6 /* PetModel.swift in Sources */,
 				D24149C22A86B04100E40EBB /* Profile.swift in Sources */,
 				D24149B62A85AC6200E40EBB /* HubView.swift in Sources */,
@@ -655,6 +654,7 @@
 				D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */,
 				D2AC455E2A840288003958FC /* RequestType.swift in Sources */,
 				D2E6F8192A855C4E0074D84E /* Constants.swift in Sources */,
+				D24883492A9AAB66006BC149 /* View+Extension.swift in Sources */,
 				D24149C42A86B08A00E40EBB /* SignUpUseCase.swift in Sources */,
 				D24149D42A86F6DD00E40EBB /* SignUpViewModel.swift in Sources */,
 				D2AC456C2A840A23003958FC /* ObservableObject+Extension.swift in Sources */,

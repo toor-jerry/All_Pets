@@ -8,49 +8,49 @@
 import SwiftUI
 
 struct HomeView: View {
-
+    
     @StateObject var viewModel = HomeViewModelViewModel(useCase: HomeUseCase())
-
+    
     @State private var showingCredits = false
     @State private var showPetRegister: Bool = false
     @State var refreshView: Bool = false
-
+    
     private let sizeImageButtons: CGFloat = 50
-
+    
     var body: some View {
         NavigationStack {
-
+            
             if viewModel.isLoading {
                 Loader()
             } else {
-
+                
                 VStack {
                     Text("\(String.MsgHello) \(viewModel.user.name)!")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.top, 50)
-
+                    
                     Text(viewModel.msgHomeView ?? "")
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(Color.principal)
                         .padding(.top, 38)
-
+                    
                     Spacer()
                     
                     HStack(spacing: 20) {
-                        Button(action: {
-
-                        }, label: {
+                        
+                        NavigationLink(destination: VaccinationCardView(idPet: viewModel.petSelected?.id ?? ""),
+                                       label: {
                             VStack {
                                 Image(systemName: "bolt.heart")
                                     .resizable()
                                     .foregroundColor(.green.opacity(0.5))
                                     .frame(width: sizeImageButtons, height: sizeImageButtons)
-
+                                
                                 Spacer()
-
+                                
                                 Text(String.MsgVaccinationCard)
                                     .foregroundColor(.black)
                             }
@@ -60,17 +60,17 @@ struct HomeView: View {
                         .background(.white)
                         .cornerRadius(8)
                         .modifier(shadowStyle1())
-
-                        NavigationLink(destination: VaccinationCardView(),
+                        
+                        NavigationLink(destination: EmptyView(),
                                        label: {
                             VStack {
                                 Image(systemName: "newspaper")
                                     .resizable()
                                     .foregroundColor(.blue.opacity(0.5))
                                     .frame(width: sizeImageButtons, height: sizeImageButtons)
-
+                                
                                 Spacer()
-
+                                
                                 Text(String.MsgProceedings)
                                     .foregroundColor(.black)
                             }
@@ -84,10 +84,10 @@ struct HomeView: View {
                     .padding(.horizontal, 40)
                     .padding(.top, 90)
                     .padding(.bottom, 20)
-
-
+                    
+                    
                     Button(action: {
-
+                        
                     }, label: {
                         HStack {
                             Image(systemName: "note.text")
@@ -122,7 +122,7 @@ struct HomeView: View {
                             Button(action: {
                                 showingCredits.toggle()
                             }, label: {
-
+                                
                                 HStack {
                                     if let imageUrl = viewModel.petSelected?.photoURL {
                                         AsyncImage(url: URL(string: imageUrl)) { image in
@@ -134,9 +134,9 @@ struct HomeView: View {
                                                 .resizable()
                                                 .modifier(textProfileBackground())
                                         }
-
+                                        
                                     } else {
-
+                                        
                                         Image(viewModel.petSelected?.pet ?? "photo.fill")
                                             .resizable()
                                             .modifier(textProfileBackground())
@@ -161,7 +161,7 @@ struct HomeView: View {
                     }
                 }
             }
-
+            
         }
         .sheet(isPresented: $showingCredits) {
             VStack {
@@ -177,10 +177,10 @@ struct HomeView: View {
                             .font(.title3)
                         Spacer()
                     }
-
+                    
                 })
                 .foregroundColor(.black)
-
+                
                 Spacer()
             }
             .presentationDetents([.medium, .large])

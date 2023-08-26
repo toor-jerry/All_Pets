@@ -10,6 +10,7 @@ import SwiftUI
 final class VaccinationCardViewModel: ObservableObject {
 
     @Published var isLoading: Bool = false
+    @Published var cards: [VaccinationCardModel] = []
 
     let useCase: VaccinationCardUseCase
 
@@ -17,16 +18,22 @@ final class VaccinationCardViewModel: ObservableObject {
         self.useCase = useCase
     }
 
-    func getCards() {
+    func getCards(_ idPet: String) {
+        if idPet.isEmpty {
+            return
+        }
+        
         isLoading = true
-        useCase.getVaccinationCard { vaccinationCards in
+        useCase.getVaccinationCard(idPet,
+                                   success: { vaccinationCards in
+            self.cards =  vaccinationCards
+            self.cards.insert(contentsOf: vaccinationCards, at: 0)
+        }, failure: { _ in
 
-        } failure: { _ in
-
-        } completion: {
+        }, completion: {
             self.setTheardMain {
                 self.isLoading = false
             }
-        }
+        })
     }
 }

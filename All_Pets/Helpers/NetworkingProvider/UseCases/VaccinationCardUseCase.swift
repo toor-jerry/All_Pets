@@ -9,47 +9,51 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestoreSwift
 
-protocol VaccinationCardProtocol: AnyObject {
-    func getVaccinationCard(success: @escaping (_ cards: [VaccinationCard]) -> Void,
+protocol GetVaccinationCardProtocol: AnyObject {
+    func getVaccinationCard(_ idPet: String,
+                            success: @escaping (_ vaccinationCard: [VaccinationCardModel]) -> Void,
                             failure: @escaping (Error) -> Void,
                             completion: @escaping () -> Void)
 }
 
-protocol VaccinationCardUseCaseProtocols: VaccinationCardProtocol { }
+protocol VaccinationCardProtocols: GetVaccinationCardProtocol { }
 
-final class VaccinationCardUseCase: VaccinationCardUseCaseProtocols { }
+final class VaccinationCardUseCase: VaccinationCardProtocols { }
 
-extension VaccinationCardUseCase: VaccinationCardProtocol {
-    
-    func getVaccinationCard(success: @escaping ([VaccinationCard]) -> Void,
+extension VaccinationCardUseCase: GetVaccinationCardProtocol {
+
+    func getVaccinationCard(_ idPet: String,
+                            success: @escaping ([VaccinationCardModel]) -> Void,
                             failure: @escaping (Error) -> Void,
                             completion: @escaping () -> Void) {
-        
+
         if let idUser = Auth.auth().currentUser?.uid {
-            
+
             let db = Firestore.firestore()
-            
-            let citesCollection = db.collection(Endpoint.citesCollection.urlString).whereField("userId", isEqualTo: idUser)
-            
-            citesCollection.getDocuments { querySnapshot, error in
-                
+
+            let vaccinationCardCollection = db.collection(Endpoint.usersCollection.urlString)
+                .document(idUser)
+                .collection(Endpoint.petsCollection.urlString).document(idPet).collection(Endpoint.vaccinationCard.urlString)
+
+            vaccinationCardCollection.getDocuments { querySnapshot, error in
+
                 if let error = error {
                     failure(error)
                 } else {
-                    var cards: [VaccinationCard] = []
-                    
+                    var cards: [VaccinationCardModel] = []
+
                     for document in querySnapshot?.documents ?? [] {
                         do {
-                            let card = try document.data(as: VaccinationCard.self)
+                            let card = try document.data(as: VaccinationCardModel.self)
                             cards.append(card)
                         } catch {
                             print("Errors: ", NetworkingClientErrors.decodingError)
                         }
                     }
-                    
+
                     success(cards)
                 }
-                
+
                 completion()
             }
         } else {
@@ -58,3 +62,55 @@ extension VaccinationCardUseCase: VaccinationCardProtocol {
         }
     }
 }
+
+/*
+ protocol CiteProtocol: AnyObject {
+ func getCites(success: @escaping (_ cites: [CiteModel]) -> Void,
+ failure: @escaping (Error) -> Void,
+ completion: @escaping () -> Void)
+ }
+
+ protocol CitesProtocols: CiteProtocol { }
+
+ final class CiteUseCase: CitesProtocols { }
+
+ extension CiteUseCase: CiteProtocol {
+
+ func getCites(success: @escaping ([CiteModel]) -> Void,
+ failure: @escaping (Error) -> Void,
+ completion: @escaping () -> Void) {
+
+ if let idUser = Auth.auth().currentUser?.uid {
+
+ let db = Firestore.firestore()
+
+ let citesCollection = db.collection(Endpoint.citesCollection.urlString).whereField("userId", isEqualTo: idUser)
+
+ citesCollection.getDocuments { querySnapshot, error in
+
+ if let error = error {
+ failure(error)
+ } else {
+ var cards: [CiteModel] = []
+
+ for document in querySnapshot?.documents ?? [] {
+ do {
+ let card = try document.data(as: CiteModel.self)
+ cards.append(card)
+ } catch {
+ print("Errors: ", NetworkingClientErrors.decodingError)
+ }
+ }
+
+ success(cards)
+ }
+
+ completion()
+ }
+ } else {
+ failure(NetworkingClientErrors.requestInvalid)
+ completion()
+ }
+ }
+ }
+ */
