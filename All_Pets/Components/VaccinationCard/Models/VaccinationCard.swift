@@ -38,11 +38,11 @@ extension VaccinationCardStatus {
 
         switch self {
         case .current:
-            color = Color(red: 208, green: 236, blue: 200)
+            color = Color(uiColor: UIColor(red: 0.81, green: 0.93, blue: 0.78, alpha: 1))
         case .pending:
-            color = Color(red: 212, green: 210, blue: 210)
+            color = Color(uiColor: UIColor(red: 1, green: 0.85, blue: 0.85, alpha: 1))
         case .overdue:
-            color = Color(red: 255, green: 219, blue: 218)
+            color = Color(uiColor: UIColor(red: 0.83, green: 0.82, blue: 0.82, alpha: 1))
         }
 
         return color
