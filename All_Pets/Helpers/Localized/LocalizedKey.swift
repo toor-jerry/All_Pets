@@ -35,4 +35,5 @@ extension String {
     static let MsgAddNewPet = "Agregar mascota"
     static let MsgNoPetsRegistered = "No tienes mascotas registradas"
     static let MsgRequestDigitalProof = "Solicitar constancia digital"
+    static let MsgProceedings = "Expediente"
 }

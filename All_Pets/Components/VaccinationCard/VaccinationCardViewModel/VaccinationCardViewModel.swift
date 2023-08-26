@@ -7,23 +7,26 @@
 
 import SwiftUI
 
-final class VaccinationCardViewModelViewModel: ObservableObject {
+final class VaccinationCardViewModel: ObservableObject {
 
-//    let useCase: VaccinationCardViewModelUseCase
-//
-//    init(useCase: VaccinationCardViewModelUseCase) {
-//        self.useCase = useCase
-//    }
+    @Published var isLoading: Bool = false
 
-//    func auth() {
-//        isLoading = true
-//        useCase.preAuth { isLoggedIn in
-//            self.isLoggedIn = isLoggedIn
-//        } error: { _ in
-//            self.isLoggedIn = false
-//        } completion: {
-//            self.setTheardMain {
-//                self.isLoading = false
-//            }
-//        }
+    let useCase: VaccinationCardUseCase
+
+    init(useCase: VaccinationCardUseCase) {
+        self.useCase = useCase
+    }
+
+    func getCards() {
+        isLoading = true
+        useCase.getVaccinationCard { vaccinationCards in
+
+        } failure: { _ in
+
+        } completion: {
+            self.setTheardMain {
+                self.isLoading = false
+            }
+        }
+    }
 }

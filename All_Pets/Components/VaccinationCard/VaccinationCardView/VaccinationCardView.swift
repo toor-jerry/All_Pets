@@ -9,10 +9,19 @@ import SwiftUI
 
 struct VaccinationCardView: View {
 
-//    @StateObject var viewModel = VaccinationCardViewViewModel(useCase: VaccinationCardViewUseCase())
+    @StateObject var viewModel = VaccinationCardViewModel(useCase: VaccinationCardUseCase())
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if viewModel.isLoading {
+                Loader()
+            } else {
+                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            }
+        }
+        .task {
+            viewModel.getCards()
+        }
     }
 }
 

@@ -5,12 +5,22 @@
 //  Copyright © 2023 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Foundation
+import Firebase
 
 struct VaccinationCard: Codable {
-    var message: String?
+    var day: Timestamp
+    var idVet: String
+    var patient: String
+    var status: String
+    var userId: String
+    var reason: String?
 
     enum CodingKeys: String, CodingKey {
-        case message = "mensaje"
+        case day = "day"
+        case idVet = "idVeterinaria"
+        case patient = "patient"
+        case status = "status"
+        case userId = "userId"
+        case reason = "reason"
     }
 }

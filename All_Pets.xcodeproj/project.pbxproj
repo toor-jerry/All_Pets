@@ -40,6 +40,7 @@
 		D29F03892A99C7A300C455F2 /* VaccinationCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F03842A99C7A300C455F2 /* VaccinationCardViewModel.swift */; };
 		D29F038A2A99C7A300C455F2 /* VaccinationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F03862A99C7A300C455F2 /* VaccinationCard.swift */; };
 		D29F038B2A99C7A300C455F2 /* VaccinationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F03882A99C7A300C455F2 /* VaccinationCardView.swift */; };
+		D29F038D2A99CA7400C455F2 /* VaccinationCardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F038C2A99CA7400C455F2 /* VaccinationCardUseCase.swift */; };
 		D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC45592A840229003958FC /* NetworkingClientErrors.swift */; };
 		D2AC455C2A840241003958FC /* NetworkingServerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC455B2A840241003958FC /* NetworkingServerErrors.swift */; };
 		D2AC455E2A840288003958FC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC455D2A840288003958FC /* RequestType.swift */; };
@@ -100,6 +101,7 @@
 		D29F03842A99C7A300C455F2 /* VaccinationCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCardViewModel.swift; sourceTree = "<group>"; };
 		D29F03862A99C7A300C455F2 /* VaccinationCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCard.swift; sourceTree = "<group>"; };
 		D29F03882A99C7A300C455F2 /* VaccinationCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCardView.swift; sourceTree = "<group>"; };
+		D29F038C2A99CA7400C455F2 /* VaccinationCardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationCardUseCase.swift; sourceTree = "<group>"; };
 		D2AC45592A840229003958FC /* NetworkingClientErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClientErrors.swift; sourceTree = "<group>"; };
 		D2AC455B2A840241003958FC /* NetworkingServerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServerErrors.swift; sourceTree = "<group>"; };
 		D2AC455D2A840288003958FC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 				D24149C72A86E76500E40EBB /* SignOutUseCase.swift */,
 				D28A19CB2A8C01920024C517 /* PetRegisterUseCase.swift */,
 				D24EE6072A8FC370008E3013 /* HomeUseCase.swift */,
+				D29F038C2A99CA7400C455F2 /* VaccinationCardUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				D2E6F8172A855AED0074D84E /* Modifiers.swift in Sources */,
 				D2D928572A889FC0009C5FEE /* Endpoint.swift in Sources */,
 				D24149C12A86B04100E40EBB /* ProfileView.swift in Sources */,
+				D29F038D2A99CA7400C455F2 /* VaccinationCardUseCase.swift in Sources */,
 				D28A19D02A8C56B50024C517 /* ImagePicker.swift in Sources */,
 				D24149D22A86F6DD00E40EBB /* SignUpView.swift in Sources */,
 				D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */,

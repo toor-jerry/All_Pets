@@ -47,6 +47,8 @@ struct HomeView: View {
                                     .foregroundColor(.green.opacity(0.5))
                                     .frame(width: 32, height: 32)
 
+                                Spacer()
+
                                 Text(String.MsgRequestDigitalProof)
                                     .foregroundColor(.black)
                             }
@@ -57,16 +59,17 @@ struct HomeView: View {
                         .cornerRadius(8)
                         .modifier(shadowStyle1())
 
-                        Button(action: {
-
-                        }, label: {
+                        NavigationLink(destination: VaccinationCardView(),
+                                       label: {
                             VStack {
                                 Image(systemName: "newspaper")
                                     .resizable()
                                     .foregroundColor(.blue.opacity(0.5))
                                     .frame(width: 32, height: 32)
 
-                                Text(String.MsgRequestDigitalProof)
+                                Spacer()
+
+                                Text(String.MsgProceedings)
                                     .foregroundColor(.black)
                             }
                         })
@@ -77,6 +80,8 @@ struct HomeView: View {
                         .modifier(shadowStyle1())
                     }
                     .padding(.horizontal, 40)
+                    .padding(.top, 90)
+                    .padding(.bottom, 20)
 
 
                     Button(action: {
