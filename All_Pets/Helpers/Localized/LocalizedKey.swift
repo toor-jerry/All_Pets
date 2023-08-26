@@ -37,4 +37,6 @@ extension String {
     static let MsgRequestDigitalProof = "Solicitar constancia digital"
     static let MsgProceedings = "Expediente"
     static let MsgVaccinationCard = "Cartilla"
+    static let MsgDate = "Fecha"
+    static let MsgProfessionalLiscense = "CP Médico"
 }

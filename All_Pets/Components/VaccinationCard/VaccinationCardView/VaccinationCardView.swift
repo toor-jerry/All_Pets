@@ -27,7 +27,7 @@ struct VaccinationCardView: View {
                                 .fill(.white)
                                 .modifier(shadowStyle1())
                                 .padding(.bottom, 18)
-                                .padding(.horizontal, 10)
+                                .padding(.horizontal, 8)
                         )
                         .listRowSeparator(.hidden)
                     }
@@ -43,46 +43,5 @@ struct VaccinationCardView: View {
 struct VaccinationCardViewPreviews: PreviewProvider {
     static var previews: some View {
         VaccinationCardView(idPet: "")
-    }
-}
-
-struct VaccinationCardCell: View {
-
-    var card: VaccinationCardModel
-
-    var body: some View {
-        HStack {
-            VStack {
-                HStack {
-                    Text("Fecha")
-
-                    Text(card.getDateWithFormat())
-                        .font(.title3)
-                        .fontWeight(.bold)
-                }
-
-                HStack {
-                    Text("CP Médico")
-
-                    Text(card.professionalLicense)
-                        .font(.title3)
-                        .fontWeight(.bold)
-                }
-            }
-
-            VStack {
-                Text(card.status.capitalized)
-                    .foregroundColor(card.getStatus()?.getTextColor())
-                    .fontWeight(.bold)
-                    .padding(10)
-                    .background(card.getStatus()?.getBackgroundColor())
-                    .modifier(CornerRadiusStyle(radius: 18, corners: [.bottomLeft, .topRight]))
-                    .modifier(shadowStyle1())
-
-                Spacer()
-            }
-
-        }
-        .frame(height: 100)
     }
 }
