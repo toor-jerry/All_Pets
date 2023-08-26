@@ -15,6 +15,8 @@ struct HomeView: View {
     @State private var showPetRegister: Bool = false
     @State var refreshView: Bool = false
 
+    private let sizeImageButtons: CGFloat = 50
+
     var body: some View {
         NavigationStack {
 
@@ -45,7 +47,7 @@ struct HomeView: View {
                                 Image(systemName: "bolt.heart")
                                     .resizable()
                                     .foregroundColor(.green.opacity(0.5))
-                                    .frame(width: 32, height: 32)
+                                    .frame(width: sizeImageButtons, height: sizeImageButtons)
 
                                 Spacer()
 
@@ -65,7 +67,7 @@ struct HomeView: View {
                                 Image(systemName: "newspaper")
                                     .resizable()
                                     .foregroundColor(.blue.opacity(0.5))
-                                    .frame(width: 32, height: 32)
+                                    .frame(width: sizeImageButtons, height: sizeImageButtons)
 
                                 Spacer()
 
@@ -91,7 +93,7 @@ struct HomeView: View {
                             Image(systemName: "note.text")
                                 .resizable()
                                 .foregroundColor(.purple.opacity(0.5))
-                                .frame(width: 32, height: 32)
+                                .frame(width: sizeImageButtons, height: sizeImageButtons)
                             Spacer()
                             Text(String.MsgRequestDigitalProof)
                                 .foregroundColor(.black)
