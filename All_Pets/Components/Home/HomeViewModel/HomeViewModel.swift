@@ -14,7 +14,16 @@ final class HomeViewModelViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var user: User = User()
     @Published var pets: [Pet] = []
-    @Published var petSelected: Pet?
+    @Published var petSelected: Pet? {
+        didSet {
+            if let petSelected = petSelected {
+
+            } else {
+                msgHomeView = String.MsgNoPetsRegistered
+            }
+        }
+    }
+    @Published var msgHomeView: String?
     private var idPet: String?
 
     private var callService: Int = .zero

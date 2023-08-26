@@ -26,7 +26,80 @@ struct HomeView: View {
                     Text("\(String.MsgHello) \(viewModel.user.name)!")
                         .font(.title)
                         .fontWeight(.bold)
+                        .padding(.top, 50)
+
+                    Text(viewModel.msgHomeView ?? "")
+                        .multilineTextAlignment(.center)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.principal)
+                        .padding(.top, 38)
+
+                    Spacer()
+                    
+                    HStack(spacing: 20) {
+                        Button(action: {
+
+                        }, label: {
+                            VStack {
+                                Image(systemName: "bolt.heart")
+                                    .resizable()
+                                    .foregroundColor(.green.opacity(0.5))
+                                    .frame(width: 32, height: 32)
+
+                                Text(String.MsgRequestDigitalProof)
+                                    .foregroundColor(.black)
+                            }
+                        })
+                        .font(.title3)
+                        .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
+                        .background(.white)
+                        .cornerRadius(8)
+                        .modifier(shadowStyle1())
+
+                        Button(action: {
+
+                        }, label: {
+                            VStack {
+                                Image(systemName: "newspaper")
+                                    .resizable()
+                                    .foregroundColor(.blue.opacity(0.5))
+                                    .frame(width: 32, height: 32)
+
+                                Text(String.MsgRequestDigitalProof)
+                                    .foregroundColor(.black)
+                            }
+                        })
+                        .font(.title3)
+                        .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
+                        .background(.white)
+                        .cornerRadius(8)
+                        .modifier(shadowStyle1())
+                    }
+                    .padding(.horizontal, 40)
+
+
+                    Button(action: {
+
+                    }, label: {
+                        HStack {
+                            Image(systemName: "note.text")
+                                .resizable()
+                                .foregroundColor(.purple.opacity(0.5))
+                                .frame(width: 32, height: 32)
+                            Spacer()
+                            Text(String.MsgRequestDigitalProof)
+                                .foregroundColor(.black)
+                        }
+                    })
+                    .font(.title3)
+                    .padding(EdgeInsets(top: 27, leading: 20, bottom: 27, trailing: 20))
+                    .background(.white)
+                    .cornerRadius(8)
+                    .modifier(shadowStyle1())
+                    .padding(40)
                 }
+                .background(Color.background)
                 .onAppear {
                     if refreshView {
                         refreshView = false
