@@ -24,13 +24,13 @@ struct HomeView: View {
                 Loader()
             } else {
                 
-                VStack {
+                ScrollView {
                     Text("\(String.MsgHello) \(viewModel.user.name)!")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.top, 50)
                     
-                    Text(viewModel.msgHomeView ?? "")
+                    Text(viewModel.getHomeMsg())
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontWeight(.bold)
@@ -39,7 +39,7 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    HStack(spacing: 20) {
+                    HStack {
                         
                         NavigationLink(destination: VaccinationCardView(idPet: viewModel.petSelected?.id ?? ""),
                                        label: {
@@ -60,7 +60,9 @@ struct HomeView: View {
                         .background(.white)
                         .cornerRadius(8)
                         .modifier(shadowStyle1())
-                        
+
+                        Spacer()
+
                         NavigationLink(destination: EmptyView(),
                                        label: {
                             VStack {
@@ -81,8 +83,7 @@ struct HomeView: View {
                         .cornerRadius(8)
                         .modifier(shadowStyle1())
                     }
-                    .padding(.horizontal, 40)
-                    .padding(.top, 90)
+                    .padding(.top, 60)
                     .padding(.bottom, 20)
                     
                     
@@ -104,8 +105,8 @@ struct HomeView: View {
                     .background(.white)
                     .cornerRadius(8)
                     .modifier(shadowStyle1())
-                    .padding(40)
                 }
+                .padding(.horizontal, 30)
                 .background(Color.background)
                 .onAppear {
                     if refreshView {

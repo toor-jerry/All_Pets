@@ -21,7 +21,13 @@ protocol GetPetsProtocol: AnyObject {
                  completion: @escaping () -> Void)
 }
 
-protocol HomeUseCaseProtocol: GetUserProtocol, GetPetsProtocol { }
+protocol CiteProtocol: AnyObject {
+    func getCites(success: @escaping (_ cites: [CiteModel]) -> Void,
+                  failure: @escaping (Error) -> Void,
+                  completion: @escaping () -> Void)
+}
+
+protocol HomeUseCaseProtocol: GetUserProtocol, GetPetsProtocol, CiteProtocol { }
 
 final class HomeUseCase: HomeUseCaseProtocol { }
 
@@ -93,6 +99,46 @@ extension HomeUseCase: GetPetsProtocol {
                     }
 
                     success(pets)
+                }
+
+                completion()
+            }
+        } else {
+            failure(NetworkingClientErrors.requestInvalid)
+            completion()
+        }
+    }
+}
+
+extension HomeUseCase: CiteProtocol {
+
+    func getCites(success: @escaping ([CiteModel]) -> Void,
+                  failure: @escaping (Error) -> Void,
+                  completion: @escaping () -> Void) {
+
+        if let idUser = Auth.auth().currentUser?.uid {
+
+            let db = Firestore.firestore()
+
+            let citesCollection = db.collection(Endpoint.citesCollection.urlString).whereField("userId", isEqualTo: idUser)
+
+            citesCollection.getDocuments { querySnapshot, error in
+
+                if let error = error {
+                    failure(error)
+                } else {
+                    var cards: [CiteModel] = []
+
+                    for document in querySnapshot?.documents ?? [] {
+                        do {
+                            let card = try document.data(as: CiteModel.self)
+                            cards.append(card)
+                        } catch {
+                            print("Errors: ", NetworkingClientErrors.decodingError)
+                        }
+                    }
+
+                    success(cards)
                 }
 
                 completion()

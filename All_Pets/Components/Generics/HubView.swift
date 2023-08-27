@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HubView: View {
-
+    
     @Binding var section: AuthSections
     @State private var selectedTab = 0
     
