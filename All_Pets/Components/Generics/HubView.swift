@@ -14,7 +14,7 @@ struct HubView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            
+
             HomeView()
                 .modifier(tabItemStyle())
                 .tabItem {
@@ -34,7 +34,7 @@ struct HubView: View {
             .tag(1)
             
             ScrollView {
-                Text("Contenido de la pestaña 3")
+                EmergencyView()
             }
             .modifier(tabItemStyle())
             .tabItem {

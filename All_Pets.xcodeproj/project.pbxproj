@@ -25,6 +25,9 @@
 		D24883492A9AAB66006BC149 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24883482A9AAB66006BC149 /* View+Extension.swift */; };
 		D248834D2A9AC722006BC149 /* VaccinationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248834C2A9AC722006BC149 /* VaccinationCellView.swift */; };
 		D248834F2A9AE12D006BC149 /* CiteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248834E2A9AE12D006BC149 /* CiteModel.swift */; };
+		D24883592A9D603A006BC149 /* EmergencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24883542A9D603A006BC149 /* EmergencyViewModel.swift */; };
+		D248835A2A9D603A006BC149 /* Emergency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24883562A9D603A006BC149 /* Emergency.swift */; };
+		D248835B2A9D603A006BC149 /* EmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24883582A9D603A006BC149 /* EmergencyView.swift */; };
 		D24EE6042A8F2BA0008E3013 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */; };
 		D24EE6052A8F2BA0008E3013 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6012A8F2BA0008E3013 /* UserModel.swift */; };
 		D24EE6062A8F2BA0008E3013 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6032A8F2BA0008E3013 /* HomeView.swift */; };
@@ -87,6 +90,9 @@
 		D24883482A9AAB66006BC149 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		D248834C2A9AC722006BC149 /* VaccinationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationCellView.swift; sourceTree = "<group>"; };
 		D248834E2A9AE12D006BC149 /* CiteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiteModel.swift; sourceTree = "<group>"; };
+		D24883542A9D603A006BC149 /* EmergencyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyViewModel.swift; sourceTree = "<group>"; };
+		D24883562A9D603A006BC149 /* Emergency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emergency.swift; sourceTree = "<group>"; };
+		D24883582A9D603A006BC149 /* EmergencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyView.swift; sourceTree = "<group>"; };
 		D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D24EE6012A8F2BA0008E3013 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D24EE6032A8F2BA0008E3013 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 		D201FCAB2A83F35A002C1EBA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D24883522A9D603A006BC149 /* Emergency */,
 				D29F03822A99C7A300C455F2 /* VaccinationCard */,
 				D24EE5FD2A8F2BA0008E3013 /* Home */,
 				D26B63A52A8BCDD500A843D2 /* PetRegister */,
@@ -311,6 +318,40 @@
 				D24149D12A86F6DD00E40EBB /* SignUpViewModel.swift */,
 			);
 			path = SignUpViewModel;
+			sourceTree = "<group>";
+		};
+		D24883522A9D603A006BC149 /* Emergency */ = {
+			isa = PBXGroup;
+			children = (
+				D24883532A9D603A006BC149 /* EmergencyViewModel */,
+				D24883552A9D603A006BC149 /* Models */,
+				D24883572A9D603A006BC149 /* EmergencyView */,
+			);
+			path = Emergency;
+			sourceTree = "<group>";
+		};
+		D24883532A9D603A006BC149 /* EmergencyViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D24883542A9D603A006BC149 /* EmergencyViewModel.swift */,
+			);
+			path = EmergencyViewModel;
+			sourceTree = "<group>";
+		};
+		D24883552A9D603A006BC149 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D24883562A9D603A006BC149 /* Emergency.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D24883572A9D603A006BC149 /* EmergencyView */ = {
+			isa = PBXGroup;
+			children = (
+				D24883582A9D603A006BC149 /* EmergencyView.swift */,
+			);
+			path = EmergencyView;
 			sourceTree = "<group>";
 		};
 		D24EE5FD2A8F2BA0008E3013 /* Home */ = {
@@ -628,6 +669,7 @@
 				D248834F2A9AE12D006BC149 /* CiteModel.swift in Sources */,
 				D2E143E72A83F9780096457C /* AuthLoginView.swift in Sources */,
 				D22E84322A9436C200196AF6 /* PetModel.swift in Sources */,
+				D248835A2A9D603A006BC149 /* Emergency.swift in Sources */,
 				D24149C22A86B04100E40EBB /* Profile.swift in Sources */,
 				D24149B62A85AC6200E40EBB /* HubView.swift in Sources */,
 				D24EE6062A8F2BA0008E3013 /* HomeView.swift in Sources */,
@@ -646,6 +688,7 @@
 				D2D928572A889FC0009C5FEE /* Endpoint.swift in Sources */,
 				D24149C12A86B04100E40EBB /* ProfileView.swift in Sources */,
 				D29F038D2A99CA7400C455F2 /* VaccinationCardUseCase.swift in Sources */,
+				D248835B2A9D603A006BC149 /* EmergencyView.swift in Sources */,
 				D28A19D02A8C56B50024C517 /* ImagePicker.swift in Sources */,
 				D24149D22A86F6DD00E40EBB /* SignUpView.swift in Sources */,
 				D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */,
@@ -675,6 +718,7 @@
 				D29F038B2A99C7A300C455F2 /* VaccinationCardView.swift in Sources */,
 				D2AC45672A84081F003958FC /* ProviderServiceProtocols.swift in Sources */,
 				D26B63AD2A8BCDD500A843D2 /* PetRegisterViewModel.swift in Sources */,
+				D24883592A9D603A006BC149 /* EmergencyViewModel.swift in Sources */,
 				D24149D32A86F6DD00E40EBB /* SignUpModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
