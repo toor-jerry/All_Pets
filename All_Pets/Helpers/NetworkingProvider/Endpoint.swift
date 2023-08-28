@@ -12,6 +12,7 @@ enum Endpoint {
     case imagePets(_ idCollection: String)
     case vaccinationCard
     case citesCollection
+    case officesCollection
 }
 
 extension Endpoint {
@@ -31,6 +32,8 @@ extension Endpoint {
             return "Cartilla"
         case .citesCollection:
             return "Citas"
+        case .officesCollection:
+            return "Consultorios"
         }
     }
 }

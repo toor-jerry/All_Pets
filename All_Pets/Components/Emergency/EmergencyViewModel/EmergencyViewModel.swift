@@ -9,21 +9,24 @@ import SwiftUI
 
 final class EmergencyViewModel: ObservableObject {
 
-//    let useCase: EmergencyViewModelUseCase
+    let useCase: EmergencyUseCaseProtocol
 
-//    init(useCase: EmergencyViewModelUseCase) {
-//        self.useCase = useCase
-//    }
+    @Published var isLoading: Bool = false
 
-//    func auth() {
-//        isLoading = true
-//        useCase.preAuth { isLoggedIn in
-//            self.isLoggedIn = isLoggedIn
-//        } error: { _ in
-//            self.isLoggedIn = false
-//        } completion: {
-//            self.setTheardMain {
-//                self.isLoading = false
-//            }
-//        }
+    init(useCase: EmergencyUseCaseProtocol) {
+        self.useCase = useCase
+    }
+
+    func getOffices() {
+        isLoading = true
+        useCase.getOffices(success: { offices in
+
+        }, failure: { _ in
+
+        }, completion: {
+            self.setTheardMain {
+                self.isLoading = false
+            }
+        })
+    }
 }

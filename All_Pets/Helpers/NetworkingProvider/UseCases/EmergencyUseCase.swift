@@ -27,7 +27,7 @@ extension EmergencyUseCase: OfficeProtocol {
 
         let db = Firestore.firestore()
 
-        let officeCollection = db.collection(Endpoint.usersCollection.urlString)
+        let officeCollection = db.collection(Endpoint.officesCollection.urlString)
 
         officeCollection.getDocuments { querySnapshot, error in
 
@@ -41,7 +41,7 @@ extension EmergencyUseCase: OfficeProtocol {
                         let office = try document.data(as: OfficeModel.self)
                         offices.append(office)
                     } catch {
-                        print("Errors: ", NetworkingClientErrors.decodingError)
+                        print("Errors: ", NetworkingClientErrors.decodingError, error)
                     }
                 }
 

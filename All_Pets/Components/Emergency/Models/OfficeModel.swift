@@ -8,15 +8,17 @@
 import Foundation
 
 struct OfficeModel: Codable {
-    var status: String
-    var hourEnd: String
-    var hourStart: String
-    var idOffice: String
-    var latitude: String
-    var length: String
-    var name: String
-    var medicalSpecialities: String?
-    var specializedSector: String?
+    var status: String?
+    var hourEnd: String?
+    var hourStart: String?
+    var idOffice: String?
+    var latitude: Double?
+    var length: Double?
+    var name: String?
+    var medicalSpecialities: [String]?
+    var specializedSector: [String]?
+    var punctuation: Int?
+    var address: String?
 
     enum CodingKeys: String, CodingKey {
         case status = "status"
@@ -26,7 +28,9 @@ struct OfficeModel: Codable {
         case latitude = "Latitud"
         case length = "Longitud"
         case name = "Nombre"
-        case medicalSpecialities = "medical_specialities"
+        case medicalSpecialities = "medical_specialties"
         case specializedSector = "specialized_sector"
+        case punctuation = "Puntuacion"
+        case address = "direccion"
     }
 }
