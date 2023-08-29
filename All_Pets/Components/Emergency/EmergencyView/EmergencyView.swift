@@ -30,4 +30,3 @@ struct EmergencyViewPreviews: PreviewProvider {
         EmergencyView()
     }
 }
-
