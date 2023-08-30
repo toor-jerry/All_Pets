@@ -21,6 +21,7 @@ final class EmergencyViewModel: NSObject, ObservableObject {
     @Published var userHasLocation: Bool = false
     @Published var officeCoordinates: MKCoordinateRegion = .init()
     @Published var mapPins: [MapViewPin] = []
+    private var offices: [OfficeModel] = []
     
     private var userLocation: CLLocation?
     private let locationManager: CLLocationManager = .init()
@@ -39,7 +40,9 @@ final class EmergencyViewModel: NSObject, ObservableObject {
     func getOffices() {
         isLoading = true
         useCase.getOffices(success: { offices in
-            self.calculateNearestOffice(offices)
+
+            self.offices = offices
+            self.calculateNearestOffice()
         }, failure: { _ in
             
         }, completion: {
@@ -49,9 +52,9 @@ final class EmergencyViewModel: NSObject, ObservableObject {
         })
     }
     
-    private func calculateNearestOffice(_ offices: [OfficeModel]) {
-        
-        guard let userLocation = userLocation else { return }
+    private func calculateNearestOffice() {
+
+        guard let userLocation = userLocation, !offices.isEmpty else { return }
         
         var closestOffice: OfficeModel?
         var shortestDistance: CLLocationDistance = .greatestFiniteMagnitude
@@ -98,6 +101,7 @@ extension EmergencyViewModel: CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         print("Data2 location: ", location)
         userLocation = .init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        calculateNearestOffice()
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

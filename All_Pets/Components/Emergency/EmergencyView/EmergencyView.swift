@@ -8,13 +8,6 @@
 import SwiftUI
 import MapKit
 
-struct MapViewPin: Identifiable {
-    let id = UUID()
-    let coordinate: CLLocationCoordinate2D
-    let title: String
-    let subtitle: String
-}
-
 struct EmergencyView: View {
     
     @StateObject var viewModel = EmergencyViewModel(useCase: EmergencyUseCase())
@@ -24,7 +17,8 @@ struct EmergencyView: View {
             if viewModel.isLoading {
                 Loader()
             } else {
-                if !viewModel.mapPins.isEmpty {
+
+                if viewModel.userHasLocation {
                     Map(coordinateRegion: $viewModel.officeCoordinates, showsUserLocation: true, userTrackingMode: .constant(.follow), annotationItems: viewModel.mapPins) { pin in
 
                         MapMarker(coordinate: pin.coordinate)
@@ -33,26 +27,28 @@ struct EmergencyView: View {
                     Button(action: {
 
                     }, label: {
-                        Text(String.MsgButtonLogin)
+                        Text(String.MsgSendAlert)
                             .modifier(textStylePrincipal())
                     })
                     .modifier(buttonPrincipal(.red))
                     .padding(.top, 20)
                     .padding(.bottom, 20)
-                }
-
-                if viewModel.userHasLocation {
-                    Text("Localización Aceptada ✅")
-                        .bold()
-                        .padding(.top, 12)
-                    Link("Pulsa para cambiar la autorización de Localización", destination: URL(string: UIApplication.openSettingsURLString)!)
-                        .padding(32)
                 } else {
-                    Text("Localización NO Aceptada ❌")
-                        .bold()
-                        .padding(.top, 12)
-                    Link("Pulsa para aceptar la autorización de Localización", destination: URL(string: UIApplication.openSettingsURLString)!)
-                        .padding(32)
+                    VStack {
+                        Spacer()
+                        Text(String.MsgNoLocalization)
+                            .foregroundColor(.black)
+                            .bold()
+                            .padding(.bottom, 15)
+
+                        HStack {
+                            Spacer()
+                            Link(String.MsgAceptLocalization, destination: URL(string: UIApplication.openSettingsURLString)!)
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                    .font(.title3)
                 }
             }
         }

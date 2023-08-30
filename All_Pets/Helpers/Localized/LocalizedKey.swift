@@ -42,4 +42,7 @@ extension String {
     static let MsgNoPendingAppointments = "No tienes citas pendientes"
     static let MsgPendingAppointments = "Tienes una cita pendiente de ser confirmada por la clínica"
     static let MsgHaveAnAppointment = "Tiene una cita el"
+    static let MsgNoLocalization = "Localización NO Aceptada ❌"
+    static let MsgAceptLocalization = "Pulsa para aceptar la autorización de Localización"
+    static let MsgSendAlert = "Enviar alerta"
 }
