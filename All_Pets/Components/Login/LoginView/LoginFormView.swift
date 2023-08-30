@@ -91,7 +91,7 @@ struct LoginFormView: View {
                             .modifier(textStyleTitle2())
                     }
                 })
-                .padding(.top, 40)
+                Spacer()
             }
             .background(Color.background)
         }
