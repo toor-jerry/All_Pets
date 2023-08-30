@@ -67,6 +67,7 @@ struct SignUpView: View {
                 .padding(.top, 20)
                 Spacer()
             }
+            .background(Color.background)
             .multilineTextAlignment(.center)
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(
