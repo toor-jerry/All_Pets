@@ -32,16 +32,14 @@ struct HubView: View {
                 Text("Veterinario")
             }
             .tag(1)
-            
-            ScrollView {
-                EmergencyView()
-            }
-            .modifier(tabItemStyle())
-            .tabItem {
-                Image(systemName: "exclamationmark.triangle.fill")
-                Text("Emergencia")
-            }
-            .tag(2)
+
+            EmergencyView()
+                .modifier(tabItemStyle())
+                .tabItem {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                    Text("Emergencia")
+                }
+                .tag(2)
             
             ScrollView {
                 Text("Contenido de la pestaña 3")

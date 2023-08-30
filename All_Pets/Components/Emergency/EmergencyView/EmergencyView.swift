@@ -6,17 +6,17 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct EmergencyView: View {
     
     @StateObject var viewModel = EmergencyViewModel(useCase: EmergencyUseCase())
-    
     var body: some View {
         VStack {
             if viewModel.isLoading {
                 Loader()
             } else {
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                Map(coordinateRegion: $viewModel.officeCoordinates, showsUserLocation: true, userTrackingMode: .constant(.follow))
             }
         }
         .task {
