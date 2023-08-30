@@ -29,6 +29,30 @@ struct EmergencyView: View {
 
                         MapMarker(coordinate: pin.coordinate)
                     }
+
+                    Button(action: {
+
+                    }, label: {
+                        Text(String.MsgButtonLogin)
+                            .modifier(textStylePrincipal())
+                    })
+                    .modifier(buttonPrincipal(.red))
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
+                }
+
+                if viewModel.userHasLocation {
+                    Text("Localización Aceptada ✅")
+                        .bold()
+                        .padding(.top, 12)
+                    Link("Pulsa para cambiar la autorización de Localización", destination: URL(string: UIApplication.openSettingsURLString)!)
+                        .padding(32)
+                } else {
+                    Text("Localización NO Aceptada ❌")
+                        .bold()
+                        .padding(.top, 12)
+                    Link("Pulsa para aceptar la autorización de Localización", destination: URL(string: UIApplication.openSettingsURLString)!)
+                        .padding(32)
                 }
             }
         }
