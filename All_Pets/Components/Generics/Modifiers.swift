@@ -186,6 +186,7 @@ struct inputStylePrincipal: ViewModifier {
             .background(Color.white)
             .overlay(RoundedRectangle(cornerRadius: 15)
                 .stroke(color, lineWidth: 4))
+            .foregroundColor(.black)
     }
 }
 

@@ -27,6 +27,7 @@ struct SignUpView: View {
                         .padding()
                         .modifier(inputStylePrincipal())
                         .keyboardType(.asciiCapable)
+                        .foregroundColor(.black)
                     
                     TextField(String.MsgFirstLastName, text: $data.firstLastName)
                         .padding()
