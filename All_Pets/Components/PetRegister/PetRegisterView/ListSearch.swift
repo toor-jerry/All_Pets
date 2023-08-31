@@ -10,48 +10,52 @@ import SwiftUI
 struct ListSearch: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var itemSelected: String
-
+    
     @State var searchText: String = ""
     @State var list: [String]
     @State var filteredList: [String] = []
-
+    
     var body: some View {
-
+        
         VStack {
             Divider()
                 .background(Color.background)
             List {
-
-                    ForEach(filteredList, id: \.self) { element in
-                        Text(element)
-                            .padding()
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .onTapGesture {
-                                itemSelected = element
-                                self.presentationMode.wrappedValue.dismiss()
-                            }
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
-                    }
-                }
-                .searchable(text: $searchText, prompt: "")
-                .onChange(of: searchText) { newValue in
-                    if newValue.isEmpty {
-                        filteredList = list
-                    } else {
-                        filteredList = list.filter { element in
-                            element.localizedCaseInsensitiveContains(newValue)
+                
+                ForEach(filteredList, id: \.self) { element in
+                    Text(element)
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .onTapGesture {
+                            itemSelected = element
+                            self.presentationMode.wrappedValue.dismiss()
                         }
-                    }
-                }
-                .onAppear {
-                    if itemSelected == String.MsgSelectTypePet {
-                        itemSelected = ""
-                    }
-
-                    filteredList = list
+                        .foregroundColor(.black)
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                 }
             }
+            .scrollContentBackground(.hidden)
+            .searchable(text: $searchText, prompt: "")
+            .foregroundColor(.black)
+            .onChange(of: searchText) { newValue in
+                if newValue.isEmpty {
+                    filteredList = list
+                } else {
+                    filteredList = list.filter { element in
+                        element.localizedCaseInsensitiveContains(newValue)
+                    }
+                }
+            }
+            .onAppear {
+                if itemSelected == String.MsgSelectTypePet {
+                    itemSelected = ""
+                }
+                
+                filteredList = list
+            }
+        }
+        .background(Color.background)
     }
 }
 

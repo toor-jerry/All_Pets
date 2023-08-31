@@ -114,7 +114,7 @@ struct PetRegisterView: View {
                             viewModel.petRegister(PetRegister(birthDate: selectedDate,
                                                               pet: selectedAnimal.rawValue,
                                                               name: name,
-                                                             petType: petTypeSelected), self.image)
+                                                              petType: petTypeSelected), self.image)
                         }, label: {
                             Text(String.MsgAdd)
                                 .modifier(textStylePrincipal())
@@ -127,6 +127,9 @@ struct PetRegisterView: View {
                 }
             }
         }
+        .modifier(NavigationBarModifier())
+        .background(Color.background)
+        .foregroundColor(.black)
         .task {
             showPetRegisterView = true
             viewModel.getPetsType()
