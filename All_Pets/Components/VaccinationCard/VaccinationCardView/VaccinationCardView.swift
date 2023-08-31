@@ -18,6 +18,7 @@ struct VaccinationCardView: View {
                 Loader()
             } else {
                 if !viewModel.cards.isEmpty {
+                    Spacer()
                     List {
                         ForEach(viewModel.cards, id: \.vaccinationDate) { card in
                             VaccinationCardCell(card: card)
@@ -31,10 +32,12 @@ struct VaccinationCardView: View {
                         )
                         .listRowSeparator(.hidden)
                     }
+                    .scrollContentBackground(.hidden)
                 }
             }
         }
         .modifier(NavigationBarModifier())
+        .background(Color.background)
         .task {
             viewModel.getCards(idPet)
         }
