@@ -34,6 +34,7 @@ struct VaccinationCardView: View {
                 }
             }
         }
+        .modifier(NavigationBarModifier())
         .task {
             viewModel.getCards(idPet)
         }

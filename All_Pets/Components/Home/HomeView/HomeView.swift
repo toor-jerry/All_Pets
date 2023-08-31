@@ -29,6 +29,7 @@ struct HomeView: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.top, 50)
+                        .foregroundColor(.black)
                     
                     Text(viewModel.getHomeMsg())
                         .multilineTextAlignment(.center)
@@ -51,8 +52,13 @@ struct HomeView: View {
                                 
                                 Spacer()
                                 
-                                Text(String.MsgVaccinationCard)
-                                    .foregroundColor(.black)
+
+                                HStack {
+                                    Spacer()
+                                    Text(String.MsgVaccinationCard)
+                                        .foregroundColor(.black)
+                                    Spacer()
+                                }
                             }
                         })
                         .font(.title3)
@@ -72,9 +78,13 @@ struct HomeView: View {
                                     .frame(width: sizeImageButtons, height: sizeImageButtons)
                                 
                                 Spacer()
-                                
-                                Text(String.MsgProceedings)
-                                    .foregroundColor(.black)
+
+                                HStack {
+                                    Spacer()
+                                    Text(String.MsgProceedings)
+                                        .foregroundColor(.black)
+                                    Spacer()
+                                }
                             }
                         })
                         .font(.title3)
