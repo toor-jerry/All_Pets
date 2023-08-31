@@ -58,7 +58,7 @@ final class PetRegisterViewModel: ObservableObject {
                                  image,
                                  success: { urlPhoto in
 
-            self.updateDataRegiter(data.getData(urlPhoto))
+            self.updateDataRegiter(data.getData(idDocument: idCollection, urlString: urlPhoto))
 
         }, failure: { _ in
             self.stopLoading()

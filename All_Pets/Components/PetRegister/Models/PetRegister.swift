@@ -25,28 +25,31 @@ struct PetRegister: Codable {
         case pet = "Mascota"
     }
 
-    init(birthDate: Date, pet: String, photoURL: String? = nil, name: String? = nil, petType: String? = nil) {
+    init(birthDate: Date, pet: String, photoURL: String? = nil, name: String? = nil, petType: String? = nil, id: String? = nil) {
         self.name = name
         self.petType = petType
         self.birthDate = Timestamp(date: birthDate)
         self.pet = pet
         self.photoURL = photoURL
+        self.id = id
     }
 
-    init(birthDate: Timestamp, pet: String, photoURL: String? = nil, name: String? = nil, petType: String? = nil) {
+    init(birthDate: Timestamp, pet: String, photoURL: String? = nil, name: String? = nil, petType: String? = nil, id: String? = nil) {
         self.name = name
         self.petType = petType
         self.birthDate = birthDate
         self.pet = pet
         self.photoURL = photoURL
+        self.id = id
     }
 
 
-    func getData(_ urlString: String? = nil) -> PetRegister {
+    func getData(idDocument: String? = nil, urlString: String? = nil) -> PetRegister {
         return PetRegister(birthDate: self.birthDate,
                            pet: self.pet,
                            photoURL: urlString,
                            name: self.name?.isEmpty ?? false ? nil : self.name,
-                           petType: self.petType?.contains(.MsgSelectTypePet) ?? false ? nil : self.petType)
+                           petType: self.petType?.contains(.MsgSelectTypePet) ?? false ? nil : self.petType,
+                           id: self.id ?? idDocument)
     }
 }

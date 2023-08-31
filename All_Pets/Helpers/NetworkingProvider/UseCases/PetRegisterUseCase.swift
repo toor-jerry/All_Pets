@@ -81,13 +81,17 @@ extension PetRegisterUseCase: PetRegisterProtocol {
             let pets = db.collection(Endpoint.usersCollection.urlString).document(idUser).collection(Endpoint.petsCollection.urlString)
             
             do {
-                let newPet = try pets.addDocument(from: data)
+                if let id = data.id, let imageUrl = data.photoURL {
+                    pets.document(id).setData(["ImgUrl": imageUrl], merge: true)
+                    success(id)
+                } else {
+                    let newPet = try pets.addDocument(from: data)
 
-                let newPetID = newPet.documentID
+                    let newPetID = newPet.documentID
 
-                pets.document(newPetID).setData(["id": newPetID], merge: true)
-                
-                success(newPetID)
+                    pets.document(newPetID).setData(["id": newPetID], merge: true)
+                    success(newPetID)
+                }
                 
             } catch {
                 failure(NetworkingServerErrors.internalServerError)
