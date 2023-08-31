@@ -7,6 +7,24 @@
 
 import SwiftUI
 
+struct imageSize: ViewModifier {
+
+    var size: CGFloat
+    var padding: CGFloat
+
+    init(size: CGFloat = 40, padding: CGFloat = 4) {
+        self.size = size
+        self.padding = padding
+    }
+
+    func body(content: Content) -> some View {
+        content
+            .frame(width: size, height: size)
+            .aspectRatio(contentMode: .fill)
+            .padding(.all, padding)
+    }
+}
+
 struct NavigationBarModifier: ViewModifier {
 
     var backgroundColor: UIColor?

@@ -18,7 +18,6 @@ struct VaccinationCardView: View {
                 Loader()
             } else {
                 if !viewModel.cards.isEmpty {
-                    Spacer()
                     List {
                         ForEach(viewModel.cards, id: \.vaccinationDate) { card in
                             VaccinationCardCell(card: card)

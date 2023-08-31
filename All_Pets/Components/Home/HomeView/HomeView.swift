@@ -11,8 +11,8 @@ struct HomeView: View {
     
     @StateObject var viewModel = HomeViewModelViewModel(useCase: HomeUseCase())
     
-    @State private var showingCredits = false
-    @State private var showPetRegister: Bool = false
+    @State var showingCredits = false
+    @State var showPetRegister: Bool = false
     @State var refreshView: Bool = false
     
     private let sizeImageButtons: CGFloat = 50
@@ -175,26 +175,7 @@ struct HomeView: View {
             
         }
         .sheet(isPresented: $showingCredits) {
-            VStack {
-                Button(action: {
-                    showingCredits.toggle()
-                    showPetRegister.toggle()
-                }, label: {
-                    HStack {
-                        Image(systemName: "plus")
-                            .fontWeight(.bold)
-                            .font(.title)
-                        Text(String.MsgAddPet)
-                            .font(.title3)
-                        Spacer()
-                    }
-                    
-                })
-                .foregroundColor(.black)
-                
-                Spacer()
-            }
-            .presentationDetents([.medium, .large])
+            HomeBottomSheet(viewModel: viewModel, showingCredits: $showingCredits, showPetRegister: $showPetRegister)
         }
         .onAppear {
             viewModel.getInitData()
