@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-enum PetType: String {
-    case dog
-    case cat
-    case bird
-    case fish
-}
-
 struct PetRegisterView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>

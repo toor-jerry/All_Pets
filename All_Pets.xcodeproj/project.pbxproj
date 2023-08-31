@@ -31,6 +31,7 @@
 		D248835D2A9D6212006BC149 /* EmergencyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248835C2A9D6212006BC149 /* EmergencyUseCase.swift */; };
 		D2494A352AA1073B00A944A2 /* HomeBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A342AA1073B00A944A2 /* HomeBottomSheet.swift */; };
 		D2494A372AA1156000A944A2 /* HomeBottomSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A362AA1156000A944A2 /* HomeBottomSheetCell.swift */; };
+		D2494A392AA15E5300A944A2 /* PetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A382AA15E5300A944A2 /* PetType.swift */; };
 		D24EE6042A8F2BA0008E3013 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */; };
 		D24EE6052A8F2BA0008E3013 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6012A8F2BA0008E3013 /* UserModel.swift */; };
 		D24EE6062A8F2BA0008E3013 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6032A8F2BA0008E3013 /* HomeView.swift */; };
@@ -101,6 +102,7 @@
 		D248835C2A9D6212006BC149 /* EmergencyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyUseCase.swift; sourceTree = "<group>"; };
 		D2494A342AA1073B00A944A2 /* HomeBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomSheet.swift; sourceTree = "<group>"; };
 		D2494A362AA1156000A944A2 /* HomeBottomSheetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomSheetCell.swift; sourceTree = "<group>"; };
+		D2494A382AA15E5300A944A2 /* PetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetType.swift; sourceTree = "<group>"; };
 		D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D24EE6012A8F2BA0008E3013 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D24EE6032A8F2BA0008E3013 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				D26B63A72A8BCDD500A843D2 /* PetRegister.swift */,
+				D2494A382AA15E5300A944A2 /* PetType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -715,6 +718,7 @@
 				D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */,
 				D27FAA092A830F4E00E0B93A /* All_PetsApp.swift in Sources */,
 				D28A19CC2A8C01920024C517 /* PetRegisterUseCase.swift in Sources */,
+				D2494A392AA15E5300A944A2 /* PetType.swift in Sources */,
 				D2E143EB2A83FB480096457C /* AuthSections.swift in Sources */,
 				D29F03892A99C7A300C455F2 /* VaccinationCardViewModel.swift in Sources */,
 				D26B63AC2A8BCDD500A843D2 /* PetRegister.swift in Sources */,
