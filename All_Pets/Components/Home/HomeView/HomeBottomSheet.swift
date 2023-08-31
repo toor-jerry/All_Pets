@@ -26,6 +26,14 @@ struct HomeBottomSheet: View {
                                         viewModel.petSelected = pet
                                     }
                                 }
+                                .swipeActions(edge: .leading) {
+                                    Button(action: {
+                                        viewModel.removePet(pet)
+                                    }, label: {
+                                        Image(systemName: "trash")
+                                    })
+                                    .tint(.red)
+                                }
                         }
                         .listRowBackground(
                             Rectangle()
@@ -53,6 +61,21 @@ struct HomeBottomSheet: View {
                     }
                     .listStyle(.insetGrouped)
                     .scrollContentBackground(.hidden)
+                } else {
+                    Button(action: {
+                        showingCredits.toggle()
+                        showPetRegister.toggle()
+                    }, label: {
+                        HStack {
+                            Image(systemName: "plus")
+                                .fontWeight(.bold)
+                                .font(.title)
+                            Text(String.MsgAddPet)
+                                .font(.title3)
+                            Spacer()
+                        }
+                    })
+                    .padding(25)
                 }
 
                 Spacer()

@@ -43,6 +43,17 @@ final class HomeViewModelViewModel: ObservableObject {
         }
     }
 
+    func removePet(_ pet: Pet) {
+        pets.removeAll { $0.id == pet.id }
+        petSelected = pets.first
+        useCase.deletePet(pet: pet,
+                          success: {
+            print("Data2 Mascota eliminada con éxito")
+        }, failure: { _ in
+            print("Data2 Hubo un error al eliminar la mascota")
+        }, completion: {})
+    }
+
     private func getMsgCitesForHomeView(_ idPet: String) -> String {
 
         if let firstCurrentCite = cites.first(where: { $0.getStatus() == .current && $0.patient == idPet }) {
