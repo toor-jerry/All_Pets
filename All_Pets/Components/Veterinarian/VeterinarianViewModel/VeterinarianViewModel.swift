@@ -14,7 +14,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     @Published var isLoading: Bool = false
     @Published var userHasLocation: Bool = false
     @Published var offices: [OfficeModel] = []
-    @Published var filterSector: [String] = []
+    @Published var filterSector: [String] = [String.ItemFilterFirst, String.ItemFilterSecond, String.ItemFilterThird]
     
     let useCase: VeterianUseCaseProtocol
     
@@ -49,26 +49,18 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     private func calculateNearestOffice() {
         guard let userLocation = userLocation, !offices.isEmpty else { return }
         
-        var sectorTmp: [String] = []
-        
         let updatedOffices = offices.map { office -> OfficeModel in
             var mutableOffice = office
             let officeLocation = CLLocation(latitude: office.latitude ?? .zero, longitude: office.length ?? .zero)
             let distance = userLocation.distance(from: officeLocation)
             mutableOffice.distanceToUserLocation = Int(distance)
-            sectorTmp.append(contentsOf: office.specializedSector ?? [])
             return mutableOffice
         }
         
         let sortedOffices = updatedOffices.sorted { $0.distanceToUserLocation ?? .zero < $1.distanceToUserLocation ?? .zero }
         
-        let uniqueSortedSectors = Array(Set(sectorTmp))
-            .sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
-            .map { $0.capitalized }
-        
         self.setTheardMain {
             self.offices = sortedOffices
-            self.filterSector = uniqueSortedSectors
         }
     }
     
