@@ -10,7 +10,6 @@ import SwiftUI
 struct VeterinarianView: View {
 
     @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCaseUseCase())
-    @State var filterSelected: Int = .zero
     @State var buttonFilterSelected: Bool = false
     
     var body: some View {
@@ -30,7 +29,7 @@ struct VeterinarianView: View {
                             .padding(.horizontal, 20)
                             .padding(.top, 20)
 
-                        FilterView(showButtonFilter: true, listSector: $viewModel.filterSector, sectorSelected: $filterSelected, buttonFilterSelected: $buttonFilterSelected)
+                        FilterView(showButtonFilter: true, listSector: $viewModel.filterSector, buttonFilterSelected: $buttonFilterSelected)
 
                         List {
                             ForEach(viewModel.offices, id: \.idOffice) { office in

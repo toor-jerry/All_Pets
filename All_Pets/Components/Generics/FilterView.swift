@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct FilterView: View {
-
+    
     @State var showButtonFilter: Bool
     @State var backgroundColor: Color = Color.background
     @Binding var listSector: [FilterSector]
-    @Binding var sectorSelected: Int
     @Binding var buttonFilterSelected: Bool
-
+    
     var body: some View {
-
+        
         HStack {
             ScrollView(.horizontal) {
                 LazyHStack {
@@ -34,10 +33,10 @@ struct FilterView: View {
                 .frame(height: 50)
             }
             .padding(.horizontal, 20)
-
+            
             if showButtonFilter {
                 Spacer()
-
+                
                 Button(action: {
                     buttonFilterSelected.toggle()
                 }, label: {
@@ -51,9 +50,8 @@ struct FilterView: View {
         }
         .background(backgroundColor)
     }
-
+    
     private func filterSelect(_ index: Int) {
-        sectorSelected = index
         if let filter = listSector[safe: index] {
             listSector[index] = FilterSector(filter.sector, isSelected: !filter.isSelected)
         }

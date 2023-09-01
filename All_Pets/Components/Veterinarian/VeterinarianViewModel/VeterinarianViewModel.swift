@@ -14,7 +14,13 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     @Published var isLoading: Bool = false
     @Published var userHasLocation: Bool = false
     @Published var offices: [OfficeModel] = []
-    @Published var filterSector: [FilterSector] = [FilterSector(String.ItemFilterFirst), FilterSector(String.ItemFilterSecond), FilterSector(String.ItemFilterThird)]
+    @Published var filterSector: [FilterSector] = [FilterSector(String.ItemFilterFirst), FilterSector(String.ItemFilterSecond), FilterSector(String.ItemFilterThird)] {
+        didSet {
+            filterOfficesBySections()
+        }
+    }
+
+    private var officesBack: [OfficeModel] = []
     
     let useCase: VeterianUseCaseProtocol
     
@@ -37,6 +43,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
         useCase.getOffices(success: { offices in
             
             self.offices = offices
+            self.officesBack = offices
             self.calculateNearestOffice()
         }, failure: { _ in
         }, completion: {
@@ -76,6 +83,56 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
         @unknown default:
             print("Unhandled state")
         }
+    }
+
+    private func filterOfficesBySections() {
+        // TODO: OPTIMIZAR
+        isLoading.toggle()
+
+        if !filterSelected() {
+            setTheardMain {
+                self.offices = self.officesBack
+                self.isLoading.toggle()
+            }
+            return
+        }
+
+        var officesTmp: [OfficeModel] = []
+        offices.forEach { office in
+            if ((office.specializedSector?.first(where: { sector in
+                return sector == "todos"
+            }) as? String) != nil) || containOnFilter(specialities: office.specializedSector) {
+                officesTmp.append(office)
+            }
+        }
+        setTheardMain {
+            self.offices = officesTmp
+            self.isLoading.toggle()
+        }
+    }
+
+    private func filterSelected() -> Bool {
+        // TODO: OPTIMIZAR
+        var isSelect = false
+        filterSector.forEach { filter in
+            if filter.isSelected {
+                isSelect = true
+            }
+        }
+        return isSelect
+    }
+
+    private func containOnFilter(specialities: [String]?) -> Bool {
+        // TODO: OPTIMIZAR
+        var isSelect = false
+        filterSector.forEach { filter in
+            specialities?.forEach({ specialitie in
+                if specialitie.lowercased() == filter.sector.lowercased() {
+                    isSelect = true
+                }
+            })
+        }
+        return isSelect
     }
 }
 
