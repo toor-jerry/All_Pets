@@ -204,16 +204,18 @@ struct buttonPrincipal: ViewModifier {
     
     private var color: Color = Color.principal
     var padding: CGFloat = 20.0
-    init(padding: CGFloat = 20.0, _ color: Color = Color.principal) {
+    var radius: CGFloat
+    init(padding: CGFloat = 20.0, _ color: Color = Color.principal, _ radius: CGFloat = 50.0) {
         self.color = color
         self.padding = padding
+        self.radius = radius
     }
     
     func body(content: Content) -> some View {
         content
             .padding(EdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding))
             .background(color)
-            .cornerRadius(50)
+            .cornerRadius(radius)
             .modifier(shadowStyle1())
     }
 }

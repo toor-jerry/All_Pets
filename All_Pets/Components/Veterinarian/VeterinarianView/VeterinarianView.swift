@@ -8,44 +8,30 @@
 import SwiftUI
 
 struct VeterinarianView: View {
-    
+
     @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCaseUseCase())
+    @State var filterSelected: Int = .zero
+    @State var buttonFilterSelected: Bool = false
     
     var body: some View {
         
         NavigationStack {
-            
+
             if viewModel.isLoading {
                 Loader()
             } else {
                 VStack {
                     if viewModel.userHasLocation {
-                        
+
                         Text(String.MsgTitleVeterin)
                             .foregroundColor(.black)
                             .fontWeight(.bold)
                             .font(.title2)
                             .padding(.horizontal, 20)
                             .padding(.top, 20)
-                        
-                        ScrollView(.horizontal) {
-                            LazyHStack {
-                                ForEach(viewModel.filterSector, id: \.self) { filter in
-                                    Button(action: {
-                                        
-                                    }, label: {
-                                        Text(filter)
-                                            .modifier(textStylePrincipal(color: .black, setWidth: false, fontSize: .callout))
-                                    })
-                                    .modifier(buttonPrincipal(padding: 10, .white))
-                                }
-                                .padding(5)
-                            }
-                            .frame(height: 50)
-                            .background(Color.background)
-                        }
-                        .padding(.horizontal, 20)
-                        
+
+                        FilterView(listSector: viewModel.filterSector, showButtonFilter: true, sectorSelected: $filterSelected, buttonFilterSelected: $buttonFilterSelected)
+
                         List {
                             ForEach(viewModel.offices, id: \.idOffice) { office in
                                 VeterianCardCell(office: office)
@@ -76,62 +62,5 @@ struct VeterinarianView: View {
 struct VeterinarianViewPreviews: PreviewProvider {
     static var previews: some View {
         VeterinarianView()
-    }
-}
-
-struct VeterianCardCell: View {
-    
-    var office: OfficeModel
-    private let sizeImage: CGFloat = 60.0
-    private var pets: String = ""
-    
-    init(office: OfficeModel) {
-        self.office = office
-        self.pets = office.specializedSector?.formatArrayToString() ?? ""
-    }
-    
-    var body: some View {
-        HStack {
-            
-            if let imageUrl = office.photoURL {
-                AsyncImage(url: URL(string: imageUrl)) { image in
-                    image
-                        .resizable()
-                        .modifier(imageSize(size: sizeImage))
-                    
-                } placeholder: {
-                    Image(systemName: "photo.fill")
-                        .resizable()
-                        .modifier(imageSize(size: sizeImage))
-                }
-            } else {
-                
-                Image("LogoVeterian")
-                    .resizable()
-                    .modifier(imageSize(size: sizeImage))
-            }
-            
-            
-            VStack(spacing: 10) {
-                
-                Text(office.name ?? "")
-                    .fontWeight(.bold)
-                    .foregroundColor(Color(red: 0.51, green: 0.39, blue: 0.62))
-                    .font(.title3)
-                    .modifier(AligmentView(aligment: .leading))
-                
-                Text("\(String.WordPets): \(pets)")
-                    .font(.callout)
-                    .foregroundColor(.black)
-                    .modifier(AligmentView(aligment: .leading))
-                
-                Text("a \(office.distanceToUserLocation?.description ?? "") Mtrs.")
-                    .font(.callout)
-                    .foregroundColor(.black)
-                    .modifier(AligmentView(aligment: .leading))
-            }
-            .padding(.bottom, 15)
-        }
-        .padding(10)
     }
 }
