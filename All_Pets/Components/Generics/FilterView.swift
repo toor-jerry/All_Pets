@@ -11,6 +11,7 @@ struct FilterView: View {
     
     @State var listSector: [String]
     @State var showButtonFilter: Bool
+    @State var backgroundColor: Color = Color.background
     @Binding var sectorSelected: Int
     @Binding var buttonFilterSelected: Bool
 
@@ -48,7 +49,7 @@ struct FilterView: View {
                 .padding(.trailing, 20)
             }
         }
-        .background(Color.background)
+        .background(backgroundColor)
     }
 }
 
