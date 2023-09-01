@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FilterView: View {
     
-    @State var listSector: [String]
+    @State var listSector: [FilterSector]
     @State var showButtonFilter: Bool
     @State var backgroundColor: Color = Color.background
     @Binding var sectorSelected: Int
@@ -24,7 +24,7 @@ struct FilterView: View {
                         Button(action: {
                             sectorSelected = index
                         }, label: {
-                            Text(filter)
+                            Text(filter.sector)
                                 .modifier(textStylePrincipal(color: .black, setWidth: false, fontSize: .callout))
                         })
                         .modifier(buttonPrincipal(padding: 10, .white))
@@ -55,6 +55,6 @@ struct FilterView: View {
 
 struct FilterViewPreviews: PreviewProvider {
     static var previews: some View {
-        FilterView(listSector: ["Gatos", "Perros", "Tortugas"], showButtonFilter: true, sectorSelected: .constant(.zero), buttonFilterSelected: .constant(true))
+        FilterView(listSector: [FilterSector("Gatos", isSelected: false), FilterSector("Perros", isSelected: false), FilterSector("Tortugas", isSelected: false)], showButtonFilter: true, sectorSelected: .constant(.zero), buttonFilterSelected: .constant(true))
     }
 }

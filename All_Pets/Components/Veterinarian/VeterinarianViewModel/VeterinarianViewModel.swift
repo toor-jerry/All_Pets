@@ -14,7 +14,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     @Published var isLoading: Bool = false
     @Published var userHasLocation: Bool = false
     @Published var offices: [OfficeModel] = []
-    @Published var filterSector: [String] = [String.ItemFilterFirst, String.ItemFilterSecond, String.ItemFilterThird]
+    @Published var filterSector: [FilterSector] = [FilterSector(String.ItemFilterFirst), FilterSector(String.ItemFilterSecond), FilterSector(String.ItemFilterThird)]
     
     let useCase: VeterianUseCaseProtocol
     
