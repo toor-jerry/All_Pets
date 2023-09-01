@@ -6,30 +6,43 @@
 //
 
 import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-protocol VeterianUseCaseProtocol: AnyObject {
+protocol VeterianUseCaseProtocol: OfficeProtocol { }
 
-    func preAuth(success: @escaping (Bool) -> Void,
-                 error: @escaping (Error) -> Void,
-                 completion: @escaping () -> Void)
-}
+final class VeterianUseCaseUseCase: VeterianUseCaseProtocol { }
 
-protocol VeterianUseCaseUseCaseProtocol: VeterianUseCaseProtocol { }
-
-final class VeterianUseCaseUseCase: VeterianUseCaseUseCaseProtocol { }
-
-extension VeterianUseCaseUseCase: VeterianUseCaseProtocol {
-
-    func preAuth(success: @escaping (Bool) -> Void,
-                 error: @escaping (Error) -> Void,
-                 completion: @escaping () -> Void) {
-
-        if let _ = Auth.auth().currentUser {
-            success(true)
-        } else {
-            error(NetworkingServerErrors.dataNotFound)
+extension VeterianUseCaseUseCase: OfficeProtocol {
+    
+    func getOffices(success: @escaping ([OfficeModel]) -> Void,
+                    failure: @escaping (Error) -> Void,
+                    completion: @escaping () -> Void) {
+        
+        let db = Firestore.firestore()
+        
+        let officeCollection = db.collection(Endpoint.officesCollection.urlString)
+        
+        officeCollection.getDocuments { querySnapshot, error in
+            
+            if let error = error {
+                failure(error)
+            } else {
+                var offices: [OfficeModel] = []
+                
+                for document in querySnapshot?.documents ?? [] {
+                    do {
+                        let office = try document.data(as: OfficeModel.self)
+                        offices.append(office)
+                    } catch {
+                        print("Errors: ", NetworkingClientErrors.decodingError, error)
+                    }
+                }
+                
+                success(offices)
+            }
+            
+            completion()
         }
-
-        completion()
     }
 }

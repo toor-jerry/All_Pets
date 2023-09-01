@@ -7,6 +7,7 @@
 
 import Foundation
 
+// TODO: revise
 struct Veterinarian: Codable {
     var message: String?
 

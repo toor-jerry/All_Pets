@@ -19,6 +19,7 @@ struct OfficeModel: Codable {
     var specializedSector: [String]?
     var punctuation: Int?
     var address: String?
+    var distanceToUserLocation: Int?
 
     enum CodingKeys: String, CodingKey {
         case status = "status"
@@ -32,5 +33,6 @@ struct OfficeModel: Codable {
         case specializedSector = "specialized_sector"
         case punctuation = "Puntuacion"
         case address = "direccion"
+        case distanceToUserLocation = "distanceToUserLocation"
     }
 }

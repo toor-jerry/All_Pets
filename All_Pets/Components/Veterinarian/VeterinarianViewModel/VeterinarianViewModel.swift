@@ -6,24 +6,87 @@
 //
 
 import SwiftUI
+import CoreLocation
+import MapKit
 
-final class VeterinarianViewModel: ObservableObject {
-
+final class VeterinarianViewModel: NSObject, ObservableObject {
+    
+    @Published var isLoading: Bool = false
+    @Published var userHasLocation: Bool = false
+    private var offices: [OfficeModel] = []
+    
     let useCase: VeterianUseCaseProtocol
-
+    
+    private var userLocation: CLLocation?
+    private let locationManager: CLLocationManager = .init()
+    
     init(useCase: VeterianUseCaseProtocol) {
         self.useCase = useCase
+        
+        super.init()
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
     }
+    
+    func getOffices() {
+        isLoading = true
+        useCase.getOffices(success: { offices in
+            
+            self.offices = offices
+            self.calculateNearestOffice()
+        }, failure: { _ in
+            
+        }, completion: {
+            self.setTheardMain {
+                self.isLoading = false
+            }
+        })
+    }
+    
+    private func calculateNearestOffice() {
+        guard let userLocation = userLocation, !offices.isEmpty else { return }
+        
+        let updatedOffices = offices.map { office -> OfficeModel in
+            var mutableOffice = office
+            let officeLocation = CLLocation(latitude: office.latitude ?? 0.0, longitude: office.length ?? 0.0)
+            let distance = userLocation.distance(from: officeLocation)
+            mutableOffice.distanceToUserLocation = Int(distance)
+            return mutableOffice
+        }
+        
+        self.setTheardMain {
+            self.offices = updatedOffices
+        }
+    }
+    
+    private func checkUserAuthorization() {
+        let status = locationManager.authorizationStatus
+        switch status {
+        case .authorized, .authorizedAlways, .authorizedWhenInUse:
+            userHasLocation = true
+            break
+        case .denied, .notDetermined, .restricted:
+            print("User no ha autorizado mostrar su localización")
+            userHasLocation = false
+        @unknown default:
+            print("Unhandled state")
+        }
+    }
+}
 
-//    func auth() {
-//        isLoading = true
-//        useCase.preAuth { isLoggedIn in
-//            self.isLoggedIn = isLoggedIn
-//        } error: { _ in
-//            self.isLoggedIn = false
-//        } completion: {
-//            self.setTheardMain {
-//                self.isLoading = false
-//            }
-//        }
+extension VeterinarianViewModel: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        print("Data2 location: ", location)
+        userLocation = .init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        calculateNearestOffice()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkUserAuthorization()
+    }
 }
