@@ -32,6 +32,10 @@
 		D2494A352AA1073B00A944A2 /* HomeBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A342AA1073B00A944A2 /* HomeBottomSheet.swift */; };
 		D2494A372AA1156000A944A2 /* HomeBottomSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A362AA1156000A944A2 /* HomeBottomSheetCell.swift */; };
 		D2494A392AA15E5300A944A2 /* PetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A382AA15E5300A944A2 /* PetType.swift */; };
+		D2494A432AA15FE500A944A2 /* VeterinarianViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A3E2AA15FE500A944A2 /* VeterinarianViewModel.swift */; };
+		D2494A442AA15FE500A944A2 /* VeterinarianView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A402AA15FE500A944A2 /* VeterinarianView.swift */; };
+		D2494A452AA15FE500A944A2 /* Veterinarian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A422AA15FE500A944A2 /* Veterinarian.swift */; };
+		D2494A472AA1607F00A944A2 /* VeterianUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A462AA1607F00A944A2 /* VeterianUseCase.swift */; };
 		D24EE6042A8F2BA0008E3013 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */; };
 		D24EE6052A8F2BA0008E3013 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6012A8F2BA0008E3013 /* UserModel.swift */; };
 		D24EE6062A8F2BA0008E3013 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6032A8F2BA0008E3013 /* HomeView.swift */; };
@@ -103,6 +107,10 @@
 		D2494A342AA1073B00A944A2 /* HomeBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomSheet.swift; sourceTree = "<group>"; };
 		D2494A362AA1156000A944A2 /* HomeBottomSheetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomSheetCell.swift; sourceTree = "<group>"; };
 		D2494A382AA15E5300A944A2 /* PetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetType.swift; sourceTree = "<group>"; };
+		D2494A3E2AA15FE500A944A2 /* VeterinarianViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeterinarianViewModel.swift; sourceTree = "<group>"; };
+		D2494A402AA15FE500A944A2 /* VeterinarianView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeterinarianView.swift; sourceTree = "<group>"; };
+		D2494A422AA15FE500A944A2 /* Veterinarian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Veterinarian.swift; sourceTree = "<group>"; };
+		D2494A462AA1607F00A944A2 /* VeterianUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeterianUseCase.swift; sourceTree = "<group>"; };
 		D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D24EE6012A8F2BA0008E3013 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D24EE6032A8F2BA0008E3013 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -176,6 +184,7 @@
 		D201FCAB2A83F35A002C1EBA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D2494A3C2AA15FE500A944A2 /* Veterinarian */,
 				D24883522A9D603A006BC149 /* Emergency */,
 				D29F03822A99C7A300C455F2 /* VaccinationCard */,
 				D24EE5FD2A8F2BA0008E3013 /* Home */,
@@ -365,6 +374,40 @@
 				D24883582A9D603A006BC149 /* EmergencyView.swift */,
 			);
 			path = EmergencyView;
+			sourceTree = "<group>";
+		};
+		D2494A3C2AA15FE500A944A2 /* Veterinarian */ = {
+			isa = PBXGroup;
+			children = (
+				D2494A3D2AA15FE500A944A2 /* VeterinarianViewModel */,
+				D2494A3F2AA15FE500A944A2 /* VeterinarianView */,
+				D2494A412AA15FE500A944A2 /* Models */,
+			);
+			path = Veterinarian;
+			sourceTree = "<group>";
+		};
+		D2494A3D2AA15FE500A944A2 /* VeterinarianViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D2494A3E2AA15FE500A944A2 /* VeterinarianViewModel.swift */,
+			);
+			path = VeterinarianViewModel;
+			sourceTree = "<group>";
+		};
+		D2494A3F2AA15FE500A944A2 /* VeterinarianView */ = {
+			isa = PBXGroup;
+			children = (
+				D2494A402AA15FE500A944A2 /* VeterinarianView.swift */,
+			);
+			path = VeterinarianView;
+			sourceTree = "<group>";
+		};
+		D2494A412AA15FE500A944A2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D2494A422AA15FE500A944A2 /* Veterinarian.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D24EE5FD2A8F2BA0008E3013 /* Home */ = {
@@ -568,6 +611,7 @@
 				D24EE6072A8FC370008E3013 /* HomeUseCase.swift */,
 				D29F038C2A99CA7400C455F2 /* VaccinationCardUseCase.swift */,
 				D248835C2A9D6212006BC149 /* EmergencyUseCase.swift */,
+				D2494A462AA1607F00A944A2 /* VeterianUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -700,11 +744,14 @@
 				D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */,
 				D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */,
 				D2AC45612A84061A003958FC /* Fetcher.swift in Sources */,
+				D2494A472AA1607F00A944A2 /* VeterianUseCase.swift in Sources */,
 				D2AC455C2A840241003958FC /* NetworkingServerErrors.swift in Sources */,
 				D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */,
 				D2494A372AA1156000A944A2 /* HomeBottomSheetCell.swift in Sources */,
 				D24149C62A86E57E00E40EBB /* ShorOrHideButton.swift in Sources */,
+				D2494A452AA15FE500A944A2 /* Veterinarian.swift in Sources */,
 				D2E6F8172A855AED0074D84E /* Modifiers.swift in Sources */,
+				D2494A432AA15FE500A944A2 /* VeterinarianViewModel.swift in Sources */,
 				D248834D2A9AC722006BC149 /* VaccinationCellView.swift in Sources */,
 				D2D928572A889FC0009C5FEE /* Endpoint.swift in Sources */,
 				D24149C12A86B04100E40EBB /* ProfileView.swift in Sources */,
@@ -736,6 +783,7 @@
 				D24149B42A85A92100E40EBB /* LoginFormView.swift in Sources */,
 				D24EE6042A8F2BA0008E3013 /* HomeViewModel.swift in Sources */,
 				D2E6F80E2A84A6290074D84E /* Loader.swift in Sources */,
+				D2494A442AA15FE500A944A2 /* VeterinarianView.swift in Sources */,
 				D2494A352AA1073B00A944A2 /* HomeBottomSheet.swift in Sources */,
 				D24EE6052A8F2BA0008E3013 /* UserModel.swift in Sources */,
 				D29F038B2A99C7A300C455F2 /* VaccinationCardView.swift in Sources */,

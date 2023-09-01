@@ -23,9 +23,7 @@ struct HubView: View {
                 }
                 .tag(0)
             
-            ScrollView {
-                Text("Contenido de la pestaña 2")
-            }
+            VeterinarianView()
             .modifier(tabItemStyle())
             .tabItem {
                 Image(systemName: "heart.fill")
