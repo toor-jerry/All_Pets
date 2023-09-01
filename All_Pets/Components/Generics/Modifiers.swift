@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct AligmentView: ViewModifier {
-
+    
     var aligment: TextAlignment
-
+    
     func body(content: Content) -> some View {
         HStack {
             if aligment == .trailing {
@@ -25,15 +25,15 @@ struct AligmentView: ViewModifier {
 }
 
 struct imageSize: ViewModifier {
-
+    
     var size: CGFloat
     var padding: CGFloat
-
+    
     init(size: CGFloat = 40, padding: CGFloat = 4) {
         self.size = size
         self.padding = padding
     }
-
+    
     func body(content: Content) -> some View {
         content
             .frame(width: size, height: size)
@@ -43,25 +43,25 @@ struct imageSize: ViewModifier {
 }
 
 struct NavigationBarModifier: ViewModifier {
-
+    
     var backgroundColor: UIColor?
     var titleColor: UIColor?
-
+    
     init(backgroundColor: UIColor? = UIColor(Color.background),
          titleColor: UIColor? = .black) {
-
+        
         self.backgroundColor = backgroundColor
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithTransparentBackground()
         coloredAppearance.backgroundColor = backgroundColor
         coloredAppearance.titleTextAttributes = [.foregroundColor: titleColor ?? .white]
         coloredAppearance.largeTitleTextAttributes = [.foregroundColor: titleColor ?? .white]
-
+        
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().compactAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
     }
-
+    
     func body(content: Content) -> some View {
         ZStack {
             content
@@ -80,18 +80,18 @@ struct NavigationBarModifier: ViewModifier {
 struct CornerRadiusStyle: ViewModifier {
     var radius: CGFloat
     var corners: UIRectCorner
-
+    
     struct CornerRadiusShape: Shape {
-
+        
         var radius = CGFloat.infinity
         var corners = UIRectCorner.allCorners
-
+        
         func path(in rect: CGRect) -> Path {
             let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
             return Path(path.cgPath)
         }
     }
-
+    
     func body(content: Content) -> some View {
         content
             .clipShape(CornerRadiusShape(radius: radius, corners: corners))
@@ -101,7 +101,7 @@ struct CornerRadiusStyle: ViewModifier {
 // - textProfileBackground
 
 struct textProfileBackground_example: View {
-
+    
     var body: some View {
         VStack {
             Text("Example on text")
@@ -112,7 +112,7 @@ struct textProfileBackground_example: View {
 }
 
 struct textProfileBackground: ViewModifier {
-
+    
     func body(content: Content) -> some View {
         content
             .cornerRadius(50)
@@ -139,13 +139,31 @@ struct textStylePrincipal_example: View {
 
 struct textStylePrincipal: ViewModifier {
     
+    var color: Color
+    var setWidth: Bool
+    var fontSize: Font
+    
+    init(color: Color = .white, setWidth: Bool = true, fontSize: Font = .title3) {
+        self.color = color
+        self.setWidth = setWidth
+        self.fontSize = fontSize
+    }
+    
     func body(content: Content) -> some View {
-        content
-            .font(.title3)
-            .fontWeight(.bold)
-            .multilineTextAlignment(.center)
-            .foregroundColor(.white)
-            .frame(width: 150, height: 19, alignment: .top)
+        if setWidth {
+            content
+                .font(fontSize)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .foregroundColor(color)
+                .frame(width: 150, height: 19, alignment: .top)
+        } else {
+            content
+                .font(fontSize)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .foregroundColor(color)
+        }
     }
 }
 
@@ -183,15 +201,17 @@ struct buttonPrincipal_example: View {
 }
 
 struct buttonPrincipal: ViewModifier {
-
+    
     private var color: Color = Color.principal
-    init(_ color: Color = Color.principal) {
+    var padding: CGFloat = 20.0
+    init(padding: CGFloat = 20.0, _ color: Color = Color.principal) {
         self.color = color
+        self.padding = padding
     }
     
     func body(content: Content) -> some View {
         content
-            .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
+            .padding(EdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding))
             .background(color)
             .cornerRadius(50)
             .modifier(shadowStyle1())
@@ -243,13 +263,13 @@ struct inputStylePrincipal_example: View {
 }
 
 struct inputStylePrincipal: ViewModifier {
-
+    
     var color: Color
-
+    
     init(_ color: Color = Color.principal) {
         self.color = color
     }
-
+    
     func body(content: Content) -> some View {
         content
             .font(.headline)

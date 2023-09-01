@@ -47,4 +47,5 @@ extension String {
     static let MsgSendAlert = "Enviar alerta"
     static let WordJoin = "y"
     static let WordPets = "Mascotas"
+    static let MsgTitleVeterin = "Acceso rápido a especialistas"
 }
