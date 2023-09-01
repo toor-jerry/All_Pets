@@ -10,7 +10,7 @@ import SwiftUI
 struct VeterinarianView: View {
 
     @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCaseUseCase())
-    @State var buttonFilterSelected: Bool = false
+    @State var showFilterBottomSheet: Bool = false
     
     var body: some View {
         
@@ -29,7 +29,7 @@ struct VeterinarianView: View {
                             .padding(.horizontal, 20)
                             .padding(.top, 20)
 
-                        FilterView(showButtonFilter: true, listSector: $viewModel.filterSector, buttonFilterSelected: $buttonFilterSelected)
+                        FilterView(showButtonFilter: true, listSector: $viewModel.filterSector, buttonFilterSelected: $showFilterBottomSheet)
 
                         List {
                             ForEach(viewModel.offices, id: \.idOffice) { office in
@@ -51,6 +51,13 @@ struct VeterinarianView: View {
                 }.modifier(NavigationBarModifier())
                     .background(Color.background)
             }
+        }
+        .sheet(isPresented: $showFilterBottomSheet) {
+            // TODO: add view for filter
+            EmptyView()
+                .presentationDetents([.medium, .large])
+                .background(Color.background)
+                .foregroundColor(.black)
         }
         .task {
             viewModel.getOffices()
