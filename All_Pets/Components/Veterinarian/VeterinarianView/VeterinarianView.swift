@@ -56,7 +56,7 @@ struct VeterinarianViewPreviews: PreviewProvider {
 struct VeterianCardCell: View {
 
     var office: OfficeModel
-    private let sizeImage: CGFloat = 50.0
+    private let sizeImage: CGFloat = 60.0
     private var pets: String = ""
 
     init(office: OfficeModel) {
@@ -67,13 +67,24 @@ struct VeterianCardCell: View {
     var body: some View {
         HStack {
 
-            Image("LogoVeterian")
-                .resizable()
-                .frame(width: sizeImage, height: sizeImage)
-                .padding(5)
-                .aspectRatio(contentMode: .fill)
-                .padding(.bottom, 20)
-                .padding(.trailing, 10)
+            if let imageUrl = office.photoURL {
+                AsyncImage(url: URL(string: imageUrl)) { image in
+                    image
+                        .resizable()
+                        .modifier(imageSize(size: sizeImage))
+
+                } placeholder: {
+                    Image(systemName: "photo.fill")
+                        .resizable()
+                        .modifier(imageSize(size: sizeImage))
+                }
+            } else {
+
+                Image("LogoVeterian")
+                    .resizable()
+                    .modifier(imageSize(size: sizeImage))
+            }
+
 
             VStack(spacing: 10) {
 

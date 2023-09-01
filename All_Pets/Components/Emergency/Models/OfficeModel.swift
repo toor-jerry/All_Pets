@@ -20,6 +20,7 @@ struct OfficeModel: Codable {
     var punctuation: Int?
     var address: String?
     var distanceToUserLocation: Int?
+    var photoURL: String?
 
     enum CodingKeys: String, CodingKey {
         case status = "status"
@@ -34,5 +35,6 @@ struct OfficeModel: Codable {
         case punctuation = "Puntuacion"
         case address = "direccion"
         case distanceToUserLocation = "distanceToUserLocation"
+        case photoURL = "imgLogo"
     }
 }
