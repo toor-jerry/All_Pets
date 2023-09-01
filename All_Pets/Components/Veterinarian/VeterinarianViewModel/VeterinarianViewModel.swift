@@ -67,6 +67,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
         let sortedOffices = updatedOffices.sorted { $0.distanceToUserLocation ?? .zero < $1.distanceToUserLocation ?? .zero }
         
         self.setTheardMain {
+            self.officesBack = sortedOffices
             self.offices = sortedOffices
         }
     }

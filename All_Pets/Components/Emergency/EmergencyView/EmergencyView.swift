@@ -19,7 +19,7 @@ struct EmergencyView: View {
             } else {
 
                 if viewModel.userHasLocation {
-                    Map(coordinateRegion: $viewModel.officeCoordinates, showsUserLocation: true, userTrackingMode: .constant(.follow), annotationItems: viewModel.mapPins) { pin in
+                    Map(coordinateRegion: $viewModel.officeCoordinates, showsUserLocation: true, userTrackingMode: .constant(.none), annotationItems: viewModel.mapPins) { pin in
 
                         MapMarker(coordinate: pin.coordinate)
                     }

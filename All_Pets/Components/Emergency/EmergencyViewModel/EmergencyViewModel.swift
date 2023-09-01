@@ -12,7 +12,7 @@ import MapKit
 final class EmergencyViewModel: NSObject, ObservableObject {
     
     private struct Span {
-        static let delta = 10.0
+        static let delta = 0.09
     }
     
     let useCase: EmergencyUseCaseProtocol
