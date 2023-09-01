@@ -30,7 +30,7 @@ struct VeterinarianView: View {
                             .padding(.horizontal, 20)
                             .padding(.top, 20)
 
-                        FilterView(listSector: viewModel.filterSector, showButtonFilter: true, sectorSelected: $filterSelected, buttonFilterSelected: $buttonFilterSelected)
+                        FilterView(showButtonFilter: true, listSector: $viewModel.filterSector, sectorSelected: $filterSelected, buttonFilterSelected: $buttonFilterSelected)
 
                         List {
                             ForEach(viewModel.offices, id: \.idOffice) { office in

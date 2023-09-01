@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct FilterView: View {
-    
-    @State var listSector: [FilterSector]
+
     @State var showButtonFilter: Bool
     @State var backgroundColor: Color = Color.background
+    @Binding var listSector: [FilterSector]
     @Binding var sectorSelected: Int
     @Binding var buttonFilterSelected: Bool
 
@@ -22,12 +22,12 @@ struct FilterView: View {
                 LazyHStack {
                     ForEach(Array(listSector.enumerated()), id: \.1) { index, filter in
                         Button(action: {
-                            sectorSelected = index
+                            filterSelect(index)
                         }, label: {
                             Text(filter.sector)
-                                .modifier(textStylePrincipal(color: .black, setWidth: false, fontSize: .callout))
+                                .modifier(textStylePrincipal(color: filter.isSelected ? .white : .black, setWidth: false, fontSize: .callout))
                         })
-                        .modifier(buttonPrincipal(padding: 10, .white))
+                        .modifier(buttonPrincipal(padding: 10, filter.isSelected ? .principal : .white))
                     }
                     .padding(5)
                 }
@@ -51,10 +51,17 @@ struct FilterView: View {
         }
         .background(backgroundColor)
     }
-}
 
-struct FilterViewPreviews: PreviewProvider {
-    static var previews: some View {
-        FilterView(listSector: [FilterSector("Gatos", isSelected: false), FilterSector("Perros", isSelected: false), FilterSector("Tortugas", isSelected: false)], showButtonFilter: true, sectorSelected: .constant(.zero), buttonFilterSelected: .constant(true))
+    private func filterSelect(_ index: Int) {
+        sectorSelected = index
+        if let filter = listSector[safe: index] {
+            listSector[index] = FilterSector(filter.sector, isSelected: !filter.isSelected)
+        }
     }
 }
+
+//struct FilterViewPreviews: PreviewProvider {
+//    static var previews: some View {
+//        FilterView(listSector: [FilterSector("Gatos", isSelected: false), FilterSector("Perros", isSelected: false), FilterSector("Tortugas", isSelected: false)], showButtonFilter: true, sectorSelected: .constant(.zero), buttonFilterSelected: .constant(true))
+//    }
+//}
