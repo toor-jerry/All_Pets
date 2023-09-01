@@ -34,21 +34,7 @@ struct EmergencyView: View {
                     .padding(.top, 20)
                     .padding(.bottom, 20)
                 } else {
-                    VStack {
-                        Spacer()
-                        Text(String.MsgNoLocalization)
-                            .foregroundColor(.black)
-                            .bold()
-                            .padding(.bottom, 15)
-
-                        HStack {
-                            Spacer()
-                            Link(String.MsgAceptLocalization, destination: URL(string: UIApplication.openSettingsURLString)!)
-                            Spacer()
-                        }
-                        Spacer()
-                    }
-                    .font(.title3)
+                    UserHasLocationView()
                 }
             }
         }

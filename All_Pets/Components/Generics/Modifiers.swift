@@ -7,6 +7,23 @@
 
 import SwiftUI
 
+struct AligmentView: ViewModifier {
+
+    var aligment: TextAlignment
+
+    func body(content: Content) -> some View {
+        HStack {
+            if aligment == .trailing {
+                Spacer()
+            }
+            content
+            if aligment == .leading {
+                Spacer()
+            }
+        }
+    }
+}
+
 struct imageSize: ViewModifier {
 
     var size: CGFloat

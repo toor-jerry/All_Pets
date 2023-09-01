@@ -13,7 +13,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     
     @Published var isLoading: Bool = false
     @Published var userHasLocation: Bool = false
-    private var offices: [OfficeModel] = []
+    @Published var offices: [OfficeModel] = []
     
     let useCase: VeterianUseCaseProtocol
     

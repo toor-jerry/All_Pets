@@ -36,6 +36,7 @@
 		D2494A442AA15FE500A944A2 /* VeterinarianView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A402AA15FE500A944A2 /* VeterinarianView.swift */; };
 		D2494A452AA15FE500A944A2 /* Veterinarian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A422AA15FE500A944A2 /* Veterinarian.swift */; };
 		D2494A472AA1607F00A944A2 /* VeterianUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A462AA1607F00A944A2 /* VeterianUseCase.swift */; };
+		D2494A492AA1698700A944A2 /* UserHasLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2494A482AA1698700A944A2 /* UserHasLocation.swift */; };
 		D24EE6042A8F2BA0008E3013 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */; };
 		D24EE6052A8F2BA0008E3013 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6012A8F2BA0008E3013 /* UserModel.swift */; };
 		D24EE6062A8F2BA0008E3013 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EE6032A8F2BA0008E3013 /* HomeView.swift */; };
@@ -111,6 +112,7 @@
 		D2494A402AA15FE500A944A2 /* VeterinarianView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeterinarianView.swift; sourceTree = "<group>"; };
 		D2494A422AA15FE500A944A2 /* Veterinarian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Veterinarian.swift; sourceTree = "<group>"; };
 		D2494A462AA1607F00A944A2 /* VeterianUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeterianUseCase.swift; sourceTree = "<group>"; };
+		D2494A482AA1698700A944A2 /* UserHasLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHasLocation.swift; sourceTree = "<group>"; };
 		D24EE5FF2A8F2BA0008E3013 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D24EE6012A8F2BA0008E3013 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D24EE6032A8F2BA0008E3013 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 				D24149B52A85AC6200E40EBB /* HubView.swift */,
 				D24149C52A86E57E00E40EBB /* ShorOrHideButton.swift */,
 				D28A19CF2A8C56B50024C517 /* ImagePicker.swift */,
+				D2494A482AA1698700A944A2 /* UserHasLocation.swift */,
 			);
 			path = Generics;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				D26B63AC2A8BCDD500A843D2 /* PetRegister.swift in Sources */,
 				D2AC45652A8406F9003958FC /* NetworkingProviderService.swift in Sources */,
 				D29F038A2A99C7A300C455F2 /* VaccinationCard.swift in Sources */,
+				D2494A492AA1698700A944A2 /* UserHasLocation.swift in Sources */,
 				D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */,
 				D2AC455E2A840288003958FC /* RequestType.swift in Sources */,
 				D2E6F8192A855C4E0074D84E /* Constants.swift in Sources */,

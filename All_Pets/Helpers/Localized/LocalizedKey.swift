@@ -45,4 +45,6 @@ extension String {
     static let MsgNoLocalization = "Localización NO Aceptada ❌"
     static let MsgAceptLocalization = "Pulsa para aceptar la autorización de Localización"
     static let MsgSendAlert = "Enviar alerta"
+    static let WordJoin = "y"
+    static let WordPets = "Mascotas"
 }

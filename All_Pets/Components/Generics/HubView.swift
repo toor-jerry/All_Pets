@@ -10,7 +10,7 @@ import SwiftUI
 struct HubView: View {
     
     @Binding var section: AuthSections
-    @State private var selectedTab = 0
+    @State private var selectedTab = 1
     
     var body: some View {
         TabView(selection: $selectedTab) {
