@@ -12,32 +12,35 @@ struct VeterinarianView: View {
     @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCaseUseCase())
     
     var body: some View {
-        VStack {
+        
+        NavigationStack {
+
             if viewModel.isLoading {
                 Loader()
             } else {
-                if viewModel.userHasLocation {
-                    List {
-                        ForEach(viewModel.offices, id: \.idOffice) { office in
-                            VeterianCardCell(office: office)
+                VStack {
+                    if viewModel.userHasLocation {
+                        List {
+                            ForEach(viewModel.offices, id: \.idOffice) { office in
+                                VeterianCardCell(office: office)
+                            }
+                            .listRowBackground(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(.white)
+                                    .modifier(shadowStyle1())
+                                    .padding(.bottom, 18)
+                                    .padding(.horizontal, 8)
+                            )
+                            .listRowSeparator(.hidden)
                         }
-                        .listRowBackground(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(.white)
-                                .modifier(shadowStyle1())
-                                .padding(.bottom, 18)
-                                .padding(.horizontal, 8)
-                        )
-                        .listRowSeparator(.hidden)
+                        .scrollContentBackground(.hidden)
+                    } else {
+                        UserHasLocationView()
                     }
-                    .scrollContentBackground(.hidden)
-                } else {
-                    UserHasLocationView()
-                }
+                }.modifier(NavigationBarModifier())
+                    .background(Color.background)
             }
         }
-        .modifier(NavigationBarModifier())
-        .background(Color.background)
         .task {
             viewModel.getOffices()
         }
@@ -72,7 +75,7 @@ struct VeterianCardCell: View {
                 .padding(.bottom, 20)
                 .padding(.trailing, 10)
 
-            VStack(spacing: 5) {
+            VStack(spacing: 10) {
 
                 Text(office.name ?? "")
                     .fontWeight(.bold)
@@ -84,7 +87,13 @@ struct VeterianCardCell: View {
                     .font(.callout)
                     .foregroundColor(.black)
                     .modifier(AligmentView(aligment: .leading))
+
+                Text("a \(office.distanceToUserLocation?.description ?? "") Mtrs.")
+                    .font(.callout)
+                    .foregroundColor(.black)
+                    .modifier(AligmentView(aligment: .leading))
             }
+            .padding(.bottom, 15)
         }
         .padding(10)
     }

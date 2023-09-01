@@ -25,7 +25,7 @@ struct OfficeModel: Codable {
         case status = "status"
         case hourEnd = "HFin"
         case hourStart = "HInicio"
-        case idOffice = "id"
+        case idOffice = "Id"
         case latitude = "Latitud"
         case length = "Longitud"
         case name = "Nombre"

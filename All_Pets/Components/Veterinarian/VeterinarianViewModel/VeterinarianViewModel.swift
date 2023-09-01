@@ -38,7 +38,6 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             self.offices = offices
             self.calculateNearestOffice()
         }, failure: { _ in
-            
         }, completion: {
             self.setTheardMain {
                 self.isLoading = false
@@ -51,14 +50,16 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
         
         let updatedOffices = offices.map { office -> OfficeModel in
             var mutableOffice = office
-            let officeLocation = CLLocation(latitude: office.latitude ?? 0.0, longitude: office.length ?? 0.0)
+            let officeLocation = CLLocation(latitude: office.latitude ?? .zero, longitude: office.length ?? .zero)
             let distance = userLocation.distance(from: officeLocation)
             mutableOffice.distanceToUserLocation = Int(distance)
             return mutableOffice
         }
         
+        let sortedOffices = updatedOffices.sorted { $0.distanceToUserLocation ?? .zero < $1.distanceToUserLocation ?? .zero }
+        
         self.setTheardMain {
-            self.offices = updatedOffices
+            self.offices = sortedOffices
         }
     }
     
