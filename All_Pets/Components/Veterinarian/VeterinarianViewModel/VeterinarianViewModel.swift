@@ -14,15 +14,22 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     @Published var isLoading: Bool = false
     @Published var userHasLocation: Bool = false
     @Published var offices: [OfficeModel] = []
+    @Published var showFilterBottomSheet: Bool = false
     @Published var filterSector: [FilterSector] = [FilterSector(String.WordDogs), FilterSector(String.WordCats), FilterSector(String.WordTurtles)] {
         didSet {
             filterOfficesBySections()
+            if !showFilterBottomSheet {
+               selectChipsByFilter()
+            }
         }
     }
 
     @Published var chipsSector: [ChipModel] = [ChipModel(titleKey: String.WordDogs), ChipModel(titleKey: String.WordHamster), ChipModel(titleKey: String.WordFish), ChipModel(titleKey: String.WordCats), ChipModel(titleKey: String.WordRabbits)] {
         didSet {
             filterOfficesByChipSections()
+            if showFilterBottomSheet {
+                selectFilterByChips()
+            }
         }
     }
 
@@ -90,6 +97,28 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             userHasLocation = false
         @unknown default:
             print("Unhandled state")
+        }
+    }
+
+    func selectChipsByFilter() {
+        // TODO: refactor this code
+        filterSector.forEach { filter in
+            if let chipIndex = chipsSector.firstIndex(where: { $0.titleKey.lowercased() == filter.sector.lowercased() }) {
+                var updatedChip = chipsSector[chipIndex]
+                updatedChip.isSelected = filter.isSelected
+                chipsSector[chipIndex] = updatedChip
+            }
+        }
+    }
+
+    private func selectFilterByChips() {
+        // TODO: refactor this code
+        chipsSector.forEach { chip in
+            if let filterIndex = filterSector.firstIndex(where: { $0.sector.lowercased() == chip.titleKey.lowercased() }) {
+                var updatedFilter = filterSector[filterIndex]
+                updatedFilter.isSelected = chip.isSelected
+                filterSector[filterIndex] = updatedFilter
+            }
         }
     }
 
