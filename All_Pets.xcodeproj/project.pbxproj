@@ -66,6 +66,9 @@
 		D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC45692A8409CB003958FC /* Array+Extension.swift */; };
 		D2AC456C2A840A23003958FC /* ObservableObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */; };
 		D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */; };
+		D2AFE1602AA57F2B00B44FB4 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFE15F2AA57F2B00B44FB4 /* ChipView.swift */; };
+		D2AFE1622AA5820D00B44FB4 /* ChipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFE1612AA5820D00B44FB4 /* ChipModel.swift */; };
+		D2AFE1642AA5827400B44FB4 /* ChipContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFE1632AA5827400B44FB4 /* ChipContainerView.swift */; };
 		D2D8232E2A831C490060CDA7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2D8232D2A831C490060CDA7 /* GoogleService-Info.plist */; };
 		D2D823312A831FA20060CDA7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2D823302A831FA20060CDA7 /* FirebaseAnalyticsSwift */; };
 		D2D823332A831FA20060CDA7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D2D823322A831FA20060CDA7 /* FirebaseAuth */; };
@@ -145,6 +148,9 @@
 		D2AC45692A8409CB003958FC /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableObject+Extension.swift"; sourceTree = "<group>"; };
 		D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginUseCase.swift; sourceTree = "<group>"; };
+		D2AFE15F2AA57F2B00B44FB4 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
+		D2AFE1612AA5820D00B44FB4 /* ChipModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipModel.swift; sourceTree = "<group>"; };
+		D2AFE1632AA5827400B44FB4 /* ChipContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipContainerView.swift; sourceTree = "<group>"; };
 		D2D8232D2A831C490060CDA7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2D928562A889FC0009C5FEE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		D2E143E62A83F9780096457C /* AuthLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginView.swift; sourceTree = "<group>"; };
@@ -623,9 +629,20 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		D2AFE15E2AA57F0F00B44FB4 /* FilterChips */ = {
+			isa = PBXGroup;
+			children = (
+				D2AFE15F2AA57F2B00B44FB4 /* ChipView.swift */,
+				D2AFE1612AA5820D00B44FB4 /* ChipModel.swift */,
+				D2AFE1632AA5827400B44FB4 /* ChipContainerView.swift */,
+			);
+			path = FilterChips;
+			sourceTree = "<group>";
+		};
 		D2E6F80C2A84A6190074D84E /* Generics */ = {
 			isa = PBXGroup;
 			children = (
+				D2AFE15E2AA57F0F00B44FB4 /* FilterChips */,
 				D2E6F80D2A84A6290074D84E /* Loader.swift */,
 				D2E6F8142A8558110074D84E /* Colors.swift */,
 				D2E6F8162A855AED0074D84E /* Modifiers.swift */,
@@ -763,6 +780,7 @@
 				D248834D2A9AC722006BC149 /* VaccinationCellView.swift in Sources */,
 				D2D928572A889FC0009C5FEE /* Endpoint.swift in Sources */,
 				D24149C12A86B04100E40EBB /* ProfileView.swift in Sources */,
+				D2AFE1622AA5820D00B44FB4 /* ChipModel.swift in Sources */,
 				D29F038D2A99CA7400C455F2 /* VaccinationCardUseCase.swift in Sources */,
 				D2494A512AA24EC700A944A2 /* FilterSectorModel.swift in Sources */,
 				D248835B2A9D603A006BC149 /* EmergencyView.swift in Sources */,
@@ -776,6 +794,7 @@
 				D28A19CC2A8C01920024C517 /* PetRegisterUseCase.swift in Sources */,
 				D2494A392AA15E5300A944A2 /* PetType.swift in Sources */,
 				D2E143EB2A83FB480096457C /* AuthSections.swift in Sources */,
+				D2AFE1642AA5827400B44FB4 /* ChipContainerView.swift in Sources */,
 				D29F03892A99C7A300C455F2 /* VaccinationCardViewModel.swift in Sources */,
 				D2494A4D2AA22E7600A944A2 /* VeterianCardCell.swift in Sources */,
 				D26B63AC2A8BCDD500A843D2 /* PetRegister.swift in Sources */,
@@ -786,6 +805,7 @@
 				D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */,
 				D2AC455E2A840288003958FC /* RequestType.swift in Sources */,
 				D2E6F8192A855C4E0074D84E /* Constants.swift in Sources */,
+				D2AFE1602AA57F2B00B44FB4 /* ChipView.swift in Sources */,
 				D24883492A9AAB66006BC149 /* View+Extension.swift in Sources */,
 				D24149C42A86B08A00E40EBB /* SignUpUseCase.swift in Sources */,
 				D24149D42A86F6DD00E40EBB /* SignUpViewModel.swift in Sources */,
