@@ -29,7 +29,7 @@ struct ChipContainerView: View {
                 ForEach(chipArray) { data in
                     ChipView(titleKey: data.titleKey,
                              isSelected: data.isSelected)
-                    .padding(.all, 10)
+                    .padding(.all, paddingChips)
                     .alignmentGuide(.leading) { dimension in
                         if (abs(width - dimension.width) > geo.size.width) {
                             width = .zero
