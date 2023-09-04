@@ -48,7 +48,10 @@ extension String {
     static let WordJoin = "y"
     static let WordPets = "Mascotas"
     static let MsgTitleVeterin = "Acceso rápido a especialistas"
-    static let ItemFilterFirst = "Perros"
-    static let ItemFilterSecond = "Gatos"
-    static let ItemFilterThird = "Tortugas"
+    static let WordDogs = "Perros"
+    static let WordCats = "Gatos"
+    static let WordTurtles = "Tortugas"
+    static let WordHamster = "Hamster"
+    static let WordFish = "Percados"
+    static let WordRabbits = "Conejos"
 }
