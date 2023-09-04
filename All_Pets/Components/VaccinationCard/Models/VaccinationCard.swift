@@ -14,6 +14,11 @@ enum VaccinationCardStatus: String {
     case overdue = "vencida"
 }
 
+enum VaccinationCardType: String {
+    case vaccine = "vacuna"
+    case medicine = "medicina"
+}
+
 extension VaccinationCardStatus {
 
     func getTextColor() -> Color {
@@ -55,12 +60,14 @@ struct VaccinationCardModel: Codable {
     var vaccinationDate: Timestamp
     var status: String
     var vaccine: String
+    var type: String?
 
     enum CodingKeys: String, CodingKey {
         case professionalLicense = "PLicense"
         case vaccinationDate = "date"
         case status = "status"
         case vaccine = "vaccine"
+        case type = "type"
     }
 
     func getDateWithFormat() -> String {
@@ -71,5 +78,9 @@ struct VaccinationCardModel: Codable {
 
     func getStatus() -> VaccinationCardStatus? {
         return VaccinationCardStatus.init(rawValue: status)
+    }
+
+    func getType() -> VaccinationCardType? {
+        return VaccinationCardType.init(rawValue: type ?? "")
     }
 }

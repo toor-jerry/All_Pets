@@ -21,6 +21,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     }
 
     private var officesBack: [OfficeModel] = []
+    private let wordAllSectors: String = "todos"
     
     let useCase: VeterianUseCaseProtocol
     
@@ -87,7 +88,6 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     }
 
     private func filterOfficesBySections() {
-        // TODO: OPTIMIZAR
         isLoading.toggle()
 
         if !filterSelected() {
@@ -98,42 +98,26 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             return
         }
 
-        var officesTmp: [OfficeModel] = []
-        offices.forEach { office in
-            if ((office.specializedSector?.first(where: { sector in
-                return sector == "todos"
-            }) as? String) != nil) || containOnFilter(specialities: office.specializedSector) {
-                officesTmp.append(office)
+        let selectedSectors = Set(filterSector.filter { $0.isSelected }.map { $0.sector.lowercased() })
+
+        let filteredOffices = offices.filter { office in
+            if let specializedSectors = office.specializedSector {
+                if specializedSectors.contains(wordAllSectors) {
+                    return true
+                }
+                return !selectedSectors.isDisjoint(with: specializedSectors.map { $0.lowercased() })
             }
+            return false
         }
+
         setTheardMain {
-            self.offices = officesTmp
+            self.offices = filteredOffices
             self.isLoading.toggle()
         }
     }
 
     private func filterSelected() -> Bool {
-        // TODO: OPTIMIZAR
-        var isSelect = false
-        filterSector.forEach { filter in
-            if filter.isSelected {
-                isSelect = true
-            }
-        }
-        return isSelect
-    }
-
-    private func containOnFilter(specialities: [String]?) -> Bool {
-        // TODO: OPTIMIZAR
-        var isSelect = false
-        filterSector.forEach { filter in
-            specialities?.forEach({ specialitie in
-                if specialitie.lowercased() == filter.sector.lowercased() {
-                    isSelect = true
-                }
-            })
-        }
-        return isSelect
+        return filterSector.contains { $0.isSelected }
     }
 }
 

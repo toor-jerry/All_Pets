@@ -14,7 +14,7 @@ struct VaccinationCardCell: View {
     var body: some View {
         HStack {
 
-            Image(systemName: "pills.fill")
+            Image(systemName: getNameImgType())
                 .resizable()
                 .foregroundColor(.blue.opacity(0.5))
                 .frame(width: 50, height: 50)
@@ -62,5 +62,19 @@ struct VaccinationCardCell: View {
             }
         }
         .font(.footnote)
+    }
+
+    private func getNameImgType() -> String {
+        var nameImage: String = "photo"
+
+        if let type = card.getType() {
+            switch type {
+            case .medicine:
+                nameImage = "pills.fill"
+            case .vaccine:
+                nameImage = "syringe"
+            }
+        }
+        return nameImage
     }
 }
