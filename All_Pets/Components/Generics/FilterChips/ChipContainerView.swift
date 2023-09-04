@@ -18,11 +18,12 @@ struct ChipContainerView: View {
         var height = CGFloat.zero
         return GeometryReader { geo in
             ZStack(alignment: .topLeading, content: {
-                ForEach(chipArray) { data in
-                    
-                    ChipView(titleKey: data.titleKey,
-                             isSelected: data.isSelected, systemImage: data.systemImage)
-                    
+                ForEach(chipArray, id: \.id) { data in
+
+                    ChipView(titleKey: data.titleKey, isSelected: data.isSelected, isSelectedChip: {
+                        chipSelected(data.id)
+                    }, systemImage: data.systemImage)
+
                     .padding(.all, paddingChips)
                     .alignmentGuide(.leading) { dimension in
                         if (abs(width - dimension.width) > geo.size.width) {
@@ -48,18 +49,21 @@ struct ChipContainerView: View {
             })
         }
     }
+
+    private func chipSelected(_ index: UUID) {
+        if let chipIndex = chipArray.firstIndex(where: { $0.id == index }) {
+            var updatedChip = chipArray[chipIndex]
+            updatedChip.isSelected.toggle()
+            chipArray[chipIndex] = updatedChip
+        }
+    }
 }
 
 struct ChipContainerView_Previews: PreviewProvider {
     static var previews: some View {
         @State var array = [
-            ChipModel(isSelected: false, systemImage: "heart.circle", titleKey: "Heart"),
-            ChipModel(isSelected: false, systemImage: "folder.circle", titleKey: "Folder"),
-            ChipModel(isSelected: false, systemImage: "pencil.and.outline", titleKey: "Pen"),
-            ChipModel(isSelected: false, systemImage: "book.circle", titleKey: "Book"),
-            ChipModel(isSelected: false, systemImage: "paperplane.circle", titleKey: "Paper Plain"),
-            ChipModel(isSelected: false, systemImage: "opticaldiscdrive", titleKey: "Optical Drive"),
-            ChipModel(isSelected: false, systemImage: "doc.circle", titleKey: "Documents")
+            ChipModel(titleKey: "Heart", isSelected: false, systemImage: "heart.circle"),
+            ChipModel(titleKey: "Folder", isSelected: true)
         ]
         ChipContainerView(chipArray: $array)
     }

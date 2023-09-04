@@ -9,14 +9,16 @@ import SwiftUI
 
 struct ChipView: View {
 
-    let titleKey: LocalizedStringKey
+    let titleKey: String
     let systemImage: String?
     @State var isSelected: Bool
+    let isSelectedChip: () -> Void
 
-    init(titleKey: LocalizedStringKey, isSelected: Bool, systemImage: String? = nil) {
+    init(titleKey: String, isSelected: Bool, isSelectedChip: @escaping () -> Void, systemImage: String? = nil) {
         self.titleKey = titleKey
-        self.isSelected = isSelected
         self.systemImage = systemImage
+        self.isSelected = isSelected
+        self.isSelectedChip = isSelectedChip
     }
 
     var body: some View {
@@ -31,6 +33,7 @@ struct ChipView: View {
         .fontWeight(.bold)
         .modifier(buttonPrincipal(padding: 10, isSelected ? .principal : .white))
         .onTapGesture {
+            isSelectedChip()
             isSelected.toggle()
         }
     }
@@ -38,8 +41,19 @@ struct ChipView: View {
 
 struct ChipView_Previews: PreviewProvider {
     static var previews: some View {
-        ChipView(titleKey: "Title", isSelected: false, systemImage: "heart.circle")
+        ChipView(titleKey: "Title", isSelected: false, isSelectedChip: {
+
+        })
             .previewLayout(.sizeThatFits)
             .padding()
     }
 }
+
+//struct ChipView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        @State var isSelected: Bool = false
+//        ChipView(titleKey: "Title", systemImage: "heart.circle", isSelected: $isSelected)
+//            .previewLayout(.sizeThatFits)
+//            .padding()
+//    }
+//}

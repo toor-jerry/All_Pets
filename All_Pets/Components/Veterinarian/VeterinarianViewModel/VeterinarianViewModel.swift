@@ -19,7 +19,13 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             filterOfficesBySections()
         }
     }
-
+    
+    @Published var chipsSector: [ChipModel] = [ChipModel(titleKey: String.ItemFilterFirst)] {
+        didSet {
+            filterOfficesByChipSections()
+        }
+    }
+    
     private var officesBack: [OfficeModel] = []
     private let wordAllSectors: String = "todos"
     
@@ -86,10 +92,10 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             print("Unhandled state")
         }
     }
-
+    
     private func filterOfficesBySections() {
         isLoading.toggle()
-
+        
         if !filterSelected() {
             setTheardMain {
                 self.offices = self.officesBack
@@ -97,9 +103,9 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
             return
         }
-
+        
         let selectedSectors = Set(filterSector.filter { $0.isSelected }.map { $0.sector.lowercased() })
-
+        
         let filteredOffices = offices.filter { office in
             if let specializedSectors = office.specializedSector {
                 if specializedSectors.contains(wordAllSectors) {
@@ -109,15 +115,49 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
             return false
         }
-
+        
         setTheardMain {
             self.offices = filteredOffices
             self.isLoading.toggle()
         }
     }
-
+    
     private func filterSelected() -> Bool {
         return filterSector.contains { $0.isSelected }
+    }
+    
+    
+    private func filterOfficesByChipSections() {
+        isLoading.toggle()
+        
+        if !filterChipSelected() {
+            setTheardMain {
+                self.offices = self.officesBack
+                self.isLoading.toggle()
+            }
+            return
+        }
+        
+        let selectedSectors = Set(chipsSector.filter { $0.isSelected }.map { $0.titleKey.lowercased() })
+        
+        let filteredOffices = offices.filter { office in
+            if let specializedSectors = office.specializedSector {
+                if specializedSectors.contains(wordAllSectors) {
+                    return true
+                }
+                return !selectedSectors.isDisjoint(with: specializedSectors.map { $0.lowercased() })
+            }
+            return false
+        }
+        
+        setTheardMain {
+            self.offices = filteredOffices
+            self.isLoading.toggle()
+        }
+    }
+    
+    private func filterChipSelected() -> Bool {
+        return chipsSector.contains { $0.isSelected }
     }
 }
 

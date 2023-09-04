@@ -54,7 +54,7 @@ struct VeterinarianView: View {
         }
         .sheet(isPresented: $showFilterBottomSheet) {
             // TODO: add view for filter
-            EmptyView()
+            ChipContainerView(chipArray: $viewModel.chipsSector)
                 .presentationDetents([.medium, .large])
                 .background(Color.background)
                 .foregroundColor(.black)

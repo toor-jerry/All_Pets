@@ -7,9 +7,16 @@
 
 import SwiftUI
 
-struct ChipModel: Identifiable {
-    @State var isSelected: Bool
-    let id = UUID()
-    let systemImage: String
-    let titleKey: LocalizedStringKey
+struct ChipModel {
+    var isSelected: Bool
+    var id: UUID
+    let titleKey: String
+    let systemImage: String?
+
+    init(titleKey: String, isSelected: Bool = false, systemImage: String? = nil, id: UUID = UUID()) {
+        self.isSelected = isSelected
+        self.systemImage = systemImage
+        self.titleKey = titleKey
+        self.id = id
+    }
 }
