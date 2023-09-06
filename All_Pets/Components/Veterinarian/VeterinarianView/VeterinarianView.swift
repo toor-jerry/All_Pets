@@ -52,11 +52,7 @@ struct VeterinarianView: View {
             }
         }
         .sheet(isPresented: $viewModel.showFilterBottomSheet) {
-            // TODO: add view for filter
-            ChipContainerView(chipArray: $viewModel.chipsSector)
-                .presentationDetents([.medium, .large])
-                .background(Color.background)
-                .foregroundColor(.black)
+            VeterianFilterChipsView(viewModel: viewModel)
         }
         .task {
             viewModel.getOffices()

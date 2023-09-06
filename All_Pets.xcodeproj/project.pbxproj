@@ -53,6 +53,7 @@
 		D28A19CC2A8C01920024C517 /* PetRegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A19CB2A8C01920024C517 /* PetRegisterUseCase.swift */; };
 		D28A19CE2A8C35710024C517 /* ListSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A19CD2A8C35710024C517 /* ListSearch.swift */; };
 		D28A19D02A8C56B50024C517 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A19CF2A8C56B50024C517 /* ImagePicker.swift */; };
+		D28BD59A2AA8E81300320204 /* VeterianFilterChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BD5992AA8E81300320204 /* VeterianFilterChipsView.swift */; };
 		D29F03892A99C7A300C455F2 /* VaccinationCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F03842A99C7A300C455F2 /* VaccinationCardViewModel.swift */; };
 		D29F038A2A99C7A300C455F2 /* VaccinationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F03862A99C7A300C455F2 /* VaccinationCard.swift */; };
 		D29F038B2A99C7A300C455F2 /* VaccinationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F03882A99C7A300C455F2 /* VaccinationCardView.swift */; };
@@ -135,6 +136,7 @@
 		D28A19CB2A8C01920024C517 /* PetRegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterUseCase.swift; sourceTree = "<group>"; };
 		D28A19CD2A8C35710024C517 /* ListSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearch.swift; sourceTree = "<group>"; };
 		D28A19CF2A8C56B50024C517 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D28BD5992AA8E81300320204 /* VeterianFilterChipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeterianFilterChipsView.swift; sourceTree = "<group>"; };
 		D29F03842A99C7A300C455F2 /* VaccinationCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCardViewModel.swift; sourceTree = "<group>"; };
 		D29F03862A99C7A300C455F2 /* VaccinationCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCard.swift; sourceTree = "<group>"; };
 		D29F03882A99C7A300C455F2 /* VaccinationCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCardView.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 			children = (
 				D2494A402AA15FE500A944A2 /* VeterinarianView.swift */,
 				D2494A4C2AA22E7600A944A2 /* VeterianCardCell.swift */,
+				D28BD5992AA8E81300320204 /* VeterianFilterChipsView.swift */,
 			);
 			path = VeterinarianView;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				D24149C02A86B04100E40EBB /* ProfileViewModel.swift in Sources */,
 				D2E6F8152A8558110074D84E /* Colors.swift in Sources */,
 				D24EE6082A8FC370008E3013 /* HomeUseCase.swift in Sources */,
+				D28BD59A2AA8E81300320204 /* VeterianFilterChipsView.swift in Sources */,
 				D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */,
 				D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */,
 				D2AC45612A84061A003958FC /* Fetcher.swift in Sources */,

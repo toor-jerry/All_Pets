@@ -10,7 +10,7 @@ import SwiftUI
 struct ChipContainerView: View {
     
     @Binding var chipArray: [ChipModel]
-    
+    var updateHeigh: (_ height: CGFloat) -> Void
     var paddingChips: CGFloat = 10
     
     var body: some View {
@@ -47,6 +47,7 @@ struct ChipContainerView: View {
                     }
                 }
             })
+            .background(viewHeightReader())
         }
     }
 
@@ -57,14 +58,24 @@ struct ChipContainerView: View {
             chipArray[chipIndex] = updatedChip
         }
     }
-}
 
-struct ChipContainerView_Previews: PreviewProvider {
-    static var previews: some View {
-        @State var array = [
-            ChipModel(titleKey: "Heart", isSelected: false, systemImage: "heart.circle"),
-            ChipModel(titleKey: "Folder", isSelected: true)
-        ]
-        ChipContainerView(chipArray: $array)
+    private func viewHeightReader() -> some View {
+        return GeometryReader { geometry -> Color in
+            let rect = geometry.frame(in: .local)
+            DispatchQueue.main.async {
+                updateHeigh(rect.size.height)
+            }
+            return .clear
+        }
     }
 }
+
+//struct ChipContainerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        @State var array = [
+//            ChipModel(titleKey: "Heart", isSelected: false, systemImage: "heart.circle"),
+//            ChipModel(titleKey: "Folder", isSelected: true)
+//        ]
+//        ChipContainerView(chipArray: $array)
+//    }
+//}

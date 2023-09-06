@@ -54,4 +54,7 @@ extension String {
     static let WordHamster = "Hamster"
     static let WordFish = "Percados"
     static let WordRabbits = "Conejos"
+    static let WordsSpecificInquiries = "Consultas específicas"
+    static let WordSpecialities = "Especialidades"
+    static let WordApply = "Aplicar"
 }
