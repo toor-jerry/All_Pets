@@ -17,21 +17,22 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     @Published var showFilterBottomSheet: Bool = false
     @Published var filterSector: [FilterSector] = [FilterSector(String.WordDogs), FilterSector(String.WordCats), FilterSector(String.WordTurtles)] {
         didSet {
-            filterOfficesBySections()
             if !showFilterBottomSheet {
-               selectChipsByFilter()
+                selectChipsByFilter()
             }
+            filterOfficesBySections()
         }
     }
 
     @Published var chipsSector: [ChipModel] = [ChipModel(titleKey: String.WordDogs), ChipModel(titleKey: String.WordHamster), ChipModel(titleKey: String.WordFish), ChipModel(titleKey: String.WordCats), ChipModel(titleKey: String.WordRabbits)] {
         didSet {
-            filterOfficesByChipSections()
             if showFilterBottomSheet {
                 selectFilterByChips()
             }
         }
     }
+
+    @Published var chipsSpecialities: [ChipModel] = []
 
     private var officesBack: [OfficeModel] = []
     private let wordAllSectors: String = "todos"
@@ -68,21 +69,31 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     }
     
     private func calculateNearestOffice() {
+        // TODO: refactor
         guard let userLocation = userLocation, !offices.isEmpty else { return }
-        
+
+        var specialities: [String] = []
+
         let updatedOffices = offices.map { office -> OfficeModel in
             var mutableOffice = office
             let officeLocation = CLLocation(latitude: office.latitude ?? .zero, longitude: office.length ?? .zero)
             let distance = userLocation.distance(from: officeLocation)
             mutableOffice.distanceToUserLocation = Int(distance)
+            specialities.append(contentsOf: office.medicalSpecialities ?? [])
             return mutableOffice
         }
         
         let sortedOffices = updatedOffices.sorted { $0.distanceToUserLocation ?? .zero < $1.distanceToUserLocation ?? .zero }
-        
+
+        var specialitiesModelTmp: [ChipModel] = []
+        specialities.sorted().forEach { specialitie in
+            specialitiesModelTmp.append(ChipModel(titleKey: specialitie))
+        }
+
         self.setTheardMain {
             self.officesBack = sortedOffices
             self.offices = sortedOffices
+            self.chipsSpecialities = specialitiesModelTmp
         }
     }
     
@@ -98,6 +109,31 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
         @unknown default:
             print("Unhandled state")
         }
+    }
+
+    func filterByChips() {
+        isLoading.toggle()
+
+        if !existFilterSelected() {
+            setTheardMain {
+                self.offices = self.officesBack
+                self.isLoading.toggle()
+                self.showFilterBottomSheet = false
+            }
+            return
+        }
+
+        filterOfficesByChipSpecialities()
+        filterOfficesByChipSections()
+
+        setTheardMain {
+            self.isLoading.toggle()
+            self.showFilterBottomSheet = false
+        }
+    }
+
+    private func existFilterSelected() -> Bool {
+        return chipsSector.contains { $0.isSelected } || chipsSpecialities.contains { $0.isSelected } || filterSector.contains { $0.isSelected }
     }
 
     func selectChipsByFilter() {
@@ -125,7 +161,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     private func filterOfficesBySections() {
         isLoading.toggle()
 
-        if !filterSelected() {
+        if !existFilterSelected() {
             setTheardMain {
                 self.offices = self.officesBack
                 self.isLoading.toggle()
@@ -151,21 +187,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
         }
     }
 
-    private func filterSelected() -> Bool {
-        return filterSector.contains { $0.isSelected }
-    }
-
-
     private func filterOfficesByChipSections() {
-        isLoading.toggle()
-
-        if !filterChipSelected() {
-            setTheardMain {
-                self.offices = self.officesBack
-                self.isLoading.toggle()
-            }
-            return
-        }
 
         let selectedSectors = Set(chipsSector.filter { $0.isSelected }.map { $0.titleKey.lowercased() })
 
@@ -181,12 +203,26 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
 
         setTheardMain {
             self.offices = filteredOffices
-            self.isLoading.toggle()
         }
     }
 
-    private func filterChipSelected() -> Bool {
-        return chipsSector.contains { $0.isSelected }
+    private func filterOfficesByChipSpecialities() {
+
+        let selectedSpecialities = Set(chipsSpecialities.filter { $0.isSelected }.map { $0.titleKey.lowercased() })
+
+        let filteredOffices = offices.filter { office in
+            if let medicalSpecialities = office.medicalSpecialities {
+                if medicalSpecialities.contains(wordAllSectors) {
+                    return true
+                }
+                return !selectedSpecialities.isDisjoint(with: medicalSpecialities.map { $0.lowercased() })
+            }
+            return false
+        }
+
+        setTheardMain {
+            self.offices = filteredOffices
+        }
     }
 }
 
