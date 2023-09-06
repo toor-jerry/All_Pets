@@ -19,10 +19,27 @@ struct EmergencyView: View {
             } else {
 
                 if viewModel.userHasLocation {
-                    Map(coordinateRegion: $viewModel.officeCoordinates, showsUserLocation: true, userTrackingMode: .constant(.none), annotationItems: viewModel.mapPins) { pin in
+                    ZStack {
+                        Map(coordinateRegion: $viewModel.officeCoordinates, showsUserLocation: true, userTrackingMode: .constant(viewModel.userTrackingMode), annotationItems: viewModel.mapPins) { pin in
 
-                        MapMarker(coordinate: pin.coordinate)
+                            MapMarker(coordinate: pin.coordinate)
+                        }
+
+                        VStack {
+                            Spacer()
+                            Button(action: {
+                                viewModel.userTrackingMode = viewModel.userTrackingMode == .follow ? .none : .follow
+                            }, label: {
+                                Image(systemName: viewModel.userTrackingMode == .follow ? "location.fill" : "location")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(.white)
+                                    .padding(20)
+                            })
+                            .modifier(AligmentView(aligment: .trailing))
+                        }
                     }
+                    .edgesIgnoringSafeArea(.all)
 
                     Button(action: {
 

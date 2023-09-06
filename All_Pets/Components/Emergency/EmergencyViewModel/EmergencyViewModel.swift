@@ -19,6 +19,7 @@ final class EmergencyViewModel: NSObject, ObservableObject {
     
     @Published var isLoading: Bool = false
     @Published var userHasLocation: Bool = false
+    @Published var userTrackingMode: MapUserTrackingMode = .none
     @Published var officeCoordinates: MKCoordinateRegion = .init()
     @Published var mapPins: [MapViewPin] = []
     private var offices: [OfficeModel] = []
