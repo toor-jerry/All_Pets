@@ -32,7 +32,11 @@ struct VeterinarianView: View {
 
                         List {
                             ForEach(viewModel.offices, id: \.idOffice) { office in
-                                VeterianCardCell(office: office)
+                                NavigationLink(destination: {
+                                    VeterinarianDetailView(office: office)
+                                }, label: {
+                                    VeterianCardCell(office: office)
+                                })
                             }
                             .listRowBackground(
                                 RoundedRectangle(cornerRadius: 8)
