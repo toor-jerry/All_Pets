@@ -40,6 +40,7 @@ struct VeterianFilterChipsView: View {
                     }
                 }).frame(height: heightSecondContainerChips)
             }
+            .foregroundColor(.black)
             
             Button(action: {
                 viewModel.filterByChips()
