@@ -9,7 +9,15 @@ import SwiftUI
 
 struct Loader: View {
     var body: some View {
-        ProgressView(String.MsgLoader)
-            .scaleEffect(2)
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                ProgressView(String.MsgLoader)
+                    .scaleEffect(2)
+                Spacer()
+            }
+            Spacer()
+        }.background(Color.gray)
     }
 }
