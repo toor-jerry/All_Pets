@@ -51,7 +51,19 @@ struct VeterianFilterChipsView: View {
             
         }
         .presentationDetents([.large])
+        .padding(.top, 40)
         .padding(20)
         .background(Color.background)
+    }
+}
+
+struct VeterianFilterChipsViewPreviews: PreviewProvider {
+    static var previews: some View {
+        @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCaseUseCase())
+
+        VeterianFilterChipsView(viewModel: viewModel)
+            .task {
+            viewModel.chipsSpecialities = [ChipModel(titleKey: "Test1"), ChipModel(titleKey: "Word 2")]
+        }
     }
 }
