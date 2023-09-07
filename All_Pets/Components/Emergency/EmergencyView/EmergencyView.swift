@@ -28,16 +28,6 @@ struct EmergencyView: View {
                         MapLocationIconsView(viewModel: viewModel)
                     }
                     .edgesIgnoringSafeArea(.all)
-
-                    Button(action: {
-
-                    }, label: {
-                        Text(String.MsgSendAlert)
-                            .modifier(textStylePrincipal())
-                    })
-                    .modifier(buttonPrincipal(.red))
-                    .padding(.top, 20)
-                    .padding(.bottom, 20)
                 } else {
                     UserHasLocationView()
                 }
