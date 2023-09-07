@@ -17,6 +17,7 @@ struct OfficeModel: Codable {
     var name: String?
     var medicalSpecialities: [String]?
     var specializedSector: [String]?
+    var imagesSlider: [String]?
     var punctuation: Int?
     var address: String?
     var distanceToUserLocation: Int?
@@ -36,5 +37,6 @@ struct OfficeModel: Codable {
         case address = "direccion"
         case distanceToUserLocation = "distanceToUserLocation"
         case photoURL = "imgLogo"
+        case imagesSlider = "imagenes"
     }
 }

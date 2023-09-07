@@ -13,12 +13,14 @@ struct ChipView: View {
     let systemImage: String?
     @State var isSelected: Bool
     let isSelectedChip: () -> Void
+    var enableChangeColorOnSelect: Bool
 
-    init(titleKey: String, isSelected: Bool, isSelectedChip: @escaping () -> Void, systemImage: String? = nil) {
+    init(titleKey: String, isSelected: Bool, isSelectedChip: @escaping () -> Void, systemImage: String? = nil, enableChangeColorOnSelect: Bool = true) {
         self.titleKey = titleKey
         self.systemImage = systemImage
         self.isSelected = isSelected
         self.isSelectedChip = isSelectedChip
+        self.enableChangeColorOnSelect = enableChangeColorOnSelect
     }
 
     var body: some View {
@@ -34,7 +36,9 @@ struct ChipView: View {
         .modifier(buttonPrincipal(padding: 10, isSelected ? .principal : .white))
         .onTapGesture {
             isSelectedChip()
-            isSelected.toggle()
+            if enableChangeColorOnSelect {
+                isSelected.toggle()
+            }
         }
     }
 }

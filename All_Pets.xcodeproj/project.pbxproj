@@ -57,6 +57,8 @@
 		D28BD5A82AA90E0200320204 /* VeterinarianDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BD5A32AA90E0200320204 /* VeterinarianDetailViewModel.swift */; };
 		D28BD5A92AA90E0200320204 /* VeterinarianDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BD5A52AA90E0200320204 /* VeterinarianDetailView.swift */; };
 		D28BD5AA2AA90E0200320204 /* VeterinarianDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BD5A72AA90E0200320204 /* VeterinarianDetail.swift */; };
+		D28BD5AC2AA92BF200320204 /* VeterianImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BD5AB2AA92BF200320204 /* VeterianImageView.swift */; };
+		D28BD5AE2AA94CA500320204 /* ImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BD5AD2AA94CA500320204 /* ImageSliderView.swift */; };
 		D29F03892A99C7A300C455F2 /* VaccinationCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F03842A99C7A300C455F2 /* VaccinationCardViewModel.swift */; };
 		D29F038A2A99C7A300C455F2 /* VaccinationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F03862A99C7A300C455F2 /* VaccinationCard.swift */; };
 		D29F038B2A99C7A300C455F2 /* VaccinationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F03882A99C7A300C455F2 /* VaccinationCardView.swift */; };
@@ -143,6 +145,8 @@
 		D28BD5A32AA90E0200320204 /* VeterinarianDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeterinarianDetailViewModel.swift; sourceTree = "<group>"; };
 		D28BD5A52AA90E0200320204 /* VeterinarianDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeterinarianDetailView.swift; sourceTree = "<group>"; };
 		D28BD5A72AA90E0200320204 /* VeterinarianDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VeterinarianDetail.swift; sourceTree = "<group>"; };
+		D28BD5AB2AA92BF200320204 /* VeterianImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeterianImageView.swift; sourceTree = "<group>"; };
+		D28BD5AD2AA94CA500320204 /* ImageSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderView.swift; sourceTree = "<group>"; };
 		D29F03842A99C7A300C455F2 /* VaccinationCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCardViewModel.swift; sourceTree = "<group>"; };
 		D29F03862A99C7A300C455F2 /* VaccinationCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCard.swift; sourceTree = "<group>"; };
 		D29F03882A99C7A300C455F2 /* VaccinationCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCardView.swift; sourceTree = "<group>"; };
@@ -421,6 +425,7 @@
 				D2494A402AA15FE500A944A2 /* VeterinarianView.swift */,
 				D2494A4C2AA22E7600A944A2 /* VeterianCardCell.swift */,
 				D28BD5992AA8E81300320204 /* VeterianFilterChipsView.swift */,
+				D28BD5AB2AA92BF200320204 /* VeterianImageView.swift */,
 			);
 			path = VeterinarianView;
 			sourceTree = "<group>";
@@ -695,6 +700,7 @@
 				D28A19CF2A8C56B50024C517 /* ImagePicker.swift */,
 				D2494A482AA1698700A944A2 /* UserHasLocation.swift */,
 				D2494A4E2AA22F4200A944A2 /* FilterView.swift */,
+				D28BD5AD2AA94CA500320204 /* ImageSliderView.swift */,
 			);
 			path = Generics;
 			sourceTree = "<group>";
@@ -824,9 +830,11 @@
 				D2E6F8172A855AED0074D84E /* Modifiers.swift in Sources */,
 				D2494A432AA15FE500A944A2 /* VeterinarianViewModel.swift in Sources */,
 				D248834D2A9AC722006BC149 /* VaccinationCellView.swift in Sources */,
+				D28BD5AE2AA94CA500320204 /* ImageSliderView.swift in Sources */,
 				D2D928572A889FC0009C5FEE /* Endpoint.swift in Sources */,
 				D24149C12A86B04100E40EBB /* ProfileView.swift in Sources */,
 				D2AFE1622AA5820D00B44FB4 /* ChipModel.swift in Sources */,
+				D28BD5AC2AA92BF200320204 /* VeterianImageView.swift in Sources */,
 				D29F038D2A99CA7400C455F2 /* VaccinationCardUseCase.swift in Sources */,
 				D2494A512AA24EC700A944A2 /* FilterSectorModel.swift in Sources */,
 				D248835B2A9D603A006BC149 /* EmergencyView.swift in Sources */,

@@ -11,6 +11,7 @@ struct ChipContainerView: View {
     
     @Binding var chipArray: [ChipModel]
     var updateHeigh: (_ height: CGFloat) -> Void
+    var enableChangeColorOnSelect: Bool = true
     var paddingChips: CGFloat = 10
     
     var body: some View {
@@ -22,7 +23,7 @@ struct ChipContainerView: View {
 
                     ChipView(titleKey: data.titleKey, isSelected: data.isSelected, isSelectedChip: {
                         chipSelected(data.id)
-                    }, systemImage: data.systemImage)
+                    }, systemImage: data.systemImage, enableChangeColorOnSelect: enableChangeColorOnSelect)
 
                     .padding(.all, paddingChips)
                     .alignmentGuide(.leading) { dimension in
