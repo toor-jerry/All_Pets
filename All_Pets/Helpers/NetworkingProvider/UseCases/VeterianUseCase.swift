@@ -22,7 +22,7 @@ extension VeterianUseCaseUseCase: OfficeProtocol {
         let db = Firestore.firestore()
         
         let officeCollection = db.collection(Endpoint.officesCollection.urlString)
-        
+
         officeCollection.getDocuments { querySnapshot, error in
             
             if let error = error {

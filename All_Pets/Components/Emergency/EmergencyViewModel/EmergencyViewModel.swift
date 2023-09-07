@@ -22,6 +22,7 @@ final class EmergencyViewModel: NSObject, ObservableObject {
     @Published var userTrackingMode: MapUserTrackingMode = .none
     @Published var officeCoordinates: MKCoordinateRegion = .init()
     @Published var mapPins: [MapViewPin] = []
+    @Published var office: OfficeModel?
     private var offices: [OfficeModel] = []
     
     private var userLocation: CLLocation?
@@ -67,9 +68,20 @@ final class EmergencyViewModel: NSObject, ObservableObject {
             if distance < shortestDistance {
                 shortestDistance = distance
                 closestOffice = office
+                closestOffice?.distanceToUserLocation = Int(distance)
+                setTheardMain {
+                    if let office = self.office, let closestOffice = closestOffice,
+                       office.idOffice == closestOffice.idOffice {
+                        self.office?.distanceToUserLocation = Int(distance)
+                    }
+                }
             }
         }
-        
+        if let office = office, let closestOffice = closestOffice,
+           office.idOffice == closestOffice.idOffice {
+            return
+        }
+
         self.setTheardMain {
             if let closestOffice = closestOffice,
                let lattitud = closestOffice.latitude,
@@ -77,6 +89,7 @@ final class EmergencyViewModel: NSObject, ObservableObject {
                 self.mapPins = []
                 self.officeCoordinates = .init(center: CLLocationCoordinate2D(latitude: lattitud, longitude: longitude), span: .init(latitudeDelta: Span.delta, longitudeDelta: Span.delta))
                 self.mapPins.append(MapViewPin(coordinate: .init(latitude: lattitud, longitude: longitude), title: closestOffice.name ?? "", subtitle: closestOffice.address ?? ""))
+                self.office = closestOffice
             }
         }
     }

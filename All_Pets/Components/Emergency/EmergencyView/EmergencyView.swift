@@ -25,19 +25,7 @@ struct EmergencyView: View {
                             MapMarker(coordinate: pin.coordinate)
                         }
 
-                        VStack {
-                            Spacer()
-                            Button(action: {
-                                viewModel.userTrackingMode = viewModel.userTrackingMode == .follow ? .none : .follow
-                            }, label: {
-                                Image(systemName: viewModel.userTrackingMode == .follow ? "location.fill" : "location")
-                                    .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .foregroundColor(.white)
-                                    .padding(20)
-                            })
-                            .modifier(AligmentView(aligment: .trailing))
-                        }
+                        MapLocationIconsView(viewModel: viewModel)
                     }
                     .edgesIgnoringSafeArea(.all)
 
