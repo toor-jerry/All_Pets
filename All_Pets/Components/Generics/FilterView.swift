@@ -14,6 +14,7 @@ struct FilterView: View {
     @Binding var listSector: [FilterSector]
     @Binding var buttonFilterSelected: Bool
     @Binding var filterSelected: Bool
+    @Binding var filterSectorSelected: Bool
     
     var body: some View {
         
@@ -57,6 +58,7 @@ struct FilterView: View {
         if let filter = listSector[safe: index] {
             listSector[index] = FilterSector(filter.sector, isSelected: !filter.isSelected)
         }
+        filterSectorSelected = true
     }
 }
 

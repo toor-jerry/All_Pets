@@ -16,16 +16,19 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     @Published var offices: [OfficeModel] = []
     @Published var showFilterBottomSheet: Bool = false
     @Published var filterChipsSelected: Bool = false
-    @Published var filterSector: [FilterSector] = [FilterSector(String.WordDogs), FilterSector(String.WordCats), FilterSector(String.WordTurtles)] {
+    @Published var filterSectorSelected: Bool = false
+    @Published var filterSector: [FilterSector] = [] {
         didSet {
             if !showFilterBottomSheet {
                 selectChipsByFilter()
             }
-            filterOfficesBySections()
+            if filterSectorSelected {
+                filterOfficesBySections()
+            }
         }
     }
 
-    @Published var chipsSector: [ChipModel] = [ChipModel(titleKey: String.WordDogs), ChipModel(titleKey: String.WordHamster), ChipModel(titleKey: String.WordFish), ChipModel(titleKey: String.WordCats), ChipModel(titleKey: String.WordRabbits)] {
+    @Published var chipsSector: [ChipModel] = [] {
         didSet {
             if showFilterBottomSheet {
                 selectFilterByChips()
@@ -74,6 +77,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
         guard let userLocation = userLocation, !offices.isEmpty else { return }
 
         var specialities: [String] = []
+        var sectors: [String] = []
 
         let updatedOffices = offices.map { office -> OfficeModel in
             var mutableOffice = office
@@ -81,6 +85,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             let distance = userLocation.distance(from: officeLocation)
             mutableOffice.distanceToUserLocation = Int(distance)
             specialities.append(contentsOf: office.medicalSpecialities ?? [])
+            sectors.append(contentsOf: office.specializedSector ?? [])
             return mutableOffice
         }
         
@@ -91,10 +96,20 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             specialitiesModelTmp.append(ChipModel(titleKey: specialitie))
         }
 
+        // TODO: refactorizar
+        var sectorsModelTmp: [ChipModel] = []
+        var filterSectorsModelTmp: [FilterSector] = []
+        Set(sectors).sorted().forEach { sector in
+            sectorsModelTmp.append(ChipModel(titleKey: sector.capitalizingFirstLetter()))
+            filterSectorsModelTmp.append(FilterSector(sector.capitalizingFirstLetter()))
+        }
+
         self.setTheardMain {
             self.officesBack = sortedOffices
             self.offices = sortedOffices
             self.chipsSpecialities = specialitiesModelTmp
+            self.chipsSector = sectorsModelTmp
+            self.filterSector = Array(filterSectorsModelTmp.prefix(3))
         }
     }
     
