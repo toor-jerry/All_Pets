@@ -93,7 +93,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
 
         var specialitiesModelTmp: [ChipModel] = []
         specialities.sorted().forEach { specialitie in
-            specialitiesModelTmp.append(ChipModel(titleKey: specialitie))
+            specialitiesModelTmp.append(ChipModel(titleKey: specialitie.capitalizingFirstLetter()))
         }
 
         // TODO: refactorizar
