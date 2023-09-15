@@ -15,6 +15,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     @Published var userHasLocation: Bool = false
     @Published var offices: [OfficeModel] = []
     @Published var showFilterBottomSheet: Bool = false
+    @Published var filterChipsSelected: Bool = false
     @Published var filterSector: [FilterSector] = [FilterSector(String.WordDogs), FilterSector(String.WordCats), FilterSector(String.WordTurtles)] {
         didSet {
             if !showFilterBottomSheet {
@@ -133,6 +134,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     }
 
     private func existFilterSelected() -> Bool {
+        filterChipsSelected = chipsSector.contains { $0.isSelected } || chipsSpecialities.contains { $0.isSelected }
         return chipsSector.contains { $0.isSelected } || chipsSpecialities.contains { $0.isSelected } || filterSector.contains { $0.isSelected }
     }
 

@@ -80,7 +80,7 @@ struct TitleMaoIconsView: View {
                 if let name = office.name {
                     Text("\"\(name)\"")
                 }
-                Text("a \(office.distanceToUserLocation?.description ?? "N/A") Mtrs.")
+                Text("".getDistanceDescription(of:  office.distanceToUserLocation ?? .zero))
                     .font(.callout)
                     .foregroundColor(.black)
                     .modifier(AligmentView(aligment: .leading))

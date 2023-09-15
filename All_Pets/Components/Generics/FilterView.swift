@@ -13,6 +13,7 @@ struct FilterView: View {
     @State var backgroundColor: Color = Color.background
     @Binding var listSector: [FilterSector]
     @Binding var buttonFilterSelected: Bool
+    @Binding var filterSelected: Bool
     
     var body: some View {
         
@@ -43,7 +44,8 @@ struct FilterView: View {
                     Image(systemName: "slider.horizontal.3")
                         .fontWeight(.bold)
                         .foregroundColor(.black)
-                        .modifier(buttonPrincipal(padding: 10, .white, 10))
+                        .modifier(buttonPrincipal(padding: 10,.white, 10))
+                        .addVerifiedBadge(filterSelected)
                 })
                 .padding(.trailing, 20)
             }

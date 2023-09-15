@@ -35,7 +35,7 @@ struct VeterianCardCell: View {
                     .foregroundColor(.black)
                     .modifier(AligmentView(aligment: .leading))
 
-                Text("a \(office.distanceToUserLocation?.description ?? "") Mtrs.")
+                Text("".getDistanceDescription(of:  office.distanceToUserLocation ?? .zero))
                     .font(.callout)
                     .foregroundColor(.black)
                     .modifier(AligmentView(aligment: .leading))
