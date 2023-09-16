@@ -11,6 +11,7 @@ struct VeterinarianDetailView: View {
     
     let office: OfficeModel
     @State var heightFirstContainerChips: CGFloat = .zero
+    @State var heightSecondContainerChips: CGFloat = .zero
     
     @StateObject var viewModel = VeterinarianDetailViewModel()
     @State var iPhoneCounter: Float = .zero
@@ -56,6 +57,22 @@ struct VeterinarianDetailView: View {
                                 self.heightFirstContainerChips = height
                             }
                         }, enableChangeColorOnSelect: false).frame(height: heightFirstContainerChips)
+                    }
+                }
+
+                if !viewModel.chipsSectors.isEmpty {
+                    VStack {
+                        Text(String.WordsTheyServe)
+                            .foregroundColor(Color(red: 0.51, green: 0.39, blue: 0.62))
+                            .fontWeight(.bold)
+                            .font(.title3)
+                            .modifier(AligmentView(aligment: .leading))
+
+                        ChipContainerView(chipArray: $viewModel.chipsSectors, updateHeigh: { height in
+                            if Int(self.heightSecondContainerChips) != Int(height) && Int(height) > Int(self.heightSecondContainerChips) {
+                                self.heightSecondContainerChips = height
+                            }
+                        }, enableChangeColorOnSelect: false).frame(height: heightSecondContainerChips)
                     }
                 }
             }.padding(.horizontal, 20)

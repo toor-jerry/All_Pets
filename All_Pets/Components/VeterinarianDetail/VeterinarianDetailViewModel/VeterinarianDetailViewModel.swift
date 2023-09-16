@@ -10,15 +10,23 @@ import SwiftUI
 final class VeterinarianDetailViewModel: ObservableObject {
 
     @Published var chipsSpecialities: [ChipModel] = []
+    @Published var chipsSectors: [ChipModel] = []
 
     func setup(_ office: OfficeModel) {
         var specialitiesTmp: [ChipModel] = []
+        var sectorsTmp: [ChipModel] = []
+
         office.medicalSpecialities?.forEach({ specialitie in
             specialitiesTmp.append(ChipModel(titleKey: specialitie))
         })
 
+        office.specializedSector?.forEach({ sector in
+            sectorsTmp.append(ChipModel(titleKey: sector))
+        })
+
         setTheardMain {
             self.chipsSpecialities = specialitiesTmp
+            self.chipsSectors = sectorsTmp
         }
     }
 }
