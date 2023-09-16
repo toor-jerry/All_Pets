@@ -139,8 +139,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             return
         }
 
-        filterOfficesByChipSpecialities()
-        filterOfficesByChipSections()
+        applyFiltersAndChips()
 
         setTheardMain {
             self.isLoading.toggle()
@@ -186,25 +185,36 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             return
         }
 
-        let selectedSectors = Set(filterSector.filter { $0.isSelected }.map { $0.sector.lowercased() })
-
-        let filteredOffices = offices.filter { office in
-            if let specializedSectors = office.specializedSector {
-                if specializedSectors.contains(wordAllSectors) {
-                    return true
-                }
-                return !selectedSectors.isDisjoint(with: specializedSectors.map { $0.lowercased() })
-            }
-            return false
-        }
+        applyFiltersAndChips()
 
         setTheardMain {
-            self.offices = filteredOffices
             self.isLoading.toggle()
         }
     }
 
-    private func filterOfficesByChipSections() {
+
+    private func applyFiltersAndChips() {
+        let filteredOfficesBySpecialities = filterOfficesByChipSpecialities()
+        let filteredOfficesBySections = filterOfficesByChipSections()
+
+        var officesOrdered: [OfficeModel] = filteredOfficesBySections
+        officesOrdered.append(contentsOf: filteredOfficesBySpecialities)
+
+        let sortedOffices = Set(officesOrdered).sorted { office1, office2 in
+            guard let distance1 = office1.distanceToUserLocation,
+                  let distance2 = office2.distanceToUserLocation else {
+                return false
+            }
+            return distance1 < distance2
+        }
+
+
+        setTheardMain {
+            self.offices = sortedOffices
+        }
+    }
+
+    private func filterOfficesByChipSections() -> [OfficeModel] {
 
         let selectedSectors = Set(chipsSector.filter { $0.isSelected }.map { $0.titleKey.lowercased() })
 
@@ -218,12 +228,10 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             return false
         }
 
-        setTheardMain {
-            self.offices = filteredOffices
-        }
+        return filteredOffices
     }
 
-    private func filterOfficesByChipSpecialities() {
+    private func filterOfficesByChipSpecialities() -> [OfficeModel] {
 
         let selectedSpecialities = Set(chipsSpecialities.filter { $0.isSelected }.map { $0.titleKey.lowercased() })
 
@@ -237,9 +245,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             return false
         }
 
-        setTheardMain {
-            self.offices = filteredOffices
-        }
+        return filteredOffices
     }
 }
 

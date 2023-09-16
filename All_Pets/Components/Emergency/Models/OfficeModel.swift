@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OfficeModel: Codable {
+struct OfficeModel: Hashable, Codable {
     var status: String?
     var hourEnd: String?
     var hourStart: String?
@@ -38,5 +38,13 @@ struct OfficeModel: Codable {
         case distanceToUserLocation = "distanceToUserLocation"
         case photoURL = "imgLogo"
         case imagesSlider = "imagenes"
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(idOffice)
+    }
+
+    static func == (lhs: OfficeModel, rhs: OfficeModel) -> Bool {
+        return lhs.idOffice == rhs.idOffice
     }
 }
