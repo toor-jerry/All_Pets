@@ -10,11 +10,9 @@ import SwiftUI
 struct VeterianCardCell: View {
 
     var office: OfficeModel
-    private var pets: String = ""
 
     init(office: OfficeModel) {
         self.office = office
-        self.pets = office.specializedSector?.formatArrayToString() ?? ""
     }
 
     var body: some View {
@@ -30,7 +28,7 @@ struct VeterianCardCell: View {
                     .font(.title3)
                     .modifier(AligmentView(aligment: .leading))
 
-                Text("\(String.WordPets): \(pets)")
+                Text("\(String.WordSchedule): \(office.hourStart ?? "") - \(office.hourEnd ?? "")")
                     .font(.callout)
                     .foregroundColor(.black)
                     .modifier(AligmentView(aligment: .leading))

@@ -54,4 +54,5 @@ extension String {
     static let WordsToAskForADate = "Solicitar cita"
     static let WordOffice = "Consultorio"
     static let WordsNearbyOffice = "Consultorio cercano"
+    static let WordSchedule = "Horario"
 }
