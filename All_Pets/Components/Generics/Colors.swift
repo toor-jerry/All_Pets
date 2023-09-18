@@ -12,4 +12,6 @@ extension Color {
     static let principal: Color = Color("Principal")
     static let background: Color = Color("Background")
     static let error: Color = Color("Error")
+    static let limeGreen: Color = Color("LimeGreen")
+    static let purpleSecundary: Color = Color("PurpleSecundary")
 }

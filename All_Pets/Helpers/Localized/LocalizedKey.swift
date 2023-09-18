@@ -56,4 +56,6 @@ extension String {
     static let WordsNearbyOffice = "Consultorio cercano"
     static let WordSchedule = "Horario"
     static let WordsTheyServe = "Atienden a"
+    static let WordContact = "Contacto"
+    static let WordNumber = "Número"
 }

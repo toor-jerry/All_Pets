@@ -33,7 +33,7 @@ struct VeterinarianView: View {
                         List {
                             ForEach(viewModel.offices, id: \.idOffice) { office in
                                 NavigationLink(destination: {
-                                    VeterinarianDetailView(office: office)
+                                    VeterinarianDetailView(office: office, phoneNumber: office.phoneNumber ?? "")
                                 }, label: {
                                     VeterianCardCell(office: office)
                                 })

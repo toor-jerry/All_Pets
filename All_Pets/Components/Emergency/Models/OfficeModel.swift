@@ -22,6 +22,7 @@ struct OfficeModel: Hashable, Codable {
     var address: String?
     var distanceToUserLocation: Int?
     var photoURL: String?
+    var phoneNumber: String?
 
     enum CodingKeys: String, CodingKey {
         case status = "status"
@@ -38,6 +39,7 @@ struct OfficeModel: Hashable, Codable {
         case distanceToUserLocation = "distanceToUserLocation"
         case photoURL = "imgLogo"
         case imagesSlider = "imagenes"
+        case phoneNumber = "Numero"
     }
 
     func hash(into hasher: inout Hasher) {

@@ -48,7 +48,7 @@ struct VeterianFilterChipsView: View {
                 Text(String.WordApply)
                     .modifier(textStylePrincipal())
             })
-            .modifier(buttonPrincipal(Color(UIColor(red: 0.66, green: 0.73, blue: 0.35, alpha: 1))))
+            .modifier(buttonPrincipal(.limeGreen))
             
         }
         .presentationDetents([.large])

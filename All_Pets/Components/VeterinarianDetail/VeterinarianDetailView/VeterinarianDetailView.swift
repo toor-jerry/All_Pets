@@ -16,6 +16,8 @@ struct VeterinarianDetailView: View {
     @StateObject var viewModel = VeterinarianDetailViewModel()
     @State var iPhoneCounter: Float = .zero
     @State var isEditing: Bool = false
+    @State var phoneNumber: String
+
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
@@ -37,7 +39,7 @@ struct VeterinarianDetailView: View {
                 if !getImageSliderArray().isEmpty {
                     VStack {
                         Text(String.WordOffice)
-                            .foregroundColor(Color(red: 0.51, green: 0.39, blue: 0.62))
+                            .foregroundColor(.purpleSecundary)
                             .fontWeight(.bold)
                             .font(.title3)
                             .modifier(AligmentView(aligment: .leading))
@@ -47,7 +49,7 @@ struct VeterinarianDetailView: View {
                 if !viewModel.chipsSpecialities.isEmpty {
                     VStack {
                         Text(String.WordSpecialities)
-                            .foregroundColor(Color(red: 0.51, green: 0.39, blue: 0.62))
+                            .foregroundColor(.purpleSecundary)
                             .fontWeight(.bold)
                             .font(.title3)
                             .modifier(AligmentView(aligment: .leading))
@@ -63,7 +65,7 @@ struct VeterinarianDetailView: View {
                 if !viewModel.chipsSectors.isEmpty {
                     VStack {
                         Text(String.WordsTheyServe)
-                            .foregroundColor(Color(red: 0.51, green: 0.39, blue: 0.62))
+                            .foregroundColor(.purpleSecundary)
                             .fontWeight(.bold)
                             .font(.title3)
                             .modifier(AligmentView(aligment: .leading))
@@ -75,7 +77,30 @@ struct VeterinarianDetailView: View {
                         }, enableChangeColorOnSelect: false).frame(height: heightSecondContainerChips)
                     }
                 }
-            }.padding(.horizontal, 20)
+
+                if !phoneNumber.isEmpty {
+                    VStack(spacing: 20) {
+                        Text(String.WordContact)
+                            .foregroundColor(.purpleSecundary)
+                            .modifier(AligmentView(aligment: .leading))
+
+                        HStack {
+                            Text("\(String.WordNumber): ")
+                                .foregroundColor(.black)
+                            Button(action: {
+                                guard let url = URL(string: "tel://\(phoneNumber)") else {
+                                    return
+                                }
+                                UIApplication.shared.open(url)
+                            }, label: {
+                                Text("\(phoneNumber)")
+                                    .foregroundColor(.limeGreen)
+                            })
+                            Spacer()
+                        }
+                    }.font(.title3).fontWeight(.bold)
+                }
+            }.padding(.horizontal, 20).padding(.bottom, 40)
         }
         .background(Color.background)
         .task {

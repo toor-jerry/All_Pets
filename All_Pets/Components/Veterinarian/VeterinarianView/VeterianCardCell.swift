@@ -24,7 +24,7 @@ struct VeterianCardCell: View {
 
                 Text(office.name ?? "")
                     .fontWeight(.bold)
-                    .foregroundColor(Color(red: 0.51, green: 0.39, blue: 0.62))
+                    .foregroundColor(.purpleSecundary)
                     .font(.title3)
                     .modifier(AligmentView(aligment: .leading))
 
