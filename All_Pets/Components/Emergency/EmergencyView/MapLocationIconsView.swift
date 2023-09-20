@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapLocationIconsView: View {
 
@@ -19,13 +20,13 @@ struct MapLocationIconsView: View {
         VStack {
             HStack {
                 if let office = viewModel.office {
-                    TitleMaoIconsView(viewModel: viewModel, office: office)
+                    TitleMapIconsView(namePlace: office.name, distanceToUserLocation: office.distanceToUserLocation)
                         .background(backgrounColor)
                         .cornerRadius(cornerRadius)
                         .padding(.trailing, 60)
                 }
 
-                ButtonLocationView(viewModel: viewModel)
+                ButtonLocationView(userTrackingMode: $viewModel.userTrackingMode)
                     .background(backgrounColor)
                     .cornerRadius(cornerRadius)
             }
@@ -46,15 +47,15 @@ struct MapLocationIconsView: View {
 
 struct ButtonLocationView: View {
 
-    @StateObject var viewModel: EmergencyViewModel
+    @Binding var userTrackingMode: MapUserTrackingMode
     private let sizeIcons: CGFloat = 30
 
     var body: some View {
         VStack {
             Button(action: {
-                viewModel.userTrackingMode = viewModel.userTrackingMode == .follow ? .none : .follow
+                userTrackingMode = userTrackingMode == .follow ? .none : .follow
             }, label: {
-                Image(systemName: viewModel.userTrackingMode == .follow ? "location.fill" : "location")
+                Image(systemName: userTrackingMode == .follow ? "location.fill" : "location")
                     .resizable()
                     .frame(width: sizeIcons, height: sizeIcons)
                     .foregroundColor(.white)
@@ -66,10 +67,10 @@ struct ButtonLocationView: View {
     }
 }
 
-struct TitleMaoIconsView: View {
+struct TitleMapIconsView: View {
 
-    @StateObject var viewModel: EmergencyViewModel
-    let office: OfficeModel
+    let namePlace: String?
+    let distanceToUserLocation: Int?
 
     var body: some View {
         VStack {
@@ -78,10 +79,10 @@ struct TitleMaoIconsView: View {
                     .fontWeight(.regular)
                     .modifier(AligmentView(aligment: .leading))
 
-                if let name = office.name {
-                    Text("\"\(name)\"")
+                if let namePlace = namePlace {
+                    Text("\"\(namePlace)\"")
                 }
-                Text("".getDistanceDescription(of:  office.distanceToUserLocation ?? .zero))
+                Text("".getDistanceDescription(of:  distanceToUserLocation ?? .zero))
                     .font(.callout)
                     .foregroundColor(.black)
                     .modifier(AligmentView(aligment: .leading))
