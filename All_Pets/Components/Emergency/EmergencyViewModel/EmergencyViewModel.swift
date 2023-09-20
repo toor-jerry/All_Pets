@@ -9,11 +9,11 @@ import SwiftUI
 import CoreLocation
 import MapKit
 
+struct Span {
+    static let delta = 0.09
+}
+
 final class EmergencyViewModel: NSObject, ObservableObject {
-    
-    private struct Span {
-        static let delta = 0.09
-    }
     
     let useCase: EmergencyUseCaseProtocol
     
@@ -95,6 +95,7 @@ final class EmergencyViewModel: NSObject, ObservableObject {
     }
     
     private func checkUserAuthorization() {
+        // TODO: crear una clase unica para manejar peticiones de localización
         let status = locationManager.authorizationStatus
         switch status {
         case .authorized, .authorizedAlways, .authorizedWhenInUse:

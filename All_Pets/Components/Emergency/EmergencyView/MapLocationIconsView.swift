@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MapLocationIconsView: View {
 
+    // TODO: crearlo generico
     @StateObject var viewModel: EmergencyViewModel
 
     private let cornerRadius: CGFloat = 10

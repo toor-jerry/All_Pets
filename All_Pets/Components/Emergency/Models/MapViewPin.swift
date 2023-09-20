@@ -9,7 +9,7 @@ import CoreLocation
 
 struct MapViewPin: Identifiable {
     let id = UUID()
-    let coordinate: CLLocationCoordinate2D
+    var coordinate: CLLocationCoordinate2D
     let title: String
     let subtitle: String
 }

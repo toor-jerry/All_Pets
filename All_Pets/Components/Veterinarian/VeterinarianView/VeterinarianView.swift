@@ -8,35 +8,34 @@
 import SwiftUI
 
 struct VeterinarianView: View {
-
+    
     @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCaseUseCase())
     
     var body: some View {
         
         NavigationStack {
-
+            
             if viewModel.isLoading {
                 Loader()
             } else {
                 VStack {
                     if viewModel.userHasLocation {
-
+                        
                         Text(String.MsgTitleVeterin)
                             .foregroundColor(.black)
                             .fontWeight(.bold)
                             .font(.title2)
                             .padding(.horizontal, 20)
                             .padding(.top, 20)
-
+                        
                         FilterView(showButtonFilter: true, listSector: $viewModel.filterSector, buttonFilterSelected: $viewModel.showFilterBottomSheet, filterSelected: $viewModel.filterChipsSelected, filterSectorSelected: $viewModel.filterSectorSelected)
-
+                        
                         List {
                             ForEach(viewModel.offices, id: \.idOffice) { office in
-                                NavigationLink(destination: {
-                                    VeterinarianDetailView(office: office, phoneNumber: office.phoneNumber ?? "")
-                                }, label: {
-                                    VeterianCardCell(office: office)
-                                })
+                                VeterianCardCell(office: office)
+                                    .onTapGesture {
+                                        viewModel.goToDetail(of: office)
+                                    }
                             }
                             .listRowBackground(
                                 RoundedRectangle(cornerRadius: 8)
@@ -53,6 +52,11 @@ struct VeterinarianView: View {
                     }
                 }.modifier(NavigationBarModifier())
                     .background(Color.background)
+                    .navigationDestination(isPresented: $viewModel.showDetail, destination: {
+                        if let office = viewModel.officeSelected {
+                            VeterinarianDetailView(office: office, mapData: MapData(userHasLocation: viewModel.userHasLocation, userTrackingMode: viewModel.userTrackingMode, pointCoordinates: viewModel.officeCoordinates), mapPins: viewModel.mapPins)
+                        }
+                    })
             }
         }
         .sheet(isPresented: $viewModel.showFilterBottomSheet) {

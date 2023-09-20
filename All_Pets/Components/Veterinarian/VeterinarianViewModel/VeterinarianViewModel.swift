@@ -12,6 +12,7 @@ import MapKit
 final class VeterinarianViewModel: NSObject, ObservableObject {
     
     @Published var isLoading: Bool = false
+    @Published var showDetail: Bool = false
     @Published var userHasLocation: Bool = false
     @Published var offices: [OfficeModel] = []
     @Published var showFilterBottomSheet: Bool = false
@@ -27,7 +28,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
         }
     }
-
+    
     @Published var chipsSector: [ChipModel] = [] {
         didSet {
             if showFilterBottomSheet {
@@ -35,9 +36,9 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
         }
     }
-
+    
     @Published var chipsSpecialities: [ChipModel] = []
-
+    
     private var officesBack: [OfficeModel] = []
     private let wordAllSectors: String = "todos"
     
@@ -45,6 +46,11 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
     
     private var userLocation: CLLocation?
     private let locationManager: CLLocationManager = .init()
+    
+    @Published var userTrackingMode: MapUserTrackingMode = .none
+    @Published var officeCoordinates: MKCoordinateRegion = .init()
+    @Published var mapPins: [MapViewPin] = []
+    @Published var officeSelected: OfficeModel?
     
     init(useCase: VeterianUseCaseProtocol) {
         self.useCase = useCase
@@ -72,13 +78,19 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
         })
     }
     
+    func goToDetail(of office: OfficeModel) {
+        officeSelected = office
+        calculateNearestOfficeSelected()
+        showDetail.toggle()
+    }
+    
     private func calculateNearestOffice() {
         // TODO: refactor
         guard let userLocation = userLocation, !offices.isEmpty else { return }
-
+        
         var specialities: [String] = []
         var sectors: [String] = []
-
+        
         let updatedOffices = offices.map { office -> OfficeModel in
             var mutableOffice = office
             let officeLocation = CLLocation(latitude: office.latitude ?? .zero, longitude: office.length ?? .zero)
@@ -90,12 +102,12 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
         }
         
         let sortedOffices = updatedOffices.sorted { $0.distanceToUserLocation ?? .zero < $1.distanceToUserLocation ?? .zero }
-
+        
         var specialitiesModelTmp: [ChipModel] = []
         specialities.sorted().forEach { specialitie in
             specialitiesModelTmp.append(ChipModel(titleKey: specialitie.capitalizingFirstLetter()))
         }
-
+        
         // TODO: refactorizar
         var sectorsModelTmp: [ChipModel] = []
         var filterSectorsModelTmp: [FilterSector] = []
@@ -103,13 +115,32 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             sectorsModelTmp.append(ChipModel(titleKey: sector.capitalizingFirstLetter()))
             filterSectorsModelTmp.append(FilterSector(sector.capitalizingFirstLetter()))
         }
-
+        
         self.setTheardMain {
             self.officesBack = sortedOffices
             self.offices = sortedOffices
             self.chipsSpecialities = specialitiesModelTmp
             self.chipsSector = sectorsModelTmp
             self.filterSector = Array(filterSectorsModelTmp.prefix(3))
+        }
+    }
+    
+    func calculateNearestOfficeSelected() {
+        
+        guard let userLocation = userLocation, let office = officeSelected else { return }
+        
+        let officeLocation = CLLocation(latitude: office.latitude ?? .zero, longitude: office.length ?? .zero)
+        let distance = userLocation.distance(from: officeLocation)
+        
+        self.setTheardMain {
+            self.officeSelected?.distanceToUserLocation = Int(distance)
+            if let closestOffice = self.officeSelected,
+               let lattitud = closestOffice.latitude,
+               let longitude = closestOffice.length {
+                self.mapPins = []
+                self.officeCoordinates = .init(center: CLLocationCoordinate2D(latitude: lattitud, longitude: longitude), span: .init(latitudeDelta: Span.delta, longitudeDelta: Span.delta))
+                self.mapPins.append(MapViewPin(coordinate: .init(latitude: lattitud, longitude: longitude), title: closestOffice.name ?? "", subtitle: closestOffice.address ?? ""))
+            }
         }
     }
     
@@ -126,10 +157,10 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             print("Unhandled state")
         }
     }
-
+    
     func filterByChips() {
         isLoading.toggle()
-
+        
         if !existFilterSelected() {
             setTheardMain {
                 self.offices = self.officesBack
@@ -138,20 +169,20 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
             return
         }
-
+        
         applyFiltersAndChips()
-
+        
         setTheardMain {
             self.isLoading.toggle()
             self.showFilterBottomSheet = false
         }
     }
-
+    
     private func existFilterSelected() -> Bool {
         filterChipsSelected = chipsSector.contains { $0.isSelected } || chipsSpecialities.contains { $0.isSelected }
         return chipsSector.contains { $0.isSelected } || chipsSpecialities.contains { $0.isSelected } || filterSector.contains { $0.isSelected }
     }
-
+    
     func selectChipsByFilter() {
         // TODO: refactor this code
         filterSector.forEach { filter in
@@ -162,7 +193,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
         }
     }
-
+    
     private func selectFilterByChips() {
         // TODO: refactor this code
         chipsSector.forEach { chip in
@@ -173,10 +204,10 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
         }
     }
-
+    
     private func filterOfficesBySections() {
         isLoading.toggle()
-
+        
         if !existFilterSelected() {
             setTheardMain {
                 self.offices = self.officesBack
@@ -184,22 +215,22 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
             return
         }
-
+        
         applyFiltersAndChips()
-
+        
         setTheardMain {
             self.isLoading.toggle()
         }
     }
-
-
+    
+    
     private func applyFiltersAndChips() {
         let filteredOfficesBySpecialities = filterOfficesByChipSpecialities()
         let filteredOfficesBySections = filterOfficesByChipSections()
-
+        
         var officesOrdered: [OfficeModel] = filteredOfficesBySections
         officesOrdered.append(contentsOf: filteredOfficesBySpecialities)
-
+        
         let sortedOffices = Set(officesOrdered).sorted { office1, office2 in
             guard let distance1 = office1.distanceToUserLocation,
                   let distance2 = office2.distanceToUserLocation else {
@@ -207,17 +238,17 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
             return distance1 < distance2
         }
-
-
+        
+        
         setTheardMain {
             self.offices = sortedOffices
         }
     }
-
+    
     private func filterOfficesByChipSections() -> [OfficeModel] {
-
+        
         let selectedSectors = Set(chipsSector.filter { $0.isSelected }.map { $0.titleKey.lowercased() })
-
+        
         let filteredOffices = offices.filter { office in
             if let specializedSectors = office.specializedSector {
                 if specializedSectors.contains(wordAllSectors) {
@@ -227,14 +258,14 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
             return false
         }
-
+        
         return filteredOffices
     }
-
+    
     private func filterOfficesByChipSpecialities() -> [OfficeModel] {
-
+        
         let selectedSpecialities = Set(chipsSpecialities.filter { $0.isSelected }.map { $0.titleKey.lowercased() })
-
+        
         let filteredOffices = offices.filter { office in
             if let medicalSpecialities = office.medicalSpecialities {
                 if medicalSpecialities.contains(wordAllSectors) {
@@ -244,7 +275,7 @@ final class VeterinarianViewModel: NSObject, ObservableObject {
             }
             return false
         }
-
+        
         return filteredOffices
     }
 }
@@ -255,7 +286,13 @@ extension VeterinarianViewModel: CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         print("Data2 location: ", location)
         userLocation = .init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        calculateNearestOffice()
+        if showDetail {
+            if officeSelected != nil {
+                calculateNearestOfficeSelected()
+            }
+        } else {
+            calculateNearestOffice()
+        }
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

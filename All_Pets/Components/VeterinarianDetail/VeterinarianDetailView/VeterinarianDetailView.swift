@@ -6,17 +6,24 @@
 //
 
 import SwiftUI
+import MapKit
+
+struct MapData {
+    @State var userHasLocation: Bool
+    @State var userTrackingMode: MapUserTrackingMode
+    @State var pointCoordinates: MKCoordinateRegion
+}
 
 struct VeterinarianDetailView: View {
-    
-    let office: OfficeModel
-    @State var heightFirstContainerChips: CGFloat = .zero
-    @State var heightSecondContainerChips: CGFloat = .zero
-    
-    @StateObject var viewModel = VeterinarianDetailViewModel()
-    @State var iPhoneCounter: Float = .zero
-    @State var isEditing: Bool = false
-    @State var phoneNumber: String
+
+    // TODO: crear una estructura para manejar ubicaciones
+    @State var office: OfficeModel
+    @State var mapData: MapData
+    @State var mapPins: [MapViewPin]
+
+    @State private var heightFirstContainerChips: CGFloat = .zero
+    @State private var heightSecondContainerChips: CGFloat = .zero
+    @StateObject private var viewModel = VeterinarianDetailViewModel()
 
     var body: some View {
         ScrollView {
@@ -78,7 +85,8 @@ struct VeterinarianDetailView: View {
                     }
                 }
 
-                if !phoneNumber.isEmpty {
+                if let phoneNumber = office.phoneNumber,
+                   !phoneNumber.isEmpty {
                     VStack(spacing: 20) {
                         Text(String.WordContact)
                             .foregroundColor(.purpleSecundary)
@@ -88,17 +96,34 @@ struct VeterinarianDetailView: View {
                             Text("\(String.WordNumber): ")
                                 .foregroundColor(.black)
                             Button(action: {
-                                guard let url = URL(string: "tel://\(phoneNumber)") else {
+                                guard let phoneNumber = office.phoneNumber,
+                                      let url = URL(string: "tel://\(phoneNumber)") else {
                                     return
                                 }
                                 UIApplication.shared.open(url)
                             }, label: {
-                                Text("\(phoneNumber)")
+                                Text("\(office.phoneNumber ?? "")")
                                     .foregroundColor(.limeGreen)
                             })
                             Spacer()
                         }
                     }.font(.title3).fontWeight(.bold)
+                }
+
+                if mapData.userHasLocation {
+                    ZStack {
+                        Map(coordinateRegion: $mapData.pointCoordinates, showsUserLocation: true, userTrackingMode: .constant(mapData.userTrackingMode), annotationItems: mapPins) { pin in
+
+                            MapMarker(coordinate: pin.coordinate)
+                        }
+
+                        // TODO: add icons
+
+                        //                        MapLocationIconsView(viewModel: viewModel)
+                    }
+                    .frame(height: 300)
+                } else {
+                    UserHasLocationView()
                 }
             }.padding(.horizontal, 20).padding(.bottom, 40)
         }
