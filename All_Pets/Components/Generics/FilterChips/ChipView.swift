@@ -43,21 +43,10 @@ struct ChipView: View {
     }
 }
 
-struct ChipView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChipView(titleKey: "Title", isSelected: false, isSelectedChip: {
+#Preview {
+    ChipView(titleKey: "Title", isSelected: false, isSelectedChip: {
 
-        })
-            .previewLayout(.sizeThatFits)
-            .padding()
-    }
+    })
+        .previewLayout(.sizeThatFits)
+        .padding()
 }
-
-//struct ChipView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        @State var isSelected: Bool = false
-//        ChipView(titleKey: "Title", systemImage: "heart.circle", isSelected: $isSelected)
-//            .previewLayout(.sizeThatFits)
-//            .padding()
-//    }
-//}

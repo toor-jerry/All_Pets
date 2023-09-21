@@ -70,13 +70,3 @@ struct ChipContainerView: View {
         }
     }
 }
-
-//struct ChipContainerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        @State var array = [
-//            ChipModel(titleKey: "Heart", isSelected: false, systemImage: "heart.circle"),
-//            ChipModel(titleKey: "Folder", isSelected: true)
-//        ]
-//        ChipContainerView(chipArray: $array)
-//    }
-//}

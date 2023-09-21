@@ -68,8 +68,7 @@ struct VeterinarianView: View {
     }
 }
 
-struct VeterinarianViewPreviews: PreviewProvider {
-    static var previews: some View {
-        VeterinarianView()
-    }
+
+#Preview {
+    VeterinarianView()
 }

@@ -63,11 +63,8 @@ struct HubView: View {
     }
 }
 
-struct HubView_Previews: PreviewProvider {
-    static var previews: some View {
-        let section: AuthSections = .signUp
-        HubView(section: .constant(section))
-    }
+#Preview {
+    HubView(section: .constant(.signUp))
 }
 
 struct tabItemStyle: ViewModifier {

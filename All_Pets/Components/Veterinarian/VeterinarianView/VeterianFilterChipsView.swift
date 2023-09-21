@@ -58,13 +58,13 @@ struct VeterianFilterChipsView: View {
     }
 }
 
-struct VeterianFilterChipsViewPreviews: PreviewProvider {
-    static var previews: some View {
+#Preview {
+    VStack {
         @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCaseUseCase())
-
+        
         VeterianFilterChipsView(viewModel: viewModel)
             .task {
-            viewModel.chipsSpecialities = [ChipModel(titleKey: "Test1"), ChipModel(titleKey: "Word 2")]
-        }
+                viewModel.chipsSpecialities = [ChipModel(titleKey: "Test1"), ChipModel(titleKey: "Word 2")]
+            }
     }
 }

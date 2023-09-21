@@ -106,8 +106,8 @@ struct SignUpView: View {
     }
 }
 
-struct SignUpViewPreviews: PreviewProvider {
-    static var previews: some View {
+#Preview {
+    VStack {
         let section: AuthSections = .signUp
         SignUpView(section: .constant(section))
     }

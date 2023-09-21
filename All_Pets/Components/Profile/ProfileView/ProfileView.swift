@@ -55,10 +55,9 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileViewPreviews: PreviewProvider {
-    static var previews: some View {
+#Preview {
+    VStack {
         let section: AuthSections = .signUp
         ProfileView(section: .constant(section))
     }
 }
-

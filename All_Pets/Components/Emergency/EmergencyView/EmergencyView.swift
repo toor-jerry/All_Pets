@@ -52,8 +52,6 @@ struct EmergencyView: View {
     }
 }
 
-struct EmergencyViewPreviews: PreviewProvider {
-    static var previews: some View {
-        EmergencyView()
-    }
+#Preview {
+    EmergencyView()
 }

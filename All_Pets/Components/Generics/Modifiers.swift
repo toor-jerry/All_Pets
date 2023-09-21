@@ -300,19 +300,17 @@ struct shadowStyle1: ViewModifier {
     }
 }
 
-struct modifiers_examplePreviews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            textStylePrincipal_example()
-                .padding()
-            inputStylePrincipal_example()
-                .padding()
-            shadowStyle1_example()
-                .padding()
-            buttonPrincipal_example()
-                .padding()
-            buttonSecundary_example()
-                .padding()
-        }
+#Preview {
+    VStack {
+        textStylePrincipal_example()
+            .padding()
+        inputStylePrincipal_example()
+            .padding()
+        shadowStyle1_example()
+            .padding()
+        buttonPrincipal_example()
+            .padding()
+        buttonSecundary_example()
+            .padding()
     }
 }

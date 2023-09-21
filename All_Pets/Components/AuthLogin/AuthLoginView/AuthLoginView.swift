@@ -33,8 +33,6 @@ struct AuthLoginView: View {
     }
 }
 
-struct AuthLoginViewPreviews: PreviewProvider {
-    static var previews: some View {
-        AuthLoginView()
-    }
+#Preview {
+    AuthLoginView()
 }

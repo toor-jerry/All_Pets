@@ -61,9 +61,3 @@ struct FilterView: View {
         filterSectorSelected = true
     }
 }
-
-//struct FilterViewPreviews: PreviewProvider {
-//    static var previews: some View {
-//        FilterView(listSector: [FilterSector("Gatos", isSelected: false), FilterSector("Perros", isSelected: false), FilterSector("Tortugas", isSelected: false)], showButtonFilter: true, sectorSelected: .constant(.zero), buttonFilterSelected: .constant(true))
-//    }
-//}

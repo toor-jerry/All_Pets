@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PetRegisterView: View {
-    
+
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @StateObject var viewModel = PetRegisterViewModel(useCase: PetRegisterUseCase())
@@ -137,7 +137,7 @@ struct AnimalIconView: View {
     @Binding var selectedAnimal: PetType
     @Binding var petChanged: Bool
     var pet: PetType
-    
+
     var body: some View {
         VStack {
             Image(pet.rawValue)
@@ -152,20 +152,18 @@ struct AnimalIconView: View {
                     }
                     selectedAnimal = pet
                 }
-            
+
             Text(String.MsgSelected)
                 .font(.headline)
                 .foregroundColor(isSelected(for: pet) ? Color.principal : .clear)
         }
     }
-    
+
     func isSelected(for animal: PetType) -> Bool {
         return selectedAnimal == animal
     }
 }
 
-struct PetRegisterViewPreviews: PreviewProvider {
-    static var previews: some View {
-        PetRegisterView(showPetRegisterView: .constant(true))
-    }
+#Preview {
+    PetRegisterView(showPetRegisterView: .constant(true))
 }

@@ -22,11 +22,6 @@ struct ShorOrHideButton: View {
     }
 }
 
-struct ShorOrHideButton_Previews: PreviewProvider {
-
-    @State static var showPassword = false
-
-    static var previews: some View {
-        ShorOrHideButton(showPassword: $showPassword)
-    }
+#Preview {
+    ShorOrHideButton(showPassword: .constant(false))
 }

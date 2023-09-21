@@ -43,8 +43,6 @@ struct VaccinationCardView: View {
     }
 }
 
-struct VaccinationCardViewPreviews: PreviewProvider {
-    static var previews: some View {
-        VaccinationCardView(idPet: "")
-    }
+#Preview {
+    VaccinationCardView(idPet: "")
 }

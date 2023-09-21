@@ -59,8 +59,8 @@ struct ListSearch: View {
     }
 }
 
-struct MoviesView_Previews: PreviewProvider {
-    static var previews: some View {
+#Preview {
+    VStack {
         let itemSelected: String = ""
         ListSearch(itemSelected: .constant(itemSelected), list: [])
     }
