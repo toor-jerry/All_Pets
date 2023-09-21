@@ -12,6 +12,8 @@ struct MapData {
     @State var userHasLocation: Bool
     @State var userTrackingMode: MapUserTrackingMode
     @State var pointCoordinates: MKCoordinateRegion
+    @State var distanceToUserLocation: Int?
+    let titleLocation: String?
 }
 
 struct VeterinarianDetailView: View {
@@ -117,9 +119,7 @@ struct VeterinarianDetailView: View {
                             MapMarker(coordinate: pin.coordinate)
                         }
 
-                        // TODO: add icons
-
-                        //                        MapLocationIconsView(viewModel: viewModel)
+                        MapLocationIconsView(userTrackingMode: mapData.userTrackingMode, distanceToUserLocation: mapData.distanceToUserLocation, titleLocation: mapData.titleLocation, mapLocationIconsPadding: .zero)
                     }
                     .frame(height: 300)
                 } else {

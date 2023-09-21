@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct EmergencyView: View {
-    
+
     @StateObject var viewModel = EmergencyViewModel(useCase: EmergencyUseCase())
 
     var body: some View {
@@ -25,7 +25,20 @@ struct EmergencyView: View {
                             MapMarker(coordinate: pin.coordinate)
                         }
 
-                        MapLocationIconsView(viewModel: viewModel)
+                        VStack {
+                            MapLocationIconsView(userTrackingMode: viewModel.userTrackingMode, distanceToUserLocation: viewModel.office?.distanceToUserLocation, titleLocation: viewModel.office?.name, mapLocationIconsPadding: .large)
+
+                            Spacer()
+
+                            Button(action: {
+
+                            }, label: {
+                                Text(String.MsgSendAlert)
+                                    .modifier(textStylePrincipal())
+                            })
+                            .modifier(buttonPrincipal(.red))
+                            .padding(.bottom, 100)
+                        }
                     }
                     .edgesIgnoringSafeArea(.all)
                 } else {

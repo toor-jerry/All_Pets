@@ -54,7 +54,7 @@ struct VeterinarianView: View {
                     .background(Color.background)
                     .navigationDestination(isPresented: $viewModel.showDetail, destination: {
                         if let office = viewModel.officeSelected {
-                            VeterinarianDetailView(office: office, mapData: MapData(userHasLocation: viewModel.userHasLocation, userTrackingMode: viewModel.userTrackingMode, pointCoordinates: viewModel.officeCoordinates), mapPins: viewModel.mapPins)
+                            VeterinarianDetailView(office: office, mapData: MapData(userHasLocation: viewModel.userHasLocation, userTrackingMode: viewModel.userTrackingMode, pointCoordinates: viewModel.officeCoordinates, distanceToUserLocation: viewModel.officeSelected?.distanceToUserLocation, titleLocation: viewModel.officeSelected?.name), mapPins: viewModel.mapPins)
                         }
                     })
             }

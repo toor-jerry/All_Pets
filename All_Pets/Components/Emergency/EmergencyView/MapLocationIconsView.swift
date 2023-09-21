@@ -8,48 +8,47 @@
 import SwiftUI
 import MapKit
 
-struct MapLocationIconsView: View {
+enum MapLocationIconsPadding {
+    case large
+    case zero
+}
 
-    // TODO: crearlo generico
-    @StateObject var viewModel: EmergencyViewModel
+struct MapLocationIconsView: View {
+    
+    @State var userTrackingMode: MapUserTrackingMode
+    var distanceToUserLocation: Int?
+    let titleLocation: String?
+    let mapLocationIconsPadding: MapLocationIconsPadding
 
     private let cornerRadius: CGFloat = 10
     private let backgrounColor: Color = .gray.opacity(0.8)
-
+    
     var body: some View {
         VStack {
             HStack {
-                if let office = viewModel.office {
-                    TitleMapIconsView(namePlace: office.name, distanceToUserLocation: office.distanceToUserLocation)
+                if let titleLocation = titleLocation {
+                    TitleMapIconsView(namePlace: titleLocation, distanceToUserLocation: distanceToUserLocation)
                         .background(backgrounColor)
                         .cornerRadius(cornerRadius)
-                        .padding(.trailing, 60)
+                        .padding(.trailing, mapLocationIconsPadding == .large ? 60 : .zero)
                 }
-
-                ButtonLocationView(userTrackingMode: $viewModel.userTrackingMode)
+                
+                ButtonLocationView(userTrackingMode: $userTrackingMode)
                     .background(backgrounColor)
                     .cornerRadius(cornerRadius)
             }
             Spacer()
-            Button(action: {
-
-            }, label: {
-                Text(String.MsgSendAlert)
-                    .modifier(textStylePrincipal())
-            })
-            .modifier(buttonPrincipal(.red))
-            .padding(.bottom, 80)
         }
-        .padding(.top, 40)
-        .padding(20)
+        .padding(.top, mapLocationIconsPadding == .large ? 40 : .zero)
+        .padding(mapLocationIconsPadding == .large ? 20 : 10)
     }
 }
 
 struct ButtonLocationView: View {
-
+    
     @Binding var userTrackingMode: MapUserTrackingMode
     private let sizeIcons: CGFloat = 30
-
+    
     var body: some View {
         VStack {
             Button(action: {
@@ -68,17 +67,17 @@ struct ButtonLocationView: View {
 }
 
 struct TitleMapIconsView: View {
-
+    
     let namePlace: String?
     let distanceToUserLocation: Int?
-
+    
     var body: some View {
         VStack {
             VStack {
                 Text(String.WordsNearbyOffice)
                     .fontWeight(.regular)
                     .modifier(AligmentView(aligment: .leading))
-
+                
                 if let namePlace = namePlace {
                     Text("\"\(namePlace)\"")
                 }
