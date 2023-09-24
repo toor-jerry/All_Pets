@@ -27,6 +27,8 @@ struct VeterinarianDetailView: View {
     @State private var heightSecondContainerChips: CGFloat = .zero
     @StateObject private var viewModel = VeterinarianDetailViewModel()
 
+    @State private var showCreateAppoiment = false
+
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
@@ -36,7 +38,7 @@ struct VeterinarianDetailView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        
+                        showCreateAppoiment.toggle()
                     }, label: {
                         Text(String.WordsToAskForADate)
                             .modifier(textStylePrincipal())
@@ -130,6 +132,10 @@ struct VeterinarianDetailView: View {
         .background(Color.background)
         .task {
             viewModel.setup(office)
+        }
+        .sheet(isPresented: $showCreateAppoiment) {
+            CreateAppointmentView()
+            .presentationDetents([.medium, .large])
         }
     }
     
