@@ -73,6 +73,9 @@
 		D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC45692A8409CB003958FC /* Array+Extension.swift */; };
 		D2AC456C2A840A23003958FC /* ObservableObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */; };
 		D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */; };
+		D2AF11C22ABE1DB600DD72E8 /* CreateAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF11BD2ABE1DB600DD72E8 /* CreateAppointment.swift */; };
+		D2AF11C32ABE1DB600DD72E8 /* CreateAppointmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF11BF2ABE1DB600DD72E8 /* CreateAppointmentViewModel.swift */; };
+		D2AF11C42ABE1DB600DD72E8 /* CreateAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF11C12ABE1DB600DD72E8 /* CreateAppointmentView.swift */; };
 		D2AFE1602AA57F2B00B44FB4 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFE15F2AA57F2B00B44FB4 /* ChipView.swift */; };
 		D2AFE1622AA5820D00B44FB4 /* ChipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFE1612AA5820D00B44FB4 /* ChipModel.swift */; };
 		D2AFE1642AA5827400B44FB4 /* ChipContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFE1632AA5827400B44FB4 /* ChipContainerView.swift */; };
@@ -163,6 +166,9 @@
 		D2AC45692A8409CB003958FC /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableObject+Extension.swift"; sourceTree = "<group>"; };
 		D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginUseCase.swift; sourceTree = "<group>"; };
+		D2AF11BD2ABE1DB600DD72E8 /* CreateAppointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAppointment.swift; sourceTree = "<group>"; };
+		D2AF11BF2ABE1DB600DD72E8 /* CreateAppointmentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAppointmentViewModel.swift; sourceTree = "<group>"; };
+		D2AF11C12ABE1DB600DD72E8 /* CreateAppointmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAppointmentView.swift; sourceTree = "<group>"; };
 		D2AFE15F2AA57F2B00B44FB4 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
 		D2AFE1612AA5820D00B44FB4 /* ChipModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipModel.swift; sourceTree = "<group>"; };
 		D2AFE1632AA5827400B44FB4 /* ChipContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipContainerView.swift; sourceTree = "<group>"; };
@@ -213,6 +219,7 @@
 		D201FCAB2A83F35A002C1EBA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D2AF11BB2ABE1DB600DD72E8 /* CreateAppointment */,
 				D28BD5A12AA90E0200320204 /* VeterinarianDetail */,
 				D2494A3C2AA15FE500A944A2 /* Veterinarian */,
 				D24883522A9D603A006BC149 /* Emergency */,
@@ -684,6 +691,40 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		D2AF11BB2ABE1DB600DD72E8 /* CreateAppointment */ = {
+			isa = PBXGroup;
+			children = (
+				D2AF11BC2ABE1DB600DD72E8 /* Models */,
+				D2AF11BE2ABE1DB600DD72E8 /* CreateAppointmentViewModel */,
+				D2AF11C02ABE1DB600DD72E8 /* CreateAppointmentView */,
+			);
+			path = CreateAppointment;
+			sourceTree = "<group>";
+		};
+		D2AF11BC2ABE1DB600DD72E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D2AF11BD2ABE1DB600DD72E8 /* CreateAppointment.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D2AF11BE2ABE1DB600DD72E8 /* CreateAppointmentViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D2AF11BF2ABE1DB600DD72E8 /* CreateAppointmentViewModel.swift */,
+			);
+			path = CreateAppointmentViewModel;
+			sourceTree = "<group>";
+		};
+		D2AF11C02ABE1DB600DD72E8 /* CreateAppointmentView */ = {
+			isa = PBXGroup;
+			children = (
+				D2AF11C12ABE1DB600DD72E8 /* CreateAppointmentView.swift */,
+			);
+			path = CreateAppointmentView;
+			sourceTree = "<group>";
+		};
 		D2AFE15E2AA57F0F00B44FB4 /* FilterChips */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,10 +867,12 @@
 				D24EE6082A8FC370008E3013 /* HomeUseCase.swift in Sources */,
 				D28BD5A82AA90E0200320204 /* VeterinarianDetailViewModel.swift in Sources */,
 				D28BD59A2AA8E81300320204 /* VeterianFilterChipsView.swift in Sources */,
+				D2AF11C32ABE1DB600DD72E8 /* CreateAppointmentViewModel.swift in Sources */,
 				D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */,
 				D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */,
 				D2AC45612A84061A003958FC /* Fetcher.swift in Sources */,
 				D2494A472AA1607F00A944A2 /* VeterianUseCase.swift in Sources */,
+				D2AF11C42ABE1DB600DD72E8 /* CreateAppointmentView.swift in Sources */,
 				D2AC455C2A840241003958FC /* NetworkingServerErrors.swift in Sources */,
 				D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */,
 				D2494A372AA1156000A944A2 /* HomeBottomSheetCell.swift in Sources */,
@@ -862,6 +905,7 @@
 				D29F03892A99C7A300C455F2 /* VaccinationCardViewModel.swift in Sources */,
 				D2494A4D2AA22E7600A944A2 /* VeterianCardCell.swift in Sources */,
 				D26B63AC2A8BCDD500A843D2 /* PetRegister.swift in Sources */,
+				D2AF11C22ABE1DB600DD72E8 /* CreateAppointment.swift in Sources */,
 				D2AC45652A8406F9003958FC /* NetworkingProviderService.swift in Sources */,
 				D2494A4F2AA22F4200A944A2 /* FilterView.swift in Sources */,
 				D29F038A2A99C7A300C455F2 /* VaccinationCard.swift in Sources */,
