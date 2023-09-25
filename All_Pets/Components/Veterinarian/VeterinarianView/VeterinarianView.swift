@@ -10,8 +10,6 @@ import SwiftUI
 struct VeterinarianView: View {
     
     @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCaseUseCase())
-    @Binding var pets: [Pet]
-    @Binding var petSelected: Pet?
 
     var body: some View {
         
@@ -56,7 +54,7 @@ struct VeterinarianView: View {
                     .background(Color.background)
                     .navigationDestination(isPresented: $viewModel.showDetail, destination: {
                         if let office = viewModel.officeSelected {
-                            VeterinarianDetailView(pets: $pets, petSelected: $petSelected, office: office, mapData: MapData(userHasLocation: viewModel.userHasLocation, userTrackingMode: viewModel.userTrackingMode, pointCoordinates: viewModel.officeCoordinates, distanceToUserLocation: viewModel.officeSelected?.distanceToUserLocation, titleLocation: viewModel.officeSelected?.name), mapPins: viewModel.mapPins)
+                            VeterinarianDetailView(office: office, mapData: MapData(userHasLocation: viewModel.userHasLocation, userTrackingMode: viewModel.userTrackingMode, pointCoordinates: viewModel.officeCoordinates, distanceToUserLocation: viewModel.officeSelected?.distanceToUserLocation, titleLocation: viewModel.officeSelected?.name), mapPins: viewModel.mapPins)
                         }
                     })
             }
@@ -72,5 +70,5 @@ struct VeterinarianView: View {
 
 
 #Preview {
-    VeterinarianView(pets: .constant([]), petSelected: .constant(nil))
+    VeterinarianView()
 }

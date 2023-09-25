@@ -10,8 +10,7 @@ import SwiftUI
 struct HomeBottomSheet: View {
 
     @StateObject var viewModel: HomeViewModelViewModel
-    @Binding var pets: [Pet]
-    @Binding var petSelected: Pet?
+    @EnvironmentObject var sessionInfo: SessionInfo
     @Binding var showingCredits: Bool
     @Binding var showPetRegister: Bool
 
@@ -19,19 +18,19 @@ struct HomeBottomSheet: View {
         VStack {
             VStack {
 
-                if !pets.isEmpty {
+                if !sessionInfo.pets.isEmpty {
                     List {
-                        ForEach(pets, id: \.id) { pet in
+                        ForEach(sessionInfo.pets, id: \.id) { pet in
                             HomeBottomSheetCell(pet: pet, isChecked: isPetSelected(pet.id))
                                 .onTapGesture {
                                     if !isPetSelected(pet.id) {
-                                        petSelected = pet
+                                        sessionInfo.petSelected = pet
                                     }
                                 }
                                 .swipeActions(edge: .leading) {
-                                    Button(action: { viewModel.removePet(pet, pets: pets, completion: { pets, petSelected in
-                                        self.pets = pets
-                                        self.petSelected = petSelected
+                                    Button(action: { viewModel.removePet(pet, pets: sessionInfo.pets, completion: { pets, petSelected in
+                                        self.sessionInfo.pets = pets
+                                        self.sessionInfo.petSelected = petSelected
                                     })
                                     }, label: {
                                         Image(systemName: "trash")
@@ -45,7 +44,7 @@ struct HomeBottomSheet: View {
                         )
                         .listRowSeparator(.hidden)
 
-                        if pets.count < 4 {
+                        if sessionInfo.pets.count < 4 {
                             Section(content: { }, footer: {
                                 Button(action: {
                                     showingCredits.toggle()
@@ -91,6 +90,6 @@ struct HomeBottomSheet: View {
     }
 
     private func isPetSelected(_ id: String) -> Bool {
-        return id == petSelected?.id ?? ""
+        return id == sessionInfo.petSelected?.id ?? ""
     }
 }

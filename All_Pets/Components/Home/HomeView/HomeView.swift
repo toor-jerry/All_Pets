@@ -9,9 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @Binding var pets: [Pet]
-    @Binding var petSelected: Pet?
-
+    @EnvironmentObject var sessionInfo: SessionInfo
     @StateObject var viewModel = HomeViewModelViewModel(useCase: HomeUseCase())
 
     @State var showingCredits = false
@@ -34,7 +32,7 @@ struct HomeView: View {
                         .padding(.top, 50)
                         .foregroundColor(.black)
 
-                    Text(viewModel.getHomeMsg(petSelected: petSelected))
+                    Text(viewModel.getHomeMsg(petSelected: sessionInfo.petSelected))
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontWeight(.bold)
@@ -45,7 +43,7 @@ struct HomeView: View {
 
                     HStack {
 
-                        NavigationLink(destination: VaccinationCardView(idPet: petSelected?.id ?? ""),
+                        NavigationLink(destination: VaccinationCardView(idPet: sessionInfo.petSelected?.id ?? ""),
                                        label: {
                             VStack {
                                 Image(systemName: "bolt.heart")
@@ -125,8 +123,12 @@ struct HomeView: View {
                     if refreshView {
                         refreshView = false
                         viewModel.getInitData(completion: { pets, petSelected in
-                            self.pets = pets
-                            self.petSelected = petSelected
+                            self.sessionInfo.pets = pets
+                            if let pet = self.sessionInfo.petSelected {
+                                self.sessionInfo.petSelected = pet
+                            } else {
+                                self.sessionInfo.petSelected = petSelected
+                            }
                         })
                     }
                 }
@@ -135,13 +137,13 @@ struct HomeView: View {
                 })
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        if let pet = petSelected {
+                        if let pet = sessionInfo.petSelected {
                             Button(action: {
                                 showingCredits.toggle()
                             }, label: {
 
                                 HStack {
-                                    if let imageUrl = petSelected?.photoURL {
+                                    if let imageUrl = sessionInfo.petSelected?.photoURL {
                                         AsyncImage(url: URL(string: imageUrl)) { image in
                                             image
                                                 .resizable()
@@ -154,7 +156,7 @@ struct HomeView: View {
 
                                     } else {
 
-                                        Image(petSelected?.pet ?? "photo.fill")
+                                        Image(sessionInfo.petSelected?.pet ?? "photo.fill")
                                             .resizable()
                                             .modifier(textProfileBackground())
                                     }
@@ -181,17 +183,21 @@ struct HomeView: View {
 
         }
         .sheet(isPresented: $showingCredits) {
-            HomeBottomSheet(viewModel: viewModel, pets: $pets, petSelected: $petSelected, showingCredits: $showingCredits, showPetRegister: $showPetRegister)
+            HomeBottomSheet(viewModel: viewModel, showingCredits: $showingCredits, showPetRegister: $showPetRegister)
         }
         .onAppear {
             viewModel.getInitData(completion: { pets, petSelected in
-                self.pets = pets
-                self.petSelected = petSelected
+                self.sessionInfo.pets = pets
+                if let pet = self.sessionInfo.petSelected {
+                    self.sessionInfo.petSelected = pet
+                } else {
+                    self.sessionInfo.petSelected = petSelected
+                }
             })
         }
     }
 }
 
 #Preview {
-    HomeView(pets: .constant([]), petSelected: .constant(nil))
+    HomeView()
 }

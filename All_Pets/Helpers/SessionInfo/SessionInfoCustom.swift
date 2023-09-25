@@ -5,12 +5,9 @@
 //  Copyright © 2023 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
-class SessionInfoCustom {
-    
-    func templateFunction() {
-        
-    }
-    
+final class SessionInfo: ObservableObject {
+    @Published var pets: [Pet] = []
+    @Published var petSelected: Pet? = nil
 }

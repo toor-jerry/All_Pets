@@ -17,20 +17,19 @@ struct MapData {
 }
 
 struct VeterinarianDetailView: View {
-
-    @Binding var pets: [Pet]
-    @Binding var petSelected: Pet?
+    
+    @EnvironmentObject var sessionInfo: SessionInfo
     // TODO: crear una estructura para manejar ubicaciones
     @State var office: OfficeModel
     @State var mapData: MapData
     @State var mapPins: [MapViewPin]
-
+    
     @State private var heightFirstContainerChips: CGFloat = .zero
     @State private var heightSecondContainerChips: CGFloat = .zero
     @StateObject private var viewModel = VeterinarianDetailViewModel()
-
+    
     @State private var showCreateAppoiment = false
-
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
@@ -66,7 +65,7 @@ struct VeterinarianDetailView: View {
                             .fontWeight(.bold)
                             .font(.title3)
                             .modifier(AligmentView(aligment: .leading))
-
+                        
                         ChipContainerView(chipArray: $viewModel.chipsSpecialities, updateHeigh: { height in
                             if Int(self.heightFirstContainerChips) != Int(height) && Int(height) > Int(self.heightFirstContainerChips) {
                                 self.heightFirstContainerChips = height
@@ -74,7 +73,7 @@ struct VeterinarianDetailView: View {
                         }, enableChangeColorOnSelect: false).frame(height: heightFirstContainerChips)
                     }
                 }
-
+                
                 if !viewModel.chipsSectors.isEmpty {
                     VStack {
                         Text(String.WordsTheyServe)
@@ -82,7 +81,7 @@ struct VeterinarianDetailView: View {
                             .fontWeight(.bold)
                             .font(.title3)
                             .modifier(AligmentView(aligment: .leading))
-
+                        
                         ChipContainerView(chipArray: $viewModel.chipsSectors, updateHeigh: { height in
                             if Int(self.heightSecondContainerChips) != Int(height) && Int(height) > Int(self.heightSecondContainerChips) {
                                 self.heightSecondContainerChips = height
@@ -90,14 +89,14 @@ struct VeterinarianDetailView: View {
                         }, enableChangeColorOnSelect: false).frame(height: heightSecondContainerChips)
                     }
                 }
-
+                
                 if let phoneNumber = office.phoneNumber,
                    !phoneNumber.isEmpty {
                     VStack(spacing: 20) {
                         Text(String.WordContact)
                             .foregroundColor(.purpleSecundary)
                             .modifier(AligmentView(aligment: .leading))
-
+                        
                         HStack {
                             Text("\(String.WordNumber): ")
                                 .foregroundColor(.black)
@@ -115,14 +114,14 @@ struct VeterinarianDetailView: View {
                         }
                     }.font(.title3).fontWeight(.bold)
                 }
-
+                
                 if mapData.userHasLocation {
                     ZStack {
                         Map(coordinateRegion: $mapData.pointCoordinates, showsUserLocation: true, userTrackingMode: .constant(mapData.userTrackingMode), annotationItems: mapPins) { pin in
-
+                            
                             MapMarker(coordinate: pin.coordinate)
                         }
-
+                        
                         MapLocationIconsView(userTrackingMode: mapData.userTrackingMode, distanceToUserLocation: mapData.distanceToUserLocation, titleLocation: mapData.titleLocation, mapLocationIconsPadding: .zero)
                     }
                     .frame(height: 300)
@@ -136,8 +135,8 @@ struct VeterinarianDetailView: View {
             viewModel.setup(office)
         }
         .sheet(isPresented: $showCreateAppoiment) {
-            CreateAppointmentView(pets: $pets, petSelected: $petSelected)
-            .presentationDetents([.medium, .large])
+            CreateAppointmentView()
+                .presentationDetents([.medium, .large])
         }
     }
     

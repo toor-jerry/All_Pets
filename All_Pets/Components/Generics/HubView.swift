@@ -8,31 +8,29 @@
 import SwiftUI
 
 struct HubView: View {
-    
+
     @Binding var section: AuthSections
     @State private var selectedTab = 1
-    // TODO: move
-    @State var pets: [Pet] = []
-    @State var petSelected: Pet?
+    @StateObject var sessionInfo: SessionInfo = SessionInfo()
 
     var body: some View {
         TabView(selection: $selectedTab) {
 
-            HomeView(pets: $pets, petSelected: $petSelected)
+            HomeView()
                 .modifier(tabItemStyle())
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Inicio")
                 }
                 .tag(0)
-            
-            VeterinarianView(pets: $pets, petSelected: $petSelected)
-            .modifier(tabItemStyle())
-            .tabItem {
-                Image(systemName: "heart.fill")
-                Text("Veterinario")
-            }
-            .tag(1)
+
+            VeterinarianView()
+                .modifier(tabItemStyle())
+                .tabItem {
+                    Image(systemName: "heart.fill")
+                    Text("Veterinario")
+                }
+                .tag(1)
 
             EmergencyView()
                 .modifier(tabItemStyle())
@@ -41,7 +39,7 @@ struct HubView: View {
                     Text("Emergencia")
                 }
                 .tag(2)
-            
+
             ScrollView {
                 Text("Contenido de la pestaña 3")
             }
@@ -51,7 +49,7 @@ struct HubView: View {
                 Text("Explora")
             }
             .tag(3)
-            
+
             ScrollView {
                 ProfileView(section: $section)
             }
@@ -63,6 +61,7 @@ struct HubView: View {
             .tag(4)
         }
         .accentColor(Color.principal)
+        .environmentObject(sessionInfo)
     }
 }
 
@@ -71,7 +70,7 @@ struct HubView: View {
 }
 
 struct tabItemStyle: ViewModifier {
-    
+
     func body(content: Content) -> some View {
         content
             .background(Color.background)
