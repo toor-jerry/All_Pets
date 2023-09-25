@@ -18,6 +18,8 @@ struct MapData {
 
 struct VeterinarianDetailView: View {
 
+    @Binding var pets: [Pet]
+    @Binding var petSelected: Pet?
     // TODO: crear una estructura para manejar ubicaciones
     @State var office: OfficeModel
     @State var mapData: MapData
@@ -134,7 +136,7 @@ struct VeterinarianDetailView: View {
             viewModel.setup(office)
         }
         .sheet(isPresented: $showCreateAppoiment) {
-            CreateAppointmentView()
+            CreateAppointmentView(pets: $pets, petSelected: $petSelected)
             .presentationDetents([.medium, .large])
         }
     }

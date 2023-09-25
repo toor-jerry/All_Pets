@@ -10,10 +10,12 @@ import SwiftUI
 struct CreateAppointmentView: View {
 
     //    @StateObject var viewModel = CreateAppointmentViewViewModel(useCase: CreateAppointmentViewUseCase())
+    @Binding var pets: [Pet]
+    @Binding var petSelected: Pet?
 
     var body: some View {
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Text(String(describing: petSelected))
         }
         .background(Color.background)
         .foregroundColor(.black)
@@ -21,5 +23,5 @@ struct CreateAppointmentView: View {
 }
 
 #Preview {
-    CreateAppointmentView()
+    CreateAppointmentView(pets: .constant([]), petSelected: .constant(nil))
 }

@@ -11,11 +11,14 @@ struct HubView: View {
     
     @Binding var section: AuthSections
     @State private var selectedTab = 1
-    
+    // TODO: move
+    @State var pets: [Pet] = []
+    @State var petSelected: Pet?
+
     var body: some View {
         TabView(selection: $selectedTab) {
 
-            HomeView()
+            HomeView(pets: $pets, petSelected: $petSelected)
                 .modifier(tabItemStyle())
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -23,7 +26,7 @@ struct HubView: View {
                 }
                 .tag(0)
             
-            VeterinarianView()
+            VeterinarianView(pets: $pets, petSelected: $petSelected)
             .modifier(tabItemStyle())
             .tabItem {
                 Image(systemName: "heart.fill")

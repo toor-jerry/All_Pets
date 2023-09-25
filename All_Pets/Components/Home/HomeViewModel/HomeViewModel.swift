@@ -13,28 +13,26 @@ final class HomeViewModelViewModel: ObservableObject {
 
     @Published var isLoading: Bool = false
     @Published var user: User = User()
-    @Published var pets: [Pet] = []
     @Published var cites: [CiteModel] = []
-    @Published var petSelected: Pet?
     private var idPet: String?
 
     private var callService: Int = .zero
-    
+
     init(useCase: HomeUseCaseProtocol) {
         self.useCase = useCase
     }
 
-    func getInitData() {
+    func getInitData(completion: @escaping (_ pets: [Pet], _ petSelected: Pet?) -> Void) {
         if isLoading {
             return
         }
 
         getUser()
-        getPets()
+        getPets(completion: completion)
         getCites()
     }
 
-    func getHomeMsg() -> String {
+    func getHomeMsg(petSelected: Pet?) -> String {
 
         if let pet = petSelected {
             return getMsgCitesForHomeView(pet.id)
@@ -43,8 +41,10 @@ final class HomeViewModelViewModel: ObservableObject {
         }
     }
 
-    func removePet(_ pet: Pet) {
-        pets.removeAll { $0.id == pet.id }
+    func removePet(_ pet: Pet, pets: [Pet], completion: @escaping (_ pets: [Pet], _ petSelected: Pet?) -> Void) {
+        var petsTemp: [Pet] = pets
+        var petSelected: Pet?
+        petsTemp.removeAll { $0.id == pet.id }
         petSelected = pets.first
         useCase.deletePet(pet: pet,
                           success: {
@@ -52,6 +52,8 @@ final class HomeViewModelViewModel: ObservableObject {
         }, failure: { _ in
             print("Data2 Hubo un error al eliminar la mascota")
         }, completion: {})
+
+        completion(petsTemp, petSelected)
     }
 
     private func getMsgCitesForHomeView(_ idPet: String) -> String {
@@ -83,17 +85,16 @@ final class HomeViewModelViewModel: ObservableObject {
         })
     }
 
-    private func getPets() {
+    private func getPets(completion: @escaping (_ pets: [Pet], _ petSelected: Pet?) -> Void) {
 
         startLoading()
 
         useCase.getPets(success: { pets in
 
-            self.pets = pets
-            self.petSelected = pets.first
+            completion(pets, pets.first)
 
         }, failure: { _ in
-
+            completion([], nil)
         }, completion: {
             self.stopLoading()
         })
@@ -113,25 +114,6 @@ final class HomeViewModelViewModel: ObservableObject {
             self.stopLoading()
         })
     }
-
-    //    private func preFetchVaccinationCard(_ idPet: String) {
-    //
-    //        if let _ = pets.first(where: { $0.id == idPet && ($0.cardsVaccination == nil || $0.cardsVaccination!.isEmpty) }) {
-    //            self.idPet = idPet
-    //            getVaccinationCard(idPet)
-    //        }
-    //    }
-
-    // TODO: modify
-    //    private func addVaccinationCards(_ vaccinationCards: [VaccinationCardModel]) {
-    //        guard let idPet = self.idPet, !idPet.isEmpty else {
-    //            return
-    //        }
-    //
-    //        if let petIndex = pets.firstIndex(where: { $0.id == idPet }) {
-    //            pets[petIndex].cardsVaccination = vaccinationCards
-    //        }
-    //    }
 
     private func startLoading() {
         isLoading = true

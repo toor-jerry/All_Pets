@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeBottomSheet: View {
 
     @StateObject var viewModel: HomeViewModelViewModel
+    @Binding var pets: [Pet]
+    @Binding var petSelected: Pet?
     @Binding var showingCredits: Bool
     @Binding var showPetRegister: Bool
 
@@ -17,18 +19,20 @@ struct HomeBottomSheet: View {
         VStack {
             VStack {
 
-                if !viewModel.pets.isEmpty {
+                if !pets.isEmpty {
                     List {
-                        ForEach(viewModel.pets, id: \.id) { pet in
+                        ForEach(pets, id: \.id) { pet in
                             HomeBottomSheetCell(pet: pet, isChecked: isPetSelected(pet.id))
                                 .onTapGesture {
                                     if !isPetSelected(pet.id) {
-                                        viewModel.petSelected = pet
+                                        petSelected = pet
                                     }
                                 }
                                 .swipeActions(edge: .leading) {
-                                    Button(action: {
-                                        viewModel.removePet(pet)
+                                    Button(action: { viewModel.removePet(pet, pets: pets, completion: { pets, petSelected in
+                                        self.pets = pets
+                                        self.petSelected = petSelected
+                                    })
                                     }, label: {
                                         Image(systemName: "trash")
                                     })
@@ -41,7 +45,7 @@ struct HomeBottomSheet: View {
                         )
                         .listRowSeparator(.hidden)
 
-                        if viewModel.pets.count < 4 {
+                        if pets.count < 4 {
                             Section(content: { }, footer: {
                                 Button(action: {
                                     showingCredits.toggle()
@@ -87,6 +91,6 @@ struct HomeBottomSheet: View {
     }
 
     private func isPetSelected(_ id: String) -> Bool {
-        return id == viewModel.petSelected?.id ?? ""
+        return id == petSelected?.id ?? ""
     }
 }

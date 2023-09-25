@@ -8,50 +8,53 @@
 import SwiftUI
 
 struct HomeView: View {
-    
+
+    @Binding var pets: [Pet]
+    @Binding var petSelected: Pet?
+
     @StateObject var viewModel = HomeViewModelViewModel(useCase: HomeUseCase())
-    
+
     @State var showingCredits = false
     @State var showPetRegister: Bool = false
     @State var refreshView: Bool = false
-    
+
     private let sizeImageButtons: CGFloat = 50
-    
+
     var body: some View {
         NavigationStack {
-            
+
             if viewModel.isLoading {
                 Loader()
             } else {
-                
+
                 ScrollView {
                     Text("\(String.MsgHello) \(viewModel.user.name)!")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.top, 50)
                         .foregroundColor(.black)
-                    
-                    Text(viewModel.getHomeMsg())
+
+                    Text(viewModel.getHomeMsg(petSelected: petSelected))
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(Color.principal)
                         .padding(.top, 38)
-                    
+
                     Spacer()
-                    
+
                     HStack {
-                        
-                        NavigationLink(destination: VaccinationCardView(idPet: viewModel.petSelected?.id ?? ""),
+
+                        NavigationLink(destination: VaccinationCardView(idPet: petSelected?.id ?? ""),
                                        label: {
                             VStack {
                                 Image(systemName: "bolt.heart")
                                     .resizable()
                                     .foregroundColor(.green.opacity(0.5))
                                     .frame(width: sizeImageButtons, height: sizeImageButtons)
-                                
+
                                 Spacer()
-                                
+
 
                                 HStack {
                                     Spacer()
@@ -76,7 +79,7 @@ struct HomeView: View {
                                     .resizable()
                                     .foregroundColor(.blue.opacity(0.5))
                                     .frame(width: sizeImageButtons, height: sizeImageButtons)
-                                
+
                                 Spacer()
 
                                 HStack {
@@ -95,10 +98,10 @@ struct HomeView: View {
                     }
                     .padding(.top, 60)
                     .padding(.bottom, 20)
-                    
-                    
+
+
                     Button(action: {
-                        
+
                     }, label: {
                         HStack {
                             Image(systemName: "note.text")
@@ -121,7 +124,10 @@ struct HomeView: View {
                 .onAppear {
                     if refreshView {
                         refreshView = false
-                        viewModel.getInitData()
+                        viewModel.getInitData(completion: { pets, petSelected in
+                            self.pets = pets
+                            self.petSelected = petSelected
+                        })
                     }
                 }
                 .navigationDestination(isPresented: $showPetRegister, destination: {
@@ -129,13 +135,13 @@ struct HomeView: View {
                 })
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        if let pet = viewModel.petSelected {
+                        if let pet = petSelected {
                             Button(action: {
                                 showingCredits.toggle()
                             }, label: {
-                                
+
                                 HStack {
-                                    if let imageUrl = viewModel.petSelected?.photoURL {
+                                    if let imageUrl = petSelected?.photoURL {
                                         AsyncImage(url: URL(string: imageUrl)) { image in
                                             image
                                                 .resizable()
@@ -145,10 +151,10 @@ struct HomeView: View {
                                                 .resizable()
                                                 .modifier(textProfileBackground())
                                         }
-                                        
+
                                     } else {
-                                        
-                                        Image(viewModel.petSelected?.pet ?? "photo.fill")
+
+                                        Image(petSelected?.pet ?? "photo.fill")
                                             .resizable()
                                             .modifier(textProfileBackground())
                                     }
@@ -172,17 +178,20 @@ struct HomeView: View {
                     }
                 }
             }
-            
+
         }
         .sheet(isPresented: $showingCredits) {
-            HomeBottomSheet(viewModel: viewModel, showingCredits: $showingCredits, showPetRegister: $showPetRegister)
+            HomeBottomSheet(viewModel: viewModel, pets: $pets, petSelected: $petSelected, showingCredits: $showingCredits, showPetRegister: $showPetRegister)
         }
         .onAppear {
-            viewModel.getInitData()
+            viewModel.getInitData(completion: { pets, petSelected in
+                self.pets = pets
+                self.petSelected = petSelected
+            })
         }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(pets: .constant([]), petSelected: .constant(nil))
 }
