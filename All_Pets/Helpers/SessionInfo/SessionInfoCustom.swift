@@ -8,6 +8,24 @@
 import SwiftUI
 
 final class SessionInfo: ObservableObject {
+
     @Published var pets: [Pet] = []
     @Published var petSelected: Pet? = nil
+
+    private let useCase: SessionInfoProtocols
+
+    init() {
+        self.useCase = SessionInfoUseCase()
+    }
+
+    func removePet(_ pet: Pet) {
+        pets.removeAll { $0.id == pet.id }
+        petSelected = pets.first
+        useCase.deletePet(pet: pet,
+                          success: {
+            print("Data2 Mascota eliminada con éxito")
+        }, failure: { _ in
+            print("Data2 Hubo un error al eliminar la mascota")
+        }, completion: {})
+    }
 }

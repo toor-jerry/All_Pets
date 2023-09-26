@@ -28,10 +28,8 @@ struct HomeBottomSheet: View {
                                     }
                                 }
                                 .swipeActions(edge: .leading) {
-                                    Button(action: { viewModel.removePet(pet, pets: sessionInfo.pets, completion: { pets, petSelected in
-                                        self.sessionInfo.pets = pets
-                                        self.sessionInfo.petSelected = petSelected
-                                    })
+                                    Button(action: {
+                                        sessionInfo.removePet(pet)
                                     }, label: {
                                         Image(systemName: "trash")
                                     })

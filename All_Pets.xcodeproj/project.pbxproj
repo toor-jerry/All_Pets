@@ -80,6 +80,7 @@
 		D2AFE1622AA5820D00B44FB4 /* ChipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFE1612AA5820D00B44FB4 /* ChipModel.swift */; };
 		D2AFE1642AA5827400B44FB4 /* ChipContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFE1632AA5827400B44FB4 /* ChipContainerView.swift */; };
 		D2B385F92AC24F660051EDF7 /* SessionInfoCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B385F82AC24F660051EDF7 /* SessionInfoCustom.swift */; };
+		D2B385FB2AC2648B0051EDF7 /* SessionInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B385FA2AC2648B0051EDF7 /* SessionInfoUseCase.swift */; };
 		D2D8232E2A831C490060CDA7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2D8232D2A831C490060CDA7 /* GoogleService-Info.plist */; };
 		D2D823312A831FA20060CDA7 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D2D823302A831FA20060CDA7 /* FirebaseAnalyticsSwift */; };
 		D2D823332A831FA20060CDA7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D2D823322A831FA20060CDA7 /* FirebaseAuth */; };
@@ -174,6 +175,7 @@
 		D2AFE1612AA5820D00B44FB4 /* ChipModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipModel.swift; sourceTree = "<group>"; };
 		D2AFE1632AA5827400B44FB4 /* ChipContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipContainerView.swift; sourceTree = "<group>"; };
 		D2B385F82AC24F660051EDF7 /* SessionInfoCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInfoCustom.swift; sourceTree = "<group>"; };
+		D2B385FA2AC2648B0051EDF7 /* SessionInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInfoUseCase.swift; sourceTree = "<group>"; };
 		D2D8232D2A831C490060CDA7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2D928562A889FC0009C5FEE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		D2DB53B52AAA4175004D3B49 /* MapLocationIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationIconsView.swift; sourceTree = "<group>"; };
@@ -690,6 +692,7 @@
 				D29F038C2A99CA7400C455F2 /* VaccinationCardUseCase.swift */,
 				D248835C2A9D6212006BC149 /* EmergencyUseCase.swift */,
 				D2494A462AA1607F00A944A2 /* VeterianUseCase.swift */,
+				D2B385FA2AC2648B0051EDF7 /* SessionInfoUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 				D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */,
 				D2AC455E2A840288003958FC /* RequestType.swift in Sources */,
 				D2E6F8192A855C4E0074D84E /* Constants.swift in Sources */,
+				D2B385FB2AC2648B0051EDF7 /* SessionInfoUseCase.swift in Sources */,
 				D2AFE1602AA57F2B00B44FB4 /* ChipView.swift in Sources */,
 				D24883492A9AAB66006BC149 /* View+Extension.swift in Sources */,
 				D24149C42A86B08A00E40EBB /* SignUpUseCase.swift in Sources */,

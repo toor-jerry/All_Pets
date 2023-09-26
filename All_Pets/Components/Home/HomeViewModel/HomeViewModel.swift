@@ -14,7 +14,6 @@ final class HomeViewModelViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var user: User = User()
     @Published var cites: [CiteModel] = []
-    private var idPet: String?
 
     private var callService: Int = .zero
 
@@ -39,21 +38,6 @@ final class HomeViewModelViewModel: ObservableObject {
         } else {
             return String.MsgNoPetsRegistered
         }
-    }
-
-    func removePet(_ pet: Pet, pets: [Pet], completion: @escaping (_ pets: [Pet], _ petSelected: Pet?) -> Void) {
-        var petsTemp: [Pet] = pets
-        var petSelected: Pet?
-        petsTemp.removeAll { $0.id == pet.id }
-        petSelected = pets.first
-        useCase.deletePet(pet: pet,
-                          success: {
-            print("Data2 Mascota eliminada con éxito")
-        }, failure: { _ in
-            print("Data2 Hubo un error al eliminar la mascota")
-        }, completion: {})
-
-        completion(petsTemp, petSelected)
     }
 
     private func getMsgCitesForHomeView(_ idPet: String) -> String {
