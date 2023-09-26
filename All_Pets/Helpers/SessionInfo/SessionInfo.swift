@@ -1,4 +1,4 @@
-//  SessionInfoCustom.swift
+//  SessionInfo.swift
 //  All_Pets
 //
 //  Created by Gerardo Bautista Castañeda on 25/09/23.
@@ -12,7 +12,7 @@ final class SessionInfo: ObservableObject {
     @Published var user: User = User()
     @Published var pets: [Pet] = []
     @Published var petSelected: Pet? = nil
-
+    
     private let useCase: SessionInfoProtocols
 
     init() {
@@ -21,6 +21,7 @@ final class SessionInfo: ObservableObject {
 
     func getInitData() {
         getUser()
+        getPets()
     }
 
     func removePet(_ pet: Pet) {
@@ -33,7 +34,21 @@ final class SessionInfo: ObservableObject {
             print("Data2 Hubo un error al eliminar la mascota")
         }, completion: {})
     }
-    
+
+    func getPets() {
+
+        useCase.getPets(success: { pets in
+
+            if let pet = self.petSelected {
+                self.petSelected = pet
+            } else {
+                self.petSelected = pets.first
+            }
+
+        }, failure: { _ in },
+                        completion: { })
+    }
+
     func getUser() {
 
         useCase.getUser(success: { user in

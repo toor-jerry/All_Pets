@@ -20,12 +20,11 @@ final class HomeViewModelViewModel: ObservableObject {
         self.useCase = useCase
     }
 
-    func getInitData(completion: @escaping (_ pets: [Pet], _ petSelected: Pet?) -> Void) {
+    func getInitData() {
         if isLoading {
             return
         }
 
-        getPets(completion: completion)
         getCites()
     }
 
@@ -53,21 +52,6 @@ final class HomeViewModelViewModel: ObservableObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd 'de' MMMM 'a las' h:mm a"
         return dateFormatter.string(from: date)
-    }
-
-    private func getPets(completion: @escaping (_ pets: [Pet], _ petSelected: Pet?) -> Void) {
-
-        startLoading()
-
-        useCase.getPets(success: { pets in
-
-            completion(pets, pets.first)
-
-        }, failure: { _ in
-            completion([], nil)
-        }, completion: {
-            self.stopLoading()
-        })
     }
 
     private func getCites() {

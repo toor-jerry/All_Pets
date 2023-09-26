@@ -122,14 +122,7 @@ struct HomeView: View {
                 .onAppear {
                     if refreshView {
                         refreshView = false
-                        viewModel.getInitData(completion: { pets, petSelected in
-                            self.sessionInfo.pets = pets
-                            if let pet = self.sessionInfo.petSelected {
-                                self.sessionInfo.petSelected = pet
-                            } else {
-                                self.sessionInfo.petSelected = petSelected
-                            }
-                        })
+                        viewModel.getInitData()
                     }
                 }
                 .navigationDestination(isPresented: $showPetRegister, destination: {
@@ -186,14 +179,7 @@ struct HomeView: View {
             HomeBottomSheet(viewModel: viewModel, showingCredits: $showingCredits, showPetRegister: $showPetRegister)
         }
         .onAppear {
-            viewModel.getInitData(completion: { pets, petSelected in
-                self.sessionInfo.pets = pets
-                if let pet = self.sessionInfo.petSelected {
-                    self.sessionInfo.petSelected = pet
-                } else {
-                    self.sessionInfo.petSelected = petSelected
-                }
-            })
+            viewModel.getInitData()
         }
     }
 }
