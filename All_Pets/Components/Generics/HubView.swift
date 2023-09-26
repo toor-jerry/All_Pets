@@ -62,6 +62,9 @@ struct HubView: View {
         }
         .accentColor(Color.principal)
         .environmentObject(sessionInfo)
+        .onAppear {
+            sessionInfo.getInitData()
+        }
     }
 }
 

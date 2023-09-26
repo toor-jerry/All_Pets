@@ -9,6 +9,7 @@ import SwiftUI
 
 final class SessionInfo: ObservableObject {
 
+    @Published var user: User = User()
     @Published var pets: [Pet] = []
     @Published var petSelected: Pet? = nil
 
@@ -16,6 +17,10 @@ final class SessionInfo: ObservableObject {
 
     init() {
         self.useCase = SessionInfoUseCase()
+    }
+
+    func getInitData() {
+        getUser()
     }
 
     func removePet(_ pet: Pet) {
@@ -27,5 +32,14 @@ final class SessionInfo: ObservableObject {
         }, failure: { _ in
             print("Data2 Hubo un error al eliminar la mascota")
         }, completion: {})
+    }
+    
+    func getUser() {
+
+        useCase.getUser(success: { user in
+            self.user = user
+        }, failure: { _ in
+
+        }, completion: { })
     }
 }

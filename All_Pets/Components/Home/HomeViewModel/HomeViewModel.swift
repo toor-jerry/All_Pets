@@ -12,7 +12,6 @@ final class HomeViewModelViewModel: ObservableObject {
     let useCase: HomeUseCaseProtocol
 
     @Published var isLoading: Bool = false
-    @Published var user: User = User()
     @Published var cites: [CiteModel] = []
 
     private var callService: Int = .zero
@@ -26,7 +25,6 @@ final class HomeViewModelViewModel: ObservableObject {
             return
         }
 
-        getUser()
         getPets(completion: completion)
         getCites()
     }
@@ -55,18 +53,6 @@ final class HomeViewModelViewModel: ObservableObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd 'de' MMMM 'a las' h:mm a"
         return dateFormatter.string(from: date)
-    }
-
-    private func getUser() {
-
-        startLoading()
-        useCase.getUser(success: { user in
-            self.user = user
-        }, failure: { _ in
-
-        }, completion: {
-            self.stopLoading()
-        })
     }
 
     private func getPets(completion: @escaping (_ pets: [Pet], _ petSelected: Pet?) -> Void) {

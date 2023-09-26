@@ -10,6 +10,12 @@ import FirebaseAuth
 import FirebaseFirestoreSwift
 import FirebaseStorage
 
+protocol GetUserProtocol: AnyObject {
+    func getUser(success: @escaping (_ userData: User) -> Void,
+                 failure: @escaping (Error) -> Void,
+                 completion: @escaping () -> Void)
+}
+
 protocol DeletePetProtocol: AnyObject {
     func deletePet(pet: Pet,
                    success: @escaping () -> Void,
@@ -17,9 +23,46 @@ protocol DeletePetProtocol: AnyObject {
                    completion: @escaping () -> Void)
 }
 
-protocol SessionInfoProtocols: DeletePetProtocol { }
+protocol SessionInfoProtocols: GetUserProtocol, DeletePetProtocol { }
 
 final class SessionInfoUseCase: SessionInfoProtocols { }
+
+extension SessionInfoUseCase: GetUserProtocol {
+
+    func getUser(success: @escaping (User) -> Void,
+                 failure: @escaping (Error) -> Void,
+                 completion: @escaping () -> Void) {
+
+        if let idUser = Auth.auth().currentUser?.uid {
+
+            let db = Firestore.firestore()
+            let userRef = db.collection(Endpoint.usersCollection.urlString).document(idUser)
+
+            userRef.getDocument { document, error in
+
+                if let _ = error {
+                    failure(NetworkingServerErrors.unknownError)
+                } else if let document = document, document.exists {
+
+                    do {
+                        let user = try document.data(as: User.self)
+                        success(user)
+                    } catch {
+                        failure(NetworkingClientErrors.decodingError)
+                    }
+
+                } else {
+                    failure(NetworkingServerErrors.dataNotFound)
+                }
+
+                completion()
+            }
+        } else {
+            failure(NetworkingClientErrors.requestInvalid)
+            completion()
+        }
+    }
+}
 
 extension SessionInfoUseCase: DeletePetProtocol {
 
