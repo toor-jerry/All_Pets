@@ -24,6 +24,21 @@ struct AligmentView: ViewModifier {
     }
 }
 
+struct profileImage: ViewModifier {
+
+    let size: CGFloat
+
+    func body(content: Content) -> some View {
+        content
+            .cornerRadius(50)
+            .frame(width: size, height: size)
+            .background(.white)
+            .aspectRatio(contentMode: .fill)
+            .clipShape(Circle())
+            .modifier(shadowStyle1())
+    }
+}
+
 struct imageSize: ViewModifier {
     
     var size: CGFloat

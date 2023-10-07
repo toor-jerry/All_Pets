@@ -54,7 +54,7 @@ extension VaccinationCardStatus {
     }
 }
 
-struct VaccinationCardModel: Codable {
+struct VaccinationCardModel: Hashable, Codable {
 
     var professionalLicense: String
     var vaccinationDate: Timestamp

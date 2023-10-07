@@ -58,4 +58,6 @@ extension String {
     static let WordsTheyServe = "Atienden a"
     static let WordContact = "Contacto"
     static let WordNumber = "Número"
+    static let WordsDateCite = "Fecha de cita"
+    static let WordsSelectSchedule = "Seleccionar horario"
 }

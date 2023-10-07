@@ -135,7 +135,7 @@ struct VeterinarianDetailView: View {
             viewModel.setup(office)
         }
         .sheet(isPresented: $showCreateAppoiment) {
-            CreateAppointmentView()
+            CreateAppointmentView(office: office)
                 .presentationDetents([.medium, .large])
         }
     }

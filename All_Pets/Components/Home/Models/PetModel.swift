@@ -7,7 +7,7 @@
 
 import Firebase
 
-struct Pet: Codable {
+struct Pet: Hashable, Codable {
 
     var id: String
     var birthDate: Timestamp
@@ -24,5 +24,9 @@ struct Pet: Codable {
         case photoURL = "ImgUrl"
         case petType = "Raza"
         case pet = "Mascota"
+    }
+
+    static func == (lhs: Pet, rhs: Pet) -> Bool {
+        return lhs.id == rhs.id
     }
 }

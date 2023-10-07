@@ -39,6 +39,7 @@ final class SessionInfo: ObservableObject {
 
         useCase.getPets(success: { pets in
 
+            self.pets = pets
             if let pet = self.petSelected {
                 self.petSelected = pet
             } else {
