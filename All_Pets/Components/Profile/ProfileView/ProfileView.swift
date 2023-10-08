@@ -10,28 +10,33 @@ import SwiftUI
 struct ProfileView: View {
 
     @Binding var section: AuthSections
-    
+    @EnvironmentObject var sessionInfo: SessionInfo
+
     @StateObject var viewModel = ProfileViewModel(useCase: SignOutUseCase())
-    
+
     var body: some View {
-        
+
         if viewModel.isLoading {
             Loader()
         } else {
             VStack {
 
-                Circle()
+                Image(Constants.logo)
+                    .resizable()
+                    .scaledToFit()
                     .frame(height: 200)
-                    .foregroundColor(Color.principal)
-//                Image(uiImage: self.image)
-//                        .resizable()
-//                        .cornerRadius(50)
-//                        .padding(.all, 4)
-//                        .frame(width: 100, height: 100)
-//                        .background(Color.black.opacity(0.2))
-//                        .aspectRatio(contentMode: .fill)
-//                        .clipShape(Circle())
-//                        .padding(8)
+
+                Text("\(String.MsgHello) \(sessionInfo.user.name)!")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top, 20)
+                    .foregroundColor(.black)
+
+
+                Text(String.WordsNewFunctionalities)
+                    .font(.title3)
+                    .padding(.top, 20)
+                    .foregroundColor(.purpleSecundary)
 
                 Spacer()
 
@@ -49,6 +54,7 @@ struct ProfileView: View {
                         .foregroundColor(.red)
                 })
                 .modifier(buttonSecundary())
+                .padding(.bottom, 80)
             }
             .padding(.horizontal, 40)
         }

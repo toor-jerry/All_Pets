@@ -50,9 +50,7 @@ struct HubView: View {
             }
             .tag(3)
 
-            ScrollView {
-                ProfileView(section: $section)
-            }
+            ProfileView(section: $section)
             .modifier(tabItemStyle())
             .tabItem {
                 Image(systemName: "person.fill")

@@ -63,4 +63,5 @@ extension String {
     static let WordsSelectTheReason = "Selecciona el motivo"
     static let WordsSelectThePatient = "Selecciona al paciente"
     static let WordsSendRequest = "Enviar solicitud"
+    static let WordsNewFunctionalities = "Tendremos nuevas funcionalidades muy pronto"
 }
