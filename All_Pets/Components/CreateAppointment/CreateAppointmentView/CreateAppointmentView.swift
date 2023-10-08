@@ -6,77 +6,164 @@
 //
 
 import SwiftUI
+import FirebaseFirestore.FIRTimestamp
+
+enum AppointmentCite {
+    case today
+    case any
+}
 
 struct CreateAppointmentView: View {
-    
-    //    @StateObject var viewModel = CreateAppointmentViewViewModel(useCase: CreateAppointmentViewUseCase())
+
+    @StateObject var viewModel = CreateAppointmentViewModel(useCase: CreateAppoimentUseCase())
     @State var office: OfficeModel
+    @Binding var showCreateAppoiment: Bool
     @EnvironmentObject var sessionInfo: SessionInfo
     @State private var selectedDate: Date = Date()
-    @State private var selectedTime: Date = {
-        let calendar = Calendar.current
-        var date = calendar.date(byAdding: .hour, value: 1, to: Date())!
-        date = calendar.date(bySettingHour: calendar.component(.hour, from: date), minute: .zero, second: .zero, of: date)!
-        return date
-    }()
-    
+    @State private var selectedHour: String = ""
+    @State private var hours: [String] = []
+    @State private var reason: String = ""
     private let imageSize: CGFloat = 60
-    
+
     var body: some View {
         VStack {
-            
-            Text("\(String.MsgHello)")
-                .font(.title)
-                .padding(.top, 50)
-            
-            ScrollView(.horizontal) {
-                LazyHStack {
-                    ImagesPet(imageSize: imageSize)
-                        .padding(5)
+            if viewModel.isLoading {
+                Loader()
+            } else {
+                Text(String.WordsSelectThePatient)
+                    .font(.title)
+                    .padding(.top, 50)
+
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        ImagesPet(imageSize: imageSize)
+                            .padding(5)
+                    }
                 }
-                
+                .frame(height: imageSize + 60)
+
+                Divider()
                 DatePicker(String.WordsDateCite, selection: $selectedDate, in: Date()..., displayedComponents: .date)
                     .onChange(of: selectedDate) { newValue in
                         let calendar = Calendar.current
                         let currentDate = calendar.dateComponents([.day, .month, .year], from: Date())
                         let selectedDateComponents = calendar.dateComponents([.day, .month, .year], from: newValue)
-                        
+
                         if currentDate == selectedDateComponents {
-                            var date = calendar.date(byAdding: .hour, value: 1, to: Date())!
-                            date = calendar.date(bySettingHour: calendar.component(.hour, from: date), minute: .zero, second: .zero, of: date)!
-                            selectedTime = date
+                            selectedHour = generateHourArray(type: .today)
                         } else {
-                            
+                            selectedHour = generateHourArray(type: .any)
                         }
                     }
-                
-                DatePicker(String.WordsSelectSchedule, selection: $selectedTime, displayedComponents: .hourAndMinute)
-                    .onChange(of: selectedTime) { newValue in
-                        let calendar = Calendar.current
-                        selectedTime = calendar.date(bySettingHour: calendar.component(.hour, from: newValue), minute: .zero, second: .zero, of: newValue)!
+
+                Divider()
+                TextField(String.WordsSelectTheReason, text: $reason)
+                    .padding()
+                    .modifier(inputStylePrincipal())
+                    .keyboardType(.asciiCapable)
+                    .foregroundColor(.black)
+
+                if !hours.isEmpty {
+                    Divider()
+                    HStack {
+                        Text(String.WordsSelectSchedule)
+                        Picker(String.WordsSelectSchedule, selection: $selectedHour) {
+                            ForEach(hours, id: \.self) { hour in
+                                Text(hour)
+                            }
+                        }
+                        .pickerStyle(WheelPickerStyle())
                     }
+                }
+
+                Button(action: {
+                    if !reason.isEmpty {
+                        var timestamp: Timestamp = Timestamp(date: Date())
+                        if let date = setDateWithFormattedTime(formattedTime: selectedHour) {
+                            timestamp = Timestamp(date: date)
+                        }
+
+                        let citeModel: CiteModel = CiteModel(day: timestamp, idVet: office.idOffice ?? "", patient: sessionInfo.petSelected?.id ?? "", status: "pendiente", reason: reason)
+                        viewModel.createAppoiment(appoiment: citeModel, completion: {
+                            self.showCreateAppoiment.toggle()
+                        })
+                    }
+                }, label: {
+                    Text(String.WordsSendRequest)
+                        .modifier(textStylePrincipal())
+                })
+                .modifier(buttonPrincipal(padding: 10.0, reason.isEmpty ? .gray.opacity(0.8) : .principal, 10.0))
+
+                Spacer()
             }
-            //            .frame(height: imageSize + 40)
-            .padding(.horizontal, 20)
-            Spacer()
         }
+        .padding(.horizontal, 20)
         .background(Color.background)
         .foregroundColor(.black)
+        .onAppear {
+            selectedHour = generateHourArray(type: .today)
+        }
+    }
+
+    private func generateHourArray(type: AppointmentCite) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:00"
+        var hourArray: [String] = []
+        var currentDate: Date = Date()
+
+        switch type {
+        case .today:
+            if var date = dateFormatter.date(from: dateFormatter.string(from: Date())) {
+                currentDate = date.addHour()
+            }
+        case .any:
+            if let hourStar = office.hourStart, let date = dateFormatter.date(from: hourStar) {
+                currentDate = date
+            }
+        }
+
+        if let endDateString = office.hourEnd,
+           let endDate = dateFormatter.date(from: endDateString) {
+            while currentDate <= endDate {
+                dateFormatter.dateFormat = "h:00 a"
+                let formattedTime = dateFormatter.string(from: currentDate)
+                hourArray.append(formattedTime)
+                currentDate = currentDate.addHour()
+                dateFormatter.dateFormat = "HH:00"
+            }
+        }
+
+        hours = hourArray
+        return hourArray.first ?? ""
+    }
+
+    func setDateWithFormattedTime(formattedTime: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:00 a"
+
+        guard let timeDate = dateFormatter.date(from: formattedTime) else {
+            return nil
+        }
+
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: timeDate)
+
+        return selectedDate.setHour(hour: hour)
     }
 }
 
 #Preview {
-    CreateAppointmentView(office: OfficeModel())
+    CreateAppointmentView(office: OfficeModel(), showCreateAppoiment: .constant(false))
 }
 
 struct ImagesPet: View {
-    
+
     @EnvironmentObject var sessionInfo: SessionInfo
     let imageSize: CGFloat
-    
+
     var body: some View {
         ForEach(Array(sessionInfo.pets.enumerated()), id: \.1) { index, pet in
-            
+
             VStack {
                 if sessionInfo.petSelected?.id == pet.id {
                     Text(String.MsgSelected)
@@ -84,7 +171,7 @@ struct ImagesPet: View {
                 } else {
                     Text(" ")
                 }
-                
+
                 if let imageUrl = sessionInfo.pets[safe: index]?.photoURL {
                     AsyncImage(url: URL(string: imageUrl)) { image in
                         image
@@ -100,7 +187,7 @@ struct ImagesPet: View {
                         .resizable()
                         .modifier(profileImage(size: imageSize))
                 }
-                
+
                 Text(pet.name ?? "")
                     .foregroundStyle(sessionInfo.petSelected?.id == pet.id ? Color.principal: Color.limeGreen)
             }

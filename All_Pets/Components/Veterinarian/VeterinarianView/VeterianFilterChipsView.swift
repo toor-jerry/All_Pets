@@ -60,7 +60,7 @@ struct VeterianFilterChipsView: View {
 
 #Preview {
     VStack {
-        @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCaseUseCase())
+        @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCase())
         
         VeterianFilterChipsView(viewModel: viewModel)
             .task {

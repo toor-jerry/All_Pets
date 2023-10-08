@@ -28,7 +28,7 @@ struct VeterinarianDetailView: View {
     @State private var heightSecondContainerChips: CGFloat = .zero
     @StateObject private var viewModel = VeterinarianDetailViewModel()
     
-    @State private var showCreateAppoiment = false
+    @State var showCreateAppoiment = false
     
     var body: some View {
         ScrollView {
@@ -130,14 +130,14 @@ struct VeterinarianDetailView: View {
                 }
             }.padding(.horizontal, 20).padding(.bottom, 40)
         }
-        .background(Color.background)
         .task {
             viewModel.setup(office)
         }
         .sheet(isPresented: $showCreateAppoiment) {
-            CreateAppointmentView(office: office)
-                .presentationDetents([.medium, .large])
+            CreateAppointmentView(office: office, showCreateAppoiment: $showCreateAppoiment)
+                .presentationDetents([.large])
         }
+        .background(Color.background)
     }
     
     private func getImageSliderArray() -> [ImageSlider] {

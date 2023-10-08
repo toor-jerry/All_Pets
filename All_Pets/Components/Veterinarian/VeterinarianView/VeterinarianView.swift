@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VeterinarianView: View {
     
-    @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCaseUseCase())
+    @StateObject var viewModel = VeterinarianViewModel(useCase: VeterianUseCase())
 
     var body: some View {
         

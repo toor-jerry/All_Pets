@@ -8,22 +8,26 @@
 import SwiftUI
 
 final class CreateAppointmentViewModel: ObservableObject {
-
-//    let useCase: CreateAppointmentViewModelUseCase
-
-//    init(useCase: CreateAppointmentViewModelUseCase) {
-//        self.useCase = useCase
-//    }
-
-//    func auth() {
-//        isLoading = true
-//        useCase.preAuth { isLoggedIn in
-//            self.isLoggedIn = isLoggedIn
-//        } error: { _ in
-//            self.isLoggedIn = false
-//        } completion: {
-//            self.setTheardMain {
-//                self.isLoading = false
-//            }
-//        }
+    
+    let useCase: CreateAppoimentUseCaseProtocol
+    
+    @Published var isLoading: Bool = false
+    
+    init(useCase: CreateAppoimentUseCaseProtocol) {
+        self.useCase = useCase
+    }
+    
+    func createAppoiment(appoiment: CiteModel,
+                         completion: @escaping () -> Void) {
+        isLoading = true
+        useCase.createAppoiment(appoiment,
+                                success: { },
+                                failure: { _ in },
+                                completion: {
+            self.setTheardMain {
+                self.isLoading = false
+                completion()
+            }
+        })
+    }
 }

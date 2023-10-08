@@ -10,6 +10,8 @@
 		D204B41C2A8EBA4200DBD015 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D204B41B2A8EBA4200DBD015 /* FirebaseStorage */; };
 		D21985BA2AB4C78F005B1391 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21985B92AB4C78F005B1391 /* String+Extension.swift */; };
 		D22E84322A9436C200196AF6 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E84312A9436C200196AF6 /* PetModel.swift */; };
+		D2321F362AD21CF3007A5E58 /* CreateAppoimentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2321F352AD21CF3007A5E58 /* CreateAppoimentUseCase.swift */; };
+		D2321F382AD244D2007A5E58 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2321F372AD244D2007A5E58 /* Date+Extension.swift */; };
 		D24149B02A8569E800E40EBB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AB2A8569E800E40EBB /* Login.swift */; };
 		D24149B12A8569E800E40EBB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149AD2A8569E800E40EBB /* LoginViewModel.swift */; };
 		D24149B42A85A92100E40EBB /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24149B32A85A92100E40EBB /* LoginFormView.swift */; };
@@ -73,7 +75,6 @@
 		D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC45692A8409CB003958FC /* Array+Extension.swift */; };
 		D2AC456C2A840A23003958FC /* ObservableObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */; };
 		D2AC456F2A8466D6003958FC /* AuthLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */; };
-		D2AF11C22ABE1DB600DD72E8 /* CreateAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF11BD2ABE1DB600DD72E8 /* CreateAppointment.swift */; };
 		D2AF11C32ABE1DB600DD72E8 /* CreateAppointmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF11BF2ABE1DB600DD72E8 /* CreateAppointmentViewModel.swift */; };
 		D2AF11C42ABE1DB600DD72E8 /* CreateAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF11C12ABE1DB600DD72E8 /* CreateAppointmentView.swift */; };
 		D2AFE1602AA57F2B00B44FB4 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFE15F2AA57F2B00B44FB4 /* ChipView.swift */; };
@@ -104,6 +105,8 @@
 /* Begin PBXFileReference section */
 		D21985B92AB4C78F005B1391 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		D22E84312A9436C200196AF6 /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
+		D2321F352AD21CF3007A5E58 /* CreateAppoimentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppoimentUseCase.swift; sourceTree = "<group>"; };
+		D2321F372AD244D2007A5E58 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		D24149AB2A8569E800E40EBB /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D24149AD2A8569E800E40EBB /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D24149B32A85A92100E40EBB /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
@@ -168,7 +171,6 @@
 		D2AC45692A8409CB003958FC /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableObject+Extension.swift"; sourceTree = "<group>"; };
 		D2AC456E2A8466D6003958FC /* AuthLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginUseCase.swift; sourceTree = "<group>"; };
-		D2AF11BD2ABE1DB600DD72E8 /* CreateAppointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAppointment.swift; sourceTree = "<group>"; };
 		D2AF11BF2ABE1DB600DD72E8 /* CreateAppointmentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAppointmentViewModel.swift; sourceTree = "<group>"; };
 		D2AF11C12ABE1DB600DD72E8 /* CreateAppointmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAppointmentView.swift; sourceTree = "<group>"; };
 		D2AFE15F2AA57F2B00B44FB4 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 				D2AC45692A8409CB003958FC /* Array+Extension.swift */,
 				D2AC456B2A840A23003958FC /* ObservableObject+Extension.swift */,
 				D24883482A9AAB66006BC149 /* View+Extension.swift */,
+				D2321F372AD244D2007A5E58 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				D248835C2A9D6212006BC149 /* EmergencyUseCase.swift */,
 				D2494A462AA1607F00A944A2 /* VeterianUseCase.swift */,
 				D2B385FA2AC2648B0051EDF7 /* SessionInfoUseCase.swift */,
+				D2321F352AD21CF3007A5E58 /* CreateAppoimentUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -700,19 +704,10 @@
 		D2AF11BB2ABE1DB600DD72E8 /* CreateAppointment */ = {
 			isa = PBXGroup;
 			children = (
-				D2AF11BC2ABE1DB600DD72E8 /* Models */,
 				D2AF11BE2ABE1DB600DD72E8 /* CreateAppointmentViewModel */,
 				D2AF11C02ABE1DB600DD72E8 /* CreateAppointmentView */,
 			);
 			path = CreateAppointment;
-			sourceTree = "<group>";
-		};
-		D2AF11BC2ABE1DB600DD72E8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				D2AF11BD2ABE1DB600DD72E8 /* CreateAppointment.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		D2AF11BE2ABE1DB600DD72E8 /* CreateAppointmentViewModel */ = {
@@ -917,13 +912,14 @@
 				D2494A392AA15E5300A944A2 /* PetType.swift in Sources */,
 				D2E143EB2A83FB480096457C /* AuthSections.swift in Sources */,
 				D2AFE1642AA5827400B44FB4 /* ChipContainerView.swift in Sources */,
+				D2321F362AD21CF3007A5E58 /* CreateAppoimentUseCase.swift in Sources */,
 				D29F03892A99C7A300C455F2 /* VaccinationCardViewModel.swift in Sources */,
 				D2494A4D2AA22E7600A944A2 /* VeterianCardCell.swift in Sources */,
 				D26B63AC2A8BCDD500A843D2 /* PetRegister.swift in Sources */,
-				D2AF11C22ABE1DB600DD72E8 /* CreateAppointment.swift in Sources */,
 				D2AC45652A8406F9003958FC /* NetworkingProviderService.swift in Sources */,
 				D2494A4F2AA22F4200A944A2 /* FilterView.swift in Sources */,
 				D29F038A2A99C7A300C455F2 /* VaccinationCard.swift in Sources */,
+				D2321F382AD244D2007A5E58 /* Date+Extension.swift in Sources */,
 				D2494A492AA1698700A944A2 /* UserHasLocation.swift in Sources */,
 				D2AC456A2A8409CB003958FC /* Array+Extension.swift in Sources */,
 				D2AC455E2A840288003958FC /* RequestType.swift in Sources */,

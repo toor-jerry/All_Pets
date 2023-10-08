@@ -12,7 +12,7 @@ struct CiteModel: Codable {
     var idVet: String
     var patient: String
     var status: String
-    var userId: String
+    var userId: String?
     var reason: String?
 
     enum CodingKeys: String, CodingKey {

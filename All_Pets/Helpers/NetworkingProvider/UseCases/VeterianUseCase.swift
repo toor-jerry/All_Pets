@@ -11,9 +11,9 @@ import FirebaseFirestoreSwift
 
 protocol VeterianUseCaseProtocol: OfficeProtocol { }
 
-final class VeterianUseCaseUseCase: VeterianUseCaseProtocol { }
+final class VeterianUseCase: VeterianUseCaseProtocol { }
 
-extension VeterianUseCaseUseCase: OfficeProtocol {
+extension VeterianUseCase: OfficeProtocol {
     
     func getOffices(success: @escaping ([OfficeModel]) -> Void,
                     failure: @escaping (Error) -> Void,

@@ -60,4 +60,7 @@ extension String {
     static let WordNumber = "Número"
     static let WordsDateCite = "Fecha de cita"
     static let WordsSelectSchedule = "Seleccionar horario"
+    static let WordsSelectTheReason = "Selecciona el motivo"
+    static let WordsSelectThePatient = "Selecciona al paciente"
+    static let WordsSendRequest = "Enviar solicitud"
 }
