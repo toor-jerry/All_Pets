@@ -7,24 +7,27 @@
 
 import SwiftUI
 
-final class ExploreViewModelViewModel: ObservableObject {
+final class ExploreViewModel: ObservableObject {
 
-    let useCase: ExploreViewModelUseCase
+    let useCase: ExploreUseCaseProtocol
 
-    init(useCase: ExploreViewModelUseCase) {
+    @Published var isLoading: Bool = false
+    @Published var business: [BusinessModel] = []
+
+    init(useCase: ExploreUseCaseProtocol) {
         self.useCase = useCase
     }
 
-//    func auth() {
-//        isLoading = true
-//        useCase.preAuth { isLoggedIn in
-//            self.isLoggedIn = isLoggedIn
-//        } error: { _ in
-//            self.isLoggedIn = false
-//        } completion: {
-//            self.setTheardMain {
-//                self.isLoading = false
-//            }
-//        }
+    func getBusiness() {
+        isLoading = true
+        useCase.getBusiness(success: { business in
+            self.business = business
+        }, failure: { _ in
+
+        }, completion: {
+            self.setTheardMain {
+                self.isLoading = false
+            }
+        })
     }
 }

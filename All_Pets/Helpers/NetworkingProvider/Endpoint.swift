@@ -13,6 +13,7 @@ enum Endpoint {
     case vaccinationCard
     case citesCollection
     case officesCollection
+    case businessCollection
 }
 
 extension Endpoint {
@@ -34,6 +35,8 @@ extension Endpoint {
             return "Citas"
         case .officesCollection:
             return "Consultorios"
+        case .businessCollection:
+            return "Negocios"
         }
     }
 }

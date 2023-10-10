@@ -7,10 +7,26 @@
 
 import Foundation
 
-struct Explore: Codable {
-    var message: String?
+struct BusinessModel: Codable {
+    var accesories: Bool?
+    var food: Bool?
+    var desserts: Bool?
+    var articles: [String]?
+    var imgBanner: String?
+    var latitude: Double?
+    var length: Double?
+    var name: String?
+    var status: String?
+    var images: [String]?
 
     enum CodingKeys: String, CodingKey {
-        case message = "mensaje"
+        case accesories = "accesorios"
+        case food = "alimentos"
+        case desserts = "postres"
+        case articles = "articulos"
+        case latitude = "latitud"
+        case length = "longitud"
+        case name = "nombre"
+        case images = "imagenes"
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct HubView: View {
 
     @Binding var section: AuthSections
-    @State private var selectedTab = 1
+    @State private var selectedTab = 3
     @StateObject var sessionInfo: SessionInfo = SessionInfo()
 
     var body: some View {
@@ -40,9 +40,7 @@ struct HubView: View {
                 }
                 .tag(2)
 
-            ScrollView {
-                Text("Contenido de la pestaña 3")
-            }
+            ExploreView()
             .modifier(tabItemStyle())
             .tabItem {
                 Image(systemName: "safari")
