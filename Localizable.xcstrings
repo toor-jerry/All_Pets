@@ -1,62 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
-    " " : {
-
-    },
-    "\"%@\"" : {
-
-    },
-    "%@" : {
-
-    },
-    "%@ %@!" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@!"
-          }
-        }
-      }
-    },
-    "%@: " : {
-
-    },
-    "%@: %@ - %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@: %2$@ - %3$@"
-          }
-        }
-      }
-    },
-    "buttonSecundary" : {
-
-    },
-    "Emergencia" : {
-
-    },
-    "Example buttonPrincipal" : {
-
-    },
-    "Example on text" : {
-
-    },
-    "Example shadow" : {
-
-    },
-    "Explora" : {
-
-    },
-    "Inicio" : {
-
-    },
     "MsgAddPet" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -73,12 +17,6 @@
           }
         }
       }
-    },
-    "Perfil" : {
-
-    },
-    "Veterinario" : {
-
     }
   },
   "version" : "1.0"
