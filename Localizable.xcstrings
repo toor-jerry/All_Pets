@@ -103,6 +103,23 @@
         }
       }
     },
+    "MsgDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha"
+          }
+        }
+      }
+    },
     "MsgDateBirthDay" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -290,6 +307,23 @@
         }
       }
     },
+    "MsgProceedings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proceedings"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expediente"
+          }
+        }
+      }
+    },
     "MsgRepeatLogin" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -473,6 +507,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Subir foto de perfil"
+          }
+        }
+      }
+    },
+    "MsgVaccinationCard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaccination card"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cartilla"
           }
         }
       }

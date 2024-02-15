@@ -6,9 +6,6 @@
 //
 
 extension String {
-    static let MsgProceedings = "Expediente"
-    static let MsgVaccinationCard = "Cartilla"
-    static let MsgDate = "Fecha"
     static let MsgProfessionalLiscense = "CP Médico"
     static let MsgNoPendingAppointments = "No tienes citas pendientes"
     static let MsgPendingAppointments = "Tienes una cita pendiente de ser confirmada por la clínica"
