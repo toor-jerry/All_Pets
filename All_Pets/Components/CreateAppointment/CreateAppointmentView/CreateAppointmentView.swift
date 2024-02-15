@@ -30,7 +30,7 @@ struct CreateAppointmentView: View {
             if viewModel.isLoading {
                 Loader()
             } else {
-                Text(String.WordsSelectThePatient)
+                Text("WordsSelectThePatient")
                     .font(.title)
                     .padding(.top, 50)
 
@@ -43,7 +43,7 @@ struct CreateAppointmentView: View {
                 .frame(height: imageSize + 60)
 
                 Divider()
-                DatePicker(String.WordsDateCite, selection: $selectedDate, in: Date()..., displayedComponents: .date)
+                DatePicker("WordsDateCite", selection: $selectedDate, in: Date()..., displayedComponents: .date)
                     .onChange(of: selectedDate) { newValue in
                         let calendar = Calendar.current
                         let currentDate = calendar.dateComponents([.day, .month, .year], from: Date())
@@ -57,7 +57,7 @@ struct CreateAppointmentView: View {
                     }
 
                 Divider()
-                TextField(String.WordsSelectTheReason, text: $reason)
+                TextField("WordsSelectTheReason", text: $reason)
                     .padding()
                     .modifier(inputStylePrincipal())
                     .keyboardType(.asciiCapable)
@@ -66,8 +66,8 @@ struct CreateAppointmentView: View {
                 if !hours.isEmpty {
                     Divider()
                     HStack {
-                        Text(String.WordsSelectSchedule)
-                        Picker(String.WordsSelectSchedule, selection: $selectedHour) {
+                        Text("WordsSelectSchedule")
+                        Picker("WordsSelectSchedule", selection: $selectedHour) {
                             ForEach(hours, id: \.self) { hour in
                                 Text(hour)
                             }
@@ -89,7 +89,7 @@ struct CreateAppointmentView: View {
                         })
                     }
                 }, label: {
-                    Text(String.WordsSendRequest)
+                    Text("WordsSendRequest")
                         .modifier(textStylePrincipal())
                 })
                 .modifier(buttonPrincipal(padding: 10.0, reason.isEmpty ? .gray.opacity(0.8) : .principal, 10.0))
@@ -162,11 +162,12 @@ struct ImagesPet: View {
     let imageSize: CGFloat
 
     var body: some View {
-        ForEach(Array(sessionInfo.pets.enumerated()), id: \.1) { index, pet in
+        // GBC revisar el for each
+        ForEach(Array(sessionInfo.pets.enumerated()), id: \.element.id) { index, pet in
 
             VStack {
                 if sessionInfo.petSelected?.id == pet.id {
-                    Text(String.MsgSelected)
+                    Text("MsgSelected")
                         .foregroundStyle(Color.principal)
                 } else {
                     Text(" ")

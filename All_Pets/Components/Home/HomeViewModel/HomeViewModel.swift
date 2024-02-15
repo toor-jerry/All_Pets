@@ -29,23 +29,26 @@ final class HomeViewModelViewModel: ObservableObject {
     }
 
     func getHomeMsg(petSelected: Pet?) -> String {
-
-        if let pet = petSelected {
-            return getMsgCitesForHomeView(pet.id)
-        } else {
-            return String.MsgNoPetsRegistered
-        }
+// GBC
+//        if let pet = petSelected {
+//            return getMsgCitesForHomeView(pet.id)
+//        } else {
+//            return String.MsgNoPetsRegistered
+//        }
+        return ""
     }
 
     private func getMsgCitesForHomeView(_ idPet: String) -> String {
 
-        if let firstCurrentCite = cites.first(where: { $0.getStatus() == .current && $0.patient == idPet }) {
-            return "\(String.MsgHaveAnAppointment) \(formatDate(date: firstCurrentCite.day.dateValue()))"
-        } else if cites.contains(where: { $0.getStatus() == .pending && $0.patient == idPet }) {
-            return String.MsgPendingAppointments
-        } else {
-            return String.MsgNoPendingAppointments
-        }
+        // GBC
+//        if let firstCurrentCite = cites.first(where: { $0.getStatus() == .current && $0.patient == idPet }) {
+//            return "\(String.MsgHaveAnAppointment) \(formatDate(date: firstCurrentCite.day.dateValue()))"
+//        } else if cites.contains(where: { $0.getStatus() == .pending && $0.patient == idPet }) {
+//            return String.MsgPendingAppointments
+//        } else {
+//            return String.MsgNoPendingAppointments
+//        }
+        return ""
     }
 
     private func formatDate(date: Date) -> String {

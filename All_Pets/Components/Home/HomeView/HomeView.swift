@@ -26,7 +26,7 @@ struct HomeView: View {
             } else {
                 
                 ScrollView {
-                    Text("\(String.MsgHello) \(sessionInfo.user.name)!")
+                    Text("\(String(localized: "MsgHello")) \(sessionInfo.user.name)!")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.top, 50)
@@ -56,7 +56,7 @@ struct HomeView: View {
                                 
                                 HStack {
                                     Spacer()
-                                    Text(String.MsgVaccinationCard)
+                                    Text("MsgVaccinationCard")
                                         .foregroundColor(.black)
                                     Spacer()
                                 }
@@ -82,7 +82,7 @@ struct HomeView: View {
                                 
                                 HStack {
                                     Spacer()
-                                    Text(String.MsgProceedings)
+                                    Text("MsgProceedings")
                                         .foregroundColor(.black)
                                     Spacer()
                                 }
@@ -107,7 +107,7 @@ struct HomeView: View {
                                 .foregroundColor(.purple.opacity(0.5))
                                 .frame(width: sizeImageButtons, height: sizeImageButtons)
                             Spacer()
-                            Text(String.MsgRequestDigitalProof)
+                            Text("MsgRequestDigitalProof")
                                 .foregroundColor(.black)
                         }
                     })
@@ -161,7 +161,7 @@ struct HomeView: View {
                             Button(action: {
                                 showPetRegister.toggle()
                             }, label: {
-                                Text(String.MsgAddNewPet)
+                                Text("MsgAddNewPet")
                                     .fontWeight(.bold)
                                     .padding(5)
                             })

@@ -25,7 +25,7 @@ struct LoginFormView: View {
                     .scaledToFit()
                     .frame(height: 300)
 
-                TextField(String.MsgEmailLogin, text: $userName)
+                TextField("MsgEmailLogin", text: $userName)
                     .padding()
                     .modifier(inputStylePrincipal(userNameValidate ? Color.principal : Color.error))
                     .keyboardType(.emailAddress)
@@ -36,12 +36,12 @@ struct LoginFormView: View {
                 VStack {
                     VStack {
                         if showPassword {
-                            TextField(String.MsgPasswordLogin, text: $password)
+                            TextField("MsgPasswordLogin", text: $password)
                                 .disableAutocorrection(true)
                                 .textContentType(.password)
                                 .keyboardType(.asciiCapable)
                         } else {
-                            SecureField(String.MsgPasswordLogin, text: $password)
+                            SecureField("MsgPasswordLogin", text: $password)
                         }
                     }
                     .autocapitalization(.none)
@@ -65,7 +65,7 @@ struct LoginFormView: View {
                 Button(action: {
                     login()
                 }, label: {
-                    Text(String.MsgButtonLogin)
+                    Text("MsgButtonLogin")
                         .modifier(textStylePrincipal())
                 })
                 .modifier(buttonPrincipal())
@@ -74,7 +74,7 @@ struct LoginFormView: View {
                 Button(action: {
 
                 }, label: {
-                    Text(String.MsgForgotPassword)
+                    Text("MsgForgotPassword")
                         .modifier(textStyleSubtitle())
 
                 })
@@ -84,10 +84,10 @@ struct LoginFormView: View {
                 NavigationLink(destination: SignUpView(section: $viewModel.section),
                                label: {
                     HStack {
-                        Text(String.MsgSignUpTitle)
+                        Text("MsgSignUpTitle")
                             .modifier(textStyleSubtitle())
 
-                        Text(String.MsgSignUp)
+                        Text("MsgSignUp")
                             .modifier(textStyleTitle2())
                     }
                 })

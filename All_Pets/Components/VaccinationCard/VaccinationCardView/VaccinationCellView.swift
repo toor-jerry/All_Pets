@@ -30,7 +30,7 @@ struct VaccinationCardCell: View {
                 }
 
                 HStack {
-                    Text(String.MsgDate)
+                    Text("MsgDate")
 
                     Text(card.getDateWithFormat())
                         .fontWeight(.bold)
@@ -39,7 +39,7 @@ struct VaccinationCardCell: View {
                 }
 
                 HStack {
-                    Text(String.MsgProfessionalLiscense)
+                    Text("MsgProfessionalLiscense")
 
                     Text(card.professionalLicense)
                         .fontWeight(.bold)

@@ -41,7 +41,7 @@ struct VeterinarianDetailView: View {
                     Button(action: {
                         showCreateAppoiment.toggle()
                     }, label: {
-                        Text(String.WordsToAskForADate)
+                        Text("WordsToAskForADate")
                             .modifier(textStylePrincipal())
                     })
                     .modifier(buttonPrincipal(padding: 10.0, .principal, 10.0))
@@ -50,7 +50,7 @@ struct VeterinarianDetailView: View {
                 
                 if !getImageSliderArray().isEmpty {
                     VStack {
-                        Text(String.WordOffice)
+                        Text("WordOffice")
                             .foregroundColor(.purpleSecundary)
                             .fontWeight(.bold)
                             .font(.title3)
@@ -60,7 +60,7 @@ struct VeterinarianDetailView: View {
                 }
                 if !viewModel.chipsSpecialities.isEmpty {
                     VStack {
-                        Text(String.WordSpecialities)
+                        Text("WordSpecialities")
                             .foregroundColor(.purpleSecundary)
                             .fontWeight(.bold)
                             .font(.title3)
@@ -76,7 +76,7 @@ struct VeterinarianDetailView: View {
                 
                 if !viewModel.chipsSectors.isEmpty {
                     VStack {
-                        Text(String.WordsTheyServe)
+                        Text("WordsTheyServe")
                             .foregroundColor(.purpleSecundary)
                             .fontWeight(.bold)
                             .font(.title3)
@@ -93,12 +93,12 @@ struct VeterinarianDetailView: View {
                 if let phoneNumber = office.phoneNumber,
                    !phoneNumber.isEmpty {
                     VStack(spacing: 20) {
-                        Text(String.WordContact)
+                        Text("WordContact")
                             .foregroundColor(.purpleSecundary)
                             .modifier(AligmentView(aligment: .leading))
                         
                         HStack {
-                            Text("\(String.WordNumber): ")
+                            Text("\("WordNumber"): ")
                                 .foregroundColor(.black)
                             Button(action: {
                                 guard let phoneNumber = office.phoneNumber,

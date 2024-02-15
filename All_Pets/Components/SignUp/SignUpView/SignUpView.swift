@@ -23,34 +23,34 @@ struct SignUpView: View {
         } else {
             VStack {
                 VStack(spacing: 20) {
-                    TextField(String.MsgName, text: $data.name)
+                    TextField("MsgName", text: $data.name)
                         .padding()
                         .modifier(inputStylePrincipal())
                         .keyboardType(.asciiCapable)
                         .foregroundColor(.black)
                     
-                    TextField(String.MsgFirstLastName, text: $data.firstLastName)
+                    TextField("MsgFirstLastName", text: $data.firstLastName)
                         .padding()
                         .modifier(inputStylePrincipal())
                         .keyboardType(.asciiCapable)
                     
-                    TextField(String.MsgSecondLastName, text: $data.secondLastName)
+                    TextField("MsgSecondLastName", text: $data.secondLastName)
                         .padding()
                         .modifier(inputStylePrincipal())
                         .keyboardType(.asciiCapable)
                     
-                    TextField(String.MsgEmailLogin, text: $data.email)
+                    TextField("MsgEmailLogin", text: $data.email)
                         .padding()
                         .modifier(inputStylePrincipal())
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                     
-                    SecureField(String.MsgPasswordLogin, text: $data.password)
+                    SecureField("MsgPasswordLogin", text: $data.password)
                         .padding()
                         .modifier(inputStylePrincipal())
                         .autocapitalization(.none)
                     
-                    SecureField(String.MsgRepeatLogin, text: $passwordTemp)
+                    SecureField("MsgRepeatLogin", text: $passwordTemp)
                         .padding()
                         .modifier(inputStylePrincipal())
                         .autocapitalization(.none)
@@ -58,7 +58,7 @@ struct SignUpView: View {
                     Button(action: {
                         validateForm()
                     }, label: {
-                        Text(String.MsgButtonSignUp)
+                        Text("MsgButtonSignUp")
                             .modifier(textStylePrincipal())
                     })
                     .modifier(buttonPrincipal())
@@ -73,11 +73,11 @@ struct SignUpView: View {
             .multilineTextAlignment(.center)
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(
-                    title: Text(String.MsgWarning),
-                    message: Text(String.MsgFormIncomplete),
-                    dismissButton: .default(Text(String.MsgAcept))
+                    title: Text("MsgWarning"),
+                    message: Text("MsgFormIncomplete"),
+                    dismissButton: .default(Text("MsgAcept"))
                 )
-            }.navigationTitle(String.MsgSignUpTitleHeader)
+            }.navigationTitle("MsgSignUpTitleHeader")
                 .navigationBarTitleDisplayMode(.large)
         }
     }

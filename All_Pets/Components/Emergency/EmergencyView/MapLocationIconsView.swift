@@ -74,7 +74,7 @@ struct TitleMapIconsView: View {
     var body: some View {
         VStack {
             VStack {
-                Text(String.WordsNearbyOffice)
+                Text("WordsNearbyOffice")
                     .fontWeight(.regular)
                     .modifier(AligmentView(aligment: .leading))
                 

@@ -16,7 +16,7 @@ struct VeterianFilterChipsView: View {
     var body: some View {
         VStack {
             ScrollView {
-                Text(String.WordSpecialities)
+                Text("WordSpecialities")
                     .fontWeight(.bold)
                     .font(.body)
                     .modifier(AligmentView(aligment: .leading))
@@ -29,7 +29,7 @@ struct VeterianFilterChipsView: View {
                     }
                 }).frame(height: heightFirstContainerChips)
                 
-                Text(String.WordsSpecificInquiries)
+                Text("WordsSpecificInquiries")
                     .fontWeight(.bold)
                     .font(.body)
                     .modifier(AligmentView(aligment: .leading))
@@ -45,7 +45,7 @@ struct VeterianFilterChipsView: View {
             Button(action: {
                 viewModel.filterByChips()
             }, label: {
-                Text(String.WordApply)
+                Text("WordApply")
                     .modifier(textStylePrincipal())
             })
             .modifier(buttonPrincipal(.limeGreen))

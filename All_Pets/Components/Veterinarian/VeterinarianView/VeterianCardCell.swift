@@ -28,7 +28,7 @@ struct VeterianCardCell: View {
                     .font(.title3)
                     .modifier(AligmentView(aligment: .leading))
 
-                Text("\(String.WordSchedule): \(office.hourStart ?? "") - \(office.hourEnd ?? "")")
+                Text("\("WordSchedule"): \(office.hourStart ?? "") - \(office.hourEnd ?? "")")
                     .font(.callout)
                     .foregroundColor(.black)
                     .modifier(AligmentView(aligment: .leading))

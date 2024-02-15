@@ -21,7 +21,7 @@ struct VeterinarianView: View {
                 VStack {
                     if viewModel.userHasLocation {
                         
-                        Text(String.MsgTitleVeterin)
+                        Text("MsgTitleVeterin")
                             .foregroundColor(.black)
                             .fontWeight(.bold)
                             .font(.title2)

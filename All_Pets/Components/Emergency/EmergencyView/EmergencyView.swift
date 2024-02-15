@@ -33,7 +33,7 @@ struct EmergencyView: View {
                             Button(action: {
 
                             }, label: {
-                                Text(String.MsgSendAlert)
+                                Text("MsgSendAlert")
                                     .modifier(textStylePrincipal())
                             })
                             .modifier(buttonPrincipal(.red))

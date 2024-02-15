@@ -37,7 +37,8 @@ final class AuthLoginViewModel: ObservableObject {
 
         if info.password.isEmpty || !isValidEmail(info.user) {
             showAlert = true
-            msgAler = String.MsgFormIncomplete
+            // Gbc
+//            msgAler = String.MsgFormIncomplete
             section = .login
         } else {
             fetchLogin(info)
@@ -50,7 +51,8 @@ final class AuthLoginViewModel: ObservableObject {
         } error: { errorResponse in
             self.showAlert = true
             self.section = .login
-            self.msgAler = String.MsgPasswordOrUserInvalid
+            // Gbc
+//            self.msgAler = String.MsgPasswordOrUserInvalid
         } completion: { }
     }
 
