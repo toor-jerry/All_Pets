@@ -6,20 +6,6 @@
 //
 
 extension String {
-    static let MsgRepeatLogin = "Confirmar contraseña"
-    static let MsgForgotPassword = "¿Olvidaste tu contraseña?"
-    static let MsgSignUpTitle = "¿No tienes una cuenta?"
-    static let MsgSignUp = "Registrarse"
-    static let MsgAcept = "Aceptar"
-    static let MsgWarning = "¡Alerta!"
-    static let MsgPasswordOrUserInvalid = "El usuario ó contraseña son incorrectos"
-    static let MsgFormIncomplete = "Campo obligatorio"
-    static let MsgSignOut = "Cerrar sesión"
-    static let MsgSignUpTitleHeader = "Crear cuenta nueva"
-    static let MsgTitlePetRegister = "Selecciona tu mascota"
-    static let MsgSelected = "Seleccionado"
-    static let MsgNoPetsRegistered = "No tienes mascotas registradas"
-    static let MsgRequestDigitalProof = "Solicitar constancia digital"
     static let MsgProceedings = "Expediente"
     static let MsgVaccinationCard = "Cartilla"
     static let MsgDate = "Fecha"
