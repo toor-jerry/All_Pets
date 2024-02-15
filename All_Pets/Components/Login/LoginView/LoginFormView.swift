@@ -20,7 +20,7 @@ struct LoginFormView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Image(Constants.logo)
+                Image(.allPets)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 300)

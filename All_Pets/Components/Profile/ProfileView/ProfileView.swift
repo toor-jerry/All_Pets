@@ -21,7 +21,7 @@ struct ProfileView: View {
         } else {
             VStack {
 
-                Image(Constants.logo)
+                Image(.allPets)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200)
