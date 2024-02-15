@@ -14,17 +14,15 @@ enum ExploreSections: String {
 }
 
 extension ExploreSections {
-// gbc
     func getTitle() -> String {
-//        switch self {
-//        case .food:
-//            return String.WordsFoodExplore
-//        case .desserts:
-//            return String.WordsDessertsExplore
-//        case .accesories:
-//            return String.WordsAccesoriesExplore
-//        }
-        return ""
+        switch self {
+        case .food:
+            return String(localized: "WordsFoodExplore")
+        case .desserts:
+            return String(localized: "WordsDessertsExplore")
+        case .accesories:
+            return String(localized: "WordsAccesoriesExplore")
+        }
     }
 }
 
