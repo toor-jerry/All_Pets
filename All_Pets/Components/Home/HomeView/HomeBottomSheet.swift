@@ -52,7 +52,7 @@ struct HomeBottomSheet: View {
                                         Image(systemName: "plus")
                                             .fontWeight(.bold)
                                             .font(.title)
-                                        Text(String.MsgAddPet)
+                                        Text("MsgAddPet")
                                             .font(.title3)
                                         Spacer()
                                     }
@@ -71,7 +71,7 @@ struct HomeBottomSheet: View {
                             Image(systemName: "plus")
                                 .fontWeight(.bold)
                                 .font(.title)
-                            Text(String.MsgAddPet)
+                            Text("MsgAddPet")
                                 .font(.title3)
                             Spacer()
                         }
