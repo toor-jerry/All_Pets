@@ -48,10 +48,9 @@ struct ListSearch: View {
                 }
             }
             .onAppear {
-                // GBC
-//                if itemSelected == String.MsgSelectTypePet {
-//                    itemSelected = ""
-//                }
+                if itemSelected == String(localized: "MsgSelectTypePet") {
+                    itemSelected = ""
+                }
                 
                 filteredList = list
             }

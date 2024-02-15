@@ -19,7 +19,6 @@ struct UserHasLocationView: View {
 
             HStack {
                 Spacer()
-                // GBC
                 Link("MsgAceptLocalization", destination: URL(string: UIApplication.openSettingsURLString)!)
                 Spacer()
             }
