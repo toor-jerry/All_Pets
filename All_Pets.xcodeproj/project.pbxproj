@@ -102,7 +102,6 @@
 		D2E6F8192A855C4E0074D84E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8182A855C4E0074D84E /* Constants.swift */; };
 		D2E6F81B2A85655A0074D84E /* AuthPreLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F81A2A85655A0074D84E /* AuthPreLoginUseCase.swift */; };
 		D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C3B12A83E3FD0078E65B /* AppEnviroment.swift */; };
-		D2FF36BD2A9FEC2500234BCA /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2FF36BC2A9FEC2500234BCA /* Settings.bundle */; };
 		D2FF36BF2AA0055300234BCA /* MapViewPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF36BE2AA0055300234BCA /* MapViewPin.swift */; };
 /* End PBXBuildFile section */
 
@@ -199,7 +198,6 @@
 		D2E6F8182A855C4E0074D84E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D2E6F81A2A85655A0074D84E /* AuthPreLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPreLoginUseCase.swift; sourceTree = "<group>"; };
 		D2F8C3B12A83E3FD0078E65B /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
-		D2FF36BC2A9FEC2500234BCA /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D2FF36BE2AA0055300234BCA /* MapViewPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewPin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -544,7 +542,6 @@
 		D27FA9FC2A830F4E00E0B93A = {
 			isa = PBXGroup;
 			children = (
-				D2FF36BC2A9FEC2500234BCA /* Settings.bundle */,
 				D27FAA072A830F4E00E0B93A /* All_Pets */,
 				D27FAA062A830F4E00E0B93A /* Products */,
 				D204B41A2A8EBA4200DBD015 /* Frameworks */,
@@ -889,7 +886,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2FF36BD2A9FEC2500234BCA /* Settings.bundle in Resources */,
 				D27FAA102A830F5000E0B93A /* Preview Assets.xcassets in Resources */,
 				D27FAA0D2A830F5000E0B93A /* Assets.xcassets in Resources */,
 				D2D8232E2A831C490060CDA7 /* GoogleService-Info.plist in Resources */,
