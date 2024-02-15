@@ -162,7 +162,7 @@ struct ImagesPet: View {
     let imageSize: CGFloat
 
     var body: some View {
-        // GBC revisar el for each
+
         ForEach(Array(sessionInfo.pets.enumerated()), id: \.element.id) { index, pet in
 
             VStack {
