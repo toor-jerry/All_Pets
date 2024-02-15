@@ -409,6 +409,23 @@
         }
       }
     },
+    "MsgSendAlert" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send alert"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar alerta"
+          }
+        }
+      }
+    },
     "MsgSignOut" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -545,6 +562,74 @@
         }
       }
     },
+    "WordApply" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apply"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplicar"
+          }
+        }
+      }
+    },
+    "WordContact" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacto"
+          }
+        }
+      }
+    },
+    "WordJoin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "y"
+          }
+        }
+      }
+    },
+    "WordNumber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número"
+          }
+        }
+      }
+    },
     "WordsAccesoriesExplore" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -609,6 +694,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alimento seco"
+          }
+        }
+      }
+    },
+    "WordsNewFunctionalities" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We will have new features very soon"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tendremos nuevas funcionalidades muy pronto"
+          }
+        }
+      }
+    },
+    "WordsSendRequest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send request"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar solicitud"
           }
         }
       }
