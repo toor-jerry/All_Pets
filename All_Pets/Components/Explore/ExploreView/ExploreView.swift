@@ -70,6 +70,7 @@ struct ExploreView: View {
             }
         }
         .sheet(isPresented: $showListExplore) {
+            // add section list
             //            VeterianFilterChipsView(viewModel: viewModel)
         }
         .onAppear {
