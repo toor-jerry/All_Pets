@@ -6,11 +6,6 @@
 //
 
 extension String {
-    static let MsgEmailLogin = "Correo electrónico"
-    static let MsgName = "Nombre"
-    static let MsgFirstLastName = "Apellido paterno"
-    static let MsgSecondLastName = "Apellido materno"
-    static let MsgPasswordLogin = "Contraseña"
     static let MsgRepeatLogin = "Confirmar contraseña"
     static let MsgForgotPassword = "¿Olvidaste tu contraseña?"
     static let MsgSignUpTitle = "¿No tienes una cuenta?"
