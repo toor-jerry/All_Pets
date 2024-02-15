@@ -18,6 +18,23 @@
         }
       }
     },
+    "MsgAceptLocalization" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click to accept Location authorization"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulsa para aceptar la autorización de Localización"
+          }
+        }
+      }
+    },
     "MsgAdd" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -647,6 +664,23 @@
         }
       }
     },
+    "WordOffice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Office"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consultorio"
+          }
+        }
+      }
+    },
     "WordPets" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -728,6 +762,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alimento seco"
+          }
+        }
+      }
+    },
+    "WordsNearbyOffice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nearby office"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consultorio cercano"
           }
         }
       }
