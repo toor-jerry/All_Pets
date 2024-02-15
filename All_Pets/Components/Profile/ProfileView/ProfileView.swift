@@ -36,7 +36,7 @@ struct ProfileView: View {
                 Text("WordsNewFunctionalities")
                     .font(.title3)
                     .padding(.top, 20)
-                    .foregroundColor(.purpleSecundary)
+                    .foregroundColor(Color(.purpleSecundary))
 
                 Spacer()
 

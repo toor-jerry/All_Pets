@@ -10,7 +10,7 @@ import SwiftUI
 struct FilterView: View {
     
     @State var showButtonFilter: Bool
-    @State var backgroundColor: Color = Color.background
+    @State var backgroundColor: Color = Color(.background)
     @Binding var listSector: [FilterSector]
     @Binding var buttonFilterSelected: Bool
     @Binding var filterSelected: Bool
@@ -28,7 +28,7 @@ struct FilterView: View {
                             Text(filter.sector)
                                 .modifier(textStylePrincipal(color: filter.isSelected ? .white : .black, setWidth: false, fontSize: .callout))
                         })
-                        .modifier(buttonPrincipal(padding: 10, filter.isSelected ? .principal : .white))
+                        .modifier(buttonPrincipal(padding: 10, filter.isSelected ? Color(.principal) : .white))
                     }
                     .padding(5)
                 }

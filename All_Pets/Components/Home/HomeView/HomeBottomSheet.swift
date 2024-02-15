@@ -83,7 +83,7 @@ struct HomeBottomSheet: View {
             }
         }
         .presentationDetents([.medium, .large])
-        .background(Color.background)
+        .background(Color(.background))
         .foregroundColor(.black)
     }
 

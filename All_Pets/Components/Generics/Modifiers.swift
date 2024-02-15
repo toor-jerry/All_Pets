@@ -62,7 +62,7 @@ struct NavigationBarModifier: ViewModifier {
     var backgroundColor: UIColor?
     var titleColor: UIColor?
     
-    init(backgroundColor: UIColor? = UIColor(Color.background),
+    init(backgroundColor: UIColor? = UIColor(Color(.background)),
          titleColor: UIColor? = .black) {
         
         self.backgroundColor = backgroundColor
@@ -217,10 +217,10 @@ struct buttonPrincipal_example: View {
 
 struct buttonPrincipal: ViewModifier {
     
-    private var color: Color = Color.principal
+    private var color: Color = Color(.principal)
     var padding: CGFloat = 20.0
     var radius: CGFloat
-    init(padding: CGFloat = 20.0, _ color: Color = Color.principal, _ radius: CGFloat = 50.0) {
+    init(padding: CGFloat = 20.0, _ color: Color = Color(.principal), _ radius: CGFloat = 50.0) {
         self.color = color
         self.padding = padding
         self.radius = radius
@@ -283,7 +283,7 @@ struct inputStylePrincipal: ViewModifier {
     
     var color: Color
     
-    init(_ color: Color = Color.principal) {
+    init(_ color: Color = Color(.principal)) {
         self.color = color
     }
     

@@ -92,13 +92,13 @@ struct CreateAppointmentView: View {
                     Text("WordsSendRequest")
                         .modifier(textStylePrincipal())
                 })
-                .modifier(buttonPrincipal(padding: 10.0, reason.isEmpty ? .gray.opacity(0.8) : .principal, 10.0))
+                .modifier(buttonPrincipal(padding: 10.0, reason.isEmpty ? .gray.opacity(0.8) : Color(.principal), 10.0))
 
                 Spacer()
             }
         }
         .padding(.horizontal, 20)
-        .background(Color.background)
+        .background(Color(.background))
         .foregroundColor(.black)
         .onAppear {
             selectedHour = generateHourArray(type: .today)
@@ -168,7 +168,7 @@ struct ImagesPet: View {
             VStack {
                 if sessionInfo.petSelected?.id == pet.id {
                     Text("MsgSelected")
-                        .foregroundStyle(Color.principal)
+                        .foregroundStyle(Color(.principal))
                 } else {
                     Text(" ")
                 }
@@ -190,7 +190,7 @@ struct ImagesPet: View {
                 }
 
                 Text(pet.name ?? "")
-                    .foregroundStyle(sessionInfo.petSelected?.id == pet.id ? Color.principal: Color.limeGreen)
+                    .foregroundStyle(sessionInfo.petSelected?.id == pet.id ? Color(.principal): Color(.limeGreen))
             }
         }
     }

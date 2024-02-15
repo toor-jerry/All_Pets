@@ -96,7 +96,6 @@
 		D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */; };
 		D2E143EB2A83FB480096457C /* AuthSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143EA2A83FB480096457C /* AuthSections.swift */; };
 		D2E6F80E2A84A6290074D84E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F80D2A84A6290074D84E /* Loader.swift */; };
-		D2E6F8152A8558110074D84E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8142A8558110074D84E /* Colors.swift */; };
 		D2E6F8172A855AED0074D84E /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8162A855AED0074D84E /* Modifiers.swift */; };
 		D2E6F8192A855C4E0074D84E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8182A855C4E0074D84E /* Constants.swift */; };
 		D2E6F81B2A85655A0074D84E /* AuthPreLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F81A2A85655A0074D84E /* AuthPreLoginUseCase.swift */; };
@@ -192,7 +191,6 @@
 		D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginViewModel.swift; sourceTree = "<group>"; };
 		D2E143EA2A83FB480096457C /* AuthSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSections.swift; sourceTree = "<group>"; };
 		D2E6F80D2A84A6290074D84E /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
-		D2E6F8142A8558110074D84E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D2E6F8162A855AED0074D84E /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		D2E6F8182A855C4E0074D84E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D2E6F81A2A85655A0074D84E /* AuthPreLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPreLoginUseCase.swift; sourceTree = "<group>"; };
@@ -791,7 +789,6 @@
 			children = (
 				D2AFE15E2AA57F0F00B44FB4 /* FilterChips */,
 				D2E6F80D2A84A6290074D84E /* Loader.swift */,
-				D2E6F8142A8558110074D84E /* Colors.swift */,
 				D2E6F8162A855AED0074D84E /* Modifiers.swift */,
 				D24149B52A85AC6200E40EBB /* HubView.swift */,
 				D24149C52A86E57E00E40EBB /* ShorOrHideButton.swift */,
@@ -916,7 +913,6 @@
 				D28C75BF2AD4BC910013E213 /* ExploreViewModel.swift in Sources */,
 				D2DB53B62AAA4175004D3B49 /* MapLocationIconsView.swift in Sources */,
 				D24149C02A86B04100E40EBB /* ProfileViewModel.swift in Sources */,
-				D2E6F8152A8558110074D84E /* Colors.swift in Sources */,
 				D24EE6082A8FC370008E3013 /* HomeUseCase.swift in Sources */,
 				D28BD5A82AA90E0200320204 /* VeterinarianDetailViewModel.swift in Sources */,
 				D28BD59A2AA8E81300320204 /* VeterianFilterChipsView.swift in Sources */,

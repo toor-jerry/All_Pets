@@ -56,7 +56,7 @@ struct HubView: View {
             }
             .tag(4)
         }
-        .accentColor(Color.principal)
+        .accentColor(Color(.principal))
         .environmentObject(sessionInfo)
         .onAppear {
             sessionInfo.getInitData()
@@ -72,7 +72,7 @@ struct tabItemStyle: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .background(Color.background)
+            .background(Color(.background))
             .toolbarBackground(.visible, for: .tabBar)
             .toolbarBackground( .white, for: .tabBar)
     }

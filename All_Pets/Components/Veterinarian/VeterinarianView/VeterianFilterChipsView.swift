@@ -48,13 +48,13 @@ struct VeterianFilterChipsView: View {
                 Text("WordApply")
                     .modifier(textStylePrincipal())
             })
-            .modifier(buttonPrincipal(.limeGreen))
+            .modifier(buttonPrincipal(Color(.limeGreen)))
             
         }
         .presentationDetents([.large])
         .padding(.top, 40)
         .padding(20)
-        .background(Color.background)
+        .background(Color(.background))
     }
 }
 

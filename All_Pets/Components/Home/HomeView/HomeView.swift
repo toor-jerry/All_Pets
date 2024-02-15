@@ -36,7 +36,7 @@ struct HomeView: View {
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.principal)
+                        .foregroundColor(Color(.principal))
                         .padding(.top, 38)
                     
                     Spacer()
@@ -118,7 +118,7 @@ struct HomeView: View {
                     .modifier(shadowStyle1())
                 }
                 .padding(.horizontal, 30)
-                .background(Color.background)
+                .background(Color(.background))
                 .onAppear {
                     if refreshView {
                         refreshView = false
@@ -166,7 +166,7 @@ struct HomeView: View {
                                     .padding(5)
                             })
                             .foregroundColor(.white)
-                            .background(Color.principal)
+                            .background(Color(.principal))
                             .cornerRadius(50)
                             .modifier(shadowStyle1())
                         }

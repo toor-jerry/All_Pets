@@ -36,7 +36,7 @@ struct VaccinationCardView: View {
             }
         }
         .modifier(NavigationBarModifier())
-        .background(Color.background)
+        .background(Color(.background))
         .task {
             viewModel.getCards(idPet)
         }

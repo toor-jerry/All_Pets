@@ -44,14 +44,14 @@ struct VeterinarianDetailView: View {
                         Text("WordsToAskForADate")
                             .modifier(textStylePrincipal())
                     })
-                    .modifier(buttonPrincipal(padding: 10.0, .principal, 10.0))
+                    .modifier(buttonPrincipal(padding: 10.0, Color(.principal), 10.0))
                     Spacer()
                 }
                 
                 if !getImageSliderArray().isEmpty {
                     VStack {
                         Text("WordOffice")
-                            .foregroundColor(.purpleSecundary)
+                            .foregroundColor(Color(.purpleSecundary))
                             .fontWeight(.bold)
                             .font(.title3)
                             .modifier(AligmentView(aligment: .leading))
@@ -61,7 +61,7 @@ struct VeterinarianDetailView: View {
                 if !viewModel.chipsSpecialities.isEmpty {
                     VStack {
                         Text("WordSpecialities")
-                            .foregroundColor(.purpleSecundary)
+                            .foregroundColor(Color(.purpleSecundary))
                             .fontWeight(.bold)
                             .font(.title3)
                             .modifier(AligmentView(aligment: .leading))
@@ -77,7 +77,7 @@ struct VeterinarianDetailView: View {
                 if !viewModel.chipsSectors.isEmpty {
                     VStack {
                         Text("WordsTheyServe")
-                            .foregroundColor(.purpleSecundary)
+                            .foregroundColor(Color(.purpleSecundary))
                             .fontWeight(.bold)
                             .font(.title3)
                             .modifier(AligmentView(aligment: .leading))
@@ -94,7 +94,7 @@ struct VeterinarianDetailView: View {
                    !phoneNumber.isEmpty {
                     VStack(spacing: 20) {
                         Text("WordContact")
-                            .foregroundColor(.purpleSecundary)
+                            .foregroundColor(Color(.purpleSecundary))
                             .modifier(AligmentView(aligment: .leading))
                         
                         HStack {
@@ -108,7 +108,7 @@ struct VeterinarianDetailView: View {
                                 UIApplication.shared.open(url)
                             }, label: {
                                 Text("\(office.phoneNumber ?? "")")
-                                    .foregroundColor(.limeGreen)
+                                    .foregroundColor(Color(.limeGreen))
                             })
                             Spacer()
                         }
@@ -137,7 +137,7 @@ struct VeterinarianDetailView: View {
             CreateAppointmentView(office: office, showCreateAppoiment: $showCreateAppoiment)
                 .presentationDetents([.large])
         }
-        .background(Color.background)
+        .background(Color(.background))
     }
     
     private func getImageSliderArray() -> [ImageSlider] {
