@@ -26,7 +26,7 @@ struct ProfileView: View {
                     .scaledToFit()
                     .frame(height: 200)
 
-                Text("\("MsgHello") \(sessionInfo.user.name)!")
+                Text("\(String(localized: "MsgHello")) \(sessionInfo.user.name)!")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 20)

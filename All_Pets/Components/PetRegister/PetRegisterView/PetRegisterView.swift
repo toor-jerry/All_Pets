@@ -55,18 +55,18 @@ struct PetRegisterView: View {
                                 AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .fish)
                             }
                         }
-// GBC
-//                        NavigationLink(destination: ListSearch(itemSelected: $petTypeSelected, list: viewModel.types[selectedAnimal.rawValue] ?? []), label: {
-//                            HStack {
-//                                Text(petTypeSelected.isEmpty || petChanged ? String(localized: "MsgSelectTypePet") : petTypeSelected)
-//                                Spacer()
-//                                Image(systemName: "arrowtriangle.down.fill")
-//                            }
-//                        })
-//                        .foregroundColor(.black)
-//                        .onAppear {
-//                            petChanged = false
-//                        }
+
+                        NavigationLink(destination: ListSearch(itemSelected: $petTypeSelected, list: viewModel.types[selectedAnimal.rawValue] ?? []), label: {
+                            HStack {
+                                Text(petTypeSelected.isEmpty || petChanged ? String(localized: "MsgSelectTypePet") : petTypeSelected)
+                                Spacer()
+                                Image(systemName: "arrowtriangle.down.fill")
+                            }
+                        })
+                        .foregroundColor(.black)
+                        .onAppear {
+                            petChanged = false
+                        }
 
                         Divider()
                         DatePicker("MsgDateBirthDay", selection: $selectedDate, displayedComponents: .date)
