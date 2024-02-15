@@ -6,9 +6,6 @@
 //
 
 extension String {
-    static let MsgLoader = "Cargando.."
-    static let MsgButtonLogin = "Iniciar sesión"
-    static let MsgButtonSignUp = "Registrarse"
     static let MsgEmailLogin = "Correo electrónico"
     static let MsgName = "Nombre"
     static let MsgFirstLastName = "Apellido paterno"
@@ -26,12 +23,6 @@ extension String {
     static let MsgSignUpTitleHeader = "Crear cuenta nueva"
     static let MsgTitlePetRegister = "Selecciona tu mascota"
     static let MsgSelected = "Seleccionado"
-    static let MsgAdd = "Agregar"
-    static let MsgUploadProfilePhoto = "Subir foto de perfil"
-    static let MsgSelectTypePet = "Seleccione una raza"
-    static let MsgDateBirthDay = "Fecha de nacimiento"
-    static let MsgHello = "Hola"
-    static let MsgAddNewPet = "Agregar mascota"
     static let MsgNoPetsRegistered = "No tienes mascotas registradas"
     static let MsgRequestDigitalProof = "Solicitar constancia digital"
     static let MsgProceedings = "Expediente"
@@ -63,8 +54,4 @@ extension String {
     static let WordsSelectThePatient = "Selecciona al paciente"
     static let WordsSendRequest = "Enviar solicitud"
     static let WordsNewFunctionalities = "Tendremos nuevas funcionalidades muy pronto"
-    static let WordsExploreTitle = "Encuentra cosas cerca de ti"
-    static let WordsFoodExplore = "Alimento seco"
-    static let WordsDessertsExplore = "Postres"
-    static let WordsAccesoriesExplore = "Accesorios"
 }

@@ -31,7 +31,7 @@ struct VeterianImageView: View {
             }
         } else {
 
-            Image("LogoVeterian")
+            Image(.logoVeterian)
                 .resizable()
                 .modifier(imageSize(size: sizeImage))
         }
