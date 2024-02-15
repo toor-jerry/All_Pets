@@ -25,42 +25,40 @@ struct PetRegisterView: View {
 
     var body: some View {
         NavigationStack {
-            // GBC
-//            if viewModel.closeView {
-//                Loader()
-//                    .task {
-//                        presentationMode.wrappedValue.dismiss()
-//                    }
-//            } else if viewModel.isLoading {
-//                Loader()
-//            } else {
-//                ScrollView {
-//                    VStack(spacing: 20) {
-//
-//                        Text("MsgTitlePetRegister")
-//                            .font(.title2)
-//                            .fontWeight(.bold)
-//
-//                        VStack {
-//                            HStack {
-//                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .dog)
-//
-//                                Spacer()
-//                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .cat)
-//                            }
-//
-//                            HStack {
-//                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .bird)
-//
-//                                Spacer()
-//                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .fish)
-//                            }
-//                        }
-//
+            if viewModel.closeView {
+                Loader()
+                    .task {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+            } else if viewModel.isLoading {
+                Loader()
+            } else {
+                ScrollView {
+                    VStack(spacing: 20) {
+
+                        Text("MsgTitlePetRegister")
+                            .font(.title2)
+                            .fontWeight(.bold)
+
+                        VStack {
+                            HStack {
+                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .dog)
+
+                                Spacer()
+                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .cat)
+                            }
+
+                            HStack {
+                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .bird)
+
+                                Spacer()
+                                AnimalIconView(selectedAnimal: $selectedAnimal, petChanged: $petChanged, pet: .fish)
+                            }
+                        }
+// GBC
 //                        NavigationLink(destination: ListSearch(itemSelected: $petTypeSelected, list: viewModel.types[selectedAnimal.rawValue] ?? []), label: {
 //                            HStack {
-//                                // GBC
-//                                Text(petTypeSelected.isEmpty || petChanged ? "MsgSelectTypePet" : petTypeSelected)
+//                                Text(petTypeSelected.isEmpty || petChanged ? String(localized: "MsgSelectTypePet") : petTypeSelected)
 //                                Spacer()
 //                                Image(systemName: "arrowtriangle.down.fill")
 //                            }
@@ -69,58 +67,58 @@ struct PetRegisterView: View {
 //                        .onAppear {
 //                            petChanged = false
 //                        }
-//
-//                        Divider()
-//                        DatePicker("MsgDateBirthDay", selection: $selectedDate, displayedComponents: .date)
-//                            .padding()
-//                            .overlay(
-//                                RoundedRectangle(cornerRadius: 10)
-//                                    .stroke(.gray, lineWidth: 1)
-//                            )
-//
-//                        TextField("MsgName", text: $name)
-//                            .padding()
-//                            .overlay(
-//                                RoundedRectangle(cornerRadius: 10)
-//                                    .stroke(.gray, lineWidth: 1)
-//                            )
-//
-//                        if !image.isEqual(UIImage()) {
-//                            Image(uiImage: self.image)
-//                                .resizable()
-//                                .cornerRadius(50)
-//                                .padding(.all, 4)
-//                                .frame(width: 100, height: 100)
-//                                .background(Color.black.opacity(0.2))
-//                                .aspectRatio(contentMode: .fill)
-//                                .clipShape(Circle())
-//                        }
-//
-//                        Button(action: {
-//                            showUploadPhoto = true
-//                        }, label: {
-//                            Text(String.MsgUploadProfilePhoto)
-//                                .fontWeight(.bold)
-//                                .foregroundColor(Color.principal)
-//                        })
-//
-//
-//                        Button(action: {
-//                            viewModel.petRegister(PetRegister(birthDate: selectedDate,
-//                                                              pet: selectedAnimal.rawValue,
-//                                                              name: name,
-//                                                              petType: petTypeSelected), self.image)
-//                        }, label: {
-//                            Text(String.MsgAdd)
-//                                .modifier(textStylePrincipal())
-//                        })
-//                        .modifier(buttonPrincipal())
-//                    }
-//                    .padding(.horizontal, 60)
-//                    .padding([.top, .bottom], 20)
-//                    .background(Color.background)
-//                }
-//            }
+
+                        Divider()
+                        DatePicker("MsgDateBirthDay", selection: $selectedDate, displayedComponents: .date)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.gray, lineWidth: 1)
+                            )
+
+                        TextField("MsgName", text: $name)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.gray, lineWidth: 1)
+                            )
+
+                        if !image.isEqual(UIImage()) {
+                            Image(uiImage: self.image)
+                                .resizable()
+                                .cornerRadius(50)
+                                .padding(.all, 4)
+                                .frame(width: 100, height: 100)
+                                .background(Color.black.opacity(0.2))
+                                .aspectRatio(contentMode: .fill)
+                                .clipShape(Circle())
+                        }
+
+                        Button(action: {
+                            showUploadPhoto = true
+                        }, label: {
+                            Text("MsgUploadProfilePhoto")
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.principal)
+                        })
+
+
+                        Button(action: {
+                            viewModel.petRegister(PetRegister(birthDate: selectedDate,
+                                                              pet: selectedAnimal.rawValue,
+                                                              name: name,
+                                                              petType: petTypeSelected), self.image)
+                        }, label: {
+                            Text("MsgAdd")
+                                .modifier(textStylePrincipal())
+                        })
+                        .modifier(buttonPrincipal())
+                    }
+                    .padding(.horizontal, 60)
+                    .padding([.top, .bottom], 20)
+                    .background(Color.background)
+                }
+            }
         }
         .modifier(NavigationBarModifier())
         .background(Color.background)
