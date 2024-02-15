@@ -307,6 +307,23 @@
         }
       }
     },
+    "MsgNoPendingAppointments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have no pending appointments"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No tienes citas pendientes"
+          }
+        }
+      }
+    },
     "MsgNoPetsRegistered" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -388,6 +405,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Expediente"
+          }
+        }
+      }
+    },
+    "MsgProfessionalLiscense" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Professional liscense"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CP Médico"
           }
         }
       }
@@ -915,6 +949,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seleccionar horario"
+          }
+        }
+      }
+    },
+    "WordsSelectThePatient" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select the patient"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona al paciente"
           }
         }
       }
