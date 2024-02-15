@@ -12,8 +12,8 @@ struct PetRegisterView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @StateObject var viewModel = PetRegisterViewModel(useCase: PetRegisterUseCase())
-
-    @State var petTypeSelected: String = .MsgSelectTypePet
+// GBC
+    @State var petTypeSelected: String = "MsgSelectTypePet"
     @State var petChanged: Bool = false
 
     @State private var selectedAnimal: PetType = .dog

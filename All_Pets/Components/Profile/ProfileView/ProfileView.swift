@@ -26,14 +26,14 @@ struct ProfileView: View {
                     .scaledToFit()
                     .frame(height: 200)
 
-                Text("\(String.MsgHello) \(sessionInfo.user.name)!")
+                Text("\("MsgHello") \(sessionInfo.user.name)!")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 20)
                     .foregroundColor(.black)
 
 
-                Text(String.WordsNewFunctionalities)
+                Text("WordsNewFunctionalities")
                     .font(.title3)
                     .padding(.top, 20)
                     .foregroundColor(.purpleSecundary)
@@ -47,7 +47,7 @@ struct ProfileView: View {
                         }
                     }
                 }, label: {
-                    Text(String.MsgSignOut)
+                    Text("MsgSignOut")
                     Spacer()
                     Image(systemName: "rectangle.portrait.and.arrow.right")
                         .fontWeight(.bold)

@@ -18,11 +18,11 @@ extension Array {
         case 1:
             return array.first!.capitalized
         case 2:
-            return "\(array[0].capitalized) \(String.WordJoin) \(array[1].capitalized)"
+            return "\(array[0].capitalized) \("WordJoin") \(array[1].capitalized)"
         default:
             let lastElement = array.last!.capitalized
             let firstElements = array.dropLast().map { $0.capitalized }.joined(separator: ", ")
-            return "\(firstElements), \(String.WordJoin) \(lastElement)"
+            return "\(firstElements), \("WordJoin") \(lastElement)"
         }
     }
 }

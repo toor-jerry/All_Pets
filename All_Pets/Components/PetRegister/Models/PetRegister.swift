@@ -49,7 +49,7 @@ struct PetRegister: Codable {
                            pet: self.pet,
                            photoURL: urlString,
                            name: self.name?.isEmpty ?? false ? nil : self.name,
-                           petType: self.petType?.contains(.MsgSelectTypePet) ?? false ? nil : self.petType,
+                           petType: self.petType?.contains("MsgSelectTypePet") ?? false ? nil : self.petType,
                            id: self.id ?? idDocument)
     }
 }

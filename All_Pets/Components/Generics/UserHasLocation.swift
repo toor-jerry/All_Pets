@@ -12,14 +12,15 @@ struct UserHasLocationView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text(String.MsgNoLocalization)
+            Text("MsgNoLocalization")
                 .foregroundColor(.black)
                 .bold()
                 .padding(.bottom, 15)
 
             HStack {
                 Spacer()
-                Link(String.MsgAceptLocalization, destination: URL(string: UIApplication.openSettingsURLString)!)
+                // GBC
+                Link("MsgAceptLocalization", destination: URL(string: UIApplication.openSettingsURLString)!)
                 Spacer()
             }
             Spacer()

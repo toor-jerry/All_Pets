@@ -14,16 +14,17 @@ enum ExploreSections: String {
 }
 
 extension ExploreSections {
-
+// gbc
     func getTitle() -> String {
-        switch self {
-        case .food:
-            return String.WordsFoodExplore
-        case .desserts:
-            return String.WordsDessertsExplore
-        case .accesories:
-            return String.WordsAccesoriesExplore
-        }
+//        switch self {
+//        case .food:
+//            return String.WordsFoodExplore
+//        case .desserts:
+//            return String.WordsDessertsExplore
+//        case .accesories:
+//            return String.WordsAccesoriesExplore
+//        }
+        return ""
     }
 }
 
@@ -39,7 +40,7 @@ struct ExploreView: View {
                 Loader()
             } else {
                 ScrollView {
-                    Text(String.WordsExploreTitle)
+                    Text("WordsExploreTitle")
                         .font(.title)
                         .foregroundColor(.black.opacity(0.5))
                         .fontWeight(.bold)
