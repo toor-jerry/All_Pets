@@ -222,6 +222,23 @@
         }
       }
     },
+    "MsgHaveAnAppointment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "He has an appointment"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiene una cita el"
+          }
+        }
+      }
+    },
     "MsgHello" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -273,6 +290,23 @@
         }
       }
     },
+    "MsgNoLocalization" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location NOT Accepted ❌"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localización NO Aceptada ❌"
+          }
+        }
+      }
+    },
     "MsgNoPetsRegistered" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -320,6 +354,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El usuario ó contraseña son incorrectos"
+          }
+        }
+      }
+    },
+    "MsgPendingAppointments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have an appointment pending to be confirmed by the clinic"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tienes una cita pendiente de ser confirmada por la clínica"
           }
         }
       }
@@ -715,6 +766,40 @@
         }
       }
     },
+    "WordSchedule" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedule"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horario"
+          }
+        }
+      }
+    },
+    "WordsDateCite" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date cite"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de cita"
+          }
+        }
+      }
+    },
     "WordsDessertsExplore" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -817,6 +902,40 @@
         }
       }
     },
+    "WordsSelectSchedule" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select schedule"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar horario"
+          }
+        }
+      }
+    },
+    "WordsSelectTheReason" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select the reason"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona el motivo"
+          }
+        }
+      }
+    },
     "WordsSendRequest" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -847,6 +966,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consultas específicas"
+          }
+        }
+      }
+    },
+    "WordsTheyServe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "They serve"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atienden a"
           }
         }
       }

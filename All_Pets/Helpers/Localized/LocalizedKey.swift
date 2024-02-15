@@ -8,13 +8,5 @@
 extension String {
     static let MsgProfessionalLiscense = "CP Médico"
     static let MsgNoPendingAppointments = "No tienes citas pendientes"
-    static let MsgPendingAppointments = "Tienes una cita pendiente de ser confirmada por la clínica"
-    static let MsgHaveAnAppointment = "Tiene una cita el"
-    static let MsgNoLocalization = "Localización NO Aceptada ❌"
-    static let WordSchedule = "Horario"
-    static let WordsTheyServe = "Atienden a"
-    static let WordsDateCite = "Fecha de cita"
-    static let WordsSelectSchedule = "Seleccionar horario"
-    static let WordsSelectTheReason = "Selecciona el motivo"
     static let WordsSelectThePatient = "Selecciona al paciente"
 }
