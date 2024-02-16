@@ -171,6 +171,40 @@
         }
       }
     },
+    "MsgEnterYourEmail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your email"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresa tu correo electrónico"
+          }
+        }
+      }
+    },
+    "MsgErrorForgotEmail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We send an email to reset your password"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviamos un correo electrónico para restablecer la contraseña"
+          }
+        }
+      }
+    },
     "MsgFirstLastName" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -422,6 +456,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CP Médico"
+          }
+        }
+      }
+    },
+    "MsgRecoverPassword" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recover password"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recuperar contraseña"
           }
         }
       }

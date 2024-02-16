@@ -18,12 +18,11 @@ struct ForgotPasswordView: View {
                 Loader()
             } else {
                 VStack {
-                    Text("WordsExploreTitle")
+                    Text("MsgEnterYourEmail")
                         .font(.title3)
-                    
                         .modifier(AligmentView(aligment: .leading))
                     
-                    TextField("WordsSelectTheReason", text: $email)
+                    TextField("", text: $email)
                         .padding()
                         .modifier(inputStylePrincipal(.gray.opacity(0.4), 2))
                         .keyboardType(.asciiCapable)
@@ -32,13 +31,13 @@ struct ForgotPasswordView: View {
                     Button(action: {
                         viewModel.forgotPassword(email: email)
                     }, label: {
-                        Text("WordsToAskForADate")
+                        Text("MsgRecoverPassword")
                             .modifier(textStylePrincipal())
                     })
                     .modifier(buttonPrincipal(Color(.limeGreen)))
                     
                     if viewModel.isError {
-                        Text("zas sfsdfs sdfsf sdfsdf sdfsdf dsfsdf sdfsdf sdfsdf sfsdf")
+                        Text("MsgErrorForgotEmail")
                             .font(.title3)
                             .foregroundStyle(.gray)
                             .padding(.top, 20)
