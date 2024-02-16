@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct LoginFormView: View {
-
+    
     @EnvironmentObject var viewModel: AuthLoginViewModel
-
+    
     @State private var userName: String = ""
     @State private var password: String = ""
     @State private var showPassword = false
     @State private var userNameValidate: Bool = true
     @State private var passwordValidate: Bool = true
-
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -24,7 +24,7 @@ struct LoginFormView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 300)
-
+                
                 TextField("MsgEmailLogin", text: $userName)
                     .padding()
                     .modifier(inputStylePrincipal(userNameValidate ? Color(.principal) : Color(.error)))
@@ -32,7 +32,7 @@ struct LoginFormView: View {
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
                     .padding(.horizontal, 40)
-
+                
                 VStack {
                     VStack {
                         if showPassword {
@@ -55,13 +55,13 @@ struct LoginFormView: View {
                 })
                 .padding(.top, 15)
                 .padding(.horizontal, 40)
-
+                
                 if viewModel.showAlert || !viewModel.msgAler.isEmpty {
                     Text(viewModel.msgAler)
                         .fontWeight(.bold)
                         .foregroundColor(Color(.error))
                 }
-
+                
                 Button(action: {
                     login()
                 }, label: {
@@ -70,23 +70,20 @@ struct LoginFormView: View {
                 })
                 .modifier(buttonPrincipal())
                 .padding(.top, 20)
-
-                Button(action: {
-
-                }, label: {
+                
+                NavigationLink {
+                    ForgotPasswordView()
+                } label: {
                     Text("MsgForgotPassword")
                         .modifier(textStyleSubtitle())
-
-                })
-                .padding(.top, 15)
-
-
+                }.padding(.top, 15)
+                
                 NavigationLink(destination: SignUpView(section: $viewModel.section),
                                label: {
                     HStack {
                         Text("MsgSignUpTitle")
                             .modifier(textStyleSubtitle())
-
+                        
                         Text("MsgSignUp")
                             .modifier(textStyleTitle2())
                     }
@@ -96,7 +93,7 @@ struct LoginFormView: View {
             .background(Color(.background))
         }
     }
-
+    
     private func login() {
         viewModel.login(info: AuthLoginInfo(password: password, user: userName))
         userNameValidate = viewModel.isValidEmail(userName)

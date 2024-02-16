@@ -12,7 +12,7 @@ final class ForgotPasswordViewModel: ObservableObject {
     let useCase: ForgotPasswordProtocol
     
     @Published var isLoading: Bool = false
-    @Published var isError: Bool = false
+    @Published var isSuccess: Bool = false
     
     init(useCase: ForgotPasswordProtocol) {
         self.useCase = useCase
@@ -21,9 +21,10 @@ final class ForgotPasswordViewModel: ObservableObject {
     func forgotPassword(email: String) {
         isLoading = true
         useCase.forgotPassword(email: email,
-                               success: { },
+                               success: { 
+            self.isSuccess = true
+        },
                                error: { _ in
-            self.isError = true
         }, completion: {
             self.setTheardMain {
                 self.isLoading = false

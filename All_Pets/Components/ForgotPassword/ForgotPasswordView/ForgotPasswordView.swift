@@ -25,18 +25,20 @@ struct ForgotPasswordView: View {
                     TextField("", text: $email)
                         .padding()
                         .modifier(inputStylePrincipal(.gray.opacity(0.4), 2))
-                        .keyboardType(.asciiCapable)
+                        .autocapitalization(.none)
+                        .keyboardType(.emailAddress)
                         .foregroundColor(.black)
                     
                     Button(action: {
                         viewModel.forgotPassword(email: email)
                     }, label: {
                         Text("MsgRecoverPassword")
-                            .modifier(textStylePrincipal())
+                            .modifier(textStylePrincipal(setWidth: false))
                     })
-                    .modifier(buttonPrincipal(Color(.limeGreen)))
+                    .modifier(buttonPrincipal(Color(.limeGreen), 20))
+                    .padding(.top, 15)
                     
-                    if viewModel.isError {
+                    if viewModel.isSuccess {
                         Text("MsgErrorForgotEmail")
                             .font(.title3)
                             .foregroundStyle(.gray)
