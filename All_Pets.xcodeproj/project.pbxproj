@@ -101,6 +101,9 @@
 		D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C3B12A83E3FD0078E65B /* AppEnviroment.swift */; };
 		D2FF36BF2AA0055300234BCA /* MapViewPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF36BE2AA0055300234BCA /* MapViewPin.swift */; };
 		DB2DFB852B7DC92C0016DA32 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = DB2DFB842B7DC92C0016DA32 /* Localizable.xcstrings */; };
+		DB66F1FD2B7EC3F000BCA025 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66F1FC2B7EC3F000BCA025 /* ForgotPasswordViewModel.swift */; };
+		DB66F1FF2B7EC3FE00BCA025 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66F1FE2B7EC3FE00BCA025 /* ForgotPasswordView.swift */; };
+		DB66F2012B7EEA7600BCA025 /* ForgotPasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66F2002B7EEA7600BCA025 /* ForgotPasswordUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -195,6 +198,9 @@
 		D2F8C3B12A83E3FD0078E65B /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
 		D2FF36BE2AA0055300234BCA /* MapViewPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewPin.swift; sourceTree = "<group>"; };
 		DB2DFB842B7DC92C0016DA32 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		DB66F1FC2B7EC3F000BCA025 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		DB66F1FE2B7EC3FE00BCA025 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		DB66F2002B7EEA7600BCA025 /* ForgotPasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +234,7 @@
 		D201FCAB2A83F35A002C1EBA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DB66F1F92B7EC2AB00BCA025 /* ForgotPassword */,
 				D28C75B72AD4BC910013E213 /* Explore */,
 				D2AF11BB2ABE1DB600DD72E8 /* CreateAppointment */,
 				D28BD5A12AA90E0200320204 /* VeterinarianDetail */,
@@ -817,8 +824,34 @@
 				D2B385FA2AC2648B0051EDF7 /* SessionInfoUseCase.swift */,
 				D2321F352AD21CF3007A5E58 /* CreateAppoimentUseCase.swift */,
 				D28C75C12AD4BD700013E213 /* ExploreUseCase.swift */,
+				DB66F2002B7EEA7600BCA025 /* ForgotPasswordUseCase.swift */,
 			);
 			path = RemoteUseCase;
+			sourceTree = "<group>";
+		};
+		DB66F1F92B7EC2AB00BCA025 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				DB66F1FB2B7EC3C200BCA025 /* ForgotPasswordViewModel */,
+				DB66F1FA2B7EC3BD00BCA025 /* ForgotPasswordView */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		DB66F1FA2B7EC3BD00BCA025 /* ForgotPasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				DB66F1FE2B7EC3FE00BCA025 /* ForgotPasswordView.swift */,
+			);
+			path = ForgotPasswordView;
+			sourceTree = "<group>";
+		};
+		DB66F1FB2B7EC3C200BCA025 /* ForgotPasswordViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DB66F1FC2B7EC3F000BCA025 /* ForgotPasswordViewModel.swift */,
+			);
+			path = ForgotPasswordViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -923,6 +956,7 @@
 				D28BD59A2AA8E81300320204 /* VeterianFilterChipsView.swift in Sources */,
 				D2AF11C32ABE1DB600DD72E8 /* CreateAppointmentViewModel.swift in Sources */,
 				D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */,
+				DB66F2012B7EEA7600BCA025 /* ForgotPasswordUseCase.swift in Sources */,
 				D2AC455A2A840229003958FC /* NetworkingClientErrors.swift in Sources */,
 				D2AC45612A84061A003958FC /* Fetcher.swift in Sources */,
 				D2494A472AA1607F00A944A2 /* VeterianUseCase.swift in Sources */,
@@ -937,6 +971,7 @@
 				D2D928572A889FC0009C5FEE /* Endpoint.swift in Sources */,
 				D24149C12A86B04100E40EBB /* ProfileView.swift in Sources */,
 				D2AFE1622AA5820D00B44FB4 /* ChipModel.swift in Sources */,
+				DB66F1FF2B7EC3FE00BCA025 /* ForgotPasswordView.swift in Sources */,
 				D28BD5AC2AA92BF200320204 /* VeterianImageView.swift in Sources */,
 				D29F038D2A99CA7400C455F2 /* VaccinationCardUseCase.swift in Sources */,
 				D2494A512AA24EC700A944A2 /* FilterSectorModel.swift in Sources */,
@@ -945,6 +980,7 @@
 				D2B385F92AC24F660051EDF7 /* SessionInfo.swift in Sources */,
 				D24149D22A86F6DD00E40EBB /* SignUpView.swift in Sources */,
 				D28BD5AA2AA90E0200320204 /* VeterinarianDetail.swift in Sources */,
+				DB66F1FD2B7EC3F000BCA025 /* ForgotPasswordViewModel.swift in Sources */,
 				D27FAA0B2A830F4E00E0B93A /* ContentView.swift in Sources */,
 				D24149B02A8569E800E40EBB /* Login.swift in Sources */,
 				D26B63AE2A8BCDD500A843D2 /* PetRegisterView.swift in Sources */,

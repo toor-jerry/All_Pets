@@ -282,9 +282,11 @@ struct inputStylePrincipal_example: View {
 struct inputStylePrincipal: ViewModifier {
     
     var color: Color
+    var lineWidth: Double
     
-    init(_ color: Color = Color(.principal)) {
+    init(_ color: Color = Color(.principal), _ lineWidth: Double = 4) {
         self.color = color
+        self.lineWidth = lineWidth
     }
     
     func body(content: Content) -> some View {
@@ -292,7 +294,7 @@ struct inputStylePrincipal: ViewModifier {
             .font(.headline)
             .background(Color.white)
             .overlay(RoundedRectangle(cornerRadius: 15)
-                .stroke(color, lineWidth: 4))
+                .stroke(color, lineWidth: lineWidth))
             .foregroundColor(.black)
     }
 }
