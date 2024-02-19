@@ -1,18 +1,8 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "logoSinBackground.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "logoSinBackground 1.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "3.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {

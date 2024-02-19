@@ -28,7 +28,7 @@ struct FilterView: View {
                             Text(filter.sector)
                                 .modifier(textStylePrincipal(color: filter.isSelected ? .white : .black, setWidth: false, fontSize: .callout))
                         })
-                        .modifier(buttonPrincipal(padding: 10, filter.isSelected ? Color(.principal) : .white))
+                        .modifier(buttonPrincipal(padding: 10, filter.isSelected ? Color(.bluePrincipal) : .white))
                     }
                     .padding(5)
                 }

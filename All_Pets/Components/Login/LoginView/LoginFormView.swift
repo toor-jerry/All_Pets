@@ -27,7 +27,7 @@ struct LoginFormView: View {
                 
                 TextField("MsgEmailLogin", text: $userName)
                     .padding()
-                    .modifier(inputStylePrincipal(userNameValidate ? Color(.principal) : Color(.error)))
+                    .modifier(inputStylePrincipal(userNameValidate ? Color(.bluePrincipal) : Color(.error)))
                     .keyboardType(.emailAddress)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
@@ -47,7 +47,7 @@ struct LoginFormView: View {
                     .autocapitalization(.none)
                     .padding()
                     .padding(.trailing, 50)
-                    .modifier(inputStylePrincipal(passwordValidate ? Color(.principal) : Color(.error)))
+                    .modifier(inputStylePrincipal(passwordValidate ? Color(.bluePrincipal) : Color(.error)))
                 }
                 .overlay(alignment: .trailing, content: {
                     ShorOrHideButton(showPassword: $showPassword)

@@ -36,7 +36,7 @@ struct HomeView: View {
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(Color(.principal))
+                        .foregroundColor(Color(.bluePrincipal))
                         .padding(.top, 38)
                     
                     Spacer()
@@ -166,7 +166,7 @@ struct HomeView: View {
                                     .padding(5)
                             })
                             .foregroundColor(.white)
-                            .background(Color(.principal))
+                            .background(Color(.bluePrincipal))
                             .cornerRadius(50)
                             .modifier(shadowStyle1())
                         }

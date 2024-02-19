@@ -217,10 +217,10 @@ struct buttonPrincipal_example: View {
 
 struct buttonPrincipal: ViewModifier {
     
-    private var color: Color = Color(.principal)
+    private var color: Color = Color(.bluePrincipal)
     var padding: CGFloat = 20.0
     var radius: CGFloat
-    init(padding: CGFloat = 20.0, _ color: Color = Color(.principal), _ radius: CGFloat = 50.0) {
+    init(padding: CGFloat = 20.0, _ color: Color = Color(.bluePrincipal), _ radius: CGFloat = 50.0) {
         self.color = color
         self.padding = padding
         self.radius = radius
@@ -284,7 +284,7 @@ struct inputStylePrincipal: ViewModifier {
     var color: Color
     var lineWidth: Double
     
-    init(_ color: Color = Color(.principal), _ lineWidth: Double = 4) {
+    init(_ color: Color = Color(.bluePrincipal), _ lineWidth: Double = 4) {
         self.color = color
         self.lineWidth = lineWidth
     }

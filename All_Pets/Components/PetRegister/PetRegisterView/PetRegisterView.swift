@@ -99,7 +99,7 @@ struct PetRegisterView: View {
                         }, label: {
                             Text("MsgUploadProfilePhoto")
                                 .fontWeight(.bold)
-                                .foregroundColor(Color(.principal))
+                                .foregroundColor(Color(.bluePrincipal))
                         })
 
 
@@ -144,7 +144,7 @@ struct AnimalIconView: View {
                 .font(.system(size: 100))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color(.principal), lineWidth: isSelected(for: pet) ? 4 : .zero)
+                        .stroke(Color(.bluePrincipal), lineWidth: isSelected(for: pet) ? 4 : .zero)
                 )
                 .onTapGesture {
                     if pet != selectedAnimal {
@@ -155,7 +155,7 @@ struct AnimalIconView: View {
 
             Text("MsgSelected")
                 .font(.headline)
-                .foregroundColor(isSelected(for: pet) ? Color(.principal) : .clear)
+                .foregroundColor(isSelected(for: pet) ? Color(.bluePrincipal) : .clear)
         }
     }
 

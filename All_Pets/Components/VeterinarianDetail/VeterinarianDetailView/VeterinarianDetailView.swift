@@ -44,7 +44,7 @@ struct VeterinarianDetailView: View {
                         Text("WordsToAskForADate")
                             .modifier(textStylePrincipal())
                     })
-                    .modifier(buttonPrincipal(padding: 10.0, Color(.principal), 10.0))
+                    .modifier(buttonPrincipal(padding: 10.0, Color(.bluePrincipal), 10.0))
                     Spacer()
                 }
                 
