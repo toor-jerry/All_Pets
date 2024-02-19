@@ -137,7 +137,7 @@ struct VeterinarianDetailView: View {
             CreateAppointmentView(office: office, showCreateAppoiment: $showCreateAppoiment)
                 .presentationDetents([.large])
         }
-        .background(Color(.background))
+        .background(Color(.backgroundPrincipal))
     }
     
     private func getImageSliderArray() -> [ImageSlider] {

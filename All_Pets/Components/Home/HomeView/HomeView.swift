@@ -118,7 +118,7 @@ struct HomeView: View {
                     .modifier(shadowStyle1())
                 }
                 .padding(.horizontal, 30)
-                .background(Color(.background))
+                .background(Color(.backgroundPrincipal))
                 .onAppear {
                     if refreshView {
                         refreshView = false

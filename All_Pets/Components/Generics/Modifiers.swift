@@ -62,7 +62,7 @@ struct NavigationBarModifier: ViewModifier {
     var backgroundColor: UIColor?
     var titleColor: UIColor?
     
-    init(backgroundColor: UIColor? = UIColor(Color(.background)),
+    init(backgroundColor: UIColor? = UIColor(Color(.backgroundPrincipal)),
          titleColor: UIColor? = .black) {
         
         self.backgroundColor = backgroundColor

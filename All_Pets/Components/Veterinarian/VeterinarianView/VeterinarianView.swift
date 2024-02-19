@@ -51,7 +51,7 @@ struct VeterinarianView: View {
                         UserHasLocationView()
                     }
                 }.modifier(NavigationBarModifier())
-                    .background(Color(.background))
+                    .background(Color(.backgroundPrincipal))
                     .navigationDestination(isPresented: $viewModel.showDetail, destination: {
                         if let office = viewModel.officeSelected {
                             VeterinarianDetailView(office: office, mapData: MapData(userHasLocation: viewModel.userHasLocation, userTrackingMode: viewModel.userTrackingMode, pointCoordinates: viewModel.officeCoordinates, distanceToUserLocation: viewModel.officeSelected?.distanceToUserLocation, titleLocation: viewModel.officeSelected?.name), mapPins: viewModel.mapPins)

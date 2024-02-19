@@ -54,7 +54,7 @@ struct VeterianFilterChipsView: View {
         .presentationDetents([.large])
         .padding(.top, 40)
         .padding(20)
-        .background(Color(.background))
+        .background(Color(.backgroundPrincipal))
     }
 }
 

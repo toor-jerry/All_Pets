@@ -90,7 +90,7 @@ struct LoginFormView: View {
                 })
                 Spacer()
             }
-            .background(Color(.background))
+            .background(Color(.backgroundPrincipal))
         }
     }
     

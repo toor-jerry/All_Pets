@@ -69,7 +69,7 @@ struct SignUpView: View {
                 Spacer()
             }
             .modifier(NavigationBarModifier())
-            .background(Color(.background))
+            .background(Color(.backgroundPrincipal))
             .multilineTextAlignment(.center)
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(

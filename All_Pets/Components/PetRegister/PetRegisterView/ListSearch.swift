@@ -19,7 +19,7 @@ struct ListSearch: View {
         
         VStack {
             Divider()
-                .background(Color(.background))
+                .background(Color(.backgroundPrincipal))
             List {
                 
                 ForEach(filteredList, id: \.self) { element in
@@ -55,7 +55,7 @@ struct ListSearch: View {
                 filteredList = list
             }
         }
-        .background(Color(.background))
+        .background(Color(.backgroundPrincipal))
     }
 }
 

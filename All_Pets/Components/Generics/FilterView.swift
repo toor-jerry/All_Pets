@@ -10,7 +10,7 @@ import SwiftUI
 struct FilterView: View {
     
     @State var showButtonFilter: Bool
-    @State var backgroundColor: Color = Color(.background)
+    @State var backgroundColor: Color = Color(.backgroundPrincipal)
     @Binding var listSector: [FilterSector]
     @Binding var buttonFilterSelected: Bool
     @Binding var filterSelected: Bool

@@ -65,7 +65,7 @@ struct ExploreView: View {
 
                     Spacer()
                 }
-                .background(Color(.background))
+                .background(Color(.backgroundPrincipal))
             }
         }
         .sheet(isPresented: $showListExplore) {

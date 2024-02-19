@@ -72,7 +72,7 @@ struct tabItemStyle: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .background(Color(.background))
+            .background(Color(.backgroundPrincipal))
             .toolbarBackground(.visible, for: .tabBar)
             .toolbarBackground( .white, for: .tabBar)
     }

@@ -116,12 +116,12 @@ struct PetRegisterView: View {
                     }
                     .padding(.horizontal, 60)
                     .padding([.top, .bottom], 20)
-                    .background(Color(.background))
+                    .background(Color(.backgroundPrincipal))
                 }
             }
         }
         .modifier(NavigationBarModifier())
-        .background(Color(.background))
+        .background(Color(.backgroundPrincipal))
         .foregroundColor(.black)
         .task {
             showPetRegisterView = true

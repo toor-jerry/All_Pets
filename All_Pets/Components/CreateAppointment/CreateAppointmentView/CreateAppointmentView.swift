@@ -98,7 +98,7 @@ struct CreateAppointmentView: View {
             }
         }
         .padding(.horizontal, 20)
-        .background(Color(.background))
+        .background(Color(.backgroundPrincipal))
         .foregroundColor(.black)
         .onAppear {
             selectedHour = generateHourArray(type: .today)
