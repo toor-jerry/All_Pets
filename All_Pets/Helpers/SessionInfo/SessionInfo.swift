@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OSLog
 
 final class SessionInfo: ObservableObject {
 
@@ -29,9 +30,10 @@ final class SessionInfo: ObservableObject {
         petSelected = pets.first
         useCase.deletePet(pet: pet,
                           success: {
+            Logger().info("Mascota eliminada con éxito")
             print("Data2 Mascota eliminada con éxito")
         }, failure: { _ in
-            print("Data2 Hubo un error al eliminar la mascota")
+            Logger().error("Hubo un error al eliminar la mascota")
         }, completion: {})
     }
 
