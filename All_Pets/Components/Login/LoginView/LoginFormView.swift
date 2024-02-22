@@ -85,7 +85,9 @@ struct LoginFormView: View {
                             .modifier(textStyleSubtitle())
                         
                         Text("MsgSignUp")
-                            .modifier(textStyleTitle2())
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray.opacity(0.8))
                     }
                 })
                 Spacer()
