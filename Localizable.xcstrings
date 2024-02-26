@@ -18,23 +18,6 @@
         }
       }
     },
-    "MsgAceptLocalization" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Click to accept Location authorization"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pulsa para aceptar la autorización de Localización"
-          }
-        }
-      }
-    },
     "MsgAdd" : {
       "extractionState" : "manual",
       "localizations" : {
