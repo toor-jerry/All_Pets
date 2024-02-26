@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct HomeBottomSheetCell: View {
 
@@ -19,18 +20,18 @@ struct HomeBottomSheetCell: View {
                 AsyncImage(url: URL(string: imageUrl)) { image in
                     image
                         .resizable()
-                        .modifier(imageSize())
+                        .modifier(GenImageSize())
 
                 } placeholder: {
                     Image(systemName: "photo.fill")
                         .resizable()
-                        .modifier(imageSize())
+                        .modifier(GenImageSize())
                 }
             } else {
 
                 Image(pet.pet)
                     .resizable()
-                    .modifier(imageSize())
+                    .modifier(GenImageSize())
             }
 
             Text(pet.name ?? "")
@@ -41,7 +42,7 @@ struct HomeBottomSheetCell: View {
             if isChecked {
                 Image(systemName: "checkmark.circle.fill")
                     .resizable()
-                    .modifier(imageSize(size: 20))
+                    .modifier(GenImageSize(size: 20))
                     .foregroundColor(.green)
             }
         }

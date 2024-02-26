@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import AllPetsNetworkProvider
 
 protocol OfficeProtocol: AnyObject {
     func getOffices(success: @escaping (_ offices: [OfficeModel]) -> Void,

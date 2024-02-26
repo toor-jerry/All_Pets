@@ -10,6 +10,7 @@ import SwiftUI
 //import FirebaseFirestore
 import FirebaseFirestore
 // TODO: mover esto a generico Timestamp(date: Date())
+import AllPetsCommons
 
 enum AppointmentCite {
     case today
@@ -62,7 +63,7 @@ struct CreateAppointmentView: View {
                 Divider()
                 TextField("WordsSelectTheReason", text: $reason)
                     .padding()
-                    .modifier(inputStylePrincipal())
+                    .modifier(GenInputStylePrincipal())
                     .keyboardType(.asciiCapable)
                     .foregroundColor(.black)
 
@@ -93,15 +94,15 @@ struct CreateAppointmentView: View {
                     }
                 }, label: {
                     Text("WordsSendRequest")
-                        .modifier(textStylePrincipal())
+                        .modifier(GenTextStylePrincipal())
                 })
-                .modifier(buttonPrincipal(padding: 10.0, reason.isEmpty ? .gray.opacity(0.8) : Color(.bluePrincipal), 10.0))
+                .modifier(GenButtonPrincipal(padding: 10.0, color: reason.isEmpty ? .gray.opacity(0.8) : Color.bluePrincipal, radius: 10.0))
 
                 Spacer()
             }
         }
         .padding(.horizontal, 20)
-        .background(Color(.backgroundPrincipal))
+        .background(Color.backgroundPrincipal)
         .foregroundColor(.black)
         .onAppear {
             selectedHour = generateHourArray(type: .today)
@@ -171,7 +172,7 @@ struct ImagesPet: View {
             VStack {
                 if sessionInfo.petSelected?.id == pet.id {
                     Text("MsgSelected")
-                        .foregroundStyle(Color(.bluePrincipal))
+                        .foregroundStyle(Color.bluePrincipal)
                 } else {
                     Text(" ")
                 }
@@ -180,20 +181,20 @@ struct ImagesPet: View {
                     AsyncImage(url: URL(string: imageUrl)) { image in
                         image
                             .resizable()
-                            .modifier(profileImage(size: imageSize))
+                            .modifier(GenProfileImage(size: imageSize))
                     } placeholder: {
                         Image(systemName: "photo.fill")
                             .resizable()
-                            .modifier(profileImage(size: imageSize))
+                            .modifier(GenProfileImage(size: imageSize))
                     }
                 } else {
                     Image(pet.pet)
                         .resizable()
-                        .modifier(profileImage(size: imageSize))
+                        .modifier(GenProfileImage(size: imageSize))
                 }
 
                 Text(pet.name ?? "")
-                    .foregroundStyle(sessionInfo.petSelected?.id == pet.id ? Color(.bluePrincipal): Color(.limeGreen))
+                    .foregroundStyle(sessionInfo.petSelected?.id == pet.id ? Color.bluePrincipal: Color.limeGreen)
             }
         }
     }

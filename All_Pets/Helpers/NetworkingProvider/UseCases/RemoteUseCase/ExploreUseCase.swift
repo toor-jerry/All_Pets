@@ -7,6 +7,7 @@
 
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import AllPetsNetworkProvider
 
 protocol BusinessProtocol: AnyObject {
     func getBusiness(success: @escaping (_ business: [BusinessModel]) -> Void,

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct VeterianCardCell: View {
 
@@ -24,19 +25,19 @@ struct VeterianCardCell: View {
 
                 Text(office.name ?? "")
                     .fontWeight(.bold)
-                    .foregroundColor(Color(.purpleSecundary))
+                    .foregroundColor(Color.purpleSecundary)
                     .font(.title3)
-                    .modifier(AligmentView(aligment: .leading))
+                    .modifier(GenAligmentView(aligment: .leading))
 
                 Text("\("WordSchedule"): \(office.hourStart ?? "") - \(office.hourEnd ?? "")")
                     .font(.callout)
                     .foregroundColor(.black)
-                    .modifier(AligmentView(aligment: .leading))
+                    .modifier(GenAligmentView(aligment: .leading))
 
                 Text("".getDistanceDescription(of:  office.distanceToUserLocation ?? .zero))
                     .font(.callout)
                     .foregroundColor(.black)
-                    .modifier(AligmentView(aligment: .leading))
+                    .modifier(GenAligmentView(aligment: .leading))
             }
             .padding(.bottom, 15)
         }

@@ -6,6 +6,7 @@
 //
 
 import FirebaseAuth
+import AllPetsNetworkProvider
 
 protocol SignOutProtocol: AnyObject {
     func signOut(success: @escaping (Bool) -> Void,

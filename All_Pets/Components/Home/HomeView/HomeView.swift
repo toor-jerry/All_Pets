@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct HomeView: View {
     
@@ -36,7 +37,7 @@ struct HomeView: View {
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(Color(.bluePrincipal))
+                        .foregroundColor(Color.bluePrincipal)
                         .padding(.top, 38)
                     
                     Spacer()
@@ -66,7 +67,7 @@ struct HomeView: View {
                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
                         .background(.white)
                         .cornerRadius(8)
-                        .modifier(shadowStyle1())
+                        .modifier(GenShadowStyle())
                         
                         Spacer()
                         
@@ -92,7 +93,7 @@ struct HomeView: View {
                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
                         .background(.white)
                         .cornerRadius(8)
-                        .modifier(shadowStyle1())
+                        .modifier(GenShadowStyle())
                     }
                     .padding(.top, 60)
                     .padding(.bottom, 20)
@@ -115,10 +116,10 @@ struct HomeView: View {
                     .padding(EdgeInsets(top: 27, leading: 20, bottom: 27, trailing: 20))
                     .background(.white)
                     .cornerRadius(8)
-                    .modifier(shadowStyle1())
+                    .modifier(GenShadowStyle())
                 }
                 .padding(.horizontal, 30)
-                .background(Color(.backgroundPrincipal))
+                .background(Color.backgroundPrincipal)
                 .onAppear {
                     if refreshView {
                         refreshView = false
@@ -140,18 +141,18 @@ struct HomeView: View {
                                         AsyncImage(url: URL(string: imageUrl)) { image in
                                             image
                                                 .resizable()
-                                                .modifier(textProfileBackground())
+                                                .modifier(GenTextProfileBackground())
                                         } placeholder: {
                                             Image(systemName: "photo.fill")
                                                 .resizable()
-                                                .modifier(textProfileBackground())
+                                                .modifier(GenTextProfileBackground())
                                         }
                                         
                                     } else {
                                         
                                         Image(sessionInfo.petSelected?.pet ?? "photo.fill")
                                             .resizable()
-                                            .modifier(textProfileBackground())
+                                            .modifier(GenTextProfileBackground())
                                     }
                                     Text(pet.name ?? "")
                                     Image(systemName: "arrowtriangle.down.fill")
@@ -166,9 +167,9 @@ struct HomeView: View {
                                     .padding(5)
                             })
                             .foregroundColor(.white)
-                            .background(Color(.bluePrincipal))
+                            .background(Color.bluePrincipal)
                             .cornerRadius(50)
-                            .modifier(shadowStyle1())
+                            .modifier(GenShadowStyle())
                         }
                     }
                 }

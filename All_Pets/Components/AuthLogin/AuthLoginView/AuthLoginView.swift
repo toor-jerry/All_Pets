@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct AuthLoginView: View {
 

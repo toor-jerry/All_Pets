@@ -9,6 +9,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestoreSwift
 import FirebaseStorage
+import AllPetsNetworkProvider
 
 protocol CiteProtocol: AnyObject {
     func getCites(success: @escaping (_ cites: [CiteModel]) -> Void,

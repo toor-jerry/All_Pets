@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import AllPetsCommons
 
 enum MapLocationIconsPadding {
     case large
@@ -76,7 +77,7 @@ struct TitleMapIconsView: View {
             VStack {
                 Text("WordsNearbyOffice")
                     .fontWeight(.regular)
-                    .modifier(AligmentView(aligment: .leading))
+                    .modifier(GenAligmentView(aligment: .leading))
                 
                 if let namePlace = namePlace {
                     Text("\"\(namePlace)\"")
@@ -84,7 +85,7 @@ struct TitleMapIconsView: View {
                 Text("".getDistanceDescription(of:  distanceToUserLocation ?? .zero))
                     .font(.callout)
                     .foregroundColor(.black)
-                    .modifier(AligmentView(aligment: .leading))
+                    .modifier(GenAligmentView(aligment: .leading))
             }
             .padding()
         }

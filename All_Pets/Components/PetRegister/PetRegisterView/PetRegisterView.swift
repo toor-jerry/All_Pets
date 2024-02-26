@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct PetRegisterView: View {
 
@@ -99,7 +100,7 @@ struct PetRegisterView: View {
                         }, label: {
                             Text("MsgUploadProfilePhoto")
                                 .fontWeight(.bold)
-                                .foregroundColor(Color(.bluePrincipal))
+                                .foregroundColor(Color.bluePrincipal)
                         })
 
 
@@ -110,25 +111,25 @@ struct PetRegisterView: View {
                                                               petType: petTypeSelected), self.image)
                         }, label: {
                             Text("MsgAdd")
-                                .modifier(textStylePrincipal())
+                                .modifier(GenTextStylePrincipal())
                         })
-                        .modifier(buttonPrincipal())
+                        .modifier(GenButtonPrincipal())
                     }
                     .padding(.horizontal, 60)
                     .padding([.top, .bottom], 20)
-                    .background(Color(.backgroundPrincipal))
+                    .background(Color.backgroundPrincipal)
                 }
             }
         }
-        .modifier(NavigationBarModifier())
-        .background(Color(.backgroundPrincipal))
+        .modifier(GenNavigationBar())
+        .background(Color.backgroundPrincipal)
         .foregroundColor(.black)
         .task {
             showPetRegisterView = true
             viewModel.getPetsType()
         }
         .sheet(isPresented: $showUploadPhoto) {
-            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+            ImagePicker(selectedImage: self.$image, sourceType: .photoLibrary)
         }
     }
 }
@@ -144,7 +145,7 @@ struct AnimalIconView: View {
                 .font(.system(size: 100))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color(.bluePrincipal), lineWidth: isSelected(for: pet) ? 4 : .zero)
+                        .stroke(Color.bluePrincipal, lineWidth: isSelected(for: pet) ? 4 : .zero)
                 )
                 .onTapGesture {
                     if pet != selectedAnimal {
@@ -155,7 +156,7 @@ struct AnimalIconView: View {
 
             Text("MsgSelected")
                 .font(.headline)
-                .foregroundColor(isSelected(for: pet) ? Color(.bluePrincipal) : .clear)
+                .foregroundColor(isSelected(for: pet) ? Color.bluePrincipal : .clear)
         }
     }
 

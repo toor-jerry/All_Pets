@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct ProfileView: View {
 
@@ -36,7 +37,7 @@ struct ProfileView: View {
                 Text("WordsNewFunctionalities")
                     .font(.title3)
                     .padding(.top, 20)
-                    .foregroundColor(Color(.purpleSecundary))
+                    .foregroundColor(Color.purpleSecundary)
 
                 Spacer()
 
@@ -53,7 +54,7 @@ struct ProfileView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.red)
                 })
-                .modifier(buttonSecundary())
+                .modifier(GenButtonSecundary())
                 .padding(.bottom, 80)
             }
             .padding(.horizontal, 40)

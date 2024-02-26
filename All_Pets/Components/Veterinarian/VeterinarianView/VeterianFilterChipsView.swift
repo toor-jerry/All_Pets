@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct VeterianFilterChipsView: View {
     
@@ -19,7 +20,7 @@ struct VeterianFilterChipsView: View {
                 Text("WordSpecialities")
                     .fontWeight(.bold)
                     .font(.body)
-                    .modifier(AligmentView(aligment: .leading))
+                    .modifier(GenAligmentView(aligment: .leading))
                     .padding(.leading, 10)
                     .padding(.top, 20)
                 
@@ -32,7 +33,7 @@ struct VeterianFilterChipsView: View {
                 Text("WordsSpecificInquiries")
                     .fontWeight(.bold)
                     .font(.body)
-                    .modifier(AligmentView(aligment: .leading))
+                    .modifier(GenAligmentView(aligment: .leading))
                     .padding(.leading, 10)
                 ChipContainerView(chipArray: $viewModel.chipsSector, updateHeigh: { height in
                     if Int(self.heightSecondContainerChips) != Int(height) && Int(height) > Int(self.heightSecondContainerChips) {
@@ -46,15 +47,15 @@ struct VeterianFilterChipsView: View {
                 viewModel.filterByChips()
             }, label: {
                 Text("WordApply")
-                    .modifier(textStylePrincipal())
+                    .modifier(GenTextStylePrincipal())
             })
-            .modifier(buttonPrincipal(Color(.limeGreen)))
+            .modifier(GenButtonPrincipal(color: Color.limeGreen))
             
         }
         .presentationDetents([.large])
         .padding(.top, 40)
         .padding(20)
-        .background(Color(.backgroundPrincipal))
+        .background(Color.backgroundPrincipal)
     }
 }
 

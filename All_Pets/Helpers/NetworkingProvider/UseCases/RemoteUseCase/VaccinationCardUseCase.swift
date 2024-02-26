@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseAuth
 import FirebaseFirestoreSwift
+import AllPetsNetworkProvider
 
 protocol GetVaccinationCardProtocol: AnyObject {
     func getVaccinationCard(_ idPet: String,

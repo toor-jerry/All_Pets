@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct VeterinarianView: View {
     
@@ -40,7 +41,7 @@ struct VeterinarianView: View {
                             .listRowBackground(
                                 RoundedRectangle(cornerRadius: 8)
                                     .fill(.white)
-                                    .modifier(shadowStyle1())
+                                    .modifier(GenShadowStyle())
                                     .padding(.bottom, 18)
                                     .padding(.horizontal, 8)
                             )
@@ -50,8 +51,8 @@ struct VeterinarianView: View {
                     } else {
                         UserHasLocationView()
                     }
-                }.modifier(NavigationBarModifier())
-                    .background(Color(.backgroundPrincipal))
+                }.modifier(GenNavigationBar())
+                    .background(Color.backgroundPrincipal)
                     .navigationDestination(isPresented: $viewModel.showDetail, destination: {
                         if let office = viewModel.officeSelected {
                             VeterinarianDetailView(office: office, mapData: MapData(userHasLocation: viewModel.userHasLocation, userTrackingMode: viewModel.userTrackingMode, pointCoordinates: viewModel.officeCoordinates, distanceToUserLocation: viewModel.officeSelected?.distanceToUserLocation, titleLocation: viewModel.officeSelected?.name), mapPins: viewModel.mapPins)

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import AllPetsColors
+import AllPetsCommons
 
 struct VaccinationCardView: View {
 
@@ -26,7 +26,7 @@ struct VaccinationCardView: View {
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(.white)
-                                .modifier(shadowStyle1())
+                                .modifier(GenShadowStyle())
                                 .padding(.bottom, 18)
                                 .padding(.horizontal, 8)
                         )
@@ -36,7 +36,7 @@ struct VaccinationCardView: View {
                 }
             }
         }
-        .modifier(NavigationBarModifier())
+        .modifier(GenNavigationBar())
         .background(Color.backgroundPrincipal)
         .task {
             viewModel.getCards(idPet)

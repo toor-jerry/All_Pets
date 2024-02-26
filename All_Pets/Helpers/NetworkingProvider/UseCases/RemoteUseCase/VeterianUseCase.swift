@@ -8,6 +8,7 @@
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import AllPetsNetworkProvider
 
 protocol VeterianUseCaseProtocol: OfficeProtocol { }
 

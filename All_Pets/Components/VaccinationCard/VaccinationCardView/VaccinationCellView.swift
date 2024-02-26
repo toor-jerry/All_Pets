@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct VaccinationCardCell: View {
 
@@ -55,8 +56,8 @@ struct VaccinationCardCell: View {
                     .fontWeight(.bold)
                     .padding(10)
                     .background(card.getStatus()?.getBackgroundColor())
-                    .modifier(CornerRadiusStyle(radius: 18, corners: [.bottomLeft, .topRight]))
-                    .modifier(shadowStyle1())
+                    .modifier(GenCornerRadiusStyle(radius: 18, corners: [.bottomLeft, .topRight]))
+                    .modifier(GenShadowStyle())
 
                 Spacer()
             }

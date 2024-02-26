@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import AllPetsColors
+import AllPetsCommons
 
 struct ForgotPasswordView: View {
     
@@ -21,11 +21,11 @@ struct ForgotPasswordView: View {
                 VStack {
                     Text("MsgEnterYourEmail")
                         .font(.title3)
-                        .modifier(AligmentView(aligment: .leading))
+                        .modifier(GenAligmentView(aligment: .leading))
                     
                     TextField("", text: $email)
                         .padding()
-                        .modifier(inputStylePrincipal(.gray.opacity(0.4), 2))
+                        .modifier(GenInputStylePrincipal(.gray.opacity(0.4), 2))
                         .autocapitalization(.none)
                         .keyboardType(.emailAddress)
                         .foregroundColor(.black)
@@ -34,9 +34,9 @@ struct ForgotPasswordView: View {
                         viewModel.forgotPassword(email: email)
                     }, label: {
                         Text("MsgRecoverPassword")
-                            .modifier(textStylePrincipal(setWidth: false))
+                            .modifier(GenTextStylePrincipal(setWidth: false))
                     })
-                    .modifier(buttonPrincipal(.limeGreen, 20))
+                    .modifier(GenButtonPrincipal(padding: 20, color: .limeGreen))
                     .padding(.top, 15)
                     
                     if viewModel.isSuccess {

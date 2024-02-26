@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct SignUpView: View {
 
@@ -25,51 +26,51 @@ struct SignUpView: View {
                 VStack(spacing: 20) {
                     TextField("MsgName", text: $data.name)
                         .padding()
-                        .modifier(inputStylePrincipal())
+                        .modifier(GenInputStylePrincipal())
                         .keyboardType(.asciiCapable)
                         .foregroundColor(.black)
                     
                     TextField("MsgFirstLastName", text: $data.firstLastName)
                         .padding()
-                        .modifier(inputStylePrincipal())
+                        .modifier(GenInputStylePrincipal())
                         .keyboardType(.asciiCapable)
                     
                     TextField("MsgSecondLastName", text: $data.secondLastName)
                         .padding()
-                        .modifier(inputStylePrincipal())
+                        .modifier(GenInputStylePrincipal())
                         .keyboardType(.asciiCapable)
                     
                     TextField("MsgEmailLogin", text: $data.email)
                         .padding()
-                        .modifier(inputStylePrincipal())
+                        .modifier(GenInputStylePrincipal())
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                     
                     SecureField("MsgPasswordLogin", text: $data.password)
                         .padding()
-                        .modifier(inputStylePrincipal())
+                        .modifier(GenInputStylePrincipal())
                         .autocapitalization(.none)
                     
                     SecureField("MsgRepeatLogin", text: $passwordTemp)
                         .padding()
-                        .modifier(inputStylePrincipal())
+                        .modifier(GenInputStylePrincipal())
                         .autocapitalization(.none)
                     
                     Button(action: {
                         validateForm()
                     }, label: {
                         Text("MsgButtonSignUp")
-                            .modifier(textStylePrincipal())
+                            .modifier(GenTextStylePrincipal())
                     })
-                    .modifier(buttonPrincipal())
+                    .modifier(GenButtonPrincipal())
                 }
                 .disableAutocorrection(true)
                 .padding(.horizontal, 60)
                 .padding(.top, 20)
                 Spacer()
             }
-            .modifier(NavigationBarModifier())
-            .background(Color(.backgroundPrincipal))
+            .modifier(GenNavigationBar())
+            .background(Color.backgroundPrincipal)
             .multilineTextAlignment(.center)
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(

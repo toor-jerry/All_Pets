@@ -9,6 +9,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestoreSwift
 import FirebaseStorage
+import AllPetsNetworkProvider
 
 protocol GetUserProtocol: AnyObject {
     func getUser(success: @escaping (_ userData: User) -> Void,

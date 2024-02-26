@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseFirestoreSwift
 import FirebaseAuth
+import AllPetsNetworkProvider
 
 struct SignUpFirestoreModel: Codable {
     var name: String

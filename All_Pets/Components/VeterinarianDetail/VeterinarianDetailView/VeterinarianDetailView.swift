@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import AllPetsCommons
 
 struct MapData {
     @State var userHasLocation: Bool
@@ -42,29 +43,29 @@ struct VeterinarianDetailView: View {
                         showCreateAppoiment.toggle()
                     }, label: {
                         Text("WordsToAskForADate")
-                            .modifier(textStylePrincipal())
+                            .modifier(GenTextStylePrincipal())
                     })
-                    .modifier(buttonPrincipal(padding: 10.0, Color(.bluePrincipal), 10.0))
+                    .modifier(GenButtonPrincipal(padding: 10.0, color: Color.bluePrincipal, radius: 10.0))
                     Spacer()
                 }
                 
                 if !getImageSliderArray().isEmpty {
                     VStack {
                         Text("WordOffice")
-                            .foregroundColor(Color(.purpleSecundary))
+                            .foregroundColor(Color.purpleSecundary)
                             .fontWeight(.bold)
                             .font(.title3)
-                            .modifier(AligmentView(aligment: .leading))
+                            .modifier(GenAligmentView(aligment: .leading))
                         ImageSliderView(images: getImageSliderArray(), cornerRadius: 20, heightImage: 200)
                     }
                 }
                 if !viewModel.chipsSpecialities.isEmpty {
                     VStack {
                         Text("WordSpecialities")
-                            .foregroundColor(Color(.purpleSecundary))
+                            .foregroundColor(Color.purpleSecundary)
                             .fontWeight(.bold)
                             .font(.title3)
-                            .modifier(AligmentView(aligment: .leading))
+                            .modifier(GenAligmentView(aligment: .leading))
                         
                         ChipContainerView(chipArray: $viewModel.chipsSpecialities, updateHeigh: { height in
                             if Int(self.heightFirstContainerChips) != Int(height) && Int(height) > Int(self.heightFirstContainerChips) {
@@ -77,10 +78,10 @@ struct VeterinarianDetailView: View {
                 if !viewModel.chipsSectors.isEmpty {
                     VStack {
                         Text("WordsTheyServe")
-                            .foregroundColor(Color(.purpleSecundary))
+                            .foregroundColor(Color.purpleSecundary)
                             .fontWeight(.bold)
                             .font(.title3)
-                            .modifier(AligmentView(aligment: .leading))
+                            .modifier(GenAligmentView(aligment: .leading))
                         
                         ChipContainerView(chipArray: $viewModel.chipsSectors, updateHeigh: { height in
                             if Int(self.heightSecondContainerChips) != Int(height) && Int(height) > Int(self.heightSecondContainerChips) {
@@ -94,8 +95,8 @@ struct VeterinarianDetailView: View {
                    !phoneNumber.isEmpty {
                     VStack(spacing: 20) {
                         Text("WordContact")
-                            .foregroundColor(Color(.purpleSecundary))
-                            .modifier(AligmentView(aligment: .leading))
+                            .foregroundColor(Color.purpleSecundary)
+                            .modifier(GenAligmentView(aligment: .leading))
                         
                         HStack {
                             Text("\("WordNumber"): ")
@@ -108,7 +109,7 @@ struct VeterinarianDetailView: View {
                                 UIApplication.shared.open(url)
                             }, label: {
                                 Text("\(office.phoneNumber ?? "")")
-                                    .foregroundColor(Color(.limeGreen))
+                                    .foregroundColor(Color.limeGreen)
                             })
                             Spacer()
                         }
@@ -137,7 +138,7 @@ struct VeterinarianDetailView: View {
             CreateAppointmentView(office: office, showCreateAppoiment: $showCreateAppoiment)
                 .presentationDetents([.large])
         }
-        .background(Color(.backgroundPrincipal))
+        .background(Color.backgroundPrincipal)
     }
     
     private func getImageSliderArray() -> [ImageSlider] {

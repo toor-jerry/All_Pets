@@ -6,6 +6,7 @@
 //
 
 import FirebaseAuth
+import AllPetsNetworkProvider
 
 protocol PreAuthLoginProtocol: AnyObject {
 

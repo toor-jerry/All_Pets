@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import AllPetsColors
+import AllPetsCommons
 
 struct FilterView: View {
     
@@ -27,9 +27,9 @@ struct FilterView: View {
                             filterSelect(index)
                         }, label: {
                             Text(filter.sector)
-                                .modifier(textStylePrincipal(color: filter.isSelected ? .white : .black, setWidth: false, fontSize: .callout))
+                                .modifier(GenTextStylePrincipal(color: filter.isSelected ? .white : .black, setWidth: false, fontSize: .callout))
                         })
-                        .modifier(buttonPrincipal(padding: 10, filter.isSelected ? Color(.bluePrincipal) : .white))
+                        .modifier(GenButtonPrincipal(padding: 10, color: filter.isSelected ? .bluePrincipal : .white))
                     }
                     .padding(5)
                 }
@@ -46,7 +46,7 @@ struct FilterView: View {
                     Image(systemName: "slider.horizontal.3")
                         .fontWeight(.bold)
                         .foregroundColor(.black)
-                        .modifier(buttonPrincipal(padding: 10,.white, 10))
+                        .modifier(GenButtonPrincipal(padding: 10, color: .white, radius: 10))
                         .addVerifiedBadge(filterSelected)
                 })
                 .padding(.trailing, 20)

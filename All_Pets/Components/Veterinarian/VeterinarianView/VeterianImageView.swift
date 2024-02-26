@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 struct VeterianImageView: View {
 
@@ -22,18 +23,18 @@ struct VeterianImageView: View {
             AsyncImage(url: URL(string: imageUrl)) { image in
                 image
                     .resizable()
-                    .modifier(imageSize(size: sizeImage))
+                    .modifier(GenImageSize(size: sizeImage))
 
             } placeholder: {
                 Image(systemName: "photo.fill")
                     .resizable()
-                    .modifier(imageSize(size: sizeImage))
+                    .modifier(GenImageSize(size: sizeImage))
             }
         } else {
 
             Image(.logoVeterian)
                 .resizable()
-                .modifier(imageSize(size: sizeImage))
+                .modifier(GenImageSize(size: sizeImage))
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsCommons
 
 enum ExploreSections: String {
     case food
@@ -65,7 +66,7 @@ struct ExploreView: View {
 
                     Spacer()
                 }
-                .background(Color(.backgroundPrincipal))
+                .background(Color.backgroundPrincipal)
             }
         }
         .sheet(isPresented: $showListExplore) {
@@ -96,7 +97,7 @@ struct ExploreView: View {
                             .opacity(0.5)
                     )
                     .cornerRadius(20)
-                    .modifier(shadowStyle1())
+                    .modifier(GenShadowStyle())
                 HStack {
                     Text(exploreSection.getTitle())
                         .foregroundColor(.white)

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import AllPetsColors
+import AllPetsCommons
 
 struct LoginFormView: View {
     
@@ -28,7 +28,7 @@ struct LoginFormView: View {
                 
                 TextField("MsgEmailLogin", text: $userName)
                     .padding()
-                    .modifier(inputStylePrincipal(userNameValidate ? .bluePrincipal : .redPrincipal))
+                    .modifier(GenInputStylePrincipal(userNameValidate ? .bluePrincipal : .redPrincipal))
                     .keyboardType(.emailAddress)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
@@ -48,7 +48,7 @@ struct LoginFormView: View {
                     .autocapitalization(.none)
                     .padding()
                     .padding(.trailing, 50)
-                    .modifier(inputStylePrincipal(passwordValidate ? .bluePrincipal : .redPrincipal))
+                    .modifier(GenInputStylePrincipal(passwordValidate ? .bluePrincipal : .redPrincipal))
                 }
                 .overlay(alignment: .trailing, content: {
                     ShorOrHideButton(showPassword: $showPassword)
@@ -67,23 +67,23 @@ struct LoginFormView: View {
                     login()
                 }, label: {
                     Text("MsgButtonLogin")
-                        .modifier(textStylePrincipal())
+                        .modifier(GenTextStylePrincipal())
                 })
-                .modifier(buttonPrincipal())
+                .modifier(GenButtonPrincipal())
                 .padding(.top, 20)
                 
                 NavigationLink {
                     ForgotPasswordView()
                 } label: {
                     Text("MsgForgotPassword")
-                        .modifier(textStyleSubtitle())
+                        .modifier(GenTextStyleSubtitle())
                 }.padding(.top, 15)
                 
                 NavigationLink(destination: SignUpView(section: $viewModel.section),
                                label: {
                     HStack {
                         Text("MsgSignUpTitle")
-                            .modifier(textStyleSubtitle())
+                            .modifier(GenTextStyleSubtitle())
                         
                         Text("MsgSignUp")
                             .font(.title2)

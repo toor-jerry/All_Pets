@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import AllPetsCommons
 
 struct EmergencyView: View {
 
@@ -34,9 +35,9 @@ struct EmergencyView: View {
 
                             }, label: {
                                 Text("MsgSendAlert")
-                                    .modifier(textStylePrincipal())
+                                    .modifier(GenTextStylePrincipal())
                             })
-                            .modifier(buttonPrincipal(.red))
+                            .modifier(GenButtonPrincipal(color: .red))
                             .padding(.bottom, 100)
                         }
                     }
