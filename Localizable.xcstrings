@@ -766,23 +766,6 @@
         }
       }
     },
-    "WordJoin" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "and"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "y"
-          }
-        }
-      }
-    },
     "WordNumber" : {
       "extractionState" : "manual",
       "localizations" : {
