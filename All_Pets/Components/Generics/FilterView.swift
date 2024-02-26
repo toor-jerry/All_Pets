@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import AllPetsColors
 
 struct FilterView: View {
     
     @State var showButtonFilter: Bool
-    @State var backgroundColor: Color = Color(.backgroundPrincipal)
+    @State var backgroundColor: Color = .backgroundPrincipal
     @Binding var listSector: [FilterSector]
     @Binding var buttonFilterSelected: Bool
     @Binding var filterSelected: Bool

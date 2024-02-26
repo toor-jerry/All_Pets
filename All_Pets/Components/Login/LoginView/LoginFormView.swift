@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsColors
 
 struct LoginFormView: View {
     
@@ -27,7 +28,7 @@ struct LoginFormView: View {
                 
                 TextField("MsgEmailLogin", text: $userName)
                     .padding()
-                    .modifier(inputStylePrincipal(userNameValidate ? Color(.bluePrincipal) : Color(.error)))
+                    .modifier(inputStylePrincipal(userNameValidate ? .bluePrincipal : .redPrincipal))
                     .keyboardType(.emailAddress)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
@@ -47,7 +48,7 @@ struct LoginFormView: View {
                     .autocapitalization(.none)
                     .padding()
                     .padding(.trailing, 50)
-                    .modifier(inputStylePrincipal(passwordValidate ? Color(.bluePrincipal) : Color(.error)))
+                    .modifier(inputStylePrincipal(passwordValidate ? .bluePrincipal : .redPrincipal))
                 }
                 .overlay(alignment: .trailing, content: {
                     ShorOrHideButton(showPassword: $showPassword)
@@ -59,7 +60,7 @@ struct LoginFormView: View {
                 if viewModel.showAlert || !viewModel.msgAler.isEmpty {
                     Text(viewModel.msgAler)
                         .fontWeight(.bold)
-                        .foregroundColor(Color(.error))
+                        .foregroundColor(Color.redPrincipal)
                 }
                 
                 Button(action: {
@@ -92,7 +93,7 @@ struct LoginFormView: View {
                 })
                 Spacer()
             }
-            .background(Color(.backgroundPrincipal))
+            .background(Color.backgroundPrincipal)
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsColors
 
 struct ChipView: View {
 
@@ -33,7 +34,7 @@ struct ChipView: View {
         }
         .foregroundColor(isSelected ? .white : .black)
         .fontWeight(.bold)
-        .modifier(buttonPrincipal(padding: 10, isSelected ? Color(.bluePrincipal) : .white))
+        .modifier(buttonPrincipal(padding: 10, isSelected ? .bluePrincipal : .white))
         .onTapGesture {
             isSelectedChip()
             if enableChangeColorOnSelect {

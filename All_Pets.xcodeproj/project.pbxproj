@@ -91,7 +91,6 @@
 		D2E143E92A83FB270096457C /* AuthLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */; };
 		D2E143EB2A83FB480096457C /* AuthSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E143EA2A83FB480096457C /* AuthSections.swift */; };
 		D2E6F80E2A84A6290074D84E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F80D2A84A6290074D84E /* Loader.swift */; };
-		D2E6F8172A855AED0074D84E /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8162A855AED0074D84E /* Modifiers.swift */; };
 		D2E6F8192A855C4E0074D84E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F8182A855C4E0074D84E /* Constants.swift */; };
 		D2E6F81B2A85655A0074D84E /* AuthPreLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6F81A2A85655A0074D84E /* AuthPreLoginUseCase.swift */; };
 		D2F8C3B22A83E3FD0078E65B /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C3B12A83E3FD0078E65B /* AppEnviroment.swift */; };
@@ -194,7 +193,6 @@
 		D2E143E82A83FB270096457C /* AuthLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLoginViewModel.swift; sourceTree = "<group>"; };
 		D2E143EA2A83FB480096457C /* AuthSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSections.swift; sourceTree = "<group>"; };
 		D2E6F80D2A84A6290074D84E /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
-		D2E6F8162A855AED0074D84E /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		D2E6F8182A855C4E0074D84E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D2E6F81A2A85655A0074D84E /* AuthPreLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPreLoginUseCase.swift; sourceTree = "<group>"; };
 		D2F8C3B12A83E3FD0078E65B /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
@@ -787,7 +785,6 @@
 			children = (
 				D2AFE15E2AA57F0F00B44FB4 /* FilterChips */,
 				D2E6F80D2A84A6290074D84E /* Loader.swift */,
-				D2E6F8162A855AED0074D84E /* Modifiers.swift */,
 				D24149B52A85AC6200E40EBB /* HubView.swift */,
 				D24149C52A86E57E00E40EBB /* ShorOrHideButton.swift */,
 				D28A19CF2A8C56B50024C517 /* ImagePicker.swift */,
@@ -970,7 +967,6 @@
 				D2AC455C2A840241003958FC /* NetworkingServerErrors.swift in Sources */,
 				D2494A372AA1156000A944A2 /* HomeBottomSheetCell.swift in Sources */,
 				D24149C62A86E57E00E40EBB /* ShorOrHideButton.swift in Sources */,
-				D2E6F8172A855AED0074D84E /* Modifiers.swift in Sources */,
 				D2494A432AA15FE500A944A2 /* VeterinarianViewModel.swift in Sources */,
 				D248834D2A9AC722006BC149 /* VaccinationCellView.swift in Sources */,
 				D28BD5AE2AA94CA500320204 /* ImageSliderView.swift in Sources */,

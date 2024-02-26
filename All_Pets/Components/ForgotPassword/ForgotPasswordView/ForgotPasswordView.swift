@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsColors
 
 struct ForgotPasswordView: View {
     
@@ -35,7 +36,7 @@ struct ForgotPasswordView: View {
                         Text("MsgRecoverPassword")
                             .modifier(textStylePrincipal(setWidth: false))
                     })
-                    .modifier(buttonPrincipal(Color(.limeGreen), 20))
+                    .modifier(buttonPrincipal(.limeGreen, 20))
                     .padding(.top, 15)
                     
                     if viewModel.isSuccess {
@@ -50,7 +51,7 @@ struct ForgotPasswordView: View {
                 .padding(30)
             }
         }
-        .background(Color(.backgroundPrincipal))
+        .background(Color.backgroundPrincipal)
     }
 }
 

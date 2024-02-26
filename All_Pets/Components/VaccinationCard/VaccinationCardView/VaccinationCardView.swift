@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AllPetsColors
 
 struct VaccinationCardView: View {
 
@@ -36,7 +37,7 @@ struct VaccinationCardView: View {
             }
         }
         .modifier(NavigationBarModifier())
-        .background(Color(.backgroundPrincipal))
+        .background(Color.backgroundPrincipal)
         .task {
             viewModel.getCards(idPet)
         }
