@@ -6,7 +6,10 @@
 //
 
 import SwiftUI
-import FirebaseFirestore.FIRTimestamp
+//import FirebaseFirestore.FIRTimestamp
+//import FirebaseFirestore
+import FirebaseFirestore
+// TODO: mover esto a generico Timestamp(date: Date())
 
 enum AppointmentCite {
     case today
