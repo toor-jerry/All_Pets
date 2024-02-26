@@ -273,23 +273,6 @@
         }
       }
     },
-    "MsgLoader" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Loading.."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cargando.."
-          }
-        }
-      }
-    },
     "MsgName" : {
       "extractionState" : "manual",
       "localizations" : {
