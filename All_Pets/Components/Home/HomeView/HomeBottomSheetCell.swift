@@ -29,9 +29,11 @@ struct HomeBottomSheetCell: View {
                 }
             } else {
 
-                Image(pet.pet)
-                    .resizable()
-                    .modifier(GenImageSize())
+                if let imageAnimal = ImageAnimals(rawValue: pet.pet)?.getImage() {
+                    imageAnimal
+                        .resizable()
+                        .modifier(GenImageSize())
+                }
             }
 
             Text(pet.name ?? "")

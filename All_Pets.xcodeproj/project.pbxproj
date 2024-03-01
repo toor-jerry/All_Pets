@@ -85,6 +85,7 @@
 		DBC83EB82B8C005A00E7C560 /* AllPetsImages in Frameworks */ = {isa = PBXBuildFile; productRef = DBC83EB72B8C005A00E7C560 /* AllPetsImages */; };
 		DBC83EBA2B8C005A00E7C560 /* AllPetsLocalizable in Frameworks */ = {isa = PBXBuildFile; productRef = DBC83EB92B8C005A00E7C560 /* AllPetsLocalizable */; };
 		DBC83EBC2B8C005A00E7C560 /* AllPetsNetworkProvider in Frameworks */ = {isa = PBXBuildFile; productRef = DBC83EBB2B8C005A00E7C560 /* AllPetsNetworkProvider */; };
+		DBE52B0B2B91790400E87052 /* ImageAnimals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE52B0A2B91790400E87052 /* ImageAnimals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -161,6 +162,7 @@
 		DB66F1FC2B7EC3F000BCA025 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		DB66F1FE2B7EC3FE00BCA025 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		DB66F2002B7EEA7600BCA025 /* ForgotPasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUseCase.swift; sourceTree = "<group>"; };
+		DBE52B0A2B91790400E87052 /* ImageAnimals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAnimals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,6 +482,7 @@
 			children = (
 				D26B63A72A8BCDD500A843D2 /* PetRegister.swift */,
 				D2494A382AA15E5300A944A2 /* PetType.swift */,
+				DBE52B0A2B91790400E87052 /* ImageAnimals.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 				DB66F1FF2B7EC3FE00BCA025 /* ForgotPasswordView.swift in Sources */,
 				D28BD5AC2AA92BF200320204 /* VeterianImageView.swift in Sources */,
 				D29F038D2A99CA7400C455F2 /* VaccinationCardUseCase.swift in Sources */,
+				DBE52B0B2B91790400E87052 /* ImageAnimals.swift in Sources */,
 				D2494A512AA24EC700A944A2 /* FilterSectorModel.swift in Sources */,
 				D248835B2A9D603A006BC149 /* EmergencyView.swift in Sources */,
 				D2B385F92AC24F660051EDF7 /* SessionInfo.swift in Sources */,

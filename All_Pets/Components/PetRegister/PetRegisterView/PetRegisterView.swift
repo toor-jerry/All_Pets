@@ -141,18 +141,23 @@ struct AnimalIconView: View {
 
     var body: some View {
         VStack {
-            Image(pet.rawValue)
-                .font(.system(size: 100))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.bluePrincipal, lineWidth: isSelected(for: pet) ? 4 : .zero)
-                )
-                .onTapGesture {
-                    if pet != selectedAnimal {
-                        petChanged = true
+            
+            if let imageAnimal = ImageAnimals(rawValue: pet.rawValue)?.getImage() {
+                
+                imageAnimal
+                    .font(.system(size: 100))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.bluePrincipal, lineWidth: isSelected(for: pet) ? 4 : .zero)
+                    )
+                    .onTapGesture {
+                        if pet != selectedAnimal {
+                            petChanged = true
+                        }
+                        selectedAnimal = pet
                     }
-                    selectedAnimal = pet
-                }
+            }
+                
 
             Text("MsgSelected")
                 .font(.headline)

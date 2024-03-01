@@ -188,9 +188,11 @@ struct ImagesPet: View {
                             .modifier(GenProfileImage(size: imageSize))
                     }
                 } else {
-                    Image(pet.pet)
-                        .resizable()
-                        .modifier(GenProfileImage(size: imageSize))
+                    if let imageAnimal = ImageAnimals(rawValue: pet.pet)?.getImage() {
+                        imageAnimal
+                            .resizable()
+                            .modifier(GenProfileImage(size: imageSize))
+                    }
                 }
 
                 Text(pet.name ?? "")
