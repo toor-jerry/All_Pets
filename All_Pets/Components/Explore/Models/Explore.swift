@@ -10,16 +10,22 @@ import Foundation
 struct BusinessModel: Codable {
     var accesories: Bool?
     var food: Bool?
-    var desserts: Bool?
     var articles: [String]?
+    var categorie: [String]?
+    var hourOpen: String?
+    var hourClose: String?
+    var images: [String]?
     var imgBanner: String?
     var latitude: Double?
     var length: Double?
     var name: String?
+    var desserts: Bool?
     var status: String?
-    var images: [String]?
 
     enum CodingKeys: String, CodingKey {
+        case categorie = "categoria"
+        case hourOpen = "hora_Inicio"
+        case hourClose = "hora_Fin"
         case accesories = "accesorios"
         case food = "alimentos"
         case desserts = "postres"
