@@ -21,6 +21,7 @@ struct BusinessModel: Codable {
     var name: String?
     var desserts: Bool?
     var status: String?
+    var distanceToUserLocation: Int?
 
     enum CodingKeys: String, CodingKey {
         case categorie = "categoria"
