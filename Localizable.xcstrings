@@ -766,23 +766,6 @@
         }
       }
     },
-    "WordsAccesoriesExplore" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Accessories"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Accesorios"
-          }
-        }
-      }
-    },
     "WordSchedule" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -817,23 +800,6 @@
         }
       }
     },
-    "WordsDessertsExplore" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desserts"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Postres"
-          }
-        }
-      }
-    },
     "WordsExploreTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -847,23 +813,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Encuentra cosas cerca de ti"
-          }
-        }
-      }
-    },
-    "WordsFoodExplore" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dry food"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alimento seco"
           }
         }
       }
