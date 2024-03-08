@@ -1,4 +1,4 @@
-//  Explore.swift
+//  ExploreModel.swift
 //  All_Pets
 //
 //  Created by Gerardo Bautista Castañeda on 09/10/23.
@@ -22,6 +22,7 @@ struct BusinessModel: Codable {
     var desserts: Bool?
     var status: String?
     var distanceToUserLocation: Int?
+    var idDocument: String?
 
     enum CodingKeys: String, CodingKey {
         case categorie = "categoria"

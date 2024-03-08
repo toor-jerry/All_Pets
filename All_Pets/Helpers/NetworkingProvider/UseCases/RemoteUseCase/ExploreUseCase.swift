@@ -8,6 +8,7 @@
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import AllPetsNetworkProvider
+import OSLog
 
 protocol BusinessProtocol: AnyObject {
     func getBusiness(success: @escaping (_ business: [BusinessModel]) -> Void,
@@ -38,10 +39,11 @@ extension ExploreUseCase: BusinessProtocol {
 
                 for document in querySnapshot?.documents ?? [] {
                     do {
-                        let businessObj = try document.data(as: BusinessModel.self)
+                        var businessObj = try document.data(as: BusinessModel.self)
+                        businessObj.idDocument = document.documentID
                         business.append(businessObj)
                     } catch {
-                        print("Errors: ", NetworkingClientErrors.decodingError, error)
+                        Logger().error("Error type: \(NetworkingClientErrors.decodingError) - \(error)")
                     }
                 }
 
